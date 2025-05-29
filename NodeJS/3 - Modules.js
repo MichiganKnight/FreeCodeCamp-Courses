@@ -1,11 +1,11 @@
 // CommonJS - Every file is module (By Default)
 // Modules - Encapsulated Code (Only Share Minimum)
 
-const names = require('./Names')
-const sayHi = require('./Utils')
-const data = require('./Alternative Syntax')
+const names = require('./4 - Names')
+const sayHi = require('./5 - Utils')
+const data = require('./6 - Alternative Syntax')
 
-require('./Mind Grenade')
+require('./7 - Mind Grenade')
 
 /* console.log(data)
 console.log(data.items)
