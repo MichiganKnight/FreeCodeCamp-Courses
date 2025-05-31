@@ -1,12 +1,16 @@
+import random
+
 def get_choices():
-    player_choice = "Rock"
-    computer_choice = "Paper"
+    player_choice = input("Enter a Choice (Rock, Paper, Scissors): ")
 
-    return player_choice
+    options = ["Rock", "Paper", "Scissors"]
 
-def greeting():
-    return "Hello World!"
+    computer_choice = random.choice(options)
 
-response = greeting()
+    choices = {"Player": player_choice, "Computer": computer_choice}
 
-print(response)
+    return choices
+
+choices = get_choices()
+
+print(choices)
