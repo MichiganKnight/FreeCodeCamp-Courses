@@ -7,4 +7,6 @@ def get_choices():
 def greeting():
     return "Hello World!"
 
-print(greeting())
+response = greeting()
+
+print(response)
