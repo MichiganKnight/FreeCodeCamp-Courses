@@ -6,12 +6,13 @@ import productRoutes from "./Routes/Product.js"
 dotenv.config()
 
 const app = express()
+const PORT = process.env.PORT || 5000
 
 app.use(express.json()) // Allows JSON Data in req.body
 app.use("/API/Products", productRoutes)
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     connectDB()
 
-    console.log("Server Started at http://localhost:5000")
+    console.log(`Server Started at http://localhost:${PORT}`)
 })
