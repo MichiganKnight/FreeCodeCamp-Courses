@@ -7,6 +7,8 @@ dotenv.config()
 
 const app = express()
 
+app.use(express.json()) // Allows JSON Data in req.body
+
 app.post("/API/Products", async (req, res) => {
     const product = req.body // User Sends Data
 
