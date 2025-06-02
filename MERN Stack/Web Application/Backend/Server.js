@@ -57,7 +57,7 @@ app.post("/API/Products", async (req, res) => {
     }
 })
 
-app.put("/API/Produts/:id", async (req, res) => {
+app.put("/API/Products/:id", async (req, res) => {
     const { id } = req.params
 
     const product = req.body
