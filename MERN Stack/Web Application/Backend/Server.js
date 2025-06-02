@@ -1,5 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
+import mongoose from "mongoose"
 import { connectDB } from "./Config/DB.js"
 import Product from "./Models/Product.js"
 
@@ -56,6 +57,37 @@ app.post("/API/Products", async (req, res) => {
     }
 })
 
+app.put("/API/Produts/:id", async (req, res) => {
+    const { id } = req.params
+
+    const product = req.body
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({
+            success: false,
+            message: "Product Not Found"
+        })
+    }
+
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(id, product, {
+            new: true
+        })
+
+        res.status(200).json({
+            success: true,
+            data: updatedProduct
+        })
+    } catch (error) {
+        console.log(`Error Updating Product: ${error.message}`)
+
+        res.status(500).json({
+            success: false,
+            message: "Server Error"
+        })
+    }
+})
+
 app.delete("/API/Products/:id", async (req, res) => {
     const { id } = req.params
 
@@ -67,6 +99,8 @@ app.delete("/API/Products/:id", async (req, res) => {
             message: "Product Deleted"
         })
     } catch (error) {
+        console.log(`Error Deleting Products: ${error.message}`)
+
         res.status(404).json({
             success: false,
             message: "Product Not Found"
