@@ -9,6 +9,24 @@ const app = express()
 
 app.use(express.json()) // Allows JSON Data in req.body
 
+app.get("/API/Products", async (req, res) => {
+    try {
+        const products = await Product.find({})
+
+        res.status(200).json({
+            success: true,
+            data: products
+        })
+    } catch (error) {
+        console.log(`Error Fetching Products: ${error.message}`)
+
+        res.status(500).json({
+            success: false,
+            message: "Server Error"
+        })
+    }
+})
+
 app.post("/API/Products", async (req, res) => {
     const product = req.body // User Sends Data
 
@@ -34,6 +52,24 @@ app.post("/API/Products", async (req, res) => {
         res.status(500).json({
             sucess: false,
             message: "Server Error"
+        })
+    }
+})
+
+app.delete("/API/Products/:id", async (req, res) => {
+    const { id } = req.params
+
+    try {
+        await Product.findByIdAndDelete(id)
+
+        res.status(200).json({
+            success: true,
+            message: "Product Deleted"
+        })
+    } catch (error) {
+        res.status(404).json({
+            success: false,
+            message: "Product Not Found"
         })
     }
 })
