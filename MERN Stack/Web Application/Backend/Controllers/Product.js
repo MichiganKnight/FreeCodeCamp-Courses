@@ -1,10 +1,7 @@
-import express from "express"
 import mongoose from "mongoose"
 import Product from "../Models/Product.js"
 
-const router = express.Router()
-
-router.get("/", async (req, res) => {
+export const getProducts = async (req, res) => {
     try {
         const products = await Product.find({})
 
@@ -20,9 +17,9 @@ router.get("/", async (req, res) => {
             message: "Server Error"
         })
     }
-})
+}
 
-router.post("/", async (req, res) => {
+export const createProduct = async (req, res) => {
     const product = req.body // User Sends Data
 
     if (!product.name || !product.price || !product.image) {
@@ -49,9 +46,9 @@ router.post("/", async (req, res) => {
             message: "Server Error"
         })
     }
-})
+}
 
-router.put("/:id", async (req, res) => {
+export const updateProduct = async (req, res) => {
     const { id } = req.params
 
     const product = req.body
@@ -80,9 +77,9 @@ router.put("/:id", async (req, res) => {
             message: "Server Error"
         })
     }
-})
+}
 
-router.delete("/:id", async (req, res) => {
+export const deleteProduct = async (req, res) => {
     const { id } = req.params
 
     try {
@@ -100,6 +97,4 @@ router.delete("/:id", async (req, res) => {
             message: "Product Not Found"
         })
     }
-})
-
-export default router
+}
