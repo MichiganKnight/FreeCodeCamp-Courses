@@ -29,5 +29,13 @@ export const useProductStore = create((set) => ({
             success: true,
             message: "Product Created Successfully"
         }
+    },
+    fetchProducts: async () => {
+        const res = await fetch("/API/Products")
+        const data = await res.json()
+
+        set({
+            products: data.data
+        })
     }
 }))
