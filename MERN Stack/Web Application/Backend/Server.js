@@ -6,6 +6,8 @@ import productRoutes from "./Routes/Product.js"
 
 dotenv.config()
 
+console.log("NODE_ENV =", process.env.NODE_ENV)
+
 const app = express()
 const PORT = process.env.PORT || 5000
 
@@ -15,14 +17,21 @@ app.use(express.json()) // Allows JSON Data in req.body
 app.use("/API/Products", productRoutes)
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "/Frontend/dist")))
+  try {
+    app.use(express.static(path.join(__dirname, "Frontend/dist")))
     app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "Frontend", "dist", "index.html"))
+      res.sendFile(path.resolve(__dirname, "Frontend", "dist", "index.html"))
     })
+  } catch (error) {
+    console.log(`Error: ${error.message}`)
+  }
+}
+else {
+  console.log("Not Production")
 }
 
 app.listen(PORT, () => {
-    connectDB()
+  connectDB()
 
-    console.log(`Server Started at http://localhost:${PORT}`)
+  console.log(`Server Started at http://localhost:${PORT}`)
 })
