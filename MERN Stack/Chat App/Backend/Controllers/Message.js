@@ -5,7 +5,7 @@ export const sendMessage = async (req, res) => {
     try {
         const { message } = req.body
         const { id: receiverId } = req.params
-        const senderId = req.userId
+        const senderId = req.user._id
 
         let conversation = await Conversation.findOne({
             participants: { $all: [senderId, receiverId] }
@@ -13,7 +13,7 @@ export const sendMessage = async (req, res) => {
 
         if (!conversation) {
             conversation = await Conversation.create({
-                participants: { $all: [senderId, receiverId] }
+                participants: [senderId, receiverId]
             })
         }
 
@@ -27,7 +27,9 @@ export const sendMessage = async (req, res) => {
             conversation.messages.push(newMessage._id)
         }
 
-        res.status(201).json({ newMessage })
+        await Promise.all([conversation.save(), newMessage.save()])
+
+        res.status(201).json(newMessage)
     } catch (error) {
         console.log(`Error In Message: ${error.message}`)
 
