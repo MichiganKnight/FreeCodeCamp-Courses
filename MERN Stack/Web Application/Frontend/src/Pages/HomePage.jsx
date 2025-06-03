@@ -21,24 +21,24 @@ const HomePage = () => {
                 </Text>
 
                 <SimpleGrid
-					columns={{
-						base: 1,
-						md: 2,
-						lg: 3,
-					}} spacing={10} w={"full"}>
-					{products.map((product) => (
-						<ProductCard key={product._id} product={product} />
-					))}
-				</SimpleGrid>
+                    columns={{
+                        base: 1,
+                        md: 2,
+                        lg: 3,
+                    }} spacing={10} w={"full"}>
+                    {products.map((product) => (
+                        <ProductCard key={product._id} product={product} />
+                    ))}
+                </SimpleGrid>
 
-                <Text fontSize={"xl"} textAlign={"center"} fontWeight={"bold"} color={"gray.500"}>
+                {products.length === 0 && (<Text fontSize={"xl"} textAlign={"center"} fontWeight={"bold"} color={"gray.500"}>
                     No Products Found 😢 {" "}
                     <Link to={"/Create"}>
                         <Text as={"span"} color={"blue.500"} _hover={{ textDecoration: "underline" }}>
                             Create Product
                         </Text>
                     </Link>
-                </Text>
+                </Text>)}
             </VStack>
         </Container>
     )
