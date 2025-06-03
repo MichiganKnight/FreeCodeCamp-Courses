@@ -27,6 +27,7 @@ export const sendMessage = async (req, res) => {
             conversation.messages.push(newMessage._id)
         }
 
+        // Runs in Parallel
         await Promise.all([conversation.save(), newMessage.save()])
 
         res.status(201).json(newMessage)
