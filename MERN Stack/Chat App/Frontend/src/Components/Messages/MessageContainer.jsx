@@ -3,6 +3,7 @@ import { TiMessages } from "react-icons/ti"
 import MessageInput from "./MessageInput"
 import Messages from "./Messages"
 import useConversation from "../../Zustand/UseConversation"
+import { useEffect } from "react"
 
 const MessageContainer = () => {
     const { selectedConversation, setSelectedConversation } = useConversation()
