@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser"
 
 import authRoutes from "./Routes/Auth.js"
 import messageRoutes from "./Routes/Message.js"
+import userRoutes from "./Routes/User.js"
+
 import connectToMongoDB from "./DB/ConnectToDB.js"
 
 const app = express()
@@ -16,6 +18,7 @@ app.use(cookieParser())
 
 app.use("/API/Auth", authRoutes)
 app.use("/API/Messages", messageRoutes)
+app.use("/API/Users", userRoutes)
 
 /* app.get("/", (req, res) => {
     // Root Route - http://localhost:5000
