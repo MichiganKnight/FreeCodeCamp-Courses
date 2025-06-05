@@ -59,13 +59,20 @@ public class Window extends JFrame implements Runnable {
     }
 
     public void update(double dt) {
-        Image dbImage = createImage(getWidth(), getHeight());
+        Insets insets = getInsets();
+        int contentWidth = getWidth() - insets.left - insets.right;
+        int contentHeight = getHeight() - insets.top - insets.bottom;
 
+        if (currentScene instanceof ResizableScene) {
+            ((ResizableScene) currentScene).setSize(contentWidth, contentHeight);
+        }
+
+        Image dbImage = createImage(getWidth(), getHeight());
         Graphics dbg = dbImage.getGraphics();
 
         this.draw(dbg);
 
-        getGraphics().drawImage(dbImage, 0, 0, this);
+        getGraphics().drawImage(dbImage, insets.left, insets.top, this);
 
         currentScene.update(dt);
     }
