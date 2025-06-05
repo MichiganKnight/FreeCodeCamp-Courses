@@ -1,10 +1,19 @@
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 public class MenuScene extends Scene {
+    public KL keyListener;
+
+    public MenuScene(KL keyListener) {
+        this.keyListener = keyListener;
+    }
+
     @Override
     public void update(double dt) {
-
+        if (keyListener.isKeyPressed(KeyEvent.VK_UP)) {
+            System.out.println("Up Pressed");
+        }
     }
 
     @Override
