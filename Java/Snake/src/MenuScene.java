@@ -1,4 +1,5 @@
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Color;
 
 public class MenuScene extends Scene {
     @Override
