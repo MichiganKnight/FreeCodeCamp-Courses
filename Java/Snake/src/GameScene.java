@@ -7,6 +7,8 @@ public class GameScene extends Scene implements ResizableScene {
 
     public GameScene() {
         setSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+
+        snake = new Snake(10, 48, 72, 24, 24);
     }
 
     @Override
@@ -18,13 +20,11 @@ public class GameScene extends Scene implements ResizableScene {
         int fgHeight = height - 2 * tileSize;
 
         foreground = new Rect(24, 24, fgWidth, fgHeight);
-
-        snake = new Snake(10, 48, 72, 24, 24);
     }
 
     @Override
     public void update(double dt) {
-
+        snake.update(dt);
     }
 
     @Override
