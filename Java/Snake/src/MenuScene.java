@@ -49,6 +49,8 @@ public class MenuScene extends Scene {
 
             if (mouseListener.isPressed()) {
                 Window.getWindow().changeState(1);
+
+                Window.getWindow().setCursor(defaultCursor);
             }
         } else {
             playCurrentImage = play;
