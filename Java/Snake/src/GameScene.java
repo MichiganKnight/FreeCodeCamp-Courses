@@ -12,7 +12,7 @@ public class GameScene extends Scene implements ResizableScene {
     public GameScene(KL keyListener) {
         setSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
 
-        snake = new Snake(10, 48, 72, Constants.TILE_WIDTH, Constants.TILE_HEIGHT);
+        snake = new Snake(10, 48, 72, Constants.TILE_WIDTH, Constants.TILE_HEIGHT, foreground);
 
         this.keyListener = keyListener;
 
