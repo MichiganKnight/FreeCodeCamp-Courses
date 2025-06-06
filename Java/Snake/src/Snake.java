@@ -12,7 +12,7 @@ public class Snake {
     public Direction direction = Direction.RIGHT;
 
     // 0.3 Seconds
-    public double ogWaitBetweenUpdates = 0.3f;
+    public double ogWaitBetweenUpdates = 0.1f;
     public double waitTimeLeft = ogWaitBetweenUpdates;
 
     public Snake(int size, double startX, double startY, double bodyWidth, double bodyHeight) {
@@ -30,6 +30,18 @@ public class Snake {
         head--;
     }
 
+    public void changeDirection(Direction newDirection) {
+        if (newDirection == Direction.RIGHT && direction != Direction.LEFT) {
+            direction = newDirection;
+        } else if (newDirection == Direction.LEFT && direction != Direction.RIGHT) {
+            direction = newDirection;
+        } else if (newDirection == Direction.UP && direction != Direction.DOWN) {
+            direction = newDirection;
+        } else if (newDirection == Direction.DOWN && direction != Direction.UP) {
+            direction = newDirection;
+        }
+    }
+
     public void update(double dt) {
         if (waitTimeLeft > 0) {
             waitTimeLeft -= dt;
@@ -45,6 +57,15 @@ public class Snake {
         if (direction == Direction.RIGHT) {
             newX = body[head].x + bodyWidth;
             newY = body[head].y;
+        } else if (direction == Direction.LEFT) {
+            newX = body[head].x - bodyWidth;
+            newY = body[head].y;
+        } else if (direction == Direction.UP) {
+            newX = body[head].x;
+            newY = body[head].y - bodyHeight;
+        } else if (direction == Direction.DOWN) {
+            newX = body[head].x;
+            newY = body[head].y + bodyHeight;
         }
 
         // Move Tail to Head Position

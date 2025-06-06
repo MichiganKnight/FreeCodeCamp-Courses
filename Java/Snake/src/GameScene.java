@@ -1,14 +1,18 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 
 public class GameScene extends Scene implements ResizableScene {
     Rect background, foreground;
     Snake snake;
+    KL keyListener;
 
-    public GameScene() {
+    public GameScene(KL keyListener) {
         setSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
 
         snake = new Snake(10, 48, 72, 24, 24);
+
+        this.keyListener = keyListener;
     }
 
     @Override
@@ -24,6 +28,16 @@ public class GameScene extends Scene implements ResizableScene {
 
     @Override
     public void update(double dt) {
+        if (keyListener.isKeyPressed(KeyEvent.VK_W) || keyListener.isKeyPressed(KeyEvent.VK_UP)) {
+            snake.changeDirection(Direction.UP);
+        } else if (keyListener.isKeyPressed(KeyEvent.VK_S) || keyListener.isKeyPressed(KeyEvent.VK_DOWN)) {
+            snake.changeDirection(Direction.DOWN);
+        } else if (keyListener.isKeyPressed(KeyEvent.VK_A) || keyListener.isKeyPressed(KeyEvent.VK_LEFT)) {
+            snake.changeDirection(Direction.LEFT);
+        } else if (keyListener.isKeyPressed(KeyEvent.VK_D) || keyListener.isKeyPressed(KeyEvent.VK_RIGHT)) {
+            snake.changeDirection(Direction.RIGHT);
+        }
+
         snake.update(dt);
     }
 
