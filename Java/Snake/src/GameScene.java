@@ -7,12 +7,17 @@ public class GameScene extends Scene implements ResizableScene {
     Snake snake;
     KL keyListener;
 
+    public Food food;
+
     public GameScene(KL keyListener) {
         setSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
 
-        snake = new Snake(10, 48, 72, 24, 24);
+        snake = new Snake(10, 48, 72, Constants.TILE_WIDTH, Constants.TILE_HEIGHT);
 
         this.keyListener = keyListener;
+
+        food = new Food(foreground, snake, 12, 12, Color.GREEN);
+        food.spawn();
     }
 
     @Override
@@ -38,6 +43,11 @@ public class GameScene extends Scene implements ResizableScene {
             snake.changeDirection(Direction.RIGHT);
         }
 
+        if (!food.isSpawned) {
+            food.spawn();
+        }
+
+        food.update(dt);
         snake.update(dt);
     }
 
@@ -52,5 +62,6 @@ public class GameScene extends Scene implements ResizableScene {
         g2.fill(new Rectangle2D.Double(foreground.x, foreground.y, foreground.width, foreground.height));
 
         snake.draw(g2);
+        food.draw(g2);
     }
 }
