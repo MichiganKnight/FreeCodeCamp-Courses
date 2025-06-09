@@ -20,7 +20,7 @@ public class MenuScene extends Scene {
         this.mouseListener = mouseListener;
 
         try {
-            BufferedImage spritesheet = ImageIO.read(new File("assets/MenuSprite.png"));
+            BufferedImage spritesheet = ImageIO.read(getClass().getResource("/assets/MenuSprite.png"));
 
             title = spritesheet.getSubimage(0, 242, 960, 240);
             play = spritesheet.getSubimage(0, 121, 261, 121);
