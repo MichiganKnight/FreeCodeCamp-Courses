@@ -11,12 +11,13 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
-    private int width, height;
-    private String title;
+    private final int width;
+    private final int height;
+    private final String title;
     private long glfwWindow;
 
     public float r, g, b, a;
-    private boolean fadeToBlack = false;
+    private final boolean fadeToBlack = false;
 
     private static Window window = null;
 
@@ -28,10 +29,10 @@ public class Window {
 
         this.title = "Mario";
 
-         r = 1;
-         g = 1;
-         b = 1;
-         a = 1;
+        r = 1;
+        g = 1;
+        b = 1;
+        a = 1;
     }
 
     public static void changeScene(int newScene) {
@@ -45,7 +46,7 @@ public class Window {
                 currentScene.init();
                 break;
             default:
-                assert false: "Unknown Scene: " + newScene;
+                assert false : "Unknown Scene: " + newScene;
                 break;
         }
     }
