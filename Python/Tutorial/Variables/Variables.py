@@ -6,6 +6,14 @@ age2 = 26.6
 #age3 = float(26.6) - Not Using
 #age4 = int("26") - Cast int from str
 
+# complex for Complex Numbers
+# bool for Booleans
+# list for Lists
+# tuple for Tuples
+# range for Ranges
+# dict for Dictionaries
+# set for Sets
+
 print(f"Name: {name} - Age: {age}")
 print(f"Name: {type(name)} - Age: {type(age)}\n")
 
