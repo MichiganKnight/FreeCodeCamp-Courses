@@ -45,7 +45,7 @@ def run_tutorial(choice, tutorials):
         full_path = os.path.join(BASE_DIR, file_path)
 
         if os.path.exists(file_path):
-            print(f"\nRunning {file_path}...")
+            print(f"\nRunning {file_path}...\n")
             subprocess.run(["python", full_path])
         else:
             print(f"File Not Found: {full_path}")
