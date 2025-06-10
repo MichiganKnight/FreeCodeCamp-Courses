@@ -3,12 +3,12 @@
 import Link from "next/link"
 import { Button } from "./ui/button"
 import { SparklesIcon } from "lucide-react"
+import { useUserRoles } from "@/hooks/useUserRole"
 
 function DashboardBtn() {
-    const isCandidate = false
-    const isInterviewer = true
+    const {isCandidate, isLoading} = useUserRoles()
 
-    if (isCandidate) return null
+    if (isCandidate || isLoading) return null
 
     return (
         <Link href="/Dashboard">
