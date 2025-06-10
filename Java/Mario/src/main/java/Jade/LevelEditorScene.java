@@ -1,5 +1,6 @@
 package Jade;
 
+import Jade.Util.Time;
 import Renderer.Shader;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
@@ -79,12 +80,18 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void update(float dt) {
-        camera.position.x -= dt * 50.0f;
-        camera.position.y -= dt * 20.0f;
+        if (dt > 0.1f) {
+            dt = 0.1f;
+        }
+
+        // Square Movement
+        //camera.position.x -= dt * 50.0f;
+        //camera.position.y -= dt * 20.0f;
 
         defaultShader.use();
         defaultShader.uploadMat4f("uProjection", camera.getProjectionMatrix());
         defaultShader.uploadMat4f("uView", camera.getViewMatrix());
+        defaultShader.uploadFloat("uTime", Time.getTime());
 
         // Bind VAO
         glBindVertexArray(vaoID);
