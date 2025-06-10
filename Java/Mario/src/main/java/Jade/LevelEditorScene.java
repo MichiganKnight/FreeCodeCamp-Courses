@@ -1,7 +1,10 @@
 package Jade;
 
+import Components.FontRenderer;
+import Components.SpriteRenderer;
 import Jade.Util.Time;
 import Renderer.Shader;
+import Renderer.Texture;
 import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
@@ -16,11 +19,11 @@ public class LevelEditorScene extends Scene {
     private int vertexID, fragmentID, shaderProgram;
 
     private final float[] vertexArray = {
-            // Position // Color
-            100.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  // Bottom Right
-            0.5f, 100.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,  // Top Left
-            100.5f, 100.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,   // Top Right
-            0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f  // Bottom Left
+            // Position // Color // UV Coordinates
+            100.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1, 1,  // Bottom Right 0
+            0.5f, 100.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0, 0,  // Top Left 1
+            100.5f, 100.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1, 0,  // Top Right 2
+            0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0, 1,  // Bottom Left 3
     };
 
     // IMPORTANT - Counter-Clockwise
@@ -32,6 +35,10 @@ public class LevelEditorScene extends Scene {
     private int vaoID, vboID, eboID;
 
     private Shader defaultShader;
+    private Texture testTexture;
+
+    GameObject testObj;
+    private boolean firstTime = false;
 
     public LevelEditorScene() {
 
@@ -39,10 +46,18 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        System.out.println("Creating Test Object");
+        this.testObj = new GameObject("Test Object");
+        this.testObj.addComponent(new SpriteRenderer());
+        this.testObj.addComponent(new FontRenderer());
+        this.addGameObjectToScene(this.testObj);
+
         this.camera = new Camera(new Vector2f(-200, -300));
 
         defaultShader = new Shader("Assets/Shaders/Default.glsl");
         defaultShader.compile();
+
+        testTexture = new Texture("Assets/Images/TestImage.png");
 
         // Generate VAO, VBO, and EBO Buffer Objects
         vaoID = glGenVertexArrays();
@@ -68,14 +83,17 @@ public class LevelEditorScene extends Scene {
         // Add Vertex Attribute Pointers
         int positionsSize = 3;
         int colorSize = 4;
-        int floatSizeBytes = 4;
-        int vertexSizeBytes = (positionsSize + colorSize) * floatSizeBytes;
+        int uvSize = 2;
+        int vertexSizeBytes = (positionsSize + colorSize + uvSize) * Float.BYTES;
 
         glVertexAttribPointer(0, positionsSize, GL_FLOAT, false, vertexSizeBytes, 0);
         glEnableVertexAttribArray(0);
 
-        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionsSize * floatSizeBytes);
+        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionsSize * Float.BYTES);
         glEnableVertexAttribArray(1);
+
+        glVertexAttribPointer(2, uvSize, GL_FLOAT, false, vertexSizeBytes, (positionsSize * colorSize) * Float.BYTES);
+        glEnableVertexAttribArray(2);
     }
 
     @Override
@@ -89,6 +107,12 @@ public class LevelEditorScene extends Scene {
         //camera.position.y -= dt * 20.0f;
 
         defaultShader.use();
+
+        // Upload Texture to Shader
+        defaultShader.uploadTexture("TEX_SAMPLER", 0);
+        glActiveTexture(GL_TEXTURE0);
+        testTexture.bind();
+
         defaultShader.uploadMat4f("uProjection", camera.getProjectionMatrix());
         defaultShader.uploadMat4f("uView", camera.getViewMatrix());
         defaultShader.uploadFloat("uTime", Time.getTime());
@@ -109,5 +133,19 @@ public class LevelEditorScene extends Scene {
         glBindVertexArray(0);
 
         defaultShader.detach();
+
+        if (!firstTime) {
+            System.out.println("Creating Game Object");
+
+            GameObject go = new GameObject("Game Test 2");
+            go.addComponent(new SpriteRenderer());
+            this.addGameObjectToScene(go);
+
+            firstTime = true;
+        }
+
+        for (GameObject go : this.gameObjects) {
+            go.update(dt);
+        }
     }
 }
