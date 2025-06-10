@@ -17,7 +17,6 @@ public class Window {
     private long glfwWindow;
 
     public float r, g, b, a;
-    private final boolean fadeToBlack = false;
 
     private static Window window = null;
 
@@ -99,7 +98,6 @@ public class Window {
         glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
         glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
         glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
-
         glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
 
         // Make OpenGL Context Current

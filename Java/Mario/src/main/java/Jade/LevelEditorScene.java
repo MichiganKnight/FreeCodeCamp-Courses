@@ -1,6 +1,7 @@
 package Jade;
 
 import Renderer.Shader;
+import org.joml.Vector2f;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;
@@ -11,37 +12,14 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class LevelEditorScene extends Scene {
-    private final String vertexShaderSrc = """
-            #version 330 core
-            
-            layout (location=0) in vec3 aPos;
-            layout (location=1) in vec4 aColor;
-            
-            out vec4 fColor;
-            
-            void main() {
-                fColor = aColor;
-                gl_Position = vec4(aPos, 1.0);
-            }""";
-    private final String fragmentShaderSrc = """
-            #version 330 core
-            
-            in vec4 fColor;
-            
-            out vec4 color;
-            
-            void main() {
-                color = fColor;
-            }""";
-
     private int vertexID, fragmentID, shaderProgram;
 
     private final float[] vertexArray = {
             // Position // Color
-            0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  // Bottom Right
-            -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,  // Top Left
-            0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f,   // Top Right
-            -0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f  // Bottom Left
+            100.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,  // Bottom Right
+            0.5f, 100.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,  // Top Left
+            100.5f, 100.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,   // Top Right
+            0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f  // Bottom Left
     };
 
     // IMPORTANT - Counter-Clockwise
@@ -60,6 +38,8 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
+        this.camera = new Camera(new Vector2f(-200, -300));
+
         defaultShader = new Shader("Assets/Shaders/Default.glsl");
         defaultShader.compile();
 
@@ -99,7 +79,12 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void update(float dt) {
+        camera.position.x -= dt * 50.0f;
+        camera.position.y -= dt * 20.0f;
+
         defaultShader.use();
+        defaultShader.uploadMat4f("uProjection", camera.getProjectionMatrix());
+        defaultShader.uploadMat4f("uView", camera.getViewMatrix());
 
         // Bind VAO
         glBindVertexArray(vaoID);
