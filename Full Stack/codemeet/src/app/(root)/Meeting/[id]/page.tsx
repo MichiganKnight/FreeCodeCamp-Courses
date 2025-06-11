@@ -16,7 +16,7 @@ function MeetingPage() {
 
     const [isSetupComplete, setSetupComplete] = useState(false)    
 
-    if (!isLoaded || !isCallLoading) {
+    if (!isLoaded || isCallLoading) {
         return <LoaderUI />
     }
 
