@@ -54,3 +54,6 @@ function MeetingCard({ interview }: { interview: Interview }) {
 }
 
 export default MeetingCard
+
+//https://www.youtube.com/watch?v=xEnnRNH_lyw
+//3:39:23
