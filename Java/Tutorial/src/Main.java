@@ -70,18 +70,14 @@ public class Main {
         clearConsole();
 
         // Compile
-        Process compile = new ProcessBuilder("javac", lesson.file.getPath())
-                .inheritIO()
-                .start();
+        Process compile = new ProcessBuilder("javac", lesson.file.getPath()).inheritIO().start();
         if (compile.waitFor() != 0) {
             System.out.println("Compilation Failed");
             return;
         }
 
         // Run
-        Process run = new ProcessBuilder("java", "-cp", "src", lesson.qualifiedName)
-                .inheritIO()
-                .start();
+        Process run = new ProcessBuilder("java", "-cp", "src", lesson.qualifiedName).inheritIO().start();
         run.waitFor();
 
         // Exit after running the program
