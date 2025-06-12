@@ -25,7 +25,7 @@ def discover_tutorials():
         dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
 
         for file in files:
-            if file.endswith(".py") and file != "Main.py":
+            if file.endswith(".py") and file != "Main.py" and file != "Dog.py" and file != "__init__.py":
                 rel_path = os.path.relpath(os.path.join(root, file), BASE_DIR)
                 title = os.path.splitext(file)[0]
                 tutorials[str(index)] = (title, rel_path)
