@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner scanner = new Scanner(System.in);
-        List<Lesson> lessons = discoverLessons(SRC_DIR);
+        List<Lesson> lessons = discoverLessons();
 
         if (lessons.isEmpty()) {
             System.out.println("No Java Files Found");
@@ -47,10 +47,10 @@ public class Main {
     }
 
     // Recursively Search src/ for .java Files (Excluding Main.java)
-    private static List<Lesson> discoverLessons(File base) {
+    private static List<Lesson> discoverLessons() {
         List<Lesson> lessons = new ArrayList<>();
 
-        findJavaFiles(base, "", lessons);
+        findJavaFiles(Main.SRC_DIR, "", lessons);
 
         return lessons;
     }
