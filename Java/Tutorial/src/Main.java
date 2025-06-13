@@ -3,7 +3,10 @@ import java.io.IOException;
 import java.util.*;
 
 public class Main {
+    // Declare Static Final Variables
+    private static final String OUTPUT_DIR = "out/production/Tutorial";
     private static final File SRC_DIR = new File("src");
+
     private static final Set<String> EXCLUDED_DIRS = Set.of(".idea", "out", "bin");
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -15,7 +18,7 @@ public class Main {
             return;
         }
 
-        // Show menu
+        // Show Menu
         System.out.println("\n=== Java Tutorial Launcher ===");
         for (int i = 0; i < lessons.size(); i++) {
             System.out.println((i + 1) + ". " + lessons.get(i).displayName);
@@ -23,14 +26,14 @@ public class Main {
 
         System.out.println("Q. Quit");
         System.out.print("Select a Program to Run: ");
+
         String input = scanner.nextLine();
 
-        if (input.equalsIgnoreCase("q")) {
-            return;
-        }
+        if (input.equalsIgnoreCase("q")) return;
 
         try {
             int choice = Integer.parseInt(input) - 1;
+
             if (choice >= 0 && choice < lessons.size()) {
                 runLesson(lessons.get(choice));
             } else {
@@ -40,13 +43,15 @@ public class Main {
             System.out.println("Invalid Choice");
         }
 
-        // Exit after running or error
         scanner.close();
     }
 
+    // Recursively Search src/ for .java Files (Excluding Main.java)
     private static List<Lesson> discoverLessons(File base) {
         List<Lesson> lessons = new ArrayList<>();
+
         findJavaFiles(base, "", lessons);
+
         return lessons;
     }
 
@@ -56,12 +61,14 @@ public class Main {
         for (File file : Objects.requireNonNull(dir.listFiles())) {
             if (file.isDirectory()) {
                 String newPackage = packageName.isEmpty() ? file.getName() : packageName + "." + file.getName();
+
                 findJavaFiles(file, newPackage, lessons);
             } else if (file.getName().endsWith(".java") && !file.getName().equals("Main.java")) {
                 String className = file.getName().replace(".java", "");
                 String qualifiedName = packageName.isEmpty() ? className : packageName + "." + className;
-                String displayName = className + "Program"; // No package, just friendly label
-                lessons.add(new Lesson(file, qualifiedName, displayName));
+                String displayName = className + " Program"; // Friendly Display Name
+
+                lessons.add(new Lesson(qualifiedName, displayName));
             }
         }
     }
@@ -69,19 +76,14 @@ public class Main {
     private static void runLesson(Lesson lesson) throws IOException, InterruptedException {
         clearConsole();
 
-        // Compile
-        Process compile = new ProcessBuilder("javac", lesson.file.getPath()).inheritIO().start();
-        if (compile.waitFor() != 0) {
-            System.out.println("Compilation Failed");
-            return;
-        }
+        // Run Compiled Class From IntelliJ's Output Directory
+        Process run = new ProcessBuilder("java", "-cp", OUTPUT_DIR, lesson.qualifiedName)
+                .inheritIO()
+                .start();
 
-        // Run
-        Process run = new ProcessBuilder("java", "-cp", "src", lesson.qualifiedName).inheritIO().start();
         run.waitFor();
-
-        // Exit after running the program
-        System.exit(0);
+a
+        System.exit(0); // Exit
     }
 
     private static void clearConsole() {
@@ -92,19 +94,15 @@ public class Main {
                 new ProcessBuilder("clear").inheritIO().start().waitFor();
             }
         } catch (Exception e) {
-            // Fallback for IDEs: print blank lines
             for (int i = 0; i < 50; i++) System.out.println();
         }
     }
 
-
     static class Lesson {
-        File file;
         String qualifiedName;
         String displayName;
 
-        Lesson(File file, String qualifiedName, String displayName) {
-            this.file = file;
+        Lesson(String qualifiedName, String displayName) {
             this.qualifiedName = qualifiedName;
             this.displayName = displayName;
         }
