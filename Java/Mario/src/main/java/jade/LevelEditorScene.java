@@ -11,7 +11,7 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void init() {
-        this.camera = new Camera(new Vector2f(0, 0));
+        this.camera = new Camera(new Vector2f(-250, 0));
 
         int xOffset = 10;
         int yOffset = 10;
