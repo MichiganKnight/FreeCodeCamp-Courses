@@ -128,7 +128,7 @@ public class RenderBatch {
 
             // Load Color
             vertices[offset + 2] = color.x;
-            vertices[offset + 2] = color.y;
+            vertices[offset + 3] = color.y;
             vertices[offset + 4] = color.z;
             vertices[offset + 5] = color.w;
 
