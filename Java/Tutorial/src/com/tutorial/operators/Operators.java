@@ -2,7 +2,7 @@ package com.tutorial.operators;
 
 public class Operators {
     public static void main(String[] args) {
-        System.out.println("=== Operators ===");
+        System.out.println("=== Arithmatic Operators ===");
 
         int number1 = 12;
         int number2 = 6;
