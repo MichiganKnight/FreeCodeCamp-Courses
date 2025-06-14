@@ -1,6 +1,6 @@
-package Jade;
+package jade;
 
-import Renderer.Renderer;
+import renderer.Renderer;
 
 import java.util.ArrayList;
 import java.util.List;

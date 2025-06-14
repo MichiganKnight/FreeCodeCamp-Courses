@@ -1,6 +1,6 @@
-package Jade;
+package jade;
 
-import Jade.Util.Time;
+import util.Time;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;

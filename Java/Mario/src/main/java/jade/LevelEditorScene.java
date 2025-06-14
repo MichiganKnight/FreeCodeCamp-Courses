@@ -1,6 +1,6 @@
-package Jade;
+package jade;
 
-import Components.SpriteRenderer;
+import components.SpriteRenderer;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 

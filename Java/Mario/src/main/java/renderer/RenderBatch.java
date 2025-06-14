@@ -1,7 +1,7 @@
-package Renderer;
+package renderer;
 
-import Components.SpriteRenderer;
-import Jade.Window;
+import components.SpriteRenderer;
+import jade.Window;
 import org.joml.Vector4f;
 
 import static org.lwjgl.opengl.GL15.*;

@@ -1,7 +1,7 @@
-package Renderer;
+package renderer;
 
-import Components.SpriteRenderer;
-import Jade.GameObject;
+import components.SpriteRenderer;
+import jade.GameObject;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Jade;
+package jade;
 
 public abstract class Component {
     public GameObject gameObject = null;
