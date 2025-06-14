@@ -2,6 +2,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Main application class that provides a menu-driven interface for running Java tutorial lessons.
+ * This class discovers and executes Java files within the project structure.
+ */
 public class Main {
     // Declare Static Final Variables
     private static final String OUTPUT_DIR = "out/production/Tutorial";
@@ -47,6 +51,12 @@ public class Main {
     }
 
     // Recursively Search src/ for .java Files (Excluding Main.java)
+
+    /**
+     * Discovers all Java lesson files in the project directory.
+     *
+     * @return List of Lesson objects representing available tutorial programs
+     */
     private static List<Lesson> discoverLessons() {
         List<Lesson> lessons = new ArrayList<>();
 
@@ -55,6 +65,13 @@ public class Main {
         return lessons;
     }
 
+    /**
+     * Recursively searches for Java files in the given directory and its subdirectories.
+     *
+     * @param dir         The directory to search in
+     * @param packageName The current package name based on directory structure
+     * @param lessons     The list to store found lesson files
+     */
     private static void findJavaFiles(File dir, String packageName, List<Lesson> lessons) {
         if (EXCLUDED_DIRS.contains(dir.getName())) return;
 
@@ -73,6 +90,13 @@ public class Main {
         }
     }
 
+    /**
+     * Executes the selected lesson in a new process.
+     *
+     * @param lesson The lesson to run
+     * @throws IOException          If an I/O error occurs
+     * @throws InterruptedException If the process is interrupted
+     */
     private static void runLesson(Lesson lesson) throws IOException, InterruptedException {
         clearConsole();
 
@@ -86,6 +110,10 @@ public class Main {
         System.exit(0); // Exit
     }
 
+    /**
+     * Clears the console screen using platform-specific commands.
+     * Falls back to printing newlines if the clear command fails.
+     */
     private static void clearConsole() {
         try {
             if (System.getProperty("os.name").toLowerCase().contains("windows")) {
@@ -98,6 +126,10 @@ public class Main {
         }
     }
 
+    /**
+     * Inner class representing a tutorial lesson.
+     * Contains the qualified class name and display name for the lesson.
+     */
     static class Lesson {
         String qualifiedName;
         String displayName;
