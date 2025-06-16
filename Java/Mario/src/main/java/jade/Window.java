@@ -1,6 +1,5 @@
 package jade;
 
-import util.Time;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
@@ -120,8 +119,10 @@ public class Window {
     }
 
     public void loop() {
-        double beginTime = Time.getTime();
-        double endTime;
+        //double beginTime = Time.getTime();
+        float beginTime = (float) glfwGetTime();
+        float endTime;
+
         double dt = -1.0f;
 
         while (!glfwWindowShouldClose(glfwWindow)) {
@@ -137,7 +138,7 @@ public class Window {
 
             glfwSwapBuffers(glfwWindow);
 
-            endTime = Time.getTime();
+            endTime = (float) glfwGetTime();
             dt = endTime - beginTime;
             beginTime = endTime;
         }
