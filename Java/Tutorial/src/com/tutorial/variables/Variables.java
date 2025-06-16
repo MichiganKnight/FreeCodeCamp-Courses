@@ -8,5 +8,8 @@ public class Variables {
 
         // Static Variables Only Work With Static Classes
         System.out.println("Age: " + age);
+
+        char percentSign = '%';
+        System.out.println("Percent Sign: " + percentSign);
     }
 }
