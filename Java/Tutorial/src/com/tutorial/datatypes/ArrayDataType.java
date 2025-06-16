@@ -21,6 +21,8 @@ public class ArrayDataType {
         System.out.println(Arrays.toString(copyOfNumbers));
         System.out.println(Arrays.toString(copyOfNumbers2));
 
+        System.out.println(Arrays.equals(numbers, copyOfNumbers));
+
         basicArrayManipulation();
         fillArray(vowels);
     }
