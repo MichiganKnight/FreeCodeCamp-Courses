@@ -27,11 +27,14 @@ public class Renderer {
 
         for (RenderBatch batch : batches) {
             if (batch.hasRoom()) {
-                batch.addSprite(sprite);
+                Texture tex = sprite.getTexture();
+                if (tex == null || (batch.hasTexture(tex) || batch.hasTextureRoom())) {
+                    batch.addSprite(sprite);
 
-                added = true;
+                    added = true;
 
-                break;
+                    break;
+                }
             }
         }
 
