@@ -1,5 +1,6 @@
 package jade;
 
+import components.Sprite;
 import components.SpriteRenderer;
 import components.Spritesheet;
 import org.joml.Vector2f;
@@ -21,12 +22,12 @@ public class LevelEditorScene extends Scene {
 
         sprites = AssetPool.getSpritesheet("Assets/Images/Spritesheet.png");
 
-        obj1 = new GameObject("Object 1", new Transform(new Vector2f(100, 100), new Vector2f(256, 256)));
-        obj1.addComponent(new SpriteRenderer(sprites.getSprite(0)));
+        obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100), new Vector2f(256, 256)), 2);
+        obj1.addComponent(new SpriteRenderer(new Sprite(AssetPool.getTexture("Assets/Images/BlendImage1.png"))));
         this.addGameObjectToScene(obj1);
 
-        GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)));
-        obj2.addComponent(new SpriteRenderer(sprites.getSprite(1)));
+        GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 2);
+        obj2.addComponent(new SpriteRenderer(new Sprite(AssetPool.getTexture("Assets/Images/BlendImage2.png"))));
         this.addGameObjectToScene(obj2);
     }
 
@@ -36,27 +37,9 @@ public class LevelEditorScene extends Scene {
         AssetPool.addSpritesheet("Assets/Images/Spritesheet.png", new Spritesheet(AssetPool.getTexture("Assets/Images/Spritesheet.png"), 16, 16, 26, 0));
     }
 
-    private int spriteIndex = 0;
-    private float spriteFlipTime = 0.2f;
-    private float spriteFlipTimeLeft = 0.0f;
-
     @Override
     public void update(float dt) {
         System.out.println("FPS: " + (1.0f / dt));
-
-        spriteFlipTimeLeft -= dt;
-
-        if (spriteFlipTimeLeft <= 0) {
-            spriteFlipTimeLeft = spriteFlipTime;
-
-            spriteIndex++;
-
-            if (spriteIndex > 4) {
-                spriteIndex = 0;
-            }
-
-            obj1.getComponent(SpriteRenderer.class).setSprite(sprites.getSprite(spriteIndex));
-        }
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);
