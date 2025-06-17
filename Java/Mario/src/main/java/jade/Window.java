@@ -22,8 +22,8 @@ public class Window {
     private static Scene currentScene;
 
     private Window() {
-        this.width = 1280;
-        this.height = 720;
+        this.width = 1920;
+        this.height = 1080;
 
         this.title = "Mario";
 
@@ -79,7 +79,7 @@ public class Window {
     }
 
     public void init() {
-        // Setup Error Callback
+        // Set Up Error Callback
         GLFWErrorCallback.createPrint(System.err).set();
 
         // Initialize GLFW
@@ -147,7 +147,7 @@ public class Window {
                 currentScene.update((float)dt);
             }
 
-            this.imguiLayer.update(dt);
+            this.imguiLayer.update(dt, currentScene);
 
             glfwSwapBuffers(glfwWindow);
 

@@ -143,10 +143,11 @@ public class ImGuiLayer {
         imGuiGl3.init("#version 130");
     }
 
-    public void update(float dt) {
+    public void update(float dt, Scene currentScene) {
         startFrame(dt);
 
         ImGui.newFrame();
+        currentScene.sceneImgui();
         ImGui.showDemoWindow();
         ImGui.render();
 
