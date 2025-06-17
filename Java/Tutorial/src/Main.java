@@ -80,7 +80,7 @@ public class Main {
                 String newPackage = packageName.isEmpty() ? file.getName() : packageName + "." + file.getName();
 
                 findJavaFiles(file, newPackage, lessons);
-            } else if (file.getName().endsWith(".java") && !file.getName().equals("Main.java")) {
+            } else if (file.getName().endsWith(".java") && !file.getName().equals("Main.java") && !file.getName().equals("Book.java") && !file.getName().equals("User.java") && !file.getName().equals("AudioBook.java") && !file.getName().equals("EBook.java")) {
                 String className = file.getName().replace(".java", "");
                 String qualifiedName = packageName.isEmpty() ? className : packageName + "." + className;
                 String displayName = className + " Program"; // Friendly Display Name
