@@ -1,5 +1,7 @@
 package jade;
 
+import imgui.ImFontAtlas;
+import imgui.ImFontConfig;
 import imgui.ImGui;
 import imgui.ImGuiIO;
 import imgui.callback.ImStrConsumer;
@@ -127,6 +129,16 @@ public class ImGuiLayer {
                 }
             }
         });
+
+        final ImFontAtlas fontAtlas = io.getFonts();
+        final ImFontConfig fontConfig = new ImFontConfig();
+
+        fontConfig.setGlyphRanges(fontAtlas.getGlyphRangesDefault());
+
+        fontConfig.setPixelSnapH(true);
+        fontAtlas.addFontFromFileTTF("Assets/Fonts/SegoeUI.ttf", 32, fontConfig);
+
+        fontConfig.destroy();
 
         imGuiGl3.init("#version 130");
     }
