@@ -1,9 +1,31 @@
+console.log("=== Variables ===");
+
 // In-line Comment
 
 /*
     Multi-Line Comment
 */
 
-var number = 5;
+/* Data Types:
+    undefined, null, boolean, string, symbol, number, and object
+*/
 
-console.log(number);
+// Used Throughout Program
+var myName = "Drew";
+
+console.log(myName);
+
+// Used in Scope
+let ourName = "michiganknight";
+
+// Variable Cannot Change
+const pi = 3.14;
+
+var a;
+var b = 2;
+
+a = 7;
+
+b = a;
+
+console.log(`Variable A: ${a}\nVariable B: ${b}`);
