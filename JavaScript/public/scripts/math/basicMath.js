@@ -32,7 +32,7 @@ var remainder = 11 % 3;
 
 console.log(remainder);
 
-console.log("=== Augmented Math ===");
+console.log("\n=== Augmented Math ===");
 
 var a = 3;
 var b = 17;
