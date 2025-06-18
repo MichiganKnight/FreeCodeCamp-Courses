@@ -64,8 +64,10 @@
         let currentScript = null;
 
         (function () {
+            console._log = console.log;
+
             const originalLog = console.log;
-            const outputDiv = document.getElementById("output");
+            const outputDiv = document.getElementById("output");            
 
             console.log = function (...args) {
                 originalLog(...args);
@@ -74,7 +76,8 @@
         })();
 
         function runScript(src) {
-            document.getElementById("output").textContent = '';
+            const outputDiv = document.getElementById("output");
+            outputDiv.textContent = '';
 
             if (currentScript) {
                 currentScript.remove();
@@ -83,8 +86,14 @@
 
             const script = document.createElement('script');
             script.src = src + '?_=' + Date.now();
-            script.onload = () => console.log(`Loaded: ${src}`);
-            script.onerror = () => console.log(`❌ Failed to Load: ${src}`);
+            script.onload = () => {
+                console._log(`✅ Loaded ${src}`);
+            }
+            script.onerror = () => {
+                console._log(`❌ Failed to Load: ${src}`);
+            }
+
+            console.log(`✅ Loaded ${src}...`);
 
             document.body.appendChild(script);
 
