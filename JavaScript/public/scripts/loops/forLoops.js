@@ -64,3 +64,48 @@ function multiplyAll(arr) {
 var product = multiplyAll([[1, 2], [3, 4], [5, 6, 7]]);
 
 console.log(product);
+
+console.log("\n=== Profile Lookup ===");
+
+var contacts = [
+    {
+        "FirstName": "Akira",
+        "LastName": "Laine",
+        "Number": "0543236543",
+        "Likes": ["Pizza", "Coding", "Brownie Points"]
+    },
+    {
+        "FirstName": "Harry",
+        "LastName": "Potter",
+        "Number": "0994372684",
+        "Likes": ["Hogwarts", "Magic", "Hagrid"]
+    },
+    {
+        "FirstName": "Sherlock",
+        "LastName": "Holmes",
+        "Number": "0487345643",
+        "Likes": ["Intriguing Cases", "Violin"]
+    },
+    {
+        "FirstName": "Kristian",
+        "LastName": "Vos",
+        "Number": "Unknown",
+        "Likes": ["JavaScript", "Gaming", "Foxes"]
+    }
+];
+
+function lookUpProfile(name, prop) {
+    for (var i = 0; i < contacts.length; i++) {
+        if (contacts[i].FirstName === name) {
+            return contacts[i][prop] || "No Such Property";
+        }
+    }
+
+    return "No Such Contact";
+}
+
+var data = lookUpProfile("Akira", "Likes");
+var data = lookUpProfile("Sherlock", "LastName");
+var data = lookUpProfile("Akira", "Hello");
+
+console.log(data);
