@@ -1,3 +1,5 @@
+console.log("=== Freeze Objects ===");
+
 function freezeObj() {
     "use strict";
 
