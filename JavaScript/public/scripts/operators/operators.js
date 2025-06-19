@@ -320,3 +320,14 @@ function finalSwitch(val) {
 
 console.log(finalSwitch("Bob"));
 console.log(finalSwitch(42));
+
+console.log("\n=== Ternary Operators ===");
+
+// condition ? statement-if-true : statement-if-false;
+
+function checkEqual(a, b) {
+    return a === b ? true : false;
+    // retuurn a === b;
+}
+
+console.log(checkEqual(1, 2));
