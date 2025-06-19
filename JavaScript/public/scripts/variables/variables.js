@@ -16,9 +16,11 @@ var myName = "Drew";
 console.log(myName);
 
 // Used in Scope
+// Let Can Only Be Declared Once
 let ourName = "michiganknight";
 
 // Variable Cannot Change
+// Const is ReadOnly
 const pi = 3.14;
 
 var a;
@@ -43,3 +45,22 @@ function convertBase2(str) {
 }
 
 console.log(convertBase2("10011"));
+
+//"use strict" Catches Errors
+
+function checkScope() {
+    "use strict";
+
+    let i = "Function Scope";
+
+    if (true) {
+        let i = "Block Scope";
+        console.log("Block Scope i is: ", i);
+    }
+
+    console.log("Function Scope i is: ", i);
+
+    return i;
+}
+
+checkScope();
