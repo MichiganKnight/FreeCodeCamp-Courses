@@ -331,3 +331,11 @@ function checkEqual(a, b) {
 }
 
 console.log(checkEqual(1, 2));
+
+function checkSum(num) {
+    return num > 0 ? "Positive" : num < 0 ? "Negative" : "Zero";
+}
+
+console.log(checkSum(10));
+console.log(checkSum(-10));
+console.log(checkSum(0));
