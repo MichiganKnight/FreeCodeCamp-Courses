@@ -29,3 +29,17 @@ a = 7;
 b = a;
 
 console.log(`Variable A: ${a}\nVariable B: ${b}`);
+
+console.log("\n=== ParseInt() Function ===");
+
+function convertToInteger(str) {
+    return parseInt(str);
+}
+
+console.log(convertToInteger("56"));
+
+function convertBase2(str) {
+    return parseInt(str, 2);
+}
+
+console.log(convertBase2("10011"));
