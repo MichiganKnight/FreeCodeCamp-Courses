@@ -86,6 +86,7 @@
             }
 
             const script = document.createElement('script');
+            script.type = 'module';
             script.src = src + '?_=' + Date.now();
             script.onload = () => {
                 console._log(`✅ Loaded ${src}`);
