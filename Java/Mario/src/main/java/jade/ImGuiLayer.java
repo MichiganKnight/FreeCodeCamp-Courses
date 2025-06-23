@@ -155,24 +155,28 @@ public class ImGuiLayer {
     }
 
     private void startFrame(final float deltaTime) {
-        // Get window properties and mouse position
-        float[] winWidth = {Window.getWidth()};
-        float[] winHeight = {Window.getHeight()};
-        double[] mousePosX = {0};
-        double[] mousePosY = {0};
+        int[] fbWidth = new int[1];
+        int[] fbHeight = new int[1];
+        glfwGetFramebufferSize(glfwWindow, fbWidth, fbHeight);
+
+        double[] mousePosX = new double[1];
+        double[] mousePosY = new double[1];
         glfwGetCursorPos(glfwWindow, mousePosX, mousePosY);
 
-        // We SHOULD call those methods to update Dear ImGui state for the current frame
         final ImGuiIO io = ImGui.getIO();
-        io.setDisplaySize(winWidth[0], winHeight[0]);
-        io.setDisplayFramebufferScale(1f, 1f);
+        io.setDisplaySize(fbWidth[0], fbHeight[0]);
+        io.setDisplayFramebufferScale(1.0f, 1.0f);
         io.setMousePos((float) mousePosX[0], (float) mousePosY[0]);
         io.setDeltaTime(deltaTime);
 
-        // Update the mouse cursor
         final int imguiCursor = ImGui.getMouseCursor();
-        glfwSetCursor(glfwWindow, mouseCursors[imguiCursor]);
-        glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
+        if (imguiCursor != ImGuiMouseCursor.None && io.getMouseDrawCursor() == false) {
+            glfwSetCursor(glfwWindow, mouseCursors[imguiCursor]);
+            glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        } else {
+            glfwSetInputMode(glfwWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+        }
     }
 
     private void endFrame() {
