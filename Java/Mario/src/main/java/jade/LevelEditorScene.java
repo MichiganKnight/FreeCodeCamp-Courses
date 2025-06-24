@@ -1,5 +1,7 @@
 package jade;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import components.Sprite;
 import components.SpriteRenderer;
 import components.Spritesheet;
@@ -32,6 +34,12 @@ public class LevelEditorScene extends Scene {
         GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 2);
         obj2.addComponent(new SpriteRenderer(new Sprite(AssetPool.getTexture("Assets/Images/BlendImage2.png"))));
         this.addGameObjectToScene(obj2);
+
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+
+        System.out.println(gson.toJson("Hello World!"));
     }
 
     private void loadResources() {
