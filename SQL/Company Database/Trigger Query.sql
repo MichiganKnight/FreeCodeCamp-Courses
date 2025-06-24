@@ -42,3 +42,5 @@ CREATE
 		END IF;
 	END$$
 DELIMITER $$;
+
+DROP TRIGGER MyTrogger2;
