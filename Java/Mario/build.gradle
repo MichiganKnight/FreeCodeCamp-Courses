@@ -18,6 +18,9 @@ repositories {
 }
 
 dependencies {
+    // GSON
+    implementation 'com.google.code.gson:gson:2.13.1'
+
     // ImGUI
     implementation 'io.github.spair:imgui-java-app:1.86.8'
 
