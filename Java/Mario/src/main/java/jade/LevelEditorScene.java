@@ -13,6 +13,7 @@ import util.AssetPool;
 public class LevelEditorScene extends Scene {
     private GameObject obj1;
     private Spritesheet sprites;
+    SpriteRenderer obj1Sprite;
 
     public LevelEditorScene() {
 
@@ -27,19 +28,31 @@ public class LevelEditorScene extends Scene {
         sprites = AssetPool.getSpritesheet("Assets/Images/Spritesheet.png");
 
         obj1 = new GameObject("Object 1", new Transform(new Vector2f(200, 100), new Vector2f(256, 256)), 2);
-        obj1.addComponent(new SpriteRenderer(new Vector4f(1, 0 , 0, 1)));
+
+        obj1Sprite = new SpriteRenderer();
+        obj1Sprite.setColor(new Vector4f(1, 0, 0, 1));
+        obj1.addComponent(obj1Sprite);
         this.addGameObjectToScene(obj1);
         this.activeGameObject = obj1;
 
         GameObject obj2 = new GameObject("Object 2", new Transform(new Vector2f(400, 100), new Vector2f(256, 256)), 2);
-        obj2.addComponent(new SpriteRenderer(new Sprite(AssetPool.getTexture("Assets/Images/BlendImage2.png"))));
+
+        SpriteRenderer obj2SpriteRenderer = new SpriteRenderer();
+        Sprite obj2Sprite = new Sprite();
+        obj2Sprite.setTexture(AssetPool.getTexture("Assets/Images/BlendImage2.png"));
+        obj2SpriteRenderer.setSprite(obj2Sprite);
+        obj2.addComponent(obj2SpriteRenderer);
         this.addGameObjectToScene(obj2);
 
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
 
-        System.out.println(gson.toJson("Hello World!"));
+        String serialized = gson.toJson(obj1);
+        System.out.println(serialized);
+
+        GameObject obj = gson.fromJson(serialized, GameObject.class);
+        System.out.println(obj);
     }
 
     private void loadResources() {
@@ -50,7 +63,7 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void update(float dt) {
-        System.out.println("FPS: " + (1.0f / dt));
+        //System.out.println("FPS: " + (1.0f / dt));
 
         for (GameObject go : this.gameObjects) {
             go.update(dt);
