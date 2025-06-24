@@ -23,6 +23,12 @@
             {
                 Console.WriteLine("Enter a Valid Number");
             }
+
+            int[] data = [-5, 20, 10, 3, 2, 0];
+            
+            MergeSort(data, 0, data.Length - 1);
+            
+            Console.WriteLine($"Sorted Data: {string.Join(", ", data)}");
         }
 
         private static string DecimalToBinary(int number, string result)
@@ -67,6 +73,57 @@
             }
             
             return BinarySearch(a, mid + 1, right, x);
+        }
+        
+        private static void MergeSort(int[] data, int start, int end)
+        {
+            if (start < end)
+            {
+                int mid = (start + end) / 2;
+                
+                MergeSort(data, start, mid);
+                MergeSort(data, mid + 1, end);
+                
+                Merge(data, start, mid, end);
+            }
+        }
+
+        private static void Merge(int[] data, int start, int mid, int end)
+        {
+            // Build Temporary Array
+            int[] temp = new int[end - start + 1];
+
+            int i = start, j = mid + 1, k = 0;
+
+            // While Both Sub-Arrays Have Values - Merge Them in Order
+            while (i <= mid && j <= end)
+            {
+                if (data[i] <= data[j])
+                {
+                    temp[k++] = data[i++];
+                }
+                else
+                {
+                    temp[k++] = data[j++];
+                }
+            }
+
+            // Add Rest of Values From Left Sub-Array
+            while (i <= mid)
+            {
+                temp[k++] = data[i++];
+            }
+
+            // Add Rest of Values From Right Sub-Array
+            while (j <= end)
+            {
+                temp[k++] = data[j++];
+            }
+
+            for (i = start; i <= end; i++)
+            {
+                data[i] = temp[i - start];
+            }
         }
     }   
 }
