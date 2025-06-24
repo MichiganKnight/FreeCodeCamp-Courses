@@ -136,7 +136,7 @@ public class ImGuiLayer {
         fontConfig.setGlyphRanges(fontAtlas.getGlyphRangesDefault());
 
         fontConfig.setPixelSnapH(true);
-        fontAtlas.addFontFromFileTTF("Assets/Fonts/SegoeUI.ttf", 32, fontConfig);
+        fontAtlas.addFontFromFileTTF("Assets/Fonts/SegoeUI.ttf", 24, fontConfig);
 
         fontConfig.destroy();
 
