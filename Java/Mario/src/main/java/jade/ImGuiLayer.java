@@ -134,10 +134,9 @@ public class ImGuiLayer {
         final ImFontConfig fontConfig = new ImFontConfig();
 
         fontConfig.setGlyphRanges(fontAtlas.getGlyphRangesDefault());
-
         fontConfig.setPixelSnapH(true);
-        fontAtlas.addFontFromFileTTF("Assets/Fonts/SegoeUI.ttf", 24, fontConfig);
 
+        fontAtlas.addFontFromFileTTF("Assets/Fonts/SegoeUI.ttf", 24, fontConfig);
         fontConfig.destroy();
 
         imGuiGl3.init("#version 130");
@@ -148,7 +147,7 @@ public class ImGuiLayer {
 
         ImGui.newFrame();
         currentScene.sceneImgui();
-        ImGui.showDemoWindow();
+        //ImGui.showDemoWindow();
         ImGui.render();
 
         endFrame();

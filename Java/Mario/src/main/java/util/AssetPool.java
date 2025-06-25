@@ -54,7 +54,7 @@ public class AssetPool {
     public static Spritesheet getSpritesheet(String resourceName) {
         File file = new File(resourceName);
 
-        if (!AssetPool.textures.containsKey(file.getAbsolutePath())) {
+        if (!AssetPool.spritesheets.containsKey(file.getAbsolutePath())) {
             assert false: "Error: (AssetPool) Could Not Find Spritesheet: " + resourceName;
         }
 
