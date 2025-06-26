@@ -3,6 +3,7 @@ package main.java;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import main.java.constructors.parameterized.Student4;
 
 import java.awt.*;
 import java.io.File;
@@ -29,6 +30,8 @@ public class Main {
 
         System.out.println("Server Running At http://localhost:" + port);
         Desktop.getDesktop().browse(new URI("http://localhost:" + port));
+
+        Student4.main(args);
     }
 
     private static class StaticHtmlHandler implements HttpHandler {
