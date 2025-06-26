@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Constructors</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+    <style>
+        .color {
+            color: #226e93;
+        }
+    </style>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Constructors</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Constructor</span>
+
+    <p>In Java, a constructor is a block of code similar to a method. It is called when an instance of the object is
+        created, and memory is allocated for the object.</p>
+    <p>It is a special type of method that is used to initialize a project.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">When is a constructor called?</span>
+
+    <p>When an object is created, a compiler makes sure that constructors for all of its subobjects (its member and
+        inherited objects) are called. If members have default constructors or constructor without a parameter, then
+        these
+        constructors are called automatically, otherwise parameterized constructors can be called using an initializer
+        list.</p>
+
+    <p><strong>Note: </strong>It is called constructor because it constructs the values at the time of object creation.
+        It is not necessary to write a constructor for a class. It is because the Java compiler creates a default
+        constructor if your class doesn't have any.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Rules to remember while creating a constructor</span>
+
+    <p>These are three rules defined for the constructor</p>
+    <div class="d-flex justify-content-center">
+        <ul class="text-start" style="list-style-type: square">
+            <li>Constructor name must be the same as its class name</li>
+            <li>A Constructor must have no explicit return type</li>
+            <li>A Java constructor cannot be abstract, static, final, and synchronized</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Types of Constructors</span>
+
+    <div class="d-flex justify-content-center">
+        <ul class="text-start" style="list-style-type: square">
+            <li>Default Constructor</li>
+            <li>Parameterized Constructor</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Default Constructor</span>
+
+    <p>The default constructor is a no-args constructor that the Java compiler inserts on your behalf; it contains a
+        <code>default</code>
+        call to
+        <code>super()</code>
+        ; which is the default behavior. If you implement any constructor, then you no longer receive a default
+        constructor.</p>
+
+    <p><strong>Note: </strong>If there is no constructor in the class, the compiler adds a default constructor.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">No-Argument Constructor</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="position-relative" style="width: 100%; max-width: 800px">
+            <button id="copyNoArgumentBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    style="transform: translateX(0.5rem);"
+                    title="Copy Code">
+                📋 Copy
+            </button>
+            <pre class="line-numbers"><code id="noArgumentCode" class="language-java"></code></pre>
+        </div>
+    </div>
+
+    <p><code>Bicycle yourBike = new Bicycle();</code> invokes the no-argument constructor to create a new
+        <code>Bicycle</code> object called <code>yourBike</code>.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Parameterized Constructor</span>
+
+    <p>A constructor which has a specific number of parameters is called a parameterized constructor.</p>
+    <p>The parameterized constructor is used to provide different values to the distinct objects. However, you can
+        provide the same values also.</p>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="position-relative" style="width: 100%; max-width: 800px">
+            <button id="copyParameterizedBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    style="transform: translateX(0.5rem);"
+                    title="Copy Code">
+                📋 Copy
+            </button>
+            <pre class="line-numbers"><code id="parameterizedCode" class="language-java"></code></pre>
+        </div>
+    </div>
+
+    <p>In the above example, we have created the constructor of a <strong>Student </strong>class that has two
+        parameters.
+        We can have any number of parameters in the constructor.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Constructor Overloading</span>
+
+    <p>In Java, a constructor is just like a method but without a return type. It can also be overloaded like Java
+        methods.</p>
+    <p>Constructor overloading in Java is a technique of having one or more than one constructor with different
+        parameter lists. They are arranged in a way that each constructor performs a different task. They are
+        differentiated by the compiler by the number of parameters in the list and their types.</p>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="position-relative" style="width: 100%; max-width: 800px">
+            <button id="copyOverloadingBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    style="transform: translateX(0.5rem);"
+                    title="Copy Code">
+                📋 Copy
+            </button>
+            <pre class="line-numbers"><code id="overloadingCode" class="language-java"></code></pre>
+        </div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Constructor vs Method</span>
+
+    <p><strong>Constructor:</strong></p>
+    <div class="d-flex justify-content-center">
+        <ul class="text-start" style="list-style-type: square">
+            <li>A constructor is used to initialize the state of an object</li>
+            <li>A constructor must not have a return type</li>
+            <li>The constructor is invoked implicitly</li>
+            <li>The Java compiler provides a default constructor if you don't have any constructor in a class</li>
+            <li>The constructor name must be the same as the class name</li>
+        </ul>
+    </div>
+
+    <p><strong>Method:</strong></p>
+    <div class="d-flex justify-content-center">
+        <ul class="text-start" style="list-style-type: square">
+            <li>A method is used to expose the behavior of an object</li>
+            <li>A method must have a return type</li>
+            <li>The method is invoked explicitly</li>
+            <li>The method is not provided by the compiler in any case</li>
+            <li>The method name may or may not be the same as the class name</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    async function loadIncludes() {
+        document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        await loadIncludes();
+
+        const copyNoArgumentBtn = document.getElementById('copyNoArgumentBtn');
+        const copyParameterizedBtn = document.getElementById('copyParameterizedBtn');
+        const copyOverloadingBtn = document.getElementById('copyOverloadingBtn');
+
+        fetch('/code/java/constructors/noargument/Bicycle.java')
+            .then(res => res.text())
+            .then(code => {
+                const lines = code.split('\n');
+
+                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
+                if (packageIndex !== -1) {
+                    lines.splice(packageIndex, 1);
+
+                    if (lines[packageIndex]?.trim() === '') {
+                        lines.splice(packageIndex, 1);
+                    }
+                }
+
+                const filteredCode = lines.join('\n').trim();
+
+                const el = document.getElementById('noArgumentCode');
+                el.textContent = filteredCode;
+
+                if (window.Prism) {
+                    Prism.highlightElement(el);
+                }
+            });
+
+        fetch('/code/java/constructors/parameterized/Student4.java')
+            .then(res => res.text())
+            .then(code => {
+                const lines = code.split('\n');
+
+                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
+                if (packageIndex !== -1) {
+                    lines.splice(packageIndex, 1);
+
+                    if (lines[packageIndex]?.trim() === '') {
+                        lines.splice(packageIndex, 1);
+                    }
+                }
+
+                const filteredCode = lines.join('\n').trim();
+
+                const el = document.getElementById('parameterizedCode');
+                el.textContent = filteredCode;
+
+                if (window.Prism) {
+                    Prism.highlightElement(el);
+                }
+            });
+
+        fetch('/code/java/constructors/overloading/Student5.java')
+            .then(res => res.text())
+            .then(code => {
+                const lines = code.split('\n');
+
+                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
+                if (packageIndex !== -1) {
+                    lines.splice(packageIndex, 1);
+
+                    if (lines[packageIndex]?.trim() === '') {
+                        lines.splice(packageIndex, 1);
+                    }
+                }
+
+                const filteredCode = lines.join('\n').trim();
+
+                const el = document.getElementById('overloadingCode');
+                el.textContent = filteredCode;
+
+                if (window.Prism) {
+                    Prism.highlightElement(el);
+                }
+            });
+
+        copyNoArgumentBtn.addEventListener('click', () => {
+            const code = document.getElementById('noArgumentCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyNoArgumentBtn');
+                btn.innerText = "✅ Copied!";
+                setTimeout(() => btn.innerText = "📋 Copy", 1500);
+            })
+        });
+
+        copyParameterizedBtn.addEventListener('click', () => {
+            const code = document.getElementById('parameterizedCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyParameterizedBtn');
+                btn.innerText = "✅ Copied!";
+                setTimeout(() => btn.innerText = "📋 Copy", 1500);
+            })
+        });
+
+        copyOverloadingBtn.addEventListener('click', () => {
+            const code = document.getElementById('overloadingCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyOverloadingBtn');
+                btn.innerText = "✅ Copied!";
+                setTimeout(() => btn.innerText = "📋 Copy", 1500);
+            })
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>

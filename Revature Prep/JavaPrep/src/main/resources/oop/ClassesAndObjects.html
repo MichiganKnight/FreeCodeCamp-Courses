@@ -87,7 +87,7 @@
 
         const copyBtn = document.getElementById('copyBtn');
 
-        fetch('/src/main/java/classesandobjects/Dog.java')
+        fetch('/code/java/classesandobjects/Dog.java')
             .then(res => res.text())
             .then(code => {
                 const lines = code.split('\n');

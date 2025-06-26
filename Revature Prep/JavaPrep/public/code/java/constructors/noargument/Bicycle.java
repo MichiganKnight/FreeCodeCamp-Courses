@@ -1,5 +1,3 @@
-package main.java.constructors.noargument;
-
 public class Bicycle {
     public Bicycle() {
         int gear = 1;
