@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Java Revature Prep | Classes And Objects</title>
+    <title>Java Revature Prep | Classes and Objects</title>
 
     <script>
         fetch('/shared/Head.html')
@@ -13,16 +13,99 @@
                 document.head.insertAdjacentHTML("beforeend", headContent);
             })
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+    <style>
+        .color {
+            color: #226e93;
+        }
+    </style>
 </head>
 <body>
 <div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Classes and Objects</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Object</span>
+
+    <p>Any entity that has state and behavior is known as an object. For example, a chair, pen, table, keyboard, bike,
+        etc... It can be physical or logical.</p>
+    <p>An object can be defined as an instance of a class. An object contains an address and takes up space in memory.
+        Objects can communicate without knowing the details of each other's data or code. The only necessary thing is
+        the type of message accepted and the type of response returned by the objects.</p>
+    <p><strong>Example: </strong>A dog is an object because it has states like color, name, breed, etc... as well as
+        behaviors like wagging the tail, barking, eating, etc...</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Class</span>
+
+    <p>A <strong>class, </strong>in the context of <strong>Java, </strong>are templates that are used to create objects
+        and to <strong>define </strong>object data types and methods. Core properties include the data types and methods
+        that may be used by the object.</p>
+
+    <p>A class can also be defined as a blueprint from which you can create an individual object. Class doesn't consume
+        any space.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Advantages of OOPs over Procedure Oriented Programming</span>
+
+    <div class="d-flex justify-content-center">
+        <ul class="text-start" style="list-style-type: square">
+            <li>OOPs make development and maintenance easier, whereas in a procedure-oriented programming language it is
+                not easy to manage if code grows as project size increases
+            </li>
+            <li>OOPs provide data hiding, whereas in a procedure-oriented programming language, global data can be
+                accessed from anywhere.
+            </li>
+        </ul>
+    </div>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="position-relative" style="width: 100%; max-width: 800px">
+            <button id="copyBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    title="Copy Code">
+                📋 Copy
+            </button>
+            <pre id="codeBlock" class="line-numbers"><code id="javaCode" class="language-java"></code></pre>
+        </div>
+    </div>
+
+    <p>A class is a blueprint from which individual objects are created.</p>
+    <p>The code above is a sample of a class <strong>Dog </strong>with attributes and behavior.</p>
+</div>
 
 <script>
     async function loadIncludes() {
         document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());
     }
 
-    document.addEventListener("DOMContentLoaded", loadIncludes);
+    document.addEventListener("DOMContentLoaded", async () => {
+        await loadIncludes();
+
+        const codeBlock = document.getElementById('javaCode');
+        const copyBtn = document.getElementById('copyBtn');
+
+        fetch('/src/main/java/Dog.java')
+            .then(res => res.text())
+            .then(code => {
+                const el = document.getElementById('javaCode');
+                el.textContent = code.trim();
+                if (window.Prism) {
+                    Prism.highlightElement(el);
+                }
+            });
+
+        copyBtn.addEventListener('click', () => {
+            const code = document.getElementById('javaCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.innerText = "✅ Copied!";
+                setTimeout(() => btn.innerText = "📋 Copy", 1500);
+            })
+        });
+    });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
