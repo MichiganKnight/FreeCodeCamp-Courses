@@ -69,7 +69,7 @@
                     title="Copy Code">
                 📋 Copy
             </button>
-            <pre id="codeBlock" class="line-numbers"><code id="javaCode" class="language-java"></code></pre>
+            <pre class="line-numbers"><code id="javaCode" class="language-java"></code></pre>
         </div>
     </div>
 
@@ -90,8 +90,22 @@
         fetch('/src/main/java/classesandobjects/Dog.java')
             .then(res => res.text())
             .then(code => {
+                const lines = code.split('\n');
+
+                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
+                if (packageIndex !== -1) {
+                    lines.splice(packageIndex, 1);
+
+                    if (lines[packageIndex]?.trim() === '') {
+                        lines.splice(packageIndex, 1);
+                    }
+                }
+
+                const filteredCode = lines.join('\n').trim();
+
                 const el = document.getElementById('javaCode');
-                el.textContent = code.trim();
+                el.textContent = filteredCode;
+
                 if (window.Prism) {
                     Prism.highlightElement(el);
                 }
