@@ -1,4 +1,4 @@
-package main.java;
+package main.java.classesandobjects;
 
 public class Dog {
     String breed;

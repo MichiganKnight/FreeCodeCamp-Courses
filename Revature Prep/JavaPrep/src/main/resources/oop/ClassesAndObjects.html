@@ -65,6 +65,7 @@
     <div class="d-flex justify-content-center my-4">
         <div class="position-relative" style="width: 100%; max-width: 800px">
             <button id="copyBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    style="transform: translateX(0.5rem);"
                     title="Copy Code">
                 📋 Copy
             </button>
@@ -84,10 +85,9 @@
     document.addEventListener("DOMContentLoaded", async () => {
         await loadIncludes();
 
-        const codeBlock = document.getElementById('javaCode');
         const copyBtn = document.getElementById('copyBtn');
 
-        fetch('/src/main/java/Dog.java')
+        fetch('/src/main/java/classesandobjects/Dog.java')
             .then(res => res.text())
             .then(code => {
                 const el = document.getElementById('javaCode');
