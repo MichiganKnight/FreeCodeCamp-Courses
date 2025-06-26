@@ -17,6 +17,13 @@
 <body>
 <div id="navbar-include"></div>
 
+<div class="container text-center">
+    <h1 class="text-primary">Study Guide</h1>
+
+    <p>Prepare for the evaluation using this study guide. Focus on the <a href="oop/ClassesAndObjects.html">OOP</a>, Programming, SQL, and Web Development sections.</p>
+</div>
+
+
 <script>
     async function loadIncludes() {
         document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());

@@ -38,7 +38,7 @@ public class Main {
             String path = uri.getPath();
 
             if (path.equals("/")) {
-                path = "/StudyGuide.html";
+                path = "/HomePage.html";
             }
 
             File file = new File("src/main/resources" + path);
