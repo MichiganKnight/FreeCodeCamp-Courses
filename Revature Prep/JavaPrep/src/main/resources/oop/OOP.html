@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | OOP</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <style>
+        ul.centered-list {
+            list-style-position: inside;
+            text-align: center;
+            padding: 0;
+            margin: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span style="color: #226e93; font-size: 30pt" class="fw-bold">OOP</span>
+    <br>
+    <span style="color: #226e93; font-size: 15pt" class="fw-bold">Object Oriented Programming</span>
+
+    <p><strong>Object</strong> means a real-world entity such as a pen, chair, computer, watch, etc...</p>
+    <p><strong>Object-Oriented Programming</strong> is a methodology or paradigm to design a program using classes and
+        objects. It simplified the software development and maintenance by providing some concepts:</p>
+    <p>
+    <div class="d-flex justify-content-center">
+        <ul class="text-start">
+            <li>Object</li>
+            <li>Classes</li>
+            <li>Inheritance</li>
+            <li>Polymorphism</li>
+            <li>Abstraction</li>
+            <li>Encapsulation</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    async function loadIncludes() {
+        document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());
+    }
+
+    document.addEventListener("DOMContentLoaded", loadIncludes);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
