@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | OOP Encapsulation</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Encapsulation</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Encapsulation</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li><strong>Encapsulation in Java </strong>is a process of wrapping code and data together into a single
+                unit, for example, a capsule which is mixed of several medicines.
+            </li>
+            <li>We can create a fully encapsulated class in Java by making all the data members of the class private.
+                Now we can use getter and setter methods to get and set the data in it.
+            </li>
+            <li>The <strong>Java Bean </strong>class is the example of a fully encapsulated class.</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Advantages of Encapsulation</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>By providing only a setter or getter method, you can make the class <strong>read-only or
+                write-only. </strong>In other words, you can skip the getter or setter methods.
+            </li>
+            <li>It provides you the <strong>control over the data. </strong>Suppose you want to set the value of id
+                which should be greater than 100 only, you can write the logic inside the setter method. You can write
+                the logic not to store the negative numbers in the setter methods.
+            </li>
+            <li>It is a way to achieve <strong>data hiding </strong>in Java because the other class will not be able to
+                access the data through the private data members.
+            </li>
+            <li>The encapsulated class is <strong>easy to test. </strong>So, it is better for unit testing.</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example of Encapsulation</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleEncapsulation"
+             data-src="/code/java/oop/pillars/encapsulation/Example.java"></div>
+    </div>
+
+    <p>The above is an example of encapsulation of a class called <strong>Student</strong> that has only on field with its getter and setter methods.</p>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
