@@ -166,7 +166,7 @@
         const copyParameterizedBtn = document.getElementById('copyParameterizedBtn');
         const copyOverloadingBtn = document.getElementById('copyOverloadingBtn');
 
-        fetch('/code/java/constructors/noargument/Bicycle.java')
+        fetch('/code/java/constructors/Bicycle.java')
             .then(res => res.text())
             .then(code => {
                 const lines = code.split('\n');
@@ -190,7 +190,7 @@
                 }
             });
 
-        fetch('/code/java/constructors/parameterized/Student4.java')
+        fetch('/code/java/constructors/Student4.java')
             .then(res => res.text())
             .then(code => {
                 const lines = code.split('\n');
@@ -214,7 +214,7 @@
                 }
             });
 
-        fetch('/code/java/constructors/overloading/Student5.java')
+        fetch('/code/java/constructors/Student5.java')
             .then(res => res.text())
             .then(code => {
                 const lines = code.split('\n');
