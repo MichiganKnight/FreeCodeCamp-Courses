@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | OOP Polymorphism</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Polymorphism</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Polymorphism</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in
+                OOP occurs when a parent class reference is used to refer to a child class object.
+            </li>
+            <li>Any Java object that can pass more than one IS-A test is considered to be polymorphic. In Java, all Java
+                objects are polymorphic since any object will pass the IS-A test for their own type and for the class
+                Object.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Method Overloading</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>If a class has multiple methods having the same name but different parameters, it is known as <strong>Method
+                Overloading.</strong></li>
+            <li>If we have to perform only one operation, having the same name of the methods increases the readability
+                of the program.
+            </li>
+            <li>Suppose you have to perform addition of the given numbers but there can be any number of arguments, if
+                you write the method such as <code>a(int, int)</code> for two parameters, and <code>b(int, int,
+                    int)</code> for three parameters then it may be challenging for you as well as other programmers to
+                understand the behavior of the method because its name differs.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Different ways to overload a method?</span>
+
+    <p>These are two ways to overload the method in Java</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>By changing the number of arguments</li>
+            <li>By changing the data type</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Method Overloading - Changing the Number of Arguments</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="position-relative" style="width: 100%; max-width: 800px">
+            <button id="copyMethodOverloadingBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    style="transform: translateX(0.5rem);"
+                    title="Copy Code">
+                📋 Copy
+            </button>
+            <pre class="line-numbers"><code id="methodOverloading" class="language-java"></code></pre>
+        </div>
+    </div>
+
+    <p>In the above example, we have created two methods, the first <code>add()</code> method performs addition of two
+        numbers and second the second <code>add()</code> method performs addition of three numbers.</p>
+
+    <p>In the above example, we are creating <strong>static methods so that we don't need to create an instance for
+        calling methods.</strong></p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Method Overloading - Changing Data Type of Arguments</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="position-relative" style="width: 100%; max-width: 800px">
+            <button id="copyMethodOverloadingBtn2"
+                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    style="transform: translateX(0.5rem);"
+                    title="Copy Code">
+                📋 Copy
+            </button>
+            <pre class="line-numbers"><code id="methodOverloading2" class="language-java"></code></pre>
+        </div>
+    </div>
+
+    <p>In the above example, we have created two methods that differ in data type. The first <code>add()</code> method
+        receives two integer arguments and second <code>add()</code> method receives two double arguments.</p>
+
+    <p><strong>Note: Method overloading is not possible by changing the return type of the method.</strong></p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Overloading the <code>main()</code> Method in Java</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="position-relative" style="width: 100%; max-width: 800px">
+            <button id="copyOverloadingMainBtn"
+                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    style="transform: translateX(0.5rem);"
+                    title="Copy Code">
+                📋 Copy
+            </button>
+            <pre class="line-numbers"><code id="overloadingMain" class="language-java"></code></pre>
+        </div>
+    </div>
+
+    <p>Yes, by method overloading, you can have any number of main methods in a class by method overloading. But JVM
+        calls <code>main()</code> method which receives a string array as arguments only.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Method Overriding</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>If a subclass (child class) has the same method as declared in the parent class, it is known as <strong>method
+                overriding in Java.</strong></li>
+            <li>In other words, if a subclass provides the specific implementation of the method that has been declared
+                by one of its parent classes, it is known as method overriding.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Usage and Rules for Method Overriding</span>
+
+    <p>Usage:</p>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Method overriding is used to provide the specific implementation of a method which is already provided
+                by its superclass.
+            </li>
+            <li>Method overriding is used for runtime polymorphism</li>
+        </ul>
+    </div>
+
+    <p>Rules:</p>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>The method must have the same name as its parent class</li>
+            <li>The method must have the same parameter as in the parent class</li>
+            <li>There must be an IS-A relationship (inheritance)</li>
+        </ul>
+    </div>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>If a subclass (child class) has the same method as declared in the parent class, it is known as <strong>method
+                overriding in Java.</strong></li>
+            <li>In other words, if a subclass provides the specific implementation of the method that has been declared
+                by one of its parent classes, it is known as method overriding.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example for Method Overriding</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="position-relative" style="width: 100%; max-width: 800px">
+            <button id="copyMethodOverridingBtn"
+                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
+                    style="transform: translateX(0.5rem);"
+                    title="Copy Code">
+                📋 Copy
+            </button>
+            <pre class="line-numbers"><code id="methodOverriding" class="language-java"></code></pre>
+        </div>
+    </div>
+
+    <p>In the above example, we have defined the <code>disp()</code> method in the subclass as defined in the parent
+        class, but it has some specific implementation. The name and parameter list of the methods are the same, and
+        there is IS-A relationship between the classes.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Can a static method be overridden?</span>
+
+    <p>No, a static method cannot be overridden. It can be proved by runtime polymorphism, so we will learn it
+        later.</p>
+    <p>It is because the static method is bound with a class, whereas the instance method is bound with an object.
+        Static belongs to the class area, and an instance belongs to the heap area.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Method Overloading vs Method Overriding</span>
+
+    <p><strong>Method Overloading:</strong></p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Method overloading is used to increase the readability of the program</li>
+            <li>Method overloading is performed within a class</li>
+            <li>In the case of method overloading, the parameter must be different</li>
+            <li>Method overloading is the example of compile timy polymorphism</li>
+            <li>In Java, method overloading can't be performed by changing a return type of the method only. Return type
+                can be the same or different in method overloading. But you must have to change the parameter.
+            </li>
+        </ul>
+    </div>
+
+    <p><strong>Method Overriding:</strong></p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Method overriding is used to provide the specific implementation of the method that is already provided
+                by its super class
+            </li>
+            <li>Method overriding occurs in two classes that have IS-A (inheritance) relationship</li>
+            <li>In case of method overriding, any parameters must be the same</li>
+            <li>Method overriding is the example of run time polymorphism</li>
+            <li>The return type must be the same or covariant method overriding</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Sample Exercise</span>
+
+    <p>Consider a scenario where Bank is a class that provides functionality to get the rate of interest. However, the
+        rate of interest varies according to banks. For example, SBI, ICIC, and AXIS banks could provide 8%, 7%, and 9%
+        of interest.</p>
+    <p>Go ahead and code the above scenario.</p>
+</div>
+
+<script>
+    async function loadIncludes() {
+        document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        await loadIncludes();
+
+        const copyMethodOverloadingBtn = document.getElementById('copyMethodOverloadingBtn');
+        const copyMethodOverloadingBtn2 = document.getElementById('copyMethodOverloadingBtn2');
+        const copyOverloadingMainBtn = document.getElementById('copyOverloadingMainBtn');
+        const copyMethodOverridingBtn = document.getElementById('copyMethodOverriding');
+
+        fetch('/code/java/oop/pillars/polymorphism/MethodOverloading.java')
+            .then(res => res.text())
+            .then(code => {
+                const lines = code.split('\n');
+
+                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
+                if (packageIndex !== -1) {
+                    lines.splice(packageIndex, 1);
+
+                    if (lines[packageIndex]?.trim() === '') {
+                        lines.splice(packageIndex, 1);
+                    }
+                }
+
+                const filteredCode = lines.join('\n').trim();
+
+                const el = document.getElementById('methodOverloading');
+                el.textContent = filteredCode;
+
+                if (window.Prism) {
+                    Prism.highlightElement(el);
+                }
+            });
+
+        fetch('/code/java/oop/pillars/polymorphism/MethodOverloading2.java')
+            .then(res => res.text())
+            .then(code => {
+                const lines = code.split('\n');
+
+                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
+                if (packageIndex !== -1) {
+                    lines.splice(packageIndex, 1);
+
+                    if (lines[packageIndex]?.trim() === '') {
+                        lines.splice(packageIndex, 1);
+                    }
+                }
+
+                const filteredCode = lines.join('\n').trim();
+
+                const el = document.getElementById('methodOverloading2');
+                el.textContent = filteredCode;
+
+                if (window.Prism) {
+                    Prism.highlightElement(el);
+                }
+            });
+
+        fetch('/code/java/oop/pillars/polymorphism/OverloadingMain.java')
+            .then(res => res.text())
+            .then(code => {
+                const lines = code.split('\n');
+
+                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
+                if (packageIndex !== -1) {
+                    lines.splice(packageIndex, 1);
+
+                    if (lines[packageIndex]?.trim() === '') {
+                        lines.splice(packageIndex, 1);
+                    }
+                }
+
+                const filteredCode = lines.join('\n').trim();
+
+                const el = document.getElementById('overloadingMain');
+                el.textContent = filteredCode;
+
+                if (window.Prism) {
+                    Prism.highlightElement(el);
+                }
+            });
+
+        fetch('/code/java/oop/pillars/polymorphism/MethodOverriding.java')
+            .then(res => res.text())
+            .then(code => {
+                const lines = code.split('\n');
+
+                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
+                if (packageIndex !== -1) {
+                    lines.splice(packageIndex, 1);
+
+                    if (lines[packageIndex]?.trim() === '') {
+                        lines.splice(packageIndex, 1);
+                    }
+                }
+
+                const filteredCode = lines.join('\n').trim();
+
+                const el = document.getElementById('methodOverriding');
+                el.textContent = filteredCode;
+
+                if (window.Prism) {
+                    Prism.highlightElement(el);
+                }
+            });
+
+        copyMethodOverloadingBtn.addEventListener('click', () => {
+            const code = document.getElementById('methodOverloading').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyMethodOverloadingBtn');
+                btn.innerText = "✅ Copied!";
+                setTimeout(() => btn.innerText = "📋 Copy", 1500);
+            })
+        });
+
+        copyMethodOverloadingBtn2.addEventListener('click', () => {
+            const code = document.getElementById('methodOverloading2').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyMethodOverloadingBtn2');
+                btn.innerText = "✅ Copied!";
+                setTimeout(() => btn.innerText = "📋 Copy", 1500);
+            })
+        });
+
+        copyOverloadingMainBtn.addEventListener('click', () => {
+            const code = document.getElementById('overloadingMain').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyOverloadingMainBtn');
+                btn.innerText = "✅ Copied!";
+                setTimeout(() => btn.innerText = "📋 Copy", 1500);
+            })
+        });
+
+        copyMethodOverridingBtn.addEventListener('click', () => {
+            const code = document.getElementById('methodOverriding').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyMethodOverridingBtn');
+                btn.innerText = "✅ Copied!";
+                setTimeout(() => btn.innerText = "📋 Copy", 1500);
+            })
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
