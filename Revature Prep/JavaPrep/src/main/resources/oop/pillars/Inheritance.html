@@ -73,14 +73,8 @@
     <span class="color fw-bold" style="font-size: 15pt">Syntax</span>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyInheritanceSyntaxBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="inheritanceSyntax" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="inheritanceSyntax"
+             data-src="/code/java/oop/pillars/inheritance/Subclass.java"></div>
     </div>
 
     <p>The <strong>extends keyword </strong>indicates that you are making a new class that derives from an existing
@@ -93,15 +87,8 @@
         Employee.</p>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyInheritanceExampleBtn"
-                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="inheritanceExample" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="inheritanceExample"
+             data-src="/code/java/oop/pillars/inheritance/Example.java"></div>
     </div>
 
     <span class="color fw-bold" style="font-size: 15pt">Types Of Inheritance in Java</span>
@@ -113,43 +100,22 @@
     <span class="color fw-bold" style="font-size: 15pt">Single Inheritance</span>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copySingleInheritanceBtn"
-                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="singleInheritance" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="singleInheritance"
+             data-src="/code/java/oop/pillars/inheritance/Single.java"></div>
     </div>
 
     <span class="color fw-bold" style="font-size: 15pt">Multilevel Inheritance</span>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyMultilevelInheritanceBtn"
-                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="multilevelInheritance" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="multilevelInheritance"
+             data-src="/code/java/oop/pillars/inheritance/Multilevel.java"></div>
     </div>
 
     <span class="color fw-bold" style="font-size: 15pt">Hierarchical Inheritance</span>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyHierarchicalInheritanceBtn"
-                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="hierarchicalInheritance" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="hierarchicalInheritance"
+             data-src="/code/java/oop/pillars/inheritance/Hierarchical.java"></div>
     </div>
 
     <span class="color fw-bold" style="font-size: 15pt">Why multiple inheritance is not supported in Java?</span>
@@ -164,232 +130,12 @@
         classes. So whether you have the same method or different, there will be a compile time error.</p>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyMultipleInheritanceBtn"
-                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="multipleInheritance" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="multipleInheritance"
+             data-src="/code/java/oop/pillars/inheritance/Multiple.java"></div>
     </div>
 </div>
 
-<script>
-    async function loadIncludes() {
-        document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());
-    }
-
-    document.addEventListener("DOMContentLoaded", async () => {
-        await loadIncludes();
-
-        const copyInheritanceSyntaxBtn = document.getElementById('copyInheritanceSyntaxBtn');
-        const copyInheritanceExampleBtn = document.getElementById('copyInheritanceExampleBtn');
-        const copySingleInheritanceBtn = document.getElementById('copySingleInheritanceBtn');
-        const copyMultilevelInheritanceBtn = document.getElementById('copyMultilevelInheritanceBtn');
-        const copyHierarchicalInheritanceBtn = document.getElementById('copyHierarchicalInheritanceBtn');
-        const copyMultipleInheritanceBtn = document.getElementById('copyMultipleInheritanceBtn');
-
-        fetch('/code/java/oop/pillars/inheritance/Subclass.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('inheritanceSyntax');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        fetch('/code/java/oop/pillars/inheritance/Example.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('inheritanceExample');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        fetch('/code/java/oop/pillars/inheritance/Single.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('singleInheritance');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        fetch('/code/java/oop/pillars/inheritance/Multilevel.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('multilevelInheritance');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        fetch('/code/java/oop/pillars/inheritance/Hierarchical.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('hierarchicalInheritance');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        fetch('/code/java/oop/pillars/inheritance/Multiple.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('multipleInheritance');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        copyInheritanceSyntaxBtn.addEventListener('click', () => {
-            const code = document.getElementById('inheritanceSyntax').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyInheritanceSyntaxBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-
-        copyInheritanceExampleBtn.addEventListener('click', () => {
-            const code = document.getElementById('inheritanceExample').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyInheritanceExampleBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-
-        copySingleInheritanceBtn.addEventListener('click', () => {
-            const code = document.getElementById('singleInheritance').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copySingleInheritanceBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-
-        copyMultilevelInheritanceBtn.addEventListener('click', () => {
-            const code = document.getElementById('multilevelInheritance').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyMultilevelInheritanceBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-
-        copyHierarchicalInheritanceBtn.addEventListener('click', () => {
-            const code = document.getElementById('hierarchicalInheritance').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyHierarchicalInheritanceBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-
-        copyMultipleInheritanceBtn.addEventListener('click', () => {
-            const code = document.getElementById('multipleInheritance').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyMultipleInheritanceBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-    });
-</script>
+<script src="/shared/CodeLoader.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"

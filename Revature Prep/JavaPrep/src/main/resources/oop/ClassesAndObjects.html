@@ -57,64 +57,14 @@
     </div>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="javaCode" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="classesAndObjects" data-src="/code/java/oop/classesandobjects/Dog.java"></div>
     </div>
 
     <p>A class is a blueprint from which individual objects are created.</p>
     <p>The code above is a sample of a class <strong>Dog </strong>with attributes and behavior.</p>
 </div>
 
-<script>
-    async function loadIncludes() {
-        document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());
-    }
-
-    document.addEventListener("DOMContentLoaded", async () => {
-        await loadIncludes();
-
-        const copyBtn = document.getElementById('copyBtn');
-
-        fetch('/code/java/oop/classesandobjects/classesandobjects/Dog.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('javaCode');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        copyBtn.addEventListener('click', () => {
-            const code = document.getElementById('javaCode').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-    });
-</script>
+<script src="/shared/CodeLoader.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"

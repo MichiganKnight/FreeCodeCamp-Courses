@@ -68,14 +68,7 @@
     <span class="color fw-bold" style="font-size: 15pt">Method Overloading - Changing the Number of Arguments</span>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyMethodOverloadingBtn" class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="methodOverloading" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="methodOverloading" data-src="/code/java/oop/pillars/polymorphism/MethodOverloading.java"></div>
     </div>
 
     <p>In the above example, we have created two methods, the first <code>add()</code> method performs addition of two
@@ -87,15 +80,7 @@
     <span class="color fw-bold" style="font-size: 15pt">Method Overloading - Changing Data Type of Arguments</span>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyMethodOverloadingBtn2"
-                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="methodOverloading2" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="methodOverloading2" data-src="/code/java/oop/pillars/polymorphism/MethodOverloading2.java"></div>
     </div>
 
     <p>In the above example, we have created two methods that differ in data type. The first <code>add()</code> method
@@ -106,15 +91,7 @@
     <span class="color fw-bold" style="font-size: 15pt">Overloading the <code>main()</code> Method in Java</span>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyOverloadingMainBtn"
-                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="overloadingMain" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="overloadingMain" data-src="/code/java/oop/pillars/polymorphism/OverloadingMain.java"></div>
     </div>
 
     <p>Yes, by method overloading, you can have any number of main methods in a class by method overloading. But JVM
@@ -168,15 +145,7 @@
     <span class="color fw-bold" style="font-size: 15pt">Example for Method Overriding</span>
 
     <div class="d-flex justify-content-center my-4">
-        <div class="position-relative" style="width: 100%; max-width: 800px">
-            <button id="copyMethodOverridingBtn"
-                    class="btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1"
-                    style="transform: translateX(0.5rem);"
-                    title="Copy Code">
-                📋 Copy
-            </button>
-            <pre class="line-numbers"><code id="methodOverriding" class="language-java"></code></pre>
-        </div>
+        <div class="code-block" data-id="methodOverriding" data-src="/code/java/oop/pillars/polymorphism/MethodOverriding.java"></div>
     </div>
 
     <p>In the above example, we have defined the <code>disp()</code> method in the subclass as defined in the parent
@@ -226,152 +195,7 @@
     <p>Go ahead and code the above scenario.</p>
 </div>
 
-<script>
-    async function loadIncludes() {
-        document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());
-    }
-
-    document.addEventListener("DOMContentLoaded", async () => {
-        await loadIncludes();
-
-        const copyMethodOverloadingBtn = document.getElementById('copyMethodOverloadingBtn');
-        const copyMethodOverloadingBtn2 = document.getElementById('copyMethodOverloadingBtn2');
-        const copyOverloadingMainBtn = document.getElementById('copyOverloadingMainBtn');
-        const copyMethodOverridingBtn = document.getElementById('copyMethodOverriding');
-
-        fetch('/code/java/oop/pillars/polymorphism/MethodOverloading.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('methodOverloading');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        fetch('/code/java/oop/pillars/polymorphism/MethodOverloading2.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('methodOverloading2');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        fetch('/code/java/oop/pillars/polymorphism/OverloadingMain.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('overloadingMain');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        fetch('/code/java/oop/pillars/polymorphism/MethodOverriding.java')
-            .then(res => res.text())
-            .then(code => {
-                const lines = code.split('\n');
-
-                const packageIndex = lines.findIndex(line => line.trim().startsWith('package'));
-                if (packageIndex !== -1) {
-                    lines.splice(packageIndex, 1);
-
-                    if (lines[packageIndex]?.trim() === '') {
-                        lines.splice(packageIndex, 1);
-                    }
-                }
-
-                const filteredCode = lines.join('\n').trim();
-
-                const el = document.getElementById('methodOverriding');
-                el.textContent = filteredCode;
-
-                if (window.Prism) {
-                    Prism.highlightElement(el);
-                }
-            });
-
-        copyMethodOverloadingBtn.addEventListener('click', () => {
-            const code = document.getElementById('methodOverloading').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyMethodOverloadingBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-
-        copyMethodOverloadingBtn2.addEventListener('click', () => {
-            const code = document.getElementById('methodOverloading2').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyMethodOverloadingBtn2');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-
-        copyOverloadingMainBtn.addEventListener('click', () => {
-            const code = document.getElementById('overloadingMain').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyOverloadingMainBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-
-        copyMethodOverridingBtn.addEventListener('click', () => {
-            const code = document.getElementById('methodOverriding').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                const btn = document.getElementById('copyMethodOverridingBtn');
-                btn.innerText = "✅ Copied!";
-                setTimeout(() => btn.innerText = "📋 Copy", 1500);
-            })
-        });
-    });
-</script>
+<script src="/shared/CodeLoader.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
