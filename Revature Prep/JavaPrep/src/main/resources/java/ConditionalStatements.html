@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Java Conditional Statements</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Conditional Statements</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Decision Making Structures</span>
+
+    <p>Decision making structures have one or more conditions to be evaluated or tested by the program, along with a
+        statement or statements that are to be executed if the condition is determined to be true, and optionally, other
+        statements to be executed if the condition is determined to be false.</p>
+    <p>Java programming langauge provides the following types of decision making statements</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>IF Statement</li>
+            <li>IF ELSE Statement</li>
+            <li>NESTED IF Statement</li>
+            <li>SWITCH Statement</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">IF Statement</span>
+
+    <p>An <strong>if</strong> statement consists of a Boolean expression by one or more statements</p>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="ifSyntax"
+             data-src="/code/java/java/IfSyntax.java"></div>
+    </div>
+    <p>If the Boolean expression evaluates to true, then the block of code inside the if statement will be executed. If
+        not, the first set of code after the end of the if statement (after the closing curly brace) will be
+        executed.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleIf"
+             data-src="/code/java/java/ExampleIf.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">If...ELSE Statement</span>
+
+    <p>An <strong>if</strong> statement can be followed by an optional <strong>else</strong> statement, which executes
+        when the Boolean expression is false.</p>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="ifElseSyntax"
+             data-src="/code/java/java/IfElseSyntax.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleIfElse"
+             data-src="/code/java/java/ExampleIfElse.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">If...ELSE IF Statement</span>
+
+    <p>An if statement can be followed by an optional <i>else if...else</i> statement, which is handy to test
+        various conditions using a single if...else if statement.</p>
+    <p>When using if, else if, else statements, there are a few points to keep in mind.</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>An if can have zero or one else's and it must come after any else if's</li>
+            <li>An if can have zero to many else if's and they must come before the else</li>
+            <li>Once an if succeeds, none of the remaining else if's or else's will be tested</li>
+        </ul>
+    </div>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="ifElseIfSyntax"
+             data-src="/code/java/java/IfElseIfSyntax.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleIfElseIf"
+             data-src="/code/java/java/ExampleIfElseIf.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Nested IF Statement</span>
+
+    <p>It is always legal to nest if-else statements which means you can use one if or else if statement inside another
+        if or else if statement.</p>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="nestedIfSyntax"
+             data-src="/code/java/java/NestedIfSyntax.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleNestedIf"
+             data-src="/code/java/java/ExampleNestedIf.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">SWITCH Statement</span>
+
+    <p>A <strong>switch</strong> statement allows a variable to be tested for equality against a list of values. Each
+        value is called a case, and the variable being switched on is checked for each case.</p>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="switchSyntax"
+             data-src="/code/java/java/SwitchSyntax.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Rules for SWITCH Statement</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>The variable used in a switch statement can only be integers, convertable integers (byte, short, char),
+                strings, and enums
+            </li>
+            <li>You can have any number of case statements within a switch. Each case is followed by the value to be
+                compared to and a colon
+            </li>
+            <li>The value for a case must be the same data type as the variable in the switch, and it must be a constant
+                or literal
+            </li>
+            <li>When the variable being switched on is equal to a case, the statements following that case will execute
+                until a break statement is reached
+            </li>
+            <li>When a break statement is reached, the switch terminates, and the flow of control jumps to the next line
+                following the switch statement
+            </li>
+            <li>Not every case needs to contain a break. If no break appears, the flow of control will fall through to
+                subsequent cases until a break is reached
+            </li>
+            <li>A switch statement can have an optional default case, which must appear at the end of a switch. The
+                default case can be used for performing a task when non of the cases is true. No break is needed in the
+                default case
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleSwitch"
+             data-src="/code/java/java/ExampleSwitch.java"></div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
