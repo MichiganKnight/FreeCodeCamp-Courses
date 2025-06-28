@@ -63,7 +63,117 @@
              data-src="/code/java/oop/pillars/encapsulation/Example.java"></div>
     </div>
 
-    <p>The above is an example of encapsulation of a class called <strong>Student</strong> that has only on field with its getter and setter methods.</p>
+    <p>The above is an example of encapsulation of a class called <strong>Student</strong> that has only on field with
+        its getter and setter methods.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Read-Only Class</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="readOnlyClass"
+             data-src="/code/java/oop/pillars/encapsulation/ReadOnly.java"></div>
+    </div>
+
+    <p>The above class is an example of a Read-Only class because it has only a getter to access the college name. If
+        the user tries to change the value of the college name, a compile-time error is rendered.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Write-Only Class</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="writeOnlyClass"
+             data-src="/code/java/oop/pillars/encapsulation/WriteOnly.java"></div>
+    </div>
+
+    <p>The above class is an example of a Write-Only class because it has only a setter to change the value of the
+        college name and cannot read the college name. Even if the user tries to access this variable outside this
+        class, a compile-time error is displayed only because the variable is declared as private.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Access Modifiers</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>There are two types of modifiers in Java: <strong>access modifiers</strong> and <strong>non-access
+                modifiers</strong></li>
+            <li>The access modifiers in Java specify accessibility (scope) of a data member, method, constructor, or
+                class
+            </li>
+        </ul>
+    </div>
+
+    <p>There are four types of Java access modifiers:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>private</li>
+            <li>default</li>
+            <li>protected</li>
+            <li>public</li>
+        </ul>
+    </div>
+
+    <p>There are many non-access modifiers such as static, abstract, synchronized, native, volatile, transient, etc...
+        Here, we will learn access modifiers</p>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Access Modifier</th>
+            <th scope="col">Within Class</th>
+            <th scope="col">Within Package</th>
+            <th scope="col">Outside Package by Subclass Only</th>
+            <th scope="col">Outside Package</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">Private</th>
+            <td>Yes</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <th scope="row">Default</th>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <th scope="row">Protected</th>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <th scope="row">Public</th>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <span class="color fw-bold" style="font-size: 15pt">Access Modifiers with Method Overriding</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="accessModifiers"
+             data-src="/code/java/oop/pillars/encapsulation/AccessModifiers.java"></div>
+    </div>
+
+    <p>If you are overriding any method, (i.e., declared in subclass), you must not be more restrictive</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Sample Exercise</span>
+
+    <p>Create an encapsulated class with four fields and the respective methods to access and edit those fields. Then go
+        ahead and create a test class to verify.</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Class Name: Student</li>
+            <li>Field Names: studentId, studentName, collegeName, address</li>
+            <li>Test Class Name: TestStudent</li>
+        </ul>
+    </div>
 </div>
 
 <script src="/shared/CodeLoader.js"></script>
