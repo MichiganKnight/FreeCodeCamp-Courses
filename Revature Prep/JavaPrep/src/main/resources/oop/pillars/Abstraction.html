@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | OOP Abstraction</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Abstraction</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Abstraction</span>
+
+    <p><strong>Abstraction </strong>is a process of hiding the implementation details and showing only functionality to
+        the user.</p>
+    <p>Another way, it shows only essential things to the user and hides the internal details, for example, sending SMS
+        where you type the text and send the message. You don't know the internal processing about the message
+        delivery.</p>
+    <p>Abstraction lets you focus on what the object does instead of how it does it.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Generalization</span>
+
+    <p><strong>Generalization </strong>is the process of extracting shared characteristics from two or more classes and
+        combining them into a generalized superclass. Shared characteristics can be attributed, association, or methods.
+    </p>
+
+    <p>Eg: The classes <strong>Piece of Luggage</strong> and <strong>Piece of Cargo</strong> partially share the same
+        attributes. From a domain perspective, the two classes are also very similar. During generalization, the shared
+        characteristics are combined and used to create a new superclass <strong>Freight. Piece of Luggage</strong> and
+        <strong>Piece of Cargo</strong> become subclasses of the class <strong>Freight.</strong> Therefore, the
+        properties that are common to the classes <strong>Piece of Luggage</strong> and <strong>Piece of Cargo</strong>
+        are placed in the superclass <strong>Freight</strong> - Identification, Weight, and ID-Number are those
+        properties.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Specialization</span>
+
+    <p><strong>Specialization</strong> means creating new subclasses from an existing class. If it turns out that
+        certain attributes, associations, or methods only apply to some objects of the class, a subclass can be
+        created.</p>
+
+    <p>In the previous example of <strong>Generalization,</strong> we saw that the classes <strong>Piece of
+        Luggage</strong> and <strong>Piece of Cargo</strong> shred similar properties that were placed in a superclass
+        <strong>Freight.</strong> When it comes to <strong>Specialization,</strong> if there is a property that is only
+        applicable to a specific subclass, such as <strong>Degree of Hazardousness,</strong> that property is placed in
+        the class <strong>Piece of Cargo</strong> where-in this class also has all the properties of the
+        <strong>Freight</strong> class with the concept of <strong>Generalization.</strong></p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Ways to Achieve Abstraction?</span>
+
+    <p>There are two ways to achieve abstraction in Java</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Abstract Class (0 to 100%)</li>
+            <li><a class="color" href="/java/Interface.html>">Interface</a></li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Abstract Class</span>
+
+    <p>A class which is declared as abstract is known as an <strong>abstract class.</strong> It can have abstract and
+        non-abstract methods. It needs to be extended and its method implemented. It cannot be instantiated.</p>
+
+    <span class="fw-semibold" style="font-size: 13pt">Some points to remember:</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>An abstract class must be declared with an abstract keyword</li>
+            <li>It can have abstract and non-abstract methods</li>
+            <li>It cannot be initialized</li>
+            <li>It can have constructors and static methods also</li>
+            <li>It can have final methods which will force the subclass not to change the body of the method</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Abstract Method</span>
+
+    <p>A method which is declared abstract and does not have implementation is known as an abstract method</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="abstractMethod"
+             data-src="/code/java/oop/pillars/abstraction/AbstractMethod.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example of Abstract Class with an Abstract Method</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="abstractClass"
+             data-src="/code/java/oop/pillars/abstraction/AbstractClass.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Sample Exercise</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>To create an abstract class called <strong>Bank</strong></li>
+            <li>To create an abstract method called <strong><code>getRateOfInterest()</code></strong></li>
+            <li>To create two subclasses called <strong>SBI - 7%</strong> and <strong>PNB - 5%</strong> as two banks
+                that extend the abstract class <strong>Bank</strong></li>
+            <li>To implement different functionalities for the <strong><code>getRateOfInterest()</code></strong> method
+                in the SBI and PNB classes through the concept of method overriding and print out the interest rate
+                inside the <strong><code>main()</code></strong> method created separately in a test class called
+                <strong>TestBank</strong>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
