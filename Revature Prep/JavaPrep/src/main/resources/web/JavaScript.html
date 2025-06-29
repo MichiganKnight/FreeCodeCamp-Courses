@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Web Development - JavaScript</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">JavaScript</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">JavaScript?</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>JavaScript is the <strong>Programming Language</strong> for the web</li>
+            <li>JavaScript can update and change both <strong>HTML</strong> and <strong>CSS</strong></li>
+            <li>JavaScript can <strong>calculate, manipulate, and validate</strong> data</li>
+        </ul>
+    </div>
+
+    <span class="fw-semibold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="javaScriptSyntax"
+             data-src="/code/web/javascript/JavaScriptSyntax.js"></div>
+    </div>
+    <p><strong>Strings</strong> are text, written within double or single quotes:</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="javaScriptStrings"
+             data-src="/code/web/javascript/JavaScriptStrings.js"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">JavaScript Variables</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>In a programming language, <strong>variables</strong> are used to <strong>store</strong> data values
+            </li>
+            <li>JavaScript uses the <strong>var</strong> keyword to <strong>declare</strong> variables</li>
+            <li>An <strong>equal sign</strong> is used to <strong>assign values</strong> to variables</li>
+        </ul>
+    </div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="javaScriptVariables"
+             data-src="/code/web/javascript/JavaScriptVariables.js"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">JavaScript Operators</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>The '==' operator tests for abstract equality i.e., it <strong>does</strong> the necessary type
+                conversions before doing the equality comparison
+            </li>
+            <li>The '===' operator tests for strict equality i.e., it will <strong>not</strong> do the type conversion
+                hence if the two values are not of the same type, when compared, it will return false
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleComparison"
+             data-src="/code/web/javascript/ExampleComparison.html"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Exercise</span>
+    <p>Write a simple JavaScript program that on button click displays the current timestamp on the screen.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="javaScriptExercise"
+             data-src="/code/web/javascript/JavaScriptExercise.html"></div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
