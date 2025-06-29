@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | HTML</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">HTML</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">HTML?</span>
+
+    <p>HTML is the standard markup language for creating Web pages.</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>HTML stands for Hyper Text Markup Language</li>
+            <li>HTML describes the structure of Web pages using markup</li>
+            <li>HTML elements are the building blocks of HTML pages</li>
+            <li>HTML elements are represented by tags</li>
+            <li>HTML tags label pieces of content such as "heading", "paragraph", "table", and so on</li>
+            <li>Browsers do not display the HTML tags, but use them to render the content of the page</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Simple HTML Document</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="whileSyntax"
+             data-src="/code/web/html/SimpleDocument.html"></div>
+    </div>
+    <span class="fw-bold" style="font-size: 13pt">Explanation</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>The <code>&lt;!DOCTYPE html&gt;</code> declaration defines this document to be HTML5</li>
+            <li>The <code>&lt;html&gt;</code> element is the root element of an HTML page</li>
+            <li>The <code>&lt;head&gt;</code> element contains meta information about the document</li>
+            <li>The <code>&lt;title&gt;</code> element specifies a title for the document</li>
+            <li>The <code>&lt;body&gt;</code> element contains the visible page content</li>
+            <li>The <code>&lt;h1&gt;</code> element defines a large heading</li>
+            <li>The <code>&lt;p&gt;</code> element defines a paragraph</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">HTML Links - Hyperlinks</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>HTML links are hyperlinks</li>
+            <li>You can click on a link and jump to another document</li>
+            <li>When you move the mouse over a link, the mouse arrow will turn into a little hand</li>
+        </ul>
+    </div>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="hyperlinkSyntax"
+             data-src="/code/web/html/HyperlinkSyntax.html"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleHyperlink"
+             data-src="/code/web/html/ExampleHyperlink.html"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">HTML Images</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>In HTML, images are defined with the <code>&lt;img&gt;</code> tag</li>
+            <li>The <code>&lt;img&gt;</code> tag is empty, it contains attributes only, and does not have a closing tag
+            </li>
+            <li>The <code>src</code> attribute specifies the URL (web address) of the image</li>
+        </ul>
+    </div>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>A <strong>for</strong> loop is a repetition control structure that allows you to efficiently write a
+                loop that needs to be executed a specific number of times
+            </li>
+            <li>A <strong>for</strong> loop is useful when you know how many times a task is to be repeated</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleImage"
+             data-src="/code/web/html/ExampleImage.html"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">HTML Lists</span>
+
+    <p>There are two types of lists in HTML:</p>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Unordered List</li>
+            <li>Ordered List</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Unordered Lists</span>
+    <p>An unordered list starts with <code>&lt;ul&gt;</code> tag. Each list item starts with the
+        <code>&lt;li&gt;</code> tag.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="unorderedList"
+             data-src="/code/web/html/Unordered.html"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Unordered Lists</span>
+    <p>An ordered list starts with <code>&lt;ol&gt;</code> tag. Each list item starts with the
+        <code>&lt;li&gt;</code> tag.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="orderedList"
+             data-src="/code/web/html/Ordered.html"></div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
