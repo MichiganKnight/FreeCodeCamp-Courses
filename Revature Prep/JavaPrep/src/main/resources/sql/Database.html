@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Database / SQL</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Database / SQL</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Database</span>
+    <p>A database is a collection of information that is organized so that it can be easily accessed, managed, and
+        updated.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Relational Database</span>
+    <p>A relational database is a type of database. It uses a structure that allows us to identify and access data in
+        relation to another piece of data in the database. Often, data in a relational database is organized into
+        tables.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Tables: Rows and Columns</span>
+    <p>Tables can have hundreds, thousands, sometimes even millions of rows of data. These rows are often called
+        <strong>records.</strong></p>
+    <p>Tables can also have many columns of data. Columns are labeled with a descriptive name and have a specific data
+        type.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Relational Database Management System</span>
+    <p>A relational database management system (RDBMS) is a program that allows you to create, update, and administer a
+        relational database. Most relational database management systems use the SQL language to access the
+        database.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">SQL - Structured Query Language</span>
+    <p>SQL (<strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage) is a programming language
+        used to communicate with data stored in a relational database management system. SQL syntax is similar to the
+        English language, which makes it relatively easy to write, read, and interpret.</p>
+    <p>Many RDBMSs use SQL (and variations of SQL) to access the data in tables. For example, SQLite is a relational
+        database management system. SQLite contains a minimal set of SQL commands (which are the across all
+        RDBMSs).Other RDBMSs may use other variants.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Why Do We Need SQL?</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Allows users to access data in the relational database systems</li>
+            <li>Allows users to describe the data</li>
+            <li>Allows users to define the data in a database and manipulate that data</li>
+            <li>Allows embedding within other languages using SQL modules, libraries, and pre-compilers</li>
+            <li>Allows users to create and drop databases and tables</li>
+            <li>Allows users to create view, stored procedures, functions in a database</li>
+            <li>Allows users to set permissions on tables, procedures, and views</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Primary Key</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>A primary key is a field in a table that uniquely identifies each row / record in a database table.
+                Primary keys must contain unique values. A primary key column cannot have NULL values.
+            </li>
+            <li>A table can have only one primary key, which may consist of single or multiple fields. When multiple
+                fields are used as a primary key, they are called a composite key.
+            </li>
+            <li>If a table has a primary hey defined on any field(s), then you cannot have two records having the same
+                value of that field(s).
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Create Primary Key</span>
+    <p>Generally, the primary key is created while creating the database and the table. The primary key can also be
+        created after the creation of the table, as shown below.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="primaryKey"
+             data-src="/code/sql/PrimaryKey.sql"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Foreign Key</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>A foreign key is a key used to link two tables together. This is sometimes also called as a referencing
+                key
+            </li>
+            <li>A foreign key is a column or a combination of columns whose values match a primary key in a different
+                table
+            </li>
+            <li><strong>The relationship between two tables matches the primary key in one of the tables with a foreign
+                key in the second table</strong></li>
+        </ul>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <p>Consider the following two tables, <strong>"Customers"</strong> and <strong>"Orders"</strong></p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleForeignKey"
+             data-src="/code/sql/ExampleForeignKey.sql"></div>
+    </div>
+    <p>Once the tables have been created, the foreign key can be created using the following syntax.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="alterForeignKey"
+             data-src="/code/sql/AlterForeignKey.sql"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">SQL Statements</span>
+    <p>DDL - Data Definition Language - CREATE, ALTER, DROP</p>
+    <p>DML - Data Manipulation Language - SELECT, INSERT, UPDATE, DELETE</p>
+    <p>DCL - Data Control Language - GRANT, REVOKE</p>
+    <p>TCL - Transaction Control Language - SAVEPOINT, ROLLBACK, COMMIT</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">SELECT Query</span>
+    <p>The SQL <strong>SELECT</strong> statement is used to fetch the data from a database table that which returns this
+        data in the form of a result table. These result tables are called result-sets.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="selectFrom"
+             data-src="/code/sql/SelectFrom.sql"></div>
+    </div>
+    <p>If you want to fetch all the fields available in the field, then you can use the following syntax.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="selectAll"
+             data-src="/code/sql/SelectAll.sql"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <p>Consider the following <strong>"Customers"</strong> table.</p>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">AGE</th>
+            <th scope="col">ADDRESS</th>
+            <th scope="col">SALARY</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Ramesh</td>
+            <td>32</td>
+            <td>Ahmedabad</td>
+            <td>2000.00</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Khilan</td>
+            <td>25</td>
+            <td>Delhi</td>
+            <td>1500.00</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Kaushik</td>
+            <td>23</td>
+            <td>Kota</td>
+            <td>2000.00</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Chaitali</td>
+            <td>25</td>
+            <td>Mumbai</td>
+            <td>6500.00</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Hardik</td>
+            <td>27</td>
+            <td>Bhopal</td>
+            <td>8500.00</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Komal</td>
+            <td>22</td>
+            <td>MP</td>
+            <td>4500.00</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Muffy</td>
+            <td>25</td>
+            <td>Indore</td>
+            <td>10000.00</td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleSelect"
+             data-src="/code/sql/ExampleSelect.sql"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">SQL Where</span>
+    <p>The SQL <strong>WHERE</strong> clause is used to specify a condition while fetching the data from a single table
+        or by joining with multiple tables. If the given condition is satisfied, then only it returns a specific value
+        from the table. You should use the WHERE clause to filter records and fetching only the necessary records.</p>
+    <p>The WHERE clause is not only used in the SELECT statement, but it is also used in the UPDATE, DELETE
+        statement.</p>
+    <span class="fw-semibold" style="font-size: 13pt">Syntax</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="whereSyntax"
+             data-src="/code/sql/WhereSyntax.sql"></div>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <p>Using the same <strong>"Customers"</strong> table as before, and we would like to retrieve the names of all
+        customers whose age is greater than 20, the following query can be used.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleWhere"
+             data-src="/code/sql/ExampleWhere.sql"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">INSERT Query</span>
+    <p>The SQL <strong>INSERT INTO</strong> statement is used to add new rows of data to a table in the database.</p>
+    <span class="fw-semibold" style="font-size: 13pt">Syntax</span>
+    <p>There are two basic syntaxes of the INSERT INTO Statement which are shown below.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="insertIntoSyntax"
+             data-src="/code/sql/InsertIntoSyntax.sql"></div>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleInsertInto"
+             data-src="/code/sql/ExampleInsertInto.sql"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">SQL Joins</span>
+    <p>The SQL <strong>joins</strong> clause is used to combine records from two or more tables in a database. A JOIN is
+        a means for combining fields from two tables by using values common to each.</p>
+    <span class="color fw-semibold" style="font-size: 15pt">Example</span>
+    <p>Consider the following tables: <strong>Customers</strong> and <strong>Orders</strong></p>
+    <span class="fw-bold">CUSTOMERS Table</span>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">AGE</th>
+            <th scope="col">ADDRESS</th>
+            <th scope="col">SALARY</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Ramesh</td>
+            <td>32</td>
+            <td>Ahmedabad</td>
+            <td>2000.00</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Khilan</td>
+            <td>25</td>
+            <td>Delhi</td>
+            <td>1500.00</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Kaushik</td>
+            <td>23</td>
+            <td>Kota</td>
+            <td>2000.00</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Chaitali</td>
+            <td>25</td>
+            <td>Mumbai</td>
+            <td>6500.00</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Hardik</td>
+            <td>27</td>
+            <td>Bhopal</td>
+            <td>8500.00</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Komal</td>
+            <td>22</td>
+            <td>MP</td>
+            <td>4500.00</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Muffy</td>
+            <td>25</td>
+            <td>Indore</td>
+            <td>10000.00</td>
+        </tr>
+        </tbody>
+    </table>
+    <span class="fw-bold">ORDERS Table</span>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col">OID</th>
+            <th scope="col">DATE</th>
+            <th scope="col">CUSTOMER_ID</th>
+            <th scope="col">AMOUNT</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>102</td>
+            <td>2009-10-08 00:00:00</td>
+            <td>3</td>
+            <td>3000</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>2009-10-08 00:00:00</td>
+            <td>3</td>
+            <td>1500</td>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>2009-11-20 00:00:00</td>
+            <td>2</td>
+            <td>1560</td>
+        </tr>
+        <tr>
+            <td>103</td>
+            <td>2008-05-20 00:00:00</td>
+            <td>4</td>
+            <td>2060</td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Let us join these two tables with a SELECT query:</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleJoin"
+             data-src="/code/sql/ExampleJoin.sql"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Different Types of Joins</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>INNER JOIN</li>
+            <li>LEFT JOIN</li>
+            <li>RIGHT JOIN</li>
+            <li>FULL JOIN</li>
+        </ul>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>

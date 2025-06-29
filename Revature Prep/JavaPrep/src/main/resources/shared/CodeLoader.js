@@ -72,7 +72,7 @@ function renderCodeBlocks() {
         const src = block.dataset.src;
 
         block.innerHTML = `
-            <div class="position-relative" style="width: 100%; max-width: 800px; min-width: 650px">
+            <div class="position-relative" style="width: 100%; max-width: 1000px; min-width: 800px">
                 <button class="copy-btn btn btn-sm btn-secondary position-absolute top-0 end-0 m-2 z-1" style="transform: translateX(0.5rem)" title="Copy Code" data-target="${id}">📋 Copy</button>
                 <pre class="line-numbers"><code id="${id}" class="language-java"></code></pre>
             </div>`;
