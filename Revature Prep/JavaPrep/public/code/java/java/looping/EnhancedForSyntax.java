@@ -1,0 +1,3 @@
+for (Delcaration : Expression) {
+    // Statements
+}

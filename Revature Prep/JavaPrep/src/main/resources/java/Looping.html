@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Java Looping</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Looping Constructs</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Loops in Java</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>There may be a situation when you need to execute a block of code several times. In general, statements
+                are executed sequentially: The first statement in a function is executed first, followed by the second,
+                and so on.
+            </li>
+            <li>Programming languages provide various control structures that allow for more complicated execution
+                paths.
+            </li>
+            <li>A <strong>loop</strong> statement allows us to execute a statement or group of statements multiple
+                times,
+                and the following is the general form of a loop statement in most of the programming languages.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Types of Loops</span>
+
+    <p>The Java programming language provides the following types of loops to handle looping requirements:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>While Loop</li>
+            <li>For Loop</li>
+            <li>Do...While Loop</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">While Loop</span>
+
+    <p>A <strong>while</strong> loop statement in the Java programming language repeatedly executes a target statement
+        as
+        long as a given condition is true.</p>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="whileSyntax"
+             data-src="/code/java/java/looping/whileSyntax.java"></div>
+    </div>
+    <p>Here, <strong>statement(s)</strong> may be a single statement or a block of statements. The
+        <strong>condition</strong> may be an expression, and true is any non zero value.</p>
+    <p>When executing, if the Boolean_Expression result is true, then the actions inside the loop will be executed. This
+        will continue as long as the expression result is true.</p>
+    <p>When the condition becomes false, program control passes the line immediately following the loop.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleWhile"
+             data-src="/code/java/java/looping/ExampleWhile.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">For Loop</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>A <strong>for</strong> loop is a repetition control structure that allows you to efficiently write a
+                loop that needs to be executed a specific number of times
+            </li>
+            <li>A <strong>for</strong> loop is useful when you know how many times a task is to be repeated</li>
+        </ul>
+    </div>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="forSyntax"
+             data-src="/code/java/java/looping/ForSyntax.java"></div>
+    </div>
+    <p>This is how it works:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>The <strong>initialization</strong> step is executed first, and only once. This step allows you to
+                declare and initialize any loop control variables, and this steps ends with a semicolon (;).
+            </li>
+            <li>Next, the <strong>Boolean expression</strong> is evaluated. If it is true, the body of the loop is
+                executed. If it is false, the body of the loop will not be executed nand control jumps to the next
+                statement past the for loop.
+            </li>
+            <li>After the <strong>body</strong> of the for loop gets executed, the control jumps back up to the update
+                statement. This statement allows you to update any loop control variables. This statement can be left
+                blank with a semicolon at the end.
+            </li>
+            <li>The Boolean expression is now evaluated again. If it is true, the loop executes and the process repeats
+                (body of loop, then update step, then Boolean expression). After the Boolean expression is false, the
+                for loop terminates.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleFor"
+             data-src="/code/java/java/looping/ExampleFor.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Do...While Loop</span>
+
+    <p>A <strong>do...while</strong> loop is similar to a while loop, except that a do...while loop is guaranteed to
+        execute at least one time.</p>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="doWhileSyntax"
+             data-src="/code/java/java/looping/DoWhileSyntax.java"></div>
+    </div>
+    <p>Notice that the Boolean expression appears at the end of the loop, so the statements in the loop execute once
+        before the Boolean is tested.</p>
+    <p>If the Boolean expression is true, the control jumps back up to the do statement, and the statements in the loop
+        execute again. This process repeats until the Boolean expression is false.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleDoWhile"
+             data-src="/code/java/java/looping/ExampleDoWhile.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Enhanced For Loop</span>
+
+    <p>As of Java 5, the enhanced for loop was introduced. This is mainly used to traverse collections of elements
+        including arrays.</p>
+
+    <span class="fw-bold" style="font-size: 13pt">Syntax:</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="enhancedForSyntax"
+             data-src="/code/java/java/looping/EnhancedForSyntax.java"></div>
+    </div>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li><strong>Declaration - </strong>The newly declared block variable is of a type compatible with the
+                elements of the array you are accessing. The variable will be available within the for block, and its
+                value would be the same as the current array element.
+            </li>
+            <li><strong>Expression - </strong>This evaluates to the array you need to loop through. The expression can
+                be an array variable or method call that returns an array.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleEnhancedFor"
+             data-src="/code/java/java/looping/ExampleEnhancedFor.java"></div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
