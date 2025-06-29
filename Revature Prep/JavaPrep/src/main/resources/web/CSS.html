@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Web Development - CSS</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">CSS</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">CSS?</span>
+
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>CSS stands for Cascading Style Sheets</li>
+            <li>CSS describes how HTML elements are to be displayed on screen, paper, or in other media</li>
+            <li>CSS saves a lot of work. It can control the layout of multiple web pages all at once</li>
+            <li>External stylesheets are stored in CSS files</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleCSS"
+             data-src="/code/web/css/ExampleCSS.css"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Styling HTML with CSS</span>
+    <p>CSS can be added to HTML elements in three ways:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li><strong>Inline - </strong>By Using the style attribute in HTML elements</li>
+            <li><strong>Internal - </strong>By using <code>&lt;style&gt;</code> element in <code>&lt;head&gt;</code>
+                section
+            </li>
+            <li><strong>External - </strong>By using an external CSS file</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Inline CSS</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>An inline CSS is used to apply a unique style to a single HTML element</li>
+            <li>An inline CSS uses the style attribute of an HTML element</li>
+        </ul>
+    </div>
+    <p>The following example sets the text color of the <code>&lt;h1&gt;</code> element to blue:</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="inlineCSS"
+             data-src="/code/web/css/InlineCSS.html"></div>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">Internal CSS</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>An internal CSS is used to define a style for a single HTML page</li>
+        </ul>
+    </div>
+    <p>An internal CSS is defined in the <code>&lt;head&gt;</code> section of an HTML page, within a
+        <code>&lt;style&gt;</code> element:</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="internalCSS"
+             data-src="/code/web/css/InternalCSS.html"></div>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">External CSS</span>
+    <p>An external style sheet is used to define the style for many HTML pages.</p>
+    <p><strong>With an external style sheet, you can change the look of an entire website by changing one
+        file!</strong></p>
+    <p>To use an external style sheet, add a link to it in the <code>&lt;head&gt;</code> section of the HTML page:</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="externalCSS"
+             data-src="/code/web/css/ExternalCSS.html"></div>
+    </div>
+    <span class="fw-semibold" style="font-size: 13pt">Styles.css</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="stylesCSS"
+             data-src="/code/web/css/Styles.css"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">CSS Selectors</span>
+    <p>In CSS, selectors are patterns used to select the element(s) you want to style.</p>
+    <p>Some of the CSS selectors are described in the following table.</p>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Selector</th>
+            <th scope="col">Example</th>
+            <th scope="col">Example Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><i>.class</i></td>
+            <td>.intro</td>
+            <td>Selects all elements with class="intro"</td>
+        </tr>
+        <tr>
+            <td><i>#id</i></td>
+            <td>#firstName</td>
+            <td>Selects the element with id="firstName"</td>
+        </tr>
+        <tr>
+            <td><i>*</i></td>
+            <td>*</td>
+            <td>Selects all elements</td>
+        </tr>
+        <tr>
+            <td><i>element</i></td>
+            <td>p</td>
+            <td>Selects all <code>&lt;p&gt;</code> elements</td>
+        </tr>
+        <tr>
+            <td><i>element, element</i></td>
+            <td>div, p</td>
+            <td>Selects all <code>&lt;div&gt;</code> elements and all <code>&lt;p&gt;</code> elements</td>
+        </tr>
+        <tr>
+            <td><i>element element</i></td>
+            <td>div p</td>
+            <td>Selects all <code>&lt;p&gt;</code> elements inside <code>&lt;div&gt;</code> elements</td>
+        </tr>
+        <tr>
+            <td><i>element > element</i></td>
+            <td>div > p</td>
+            <td>Selects all <code>&lt;p&gt;</code> elements where the parent is a <code>&lt;div&gt;</code> element</td>
+        </tr>
+        <tr>
+            <td><i>element + element</i></td>
+            <td>div + p</td>
+            <td>Selects all <code>&lt;p&gt;</code> elements that are placed immediately after <code>&lt;div&gt;</code>
+                elements
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
