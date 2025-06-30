@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Java Packages</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Packages</span>
+
+    <br>
+
+    <span class="color fw-bold" style="font-size: 15pt">Package?</span>
+    <p>A <strong>Java package</strong> is a group of similar types of classes, interfaces, and sub-packages.</p>
+    <p>Package in Java can be categorized in two forms, built-in package and user-defined package.</p>
+    <p>There are many built-in packages in Java such as java, lang, awt, javax, swing, net, io, util, sql, etc...</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Advantages of Packages</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Java package is used to categorize the classes and interfaces so that they can be easily maintained</li>
+            <li>Java package provides access protection</li>
+            <li>Java package removes naming collision</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="examplePackage"
+             data-src="/code/java/java/packages/ExamplePackage.java"></div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
