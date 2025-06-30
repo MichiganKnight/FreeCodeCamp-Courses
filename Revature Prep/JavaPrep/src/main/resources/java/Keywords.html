@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Java Keywords</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Usage of Keywords</span>
+
+    <br>
+
+    <span class="color fw-bold" style="font-size: 15pt">Usage of "this" Keyword</span>
+    <p>There can be a lot of usage of <strong>Java this keyword.</strong> In Java, this is a <strong>reference
+        variable</strong> that refers to the current object.</p>
+    <p>Here are given the six usages of Java <strong>this</strong>keyword.</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>this can be used to refer to the current class instance variable</li>
+            <li>this can be used to invoke the current class method (implicitly)</li>
+            <li>this() can be used to invoke the current class constructor</li>
+            <li>this can be passed as an argument in the method call</li>
+            <li>this can be passed as an argument in the constructor call</li>
+            <li>this can be used to return the current class instance from the method</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">"this": to refer current class instance variable</span>
+    <p>The "this" keyword can be used to refer current class instance variable. If there is ambiguity between the
+        instance variables and parameters, this keyword resolves the problem of ambiguity.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="classInstance"
+             data-src="/code/java/java/keywords/ClassInstance.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">"this": to invoke current class method</span>
+    <p>You may invoke the method of the current class by using the "this" keyword. If you don't use the "this" keyword,
+        the compiler automatically adds "this" keyword while invoking the method.</p>
+    <span class="color fw-bold" style="font-size: 13pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="classMethod"
+             data-src="/code/java/java/keywords/ClassMethod.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">"this": to invoke current class constructor</span>
+    <p>The this() constructor call can be used to invoke the current class constructor. It is used to reuse the
+        constructor. In other words, it is used for constructor chaining.</p>
+    <span class="color fw-bold" style="font-size: 13pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="classConstructor"
+             data-src="/code/java/java/keywords/ClassConstructor.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Usage of the "new" Keyword</span>
+    <p>When you are declaring a class in Java, you are just creating a new data type. A class provides the blueprint for
+        objects. You can create an object from a class.</p>
+    <p><strong>Declaration: </strong>First, you must declare a variable of the class type. This variable does not define
+        an object.</p>
+    <p><strong>Instantiation and Initialization: </strong>Second, you must acquire an actual, physical copy of the
+        object and assign it to that variable. You can do this using the <strong><i>new</i></strong>operator. The
+        <strong><i>new</i></strong> operator instantiates a class by dynamically allocating memory for a new object and
+        returning a reference to that memory. This reference is then stored in the variable. Thus, in Java, <strong>all
+            class objects must be dynamically allocated.</strong></p>
+    <p>The <strong><i>new</i></strong> operator is also followed by a call to a class constructor, which initializes the
+        new object. A constructor defines what occurs when an object of a class is created. Constructors are an
+        important part of all classes and have many significant attributes.</p>
+    <span class="color fw-bold" style="font-size: 13pt">Example</span>
+    <p>Let us say that we have a class called <strong>Student</strong>, and we need to instantiate this class. The
+        following syntax does that:</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="newKeyword"
+             data-src="/code/java/java/keywords/NewKeyword.java"></div>
+    </div>
+
+    <div class="color fw-bold" style="font-size: 15pt">Usage of "super" Keyword</div>
+    <p>The <strong>super</strong> keyword in Java is a reference variable which is used to refer to an immediate parent
+        class object.</p>
+    <p>Whenever you create the instance of a subclass, an instance of the parent class is created implicitly which is
+        referred
+        by super reference variable.</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>super can be used to refer immediate parent class instance variable</li>
+            <li>super can be used to invoke an immediate parent class method</li>
+            <li>super() can be used to invoke the immediate parent class constructor</li>
+        </ul>
+    </div>
+    <div class="color fw-bold" style="font-size: 15pt">Using "super" to refer parent class instance variable</div>
+    <p>We can use super keyword to access the data member or field of the parent class. It is used if the parent class
+        and child class have the same fields.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="superInstance"
+             data-src="/code/java/java/keywords/SuperInstance.java"></div>
+    </div>
+    <div class="color fw-bold" style="font-size: 15pt">Using "super" to invoke parent class method</div>
+    <p>The super keyword can also be used to invoke a parent class method. It should be used if a subclass contains the
+        same
+        method as the parent class. In other words, it is used if the method is overridden.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="superMethod"
+             data-src="/code/java/java/keywords/SuperMethod.java"></div>
+    </div>
+    <div class="color fw-bold" style="font-size: 15pt">Using "super" to invoke parent class constructor</div>
+    <p>The super keyword can also be used to invoke the parent class constructor.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="superConstructor"
+             data-src="/code/java/java/keywords/SuperConstructor.java"></div>
+    </div>
+    <p>Note: While using <strong>"super"</strong> keyword to access the parent class constructor, remember that it has
+        to be defined in the first line within the subclass constructor.</p>
+
+    <div class="color fw-bold" style="font-size: 15pt">Static Keyword</div>
+    <p>The <strong>static keyword</strong> in Java is used for memory management mainly. We can apply Java static
+        keyword with variables, methods, blocks, and nested class. The static keyword belongs to the class than an
+        instance of the class.</p>
+    <p>The static can be:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Variable (Class Variable)</li>
+            <li>Method (Class Method)</li>
+            <li>Block</li>
+            <li>Nested Class</li>
+        </ul>
+    </div>
+    <div class="color fw-bold" style="font-size: 15pt">Static Variable</div>
+    <p>If you declare any variable as static, it is known as a static variable.</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>The static variable can be used to refer to the common property of all objects (which is not unique for
+                each object, for example, the company name of employees, college name of students, etc...
+            </li>
+            <li>The static variable gets memory only once in the class area at the time of class loading</li>
+        </ul>
+    </div>
+    <div class="color fw-bold" style="font-size: 15pt">Advantages</div>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>It makes your program <strong>memory efficient</strong></li>
+        </ul>
+    </div>
+    <div class="color fw-bold" style="font-size: 15pt">Example</div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="staticExample"
+             data-src="/code/java/java/keywords/StaticExample.java"></div>
+    </div>
+
+    <div class="color fw-bold" style="font-size: 15pt">Final Keyword</div>
+    <p>The <strong>final keyword</strong> in Java is used to restrict the user. The Java final keyword can be used in
+        many contexts. Final can be:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Variable</li>
+            <li>Method</li>
+            <li>Class</li>
+        </ul>
+    </div>
+    <p>The final keyword can be applied within the variables, a final constructor that has no value it is called blank
+        final variable or uninitialized final variable. It can be initialized in the constructor only. The blank final
+        variable can be static also, which will be initialized in the static block only.</p>
+    <div class="color fw-bold" style="font-size: 15pt">Example</div>
+    <div class="fw-semibold" style="font-size: 13pt">Final Variable:</div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="finalVariable"
+             data-src="/code/java/java/keywords/FinalVariable.java"></div>
+    </div>
+    <div class="fw-semibold" style="font-size: 13pt">Final Method:</div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="finalMethod"
+             data-src="/code/java/java/keywords/FinalMethod.java"></div>
+    </div>
+    <div class="fw-semibold" style="font-size: 13pt">Final Class:</div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="finalClass"
+             data-src="/code/java/java/keywords/FinalClass.java"></div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
