@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Java Exceptions</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Exceptions</span>
+
+    <br>
+
+    <span class="color fw-bold" style="font-size: 15pt">Exception?</span>
+    <p><strong>Exceptions</strong> are events that occur during the execution of programs that disrupt the normal flow
+        of instructions (e.g., divide by zero, array access out of bound, etc.).</p>
+    <p>In Java, an exception is an <strong>object</strong> that wraps an error event within a method and contains:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Information about the error including its type</li>
+            <li>The state of the program when the error occurred</li>
+            <li>Optionally, other custom information</li>
+        </ul>
+    </div>
+    <p>Categories of Exceptions:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>Checked Exceptions</li>
+            <li>Unchecked Exceptions</li>
+            <li>Errors</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Checked Exceptions</span>
+    <p>Checked exceptions are those that:</p>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>The compiler enforces that you handle them explicitly.</li>
+            <li>Methods that generate checked exceptions must declare that they throw them.</li>
+            <li>Methods that invoke other methods that throw checked exceptions must either handle them (they can be
+                reasonably expected to recover) or let them propagate by declaring that they <code>throw</code> them.
+            </li>
+        </ul>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <p>If you use a <strong>FileReader</strong> class in your program to read data from a file, if the file specified in
+        its constructor doesn't exist, then a <strong>FileNotFoundException</strong> occurs, and the compiler prompts
+        the programmer to handle the exception.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="fileReaderException"
+             data-src="/code/java/java/exceptions/FileReaderException.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Unchecked Exceptions</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li><strong>Errors</strong> and <strong>RuntimeException</strong> are <strong>unchecked</strong>—that is,
+                the compiler does not enforce (check) that you handle them explicitly
+            </li>
+            <li>Methods do not have to declare that they throw them (in the method signatures)</li>
+            <li>It is assumed that the application cannot do anything to recover from these exceptions (at runtime)</li>
+        </ul>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <p>If you have declared an array of size 5 in your program and trying to call the 6th element of the array, then an
+        <strong>ArrayIndexOutOfBoundsException</strong> occurs.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="arrayException"
+             data-src="/code/java/java/exceptions/ArrayException.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Errors</span>
+    <p>These are not exceptions at all, but problems that arise beyond the control of the user or the programmer. Errors
+        are typically ignored in your code because you can rarely do anything about an error. For example, if a stack
+        overflow occurs, an error will arise. They are also ignored at the time of compilation.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Exception Hierarchy</span>
+    <p>All exception classes are subtypes of the java.lang.Exception class. The exception class is a subclass of the
+        Throwable class. Other than the exception class, there is another subclass called Error that is derived from the
+        Throwable class.</p>
+
+    <span class="color fw-bold" style="font-size: 15pt">Catching Exception</span>
+    <p>A method catches an exception using a combination of the <strong>try</strong> and <strong>catch</strong>
+        keywords. A try / catch is placed around the code that might generate an exception. Code within a try / catch
+        block is referred to as protected code, and the syntax for using try / catch looks like the following.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="tryCatchSyntax"
+             data-src="/code/java/java/exceptions/TryCatchSyntax.java"></div>
+    </div>
+    <p>The code which is prone to exceptions is placed in the try block. When an exception occurs, that exception
+        occurred is handled by the catch block associated with it. Every try block should be immediately followed either
+        by
+        a catch block or finally block.</p>
+    <p>A catch statement involves declaring the type of exception you are trying to catch. If an exception occurs in
+        protected code, the catch block (or blocks) that follows the try is checked. If the type of exception that
+        occurred is listed in a catch block, the exception is passed to the catch block much as an argument is passed
+        into a method parameter.</p>
+    <div class="color fw-bold" style="font-size: 15pt">Example</div>
+    <p>The following is an array declared with 2 elements. Then the code tries to access the 3rd element of the array
+        which throws an exception.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="tryCatchExample"
+             data-src="/code/java/java/exceptions/ExampleTryCatch.java"></div>
+    </div>
+
+    <div class="color fw-bold" style="font-size: 15pt">The Throw / Throws Keyword</div>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>If a method does not handle a checked exception, the method must declare it using the
+                <strong>throws</strong> keyword. The "throws" keyword appears at the end of a method's signature.
+            </li>
+            <li>One can throw an exception, either a newly instantiated one or an exception that you just caught, by
+                using the <strong>throw</strong> keyword.
+            </li>
+            <li>Understand the difference between throws and throw keywords, throws are used to postpone the handling of
+                a checked exception, and throw is used to invoke an exception explicitly.
+            </li>
+        </ul>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="throwExample"
+             data-src="/code/java/java/exceptions/ExampleThrow.java"></div>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Finally Block</span>
+    <p>The "finally" block follows a try block or a catch block. A "finally" block of code always executes, irrespective of the occurrence of an Exception.</p>
+    <p>Using a "finally" block allows you to run any cleanup-type statements that you want to execute, no matter what happens in the protected code.</p>
+    <p>A "finally" block appears at the end of the catch blocks and has the following syntax.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="finallySyntax"
+             data-src="/code/java/java/exceptions/FinallySyntax.java"></div>
+    </div>
+    <span class="color fw-bold" style="font-size: 15pt">Example</span>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="finallyExample"
+             data-src="/code/java/java/exceptions/ExampleFinally.java"></div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
