@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java Revature Prep | Java Interfaces</title>
+
+    <script>
+        fetch('/shared/Head.html')
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Interface</span>
+
+    <br>
+
+    <span class="color fw-bold" style="font-size: 15pt">Interface?</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>An interface is a reference type in Java. It is similar to class. It is a collection of abstract
+                methods. A class implements an interface, thereby inheriting the abstract methods of the interface.
+            </li>
+            <li>Along with abstract methods, an interface may also contain constants, default methods, static methods,
+                and nested types. Method bodies exist only for default methods and static methods.
+            </li>
+            <li>Writing an interface is similar to writing a class. But a class describes the attributes and behaviors
+                of an object. And an interface contains behaviors that a class implements.
+            </li>
+            <li>Unless the class that implements the interface is abstract, all the methods of the interface need to be
+                defined in the class.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Similarities Between an Interface and a Class</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>An interface can contain any number of methods.</li>
+            <li>An interface is written in a file with a <strong>.java</strong> extension, with the name of the
+                interface matching the name of the file.
+            </li>
+            <li>The byte code of an interface appears in a <strong>.class</strong> file.</li>
+            <li>Interfaces appear in packages, and their corresponding bytecode file must be in a directory structure
+                that matches the package name.
+            </li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Differences Between an Interface and a Class</span>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>You cannot instantiate an interface.</li>
+            <li>An interface does not contain any constructors.</li>
+            <li>All the methods in an interface are abstract.</li>
+            <li>An interface cannot contain instance fields. The only fields that can appear in an interface must be
+                declared both static and final.
+            </li>
+            <li>An interface is not extended by a class, it is implemented by a class.</li>
+            <li>An interface can extend multiple interfaces.</li>
+        </ul>
+    </div>
+
+    <span class="color fw-bold" style="font-size: 15pt">Declaring Interfaces</span>
+    <p>The <strong>interface</strong> keyword is used to declare an interface.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="declareInterface"
+             data-src="/code/java/java/interfaces/DeclareInterface.java"></div>
+    </div>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>An interface is implicitly abstract. You do not need to use the abstract keyword while declaring an
+                interface.
+            </li>
+            <li>Each method in an interface is also implicitly abstract, so the abstract keyword is not needed.</li>
+            <li>Methods in an interface are implicitly public.</li>
+        </ul>
+    </div>
+    <div class="color fw-bold" style="font-size: 15pt">Example</div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="exampleInterface"
+             data-src="/code/java/java/interfaces/ExampleInterface.java"></div>
+    </div>
+
+    <div class="color fw-bold" style="font-size: 15pt">Implementing Interfaces</div>
+    <p>When a class implements an interface, you can think of the class as signing a contract, agreeing to perform the
+        specific behaviors of the interface. If a class does not perform all the behaviors of the interface, the class
+        must declare itself as abstract.</p>
+    <p>A class uses the <strong>implements</strong> keyword to implement an interface. The "implements" keyword appears
+        in
+        the class declaration following the "extends" portion of the declaration.</p>
+    <div class="color fw-bold" style="font-size: 15pt">Example</div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="implementInterface"
+             data-src="/code/java/java/interfaces/ImplementInterface.java"></div>
+    </div>
+    <div class="fw-semibold" style="font-size: 13pt">Rules to Remember:</div>
+    <div class="mx-auto" style="max-width: 800px">
+        <ul class="text-start ps-4" style="list-style-type: square">
+            <li>A class can implement more than one interface at a time.</li>
+            <li>A class can extend only one class but implement many interfaces.</li>
+            <li>An interface can extend another interface in a similar way as a class can extend another class.</li>
+        </ul>
+    </div>
+
+    <div class="color fw-bold" style="font-size: 15pt">Extending Interfaces</div>
+    <p>An interface can extend another interface in the same way that a class can extend another class. The <strong>extends</strong>
+        keyword is used to extend an interface, and the child interface inherits the methods of the parent interface.
+    </p>
+    <div class="color fw-bold" style="font-size: 15pt">Example</div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="extendInterface"
+             data-src="/code/java/java/interfaces/ExtendInterface.java"></div>
+    </div>
+    <p>The Hockey interface has four methods, but it inherits two from Sports. Thus, a class that implements Hockey
+        needs to implement all six methods. Similarly, a class that implements Football needs to define the three
+        methods from Football and the two methods from Sports.</p>
+
+    <div class="color fw-bold" style="font-size: 15pt">Extending Multiple Interfaces</div>
+    <p>A Java class can only extend one parent class. Multiple inheritance is not allowed. Interfaces are not classes,
+        however, and an interface can extend more than one parent interface.</p>
+    <p>The "extends" keyword is used once, and the parent interfaces are declared in a comma-separated list.</p>
+    <div class="d-flex justify-content-center my-4">
+        <div class="code-block" data-id="extendMultipleInterfaces"
+             data-src="/code/java/java/interfaces/ExtendMultipleInterfaces.java"></div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+</body>
+</html>
