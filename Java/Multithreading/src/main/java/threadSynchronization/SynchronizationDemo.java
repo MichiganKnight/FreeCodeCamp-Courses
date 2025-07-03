@@ -1,18 +1,19 @@
 package main.java.threadSynchronization;
 
 public class SynchronizationDemo {
-    private static int counter = 0;
+    private static int counterOne = 0;
+    private static int counterTwo = 0;
 
     public static void main(String[] args) {
         Thread threadOne = new Thread(() -> {
             for (int i = 0; i < 10000; i++) {
-                increment();
+                incrementOne();
             }
         });
 
         Thread threadTwo = new Thread(() -> {
             for (int i = 0; i < 10000; i++) {
-                increment();
+                incrementTwo();
             }
         });
 
@@ -26,17 +27,15 @@ public class SynchronizationDemo {
             throw new RuntimeException(e);
         }
 
-        System.out.println("Counter: " + counter);
+        System.out.println("Counter: " + counterOne + " -- " + counterTwo);
     }
 
-    /**
-     * Increments the "counter" variable in a thread-safe manner.
-     * This method is synchronized to ensure that only one thread can access
-     * the "counter" increment operation at a time, preventing race conditions
-     * when multiple threads are incrementing the counter simultaneously.
-     */
-    private synchronized static void increment() {
-        counter++;
+    private synchronized static void incrementOne() {
+        counterOne++;
+    }
+
+    private synchronized static void incrementTwo() {
+        counterTwo++;
     }
 }
 
