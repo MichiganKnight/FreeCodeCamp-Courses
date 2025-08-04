@@ -11,7 +11,7 @@ import java.util.*;
 public class Main {
     // Declare Static Final Variables
     private static final String OUTPUT_DIR = "out/production/Multithreading";
-    private static final File SRC_DIR = new File("src/main/java");
+    private static final File SRC_DIR = new File("src");
 
     private static final Set<String> EXCLUDED_DIRS = Set.of(".idea", "out", "bin");
 
