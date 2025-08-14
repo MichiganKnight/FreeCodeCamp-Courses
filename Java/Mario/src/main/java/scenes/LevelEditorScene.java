@@ -110,8 +110,6 @@ public class LevelEditorScene extends Scene {
 
             if (i + 1 < sprites.size() && nextButtonX2 < windowX2) {
                 ImGui.sameLine();
-            } else {
-                ImGui.newLine();
             }
         }
 
