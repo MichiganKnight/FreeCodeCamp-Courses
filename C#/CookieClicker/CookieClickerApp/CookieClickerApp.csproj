@@ -86,7 +86,305 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Splash.css" />
+    <Content Include="CookieClicker\CookieClicker.aspx" />
     <Content Include="Default.aspx" />
+    <None Include="Images\alchemylab.png" />
+    <None Include="Images\alchemylabBackground.png" />
+    <None Include="Images\alteredGrandma.png" />
+    <None Include="Images\alternateGrandma.png" />
+    <None Include="Images\antiGrandma.png" />
+    <None Include="Images\antimattercondenser.png" />
+    <None Include="Images\antimattercondenserBackground.png" />
+    <None Include="Images\AQWorlds_CookieClicker_300x40.png" />
+    <None Include="Images\aqworldsbanner.jpg" />
+    <None Include="Images\ascendBox.png" />
+    <None Include="Images\ascendedBakingPod.png" />
+    <None Include="Images\ascendInfo.png" />
+    <None Include="Images\ascendSlot.png" />
+    <None Include="Images\ascendWisp.png" />
+    <None Include="Images\bank.png" />
+    <None Include="Images\bankBackground.png" />
+    <None Include="Images\bankGrandma.png" />
+    <None Include="Images\bgBlack.jpg" />
+    <None Include="Images\bgBlue.jpg" />
+    <None Include="Images\bgBW.jpg" />
+    <None Include="Images\bgCandy.jpg" />
+    <None Include="Images\bgChoco.jpg" />
+    <None Include="Images\bgChocoDark.jpg" />
+    <None Include="Images\bgCoarse.jpg" />
+    <None Include="Images\bgFoil.jpg" />
+    <None Include="Images\BGgarden.jpg" />
+    <None Include="Images\bgGold.jpg" />
+    <None Include="Images\BGgrimoire.jpg" />
+    <None Include="Images\BGmarket.jpg" />
+    <None Include="Images\bgMint.jpg" />
+    <None Include="Images\bgMoney.jpg" />
+    <None Include="Images\bgMoneyChart.jpg" />
+    <None Include="Images\bgPaint.jpg" />
+    <None Include="Images\BGpantheon.jpg" />
+    <None Include="Images\bgPink.jpg" />
+    <None Include="Images\bgPurple.jpg" />
+    <None Include="Images\bgRed.jpg" />
+    <None Include="Images\bgSilver.jpg" />
+    <None Include="Images\bgSky.jpg" />
+    <None Include="Images\bgSnowy.jpg" />
+    <None Include="Images\bgSpectrum.jpg" />
+    <None Include="Images\bgStars.jpg" />
+    <None Include="Images\bgWhite.jpg" />
+    <None Include="Images\bgYellowBlue.jpg" />
+    <None Include="Images\blackGradient.png" />
+    <None Include="Images\blackGradientLeft.png" />
+    <None Include="Images\blackGradientSmallTop.png" />
+    <None Include="Images\bracketPanelLeftS.png" />
+    <None Include="Images\bracketPanelRightS.png" />
+    <None Include="Images\brainyGrandma.png" />
+    <None Include="Images\brokenCookie.png" />
+    <None Include="Images\brokenCookieHalo.png" />
+    <None Include="Images\brownStripes.png" />
+    <None Include="Images\brownStripesLeftEdge.png" />
+    <None Include="Images\buildings.png" />
+    <None Include="Images\bunnies.png" />
+    <None Include="Images\bunnyGrandma.png" />
+    <None Include="Images\buttonTile.jpg" />
+    <None Include="Images\chancemaker.png" />
+    <None Include="Images\chancemakerBackground.png" />
+    <None Include="Images\cloneGrandma.png" />
+    <None Include="Images\contract.png" />
+    <None Include="Images\control.png" />
+    <None Include="Images\cookieShadow.png" />
+    <None Include="Images\cookieShower1.png" />
+    <None Include="Images\cookieShower2.png" />
+    <None Include="Images\cookieShower3.png" />
+    <None Include="Images\cortex.png" />
+    <None Include="Images\cortexBackground.png" />
+    <None Include="Images\cosmicGrandma.png" />
+    <None Include="Images\cursor.png" />
+    <None Include="Images\darkNoise.jpg" />
+    <None Include="Images\darkNoise.png" />
+    <None Include="Images\darkNoiseTopBar.jpg" />
+    <None Include="Images\dashnetLogo.png" />
+    <None Include="Images\discord.png" />
+    <None Include="Images\dragon.png" />
+    <None Include="Images\dragonBG.png" />
+    <None Include="Images\dragonFrame.png" />
+    <None Include="Images\dungeonDot.png" />
+    <None Include="Images\dungeonFactory.png" />
+    <None Include="Images\dungeonFoes.png" />
+    <None Include="Images\dungeonHeroes.png" />
+    <None Include="Images\dungeonIcons.png" />
+    <None Include="Images\dungeonItems.png" />
+    <None Include="Images\dungeonMapFactory.jpg" />
+    <None Include="Images\dungeonOverlay.png" />
+    <None Include="Images\dungeonPictos.png" />
+    <None Include="Images\dungeonTiles.png" />
+    <None Include="Images\easterEggs.png" />
+    <None Include="Images\elfGrandma.png" />
+    <None Include="Images\empty.png" />
+    <None Include="Images\emptyFrame.png" />
+    <None Include="Images\factory.png" />
+    <None Include="Images\factoryBackground.png" />
+    <None Include="Images\farm.png" />
+    <None Include="Images\farmBackground.png" />
+    <None Include="Images\farmerGrandma.png" />
+    <None Include="Images\featherLeft.png" />
+    <None Include="Images\featherRight.png" />
+    <None Include="Images\filler.png" />
+    <None Include="Images\fractalEngine.png" />
+    <None Include="Images\fractalEngineBackground.png" />
+    <None Include="Images\frameBorder.png" />
+    <None Include="Images\frostedReindeer.png" />
+    <None Include="Images\gardenPlants.png" />
+    <None Include="Images\gardenPlots.png" />
+    <None Include="Images\gardenTip.png" />
+    <None Include="Images\girlscoutChip.png" />
+    <None Include="Images\girlscoutCrumb.png" />
+    <None Include="Images\girlscoutDoe.png" />
+    <None Include="Images\girlscoutLucky.png" />
+    <None Include="Images\glint.jpg" />
+    <None Include="Images\glint.png" />
+    <None Include="Images\goldCookie.png" />
+    <None Include="Images\grandma.png" />
+    <None Include="Images\grandmaBackground.png" />
+    <None Include="Images\grandmas1.jpg" />
+    <None Include="Images\grandmas2.jpg" />
+    <None Include="Images\grandmas3.jpg" />
+    <None Include="Images\grandmasGrandma.png" />
+    <None Include="Images\hearts.png" />
+    <None Include="Images\heartStorm.png" />
+    <None Include="Images\heavenlyMoney.png" />
+    <None Include="Images\heavenRing1.jpg" />
+    <None Include="Images\heavenRing2.jpg" />
+    <None Include="Images\heraldFlag.png" />
+    <None Include="Images\icon.png" />
+    <None Include="Images\icons.png" />
+    <None Include="Images\idleverse.png" />
+    <None Include="Images\idleverseBackground.png" />
+    <None Include="Images\imperfectCookie.png" />
+    <None Include="Images\infoBG.png" />
+    <None Include="Images\infoBGfade.png" />
+    <None Include="Images\javascriptconsole.png" />
+    <None Include="Images\javascriptconsoleBackground.png" />
+    <None Include="Images\levelUp.png" />
+    <None Include="Images\linkDash.png" />
+    <None Include="Images\linkPulse.gif" />
+    <None Include="Images\linkPulse.png" />
+    <None Include="Images\lockOff.png" />
+    <None Include="Images\lockOn.png" />
+    <None Include="Images\luckyGrandma.png" />
+    <None Include="Images\mapBG.jpg" />
+    <None Include="Images\mapIcons.png" />
+    <None Include="Images\marshmallows.png" />
+    <None Include="Images\messageBG.png" />
+    <None Include="Images\metaGrandma.png" />
+    <None Include="Images\milkBanana.png" />
+    <None Include="Images\milkBlack.png" />
+    <None Include="Images\milkBlackcurrant.png" />
+    <None Include="Images\milkBlood.png" />
+    <None Include="Images\milkBlueberry.png" />
+    <None Include="Images\milkBlueFire.png" />
+    <None Include="Images\milkCaramel.png" />
+    <None Include="Images\milkCherry.png" />
+    <None Include="Images\milkChocolate.png" />
+    <None Include="Images\milkCoconut.png" />
+    <None Include="Images\milkCoffee.png" />
+    <None Include="Images\milkDragonfruit.png" />
+    <None Include="Images\milkFire.png" />
+    <None Include="Images\milkGold.png" />
+    <None Include="Images\milkGreenFire.png" />
+    <None Include="Images\milkHazelnut.png" />
+    <None Include="Images\milkHoney.png" />
+    <None Include="Images\milkLicorice.png" />
+    <None Include="Images\milkLime.png" />
+    <None Include="Images\milkMaple.png" />
+    <None Include="Images\milkMelon.png" />
+    <None Include="Images\milkMint.png" />
+    <None Include="Images\milkOrange.png" />
+    <None Include="Images\milkPeach.png" />
+    <None Include="Images\milkPlain.png" />
+    <None Include="Images\milkRaspberry.png" />
+    <None Include="Images\milkRose.png" />
+    <None Include="Images\milkSoy.png" />
+    <None Include="Images\milkSpiced.png" />
+    <None Include="Images\milkStars.png" />
+    <None Include="Images\milkStrawberry.png" />
+    <None Include="Images\milkTea.png" />
+    <None Include="Images\milkVanilla.png" />
+    <None Include="Images\milkZebra.png" />
+    <None Include="Images\mine.png" />
+    <None Include="Images\mineBackground.png" />
+    <None Include="Images\minerGrandma.png" />
+    <None Include="Images\money.png" />
+    <None Include="Images\nest.png" />
+    <None Include="Images\panelBG.png" />
+    <None Include="Images\panelGradientBottom.png" />
+    <None Include="Images\panelGradientLeft.png" />
+    <None Include="Images\panelGradientRight.png" />
+    <None Include="Images\panelGradientTop.png" />
+    <None Include="Images\panelHorizontal.png" />
+    <None Include="Images\panelMenu.png" />
+    <None Include="Images\panelMenu2.png" />
+    <None Include="Images\panelMenu3.png" />
+    <None Include="Images\panelVertical.png" />
+    <None Include="Images\parade.png" />
+    <None Include="Images\patreon.png" />
+    <None Include="Images\perfectCookie.png" />
+    <None Include="Images\pieFill.png" />
+    <None Include="Images\playsaurusbanner1.png" />
+    <None Include="Images\playsaurusbanner2.png" />
+    <None Include="Images\playsaurusbanner3.png" />
+    <None Include="Images\playsaurusLogo.png" />
+    <None Include="Images\pointGlow.gif" />
+    <None Include="Images\pointyLad.png" />
+    <None Include="Images\portal.png" />
+    <None Include="Images\portalBackground.png" />
+    <None Include="Images\portraitChip.png" />
+    <None Include="Images\portraitCrumb.png" />
+    <None Include="Images\portraitDoe.png" />
+    <None Include="Images\portraitLucky.png" />
+    <None Include="Images\prestigeBar.jpg" />
+    <None Include="Images\prestigeBarCap.png" />
+    <None Include="Images\prism.png" />
+    <None Include="Images\prismBackground.png" />
+    <None Include="Images\rainbowGrandma.png" />
+    <None Include="Images\roundedPanelBG.png" />
+    <None Include="Images\roundedPanelBGS.png" />
+    <None Include="Images\roundedPanelLeft.png" />
+    <None Include="Images\roundedPanelLeftS.png" />
+    <None Include="Images\roundedPanelRight.png" />
+    <None Include="Images\roundedPanelRightS.png" />
+    <None Include="Images\roundFrameBorder.png" />
+    <None Include="Images\santa.png" />
+    <None Include="Images\scriptGrandma.png" />
+    <None Include="Images\selectTarget.png" />
+    <None Include="Images\sentientFurnace.png" />
+    <None Include="Images\shadedBorders.png" />
+    <None Include="Images\shadedBordersGold.png" />
+    <None Include="Images\shadedBordersRed.png" />
+    <None Include="Images\shadedBordersSoft.png" />
+    <None Include="Images\shimmeringVeil.png" />
+    <None Include="Images\shine.png" />
+    <None Include="Images\shineGold.png" />
+    <None Include="Images\shineRed.png" />
+    <None Include="Images\shineSpoke.png" />
+    <None Include="Images\shinyWinkler.png" />
+    <None Include="Images\shinyWrinkler.png" />
+    <None Include="Images\shinyWrinklerBits.png" />
+    <None Include="Images\shipment.png" />
+    <None Include="Images\shipmentBackground.png" />
+    <None Include="Images\smallCookies.png" />
+    <None Include="Images\smallDollars.png" />
+    <None Include="Images\snow.jpg" />
+    <None Include="Images\snow2.jpg" />
+    <None Include="Images\sparkles.jpg" />
+    <None Include="Images\spellBG.png" />
+    <None Include="Images\spinnyBig.png" />
+    <None Include="Images\spinnySmall.png" />
+    <None Include="Images\spookyCookie.png" />
+    <None Include="Images\starbg.jpg" />
+    <None Include="Images\storeTile.jpg" />
+    <None Include="Images\sugarLump.png" />
+    <None Include="Images\temple.png" />
+    <None Include="Images\templeBackground.png" />
+    <None Include="Images\templeGrandma.png" />
+    <None Include="Images\timemachine.png" />
+    <None Include="Images\timemachineBackground.png" />
+    <None Include="Images\timerBars.png" />
+    <None Include="Images\tinyEyeEmpty.png" />
+    <None Include="Images\tinyEyeOff.png" />
+    <None Include="Images\tinyEyeOn.png" />
+    <None Include="Images\tinyglobe.gif" />
+    <None Include="Images\tinyglobeSheet.gif" />
+    <None Include="Images\transmutedGrandma.png" />
+    <None Include="Images\turnInto.png" />
+    <None Include="Images\upgradeFrame.png" />
+    <None Include="Images\upgradeFrameHeavenly.png" />
+    <None Include="Images\upgradeFrameOld.png" />
+    <None Include="Images\upgradeFrameShadowOld.png" />
+    <None Include="Images\upgradeHighlight.jpg" />
+    <None Include="Images\upgradeHighlight.png" />
+    <None Include="Images\upgradeSelector.png" />
+    <None Include="Images\weeHoodie.png" />
+    <None Include="Images\winkler.png" />
+    <None Include="Images\winterFrame.png" />
+    <None Include="Images\winterWinkler.png" />
+    <None Include="Images\winterWrinkler.png" />
+    <None Include="Images\witchGrandma.png" />
+    <None Include="Images\wizardtower.png" />
+    <None Include="Images\wizardtowerBackground.png" />
+    <None Include="Images\workerGrandma.png" />
+    <None Include="Images\wrathContract.png" />
+    <None Include="Images\wrathCookie.png" />
+    <None Include="Images\wrinkler.png" />
+    <None Include="Images\wrinklerBits.png" />
+    <None Include="Images\wrinklerBitsOld.png" />
+    <None Include="Images\wrinklerBlink.png" />
+    <None Include="Images\wrinklerGooglies.png" />
+    <None Include="Images\wrinklerShadow.png" />
+    <None Include="Images\you.png" />
+    <None Include="Images\youAddons.png" />
+    <None Include="Images\youBackground.png" />
+    <None Include="Images\youLight.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -96,6 +394,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CookieClicker\CookieClicker.aspx.cs">
+      <DependentUpon>CookieClicker.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CookieClicker\CookieClicker.aspx.designer.cs">
+      <DependentUpon>CookieClicker.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CookieClicker\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CookieClicker\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -104,6 +416,11 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -122,6 +439,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="CookieClicker\Site.Master" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -137,8 +455,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CookieClicker\" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

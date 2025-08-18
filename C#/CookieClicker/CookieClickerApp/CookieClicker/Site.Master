@@ -1,0 +1,18 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CookieClickerApp.CookieClicker.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Cookie Clicker</title>
+
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="../Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <form id="formMain" runat="server">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

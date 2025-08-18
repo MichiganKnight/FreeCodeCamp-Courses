@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 public class SingleExecutorDemo {
     public static void main(String[] args) {
-        System.out.println("=== Single Thread Executor Demo ===");
+        System.out.println("\n=== Single Thread Executor Demo ===");
 
         try (ExecutorService service = Executors.newSingleThreadExecutor()) {
             for (int i = 0; i < 5; i++) {

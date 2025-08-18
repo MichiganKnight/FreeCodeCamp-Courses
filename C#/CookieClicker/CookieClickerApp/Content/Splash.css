@@ -1,0 +1,150 @@
+﻿body, html {    
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    background: #000;
+    background: url("~/CookieClicker/Images/shadedBorders.png") left top / 100% 100%, #111 url("~/CookieClicker/Images/bgBlue.jpg");
+    color: #fff;
+    text-shadow: 0px -2px 4px rgba(255, 255, 255, 200, 0.4), 0px 1px 0px rgba(100, 100, 100, 1), 0px 6px 8px rgba(0, 0, 0, 1);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#dark, #dark2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    z-index: 100;
+    animation: darkFade 2s ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 0.5s;
+}
+
+#dark2 {
+    background: #f60;
+    mix-blend-mode: multiply;
+    z-index: 99;
+}
+
+#center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    perspective: 500px;
+}
+
+#title {
+    font-size: 8vmin;
+    font-family: 'Merriweather', Georgia, serif;
+    animation: titleRise 2s ease;
+    animation-fill-mode: both;
+    animation-delay: 0.5s;
+    z-index: 5;
+}
+
+#cookie {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 36vmin;
+    margin-left: -18vmin;
+    margin-top: -18vmin;
+    z-index: 2;
+    opacity: 0.9;
+    filter: drop-shadow(0px 5px 20px #000);
+    animation: cookieRise 2s ease;
+    animation-fill-mode: both;
+    animation-delay: 0.5s;
+}
+
+#logo {
+    width: 16vmin;
+    position: absolute;
+    bottom: 2vmin;
+    /*left:50%;
+	margin-left:-8vmin;*/
+    left: 2vmin;
+    opacity: 0.4;
+}
+
+#logo2 {
+    width: 16vmin;
+    position: absolute;
+    bottom: 2vmin;
+    /*left:50%;
+	margin-left:-8vmin;*/
+    right: 2vmin;
+    opacity: 0.4;
+}
+
+@keyframes titleRise {
+    0% {
+        transform: translate(0px,300px) rotateX(-180deg);
+        opacity: 0;
+        letter-spacing: 50px;
+    }
+
+    20% {
+        transform: translate(0px,0px) rotateX(0deg);
+        opacity: 1;
+        letter-spacing: -3px;
+    }
+
+    100% {
+        transform: translate(0px,-10px) rotateX(10deg);
+        opacity: 0.5;
+        letter-spacing: 5px;
+    }
+}
+
+@keyframes cookieRise {
+    0% {
+        transform: translate(0px,150px) scale(2) rotate(-50deg);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(0px,-0px) scale(0.95) rotate(1deg);
+        opacity: 0.9;
+    }
+
+    30% {
+        transform: translate(0px,-5px) scale(1) rotate(0deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(0px,-10px) scale(1) rotate(0deg);
+        opacity: 0.9;
+    }
+}
+
+@keyframes darkFade {
+    0% {
+        opacity: 1;
+    }
+
+    15% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    0% {
+        opacity: 1;
+    }
+}
