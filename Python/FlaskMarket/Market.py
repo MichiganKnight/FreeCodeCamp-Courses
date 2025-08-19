@@ -3,15 +3,13 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/Home')
 @app.route('/home')
-@app.route('/Index')
-@app.route('/index')
+@app.route('/Home')
 def home_page():
     return render_template('Home.html')
 
-@app.route('/Market')
 @app.route('/market')
+@app.route('/Market')
 def market_page():
     items = [
         { 'id': 1, 'name': 'Phone', 'barcode': '893212299897', 'price': 500 },
