@@ -17,11 +17,13 @@
             {
                 <tr>
                     <td>@item.Description</td>
-                    <td>@item.Amount $</td>
+                    <td>$@item.Amount</td>
                     <td>@item.Category</td>
                     <td>@item.Date.ToString("MM/dd/yyyy")</td>
                 </tr>
             }
         </tbody>
     </table>
+    
+    <a class="btn btn-primary" asp-area="" asp-controller="Expenses" asp-action="Create">Add Expense</a>
 </div>
