@@ -1,0 +1,21 @@
+﻿@model MVCApp.Models.Item
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container text-center">
+    <h2>Edit Item</h2>
+    
+    <form asp-action="Edit" method="post">
+        <div class="form-group">
+            <label for="Name" class="form-label">Name</label>
+            <input asp-for="Name" type="text" id="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="Price" class="form-label">Price</label>
+            <input asp-for="Name" type="number" id="Price" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
