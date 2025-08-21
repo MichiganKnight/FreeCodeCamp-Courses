@@ -4,7 +4,9 @@ namespace FinanceApplication.Data.Service
 {
     public interface IExpensesService
     {
-        Task<IEnumerable<Expense>> GetAllExpenses();
         Task AddExpense(Expense expense);
+        Task<IEnumerable<Expense>> GetAllExpenses();
+
+        IQueryable GetChartData();
     }
 }

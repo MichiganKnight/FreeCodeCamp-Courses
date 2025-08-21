@@ -40,5 +40,12 @@ namespace FinanceApplication.Controllers
             
             return View(expense);
         }
+
+        public IActionResult GetChart()
+        {
+            IQueryable data = _expensesService.GetChartData();
+
+            return Json(data);
+        }
     }
 }
