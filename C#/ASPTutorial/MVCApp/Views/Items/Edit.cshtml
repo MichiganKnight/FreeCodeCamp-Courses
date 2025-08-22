@@ -7,15 +7,16 @@
 <div class="container text-center">
     <h2>Edit Item</h2>
     
-    <form asp-action="Edit" method="post">
+    <form asp-action="Edit" method="post" class="d-grid gap-3">
         <div class="form-group">
             <label for="Name" class="form-label">Name</label>
             <input asp-for="Name" type="text" id="Name" class="form-control" />
         </div>
         <div class="form-group">
             <label for="Price" class="form-label">Price</label>
-            <input asp-for="Name" type="number" id="Price" class="form-control" />
+            <input asp-for="Price" type="number" id="Price" class="form-control" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <button type="submit" class="btn btn-primary w-auto">Save Changes</button>
     </form>
 </div>

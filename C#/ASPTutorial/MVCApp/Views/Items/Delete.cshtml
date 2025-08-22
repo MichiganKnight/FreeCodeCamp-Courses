@@ -7,8 +7,20 @@
 <div class="container text-center">
     <h2>Are You Sure You Want To Delete This Item??</h2>
     
-    <p>@Model.Name</p>
-    <p>$@Model.Price</p>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.Price</td>
+            </tr>
+        </tbody>
+    </table>
     
     <form asp-action="Delete" method="post">
         <input asp-for="Id" type="hidden" />

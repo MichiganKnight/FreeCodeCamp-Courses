@@ -5,9 +5,9 @@
 }
 
 <div class="container text-center">
-    <h2>Create a New Item</h2>
+    <h2>Create Item</h2>
     
-    <form asp-action="Create" method="post">
+    <form asp-action="Edit" method="post" class="d-grid gap-3">
         <div class="form-group">
             <label for="Name" class="form-label">Name</label>
             <input asp-for="Name" type="text" id="Name" class="form-control" placeholder="Enter Item Name" />
@@ -16,6 +16,7 @@
             <label for="Price" class="form-label">Price</label>
             <input asp-for="Price" type="number" id="Price" class="form-control" placeholder="Enter Item Price" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        
+        <button type="submit" class="btn btn-primary">Create Item</button>
     </form>
 </div>
