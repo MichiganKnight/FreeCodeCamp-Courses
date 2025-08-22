@@ -34,7 +34,7 @@ namespace MVCApp.Controllers
                 _context.Items.Add(item);
                 await _context.SaveChangesAsync();
 
-                return RedirectToPage("Index");
+                return RedirectToAction("Index");
             }
             
             return View(item);
@@ -55,7 +55,7 @@ namespace MVCApp.Controllers
                 _context.Items.Update(item);
                 await _context.SaveChangesAsync();
                 
-                return RedirectToPage("Index");
+                return RedirectToAction("Index");
             }
             
             return View(item);
@@ -79,7 +79,7 @@ namespace MVCApp.Controllers
                 await _context.SaveChangesAsync();
             }
             
-            return RedirectToPage("Index");
+            return RedirectToAction("Index");
         }
     }
 }
