@@ -11,7 +11,7 @@ namespace CTA_Tracker.Controllers
         {
             ViewBag.SelectedRoute = line;
             
-            return View(new List<TrainItem>());
+            return View(new List<RouteModel>());
         }
 
         [HttpPost]
@@ -26,7 +26,7 @@ namespace CTA_Tracker.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Route Number is Required");
                 
-                return View(new List<TrainItem>());           
+                return View(new List<RouteModel>());           
             }
             
             string? apiKey = config["API_KEY"];
@@ -51,7 +51,7 @@ namespace CTA_Tracker.Controllers
                     ModelState.AddModelError(string.Empty, $"Upstream error: {resp.StatusCode} {resp.ReasonPhrase}");
                 }
                 
-                List<TrainItem> trains = ExtractTrainItems(json);
+                List<RouteModel> trains = ExtractTrainItems(json);
                 
                 return View(trains);
             }
@@ -95,9 +95,9 @@ namespace CTA_Tracker.Controllers
             return Content(json, "application/json");
         }
 
-        private static List<TrainItem> ExtractTrainItems(string json)
+        private static List<RouteModel> ExtractTrainItems(string json)
         {
-            List<TrainItem> result = [];
+            List<RouteModel> result = [];
 
             try
             {
@@ -138,7 +138,7 @@ namespace CTA_Tracker.Controllers
                             continue;
                         }
 
-                        result.Add(new TrainItem
+                        result.Add(new RouteModel
                         {
                             RouteNumber = trainObj.Value<string>("rn"),
                             Destination = trainObj.Value<string>("destNm"),

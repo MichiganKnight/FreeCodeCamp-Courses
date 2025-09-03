@@ -1,4 +1,4 @@
-﻿@model List<CTA_Tracker.Models.TrainItem>
+﻿@model List<CTA_Tracker.Models.RouteModel>
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @{
     string? route = ViewBag.SelectedRoute as string;
@@ -68,7 +68,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (TrainItem train in Model)
+                    @foreach (RouteModel train in Model)
                     {
                         <tr>
                             <td>
