@@ -8,24 +8,24 @@
     {
         ["red"] = ("Red", "redLine"),
         ["blue"] = ("Blue", "blueLine"),
-        ["brown"] = ("Brown", "brownLine"),
-        ["green"] = ("Green", "greenLine"),
-        ["orange"] = ("Orange", "orangeLine"),
+        ["brn"] = ("Brown", "brownLine"),
+        ["g"] = ("Green", "greenLine"),
+        ["org"] = ("Orange", "orangeLine"),
         ["pink"] = ("Pink", "pinkLine"),
-        ["purple"] = ("Purple", "purpleLine"),
-        ["yellow"] = ("Yellow", "yellowLine")
+        ["p"] = ("Purple", "purpleLine"),
+        ["y"] = ("Yellow", "yellowLine")
     };
 
     Dictionary<string, (string Display, string Css)> buttonMap = new()
     {
         ["red"] = ("Red", "btn-red-line"),
         ["blue"] = ("Blue", "btn-blue-line"),
-        ["brown"] = ("Brown", "btn-brown-line"),
-        ["green"] = ("Green", "btn-green-line"),
-        ["orange"] = ("Orange", "btn-orange-line"),
+        ["brn"] = ("Brown", "btn-brown-line"),
+        ["g"] = ("Green", "btn-green-line"),
+        ["org"] = ("Orange", "btn-orange-line"),
         ["pink"] = ("Pink", "btn-pink-line"),
-        ["purple"] = ("Purple", "btn-purple-line"),
-        ["yellow"] = ("Yellow", "btn-yellow-line")
+        ["p"] = ("Purple", "btn-purple-line"),
+        ["y"] = ("Yellow", "btn-yellow-line")
     };
 
     (string, string) info = lineMap.TryGetValue(routeKey, out (string Display, string Css) x) ? x : ("Selected", "redLine");

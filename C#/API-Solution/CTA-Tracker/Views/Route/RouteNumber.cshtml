@@ -6,12 +6,12 @@
     {
         ["red"] = ("Red", "redLine"),
         ["blue"] = ("Blue", "blueLine"),
-        ["brown"] = ("Brown", "brownLine"),
-        ["green"] = ("Green", "greenLine"),
-        ["orange"] = ("Orange", "orangeLine"),
+        ["brn"] = ("Brown", "brownLine"),
+        ["g"] = ("Green", "greenLine"),
+        ["org"] = ("Orange", "orangeLine"),
         ["pink"] = ("Pink", "pinkLine"),
-        ["purple"] = ("Purple", "purpleLine"),
-        ["yellow"] = ("Yellow", "yellowLine")
+        ["p"] = ("Purple", "purpleLine"),
+        ["y"] = ("Yellow", "yellowLine")
     };
 
     (string, string) info = lineMap.TryGetValue(route, out (string Display, string Css) x) ? x : ("Selected", "redLine");
