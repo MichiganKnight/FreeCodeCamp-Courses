@@ -6,27 +6,40 @@ using Newtonsoft.Json.Linq;
 
 namespace CTA_Tracker.Controllers
 {
-    public class LinesController : Controller
+    public class LineController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _config;
 
-        public LinesController(IHttpClientFactory httpClientFactory, IConfiguration config)
+        public LineController(IHttpClientFactory httpClientFactory, IConfiguration config)
         {
             _httpClientFactory = httpClientFactory;
             _config = config;
         }
 
         [HttpGet]
-        public IActionResult RedLine()
+        public IActionResult TrainLine(string? line)
         {
-            return View();
+            ViewBag.SelectedRoute = line;
+            
+            return View(new List<TrainItem>());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RedLine(string rt = "red")
+        [ActionName("TrainLine")]
+        public async Task<IActionResult> TrainLinePost(string route)
         {
+            ViewBag.SelectedRoute = route;
+            ViewBag.Requested = true;
+
+            if (string.IsNullOrWhiteSpace(route))
+            {
+                ModelState.AddModelError(string.Empty, "Route Number is Required");
+                
+                return View(new List<TrainItem>());           
+            }
+            
             string? apiKey = _config["API_KEY"];
             if (string.IsNullOrWhiteSpace(apiKey))
             {
@@ -34,7 +47,7 @@ namespace CTA_Tracker.Controllers
                 return View();
             }
 
-            string url = $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(rt)}&outputType=json";
+            string url = $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(route)}&outputType=json";
 
             HttpClient client = _httpClientFactory.CreateClient();
             try
@@ -70,13 +83,18 @@ namespace CTA_Tracker.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetRedLineData(string rt = "red")
+        public async Task<IActionResult> GetLineData(string route)
         {
+            if (string.IsNullOrWhiteSpace(route))
+            {
+                return BadRequest("Route is Required");
+            }
+            
             string? apiKey = _config["API_KEY"];
             if (string.IsNullOrWhiteSpace(apiKey))
                 return StatusCode(500, "CTA API key is not configured.");
 
-            string url = $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(rt)}&outputType=json";
+            string url = $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(route)}&outputType=json";
 
             HttpClient client = _httpClientFactory.CreateClient();
             HttpResponseMessage resp = await client.GetAsync(url);
