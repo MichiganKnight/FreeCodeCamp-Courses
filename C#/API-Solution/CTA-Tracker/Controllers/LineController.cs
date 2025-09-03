@@ -4,17 +4,8 @@ using Newtonsoft.Json.Linq;
 
 namespace CTA_Tracker.Controllers
 {
-    public class LineController : Controller
+    public class LineController(IHttpClientFactory httpClientFactory, IConfiguration config) : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IConfiguration _config;
-
-        public LineController(IHttpClientFactory httpClientFactory, IConfiguration config)
-        {
-            _httpClientFactory = httpClientFactory;
-            _config = config;
-        }
-
         [HttpGet]
         public IActionResult TrainLine(string? line)
         {
@@ -38,7 +29,7 @@ namespace CTA_Tracker.Controllers
                 return View(new List<TrainItem>());           
             }
             
-            string? apiKey = _config["API_KEY"];
+            string? apiKey = config["API_KEY"];
             if (string.IsNullOrWhiteSpace(apiKey))
             {
                 ModelState.AddModelError(string.Empty, "CTA API key is not configured.");
@@ -47,7 +38,7 @@ namespace CTA_Tracker.Controllers
 
             string url = $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(route)}&outputType=json";
 
-            HttpClient client = _httpClientFactory.CreateClient();
+            HttpClient client = httpClientFactory.CreateClient();
             try
             {
                 using HttpResponseMessage resp = await client.GetAsync(url);
@@ -86,7 +77,7 @@ namespace CTA_Tracker.Controllers
                 return BadRequest("Route is Required");
             }
             
-            string? apiKey = _config["API_KEY"];
+            string? apiKey = config["API_KEY"];
             if (string.IsNullOrWhiteSpace(apiKey))
             {
                 return StatusCode(500, "CTA API key is not configured.");
@@ -94,7 +85,7 @@ namespace CTA_Tracker.Controllers
 
             string url = $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(route)}&outputType=json";
 
-            HttpClient client = _httpClientFactory.CreateClient();
+            HttpClient client = httpClientFactory.CreateClient();
             HttpResponseMessage resp = await client.GetAsync(url);
             string json = await resp.Content.ReadAsStringAsync();
 
