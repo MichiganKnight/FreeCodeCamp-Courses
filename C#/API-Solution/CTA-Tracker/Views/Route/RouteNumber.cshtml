@@ -14,11 +14,8 @@
         ["y"] = ("Yellow", "yellowLine")
     };
 
-    (string, string) info = lineMap.TryGetValue(route, out (string Display, string Css) x) ? x : ("Selected", "redLine");
+    (string displayRoute, string lineCss) = lineMap.TryGetValue(route, out (string Display, string Css) x) ? x : ("Selected", "redLine");
 
-    string displayRoute = info.Item1;
-    string lineCss = info.Item2;
-    
     ViewData["Title"] = $"{displayRoute} Line Route Number: {@ViewBag.RouteNumber}";
 }
 

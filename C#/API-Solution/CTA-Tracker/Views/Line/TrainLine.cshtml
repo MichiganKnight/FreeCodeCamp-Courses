@@ -28,11 +28,8 @@
         ["y"] = ("Yellow", "btn-yellow-line")
     };
 
-    (string, string) info = lineMap.TryGetValue(routeKey, out (string Display, string Css) x) ? x : ("Selected", "redLine");
+    (string displayRoute, string lineCss) = lineMap.TryGetValue(routeKey, out (string Display, string Css) x) ? x : ("Selected", "redLine");
     (string, string) button = buttonMap.TryGetValue(routeKey, out (string Display, string Css) y) ? y : ("Selected", "btn-red-line");
-    
-    string displayRoute = info.Item1;
-    string lineCss = info.Item2;
 
     string buttonCss = button.Item2;
     
