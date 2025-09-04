@@ -26,23 +26,49 @@ namespace CTA_Tracker.API
         };
 
         private static string NormalizeRoute(string? route) => (route ?? string.Empty).ToLowerInvariant();
+        private static string NormalizeRunNumber(string? runNumber) => (runNumber ?? string.Empty).Trim();
+        
         public static bool IsValidRoute(string? route) => ValidRoutes.Contains(NormalizeRoute(route));
+        public static bool IsValidRunNumber(string? runNumber)
+        { 
+            string rn = NormalizeRunNumber(runNumber);
+
+            if (rn.Length is < 1 or > 4)
+            {
+                return false;   
+            }
+
+            return true;
+        }
         
         public static string GetDisplayName(string? route) => RouteStyles.TryGetValue(NormalizeRoute(route), out (string Display, string Css, string BtnCss) style) ? style.Display : "Selected";
         public static string GetLineCss(string? route) => RouteStyles.TryGetValue(NormalizeRoute(route), out (string Display, string Css, string BtnCss) style) ? style.Css : "redLine";
         public static string GetButtonCss(string? route) => RouteStyles.TryGetValue(NormalizeRoute(route), out (string Display, string Css, string BtnCss) style) ? style.BtnCss : "btn-red-line";
 
         /// <summary>
-        /// Build the CTA URL
+        /// Build the CTA Route URL
         /// </summary>
         /// <param name="apiKey">API Key</param>
         /// <param name="route">CTA Route</param>
         /// <returns><see cref="string"/> as the CTA URL</returns>
-        public static string BuildCtaUrl(string apiKey, string route)
+        public static string BuildRouteUrl(string apiKey, string route)
         {
-            string r = NormalizeRoute(route);
+            string rt = NormalizeRoute(route);
             
-            return $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(r)}&outputType=json";
+            return $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(rt)}&outputType=json";
+        }
+
+        /// <summary>
+        /// Build the CTA Train URL
+        /// </summary>
+        /// <param name="apiKey">API Key</param>
+        /// <param name="runNumber">CTA Run Number</param>
+        /// <returns><see cref="string"/> as the Train URL</returns>
+        public static string BuildTrainUrl(string apiKey, string runNumber)
+        {
+            string rn = NormalizeRunNumber(runNumber);
+
+            return $"https://lapi.transitchicago.com/api/1.0/ttfollow.aspx?key=2ed0a2376360411dbfb90580cf2ab7d1&runnumber={Uri.EscapeDataString(rn)}&outputType=json";
         }
         
         /// <summary>
@@ -50,7 +76,7 @@ namespace CTA_Tracker.API
         /// </summary>
         /// <param name="json">The JSON to Parse</param>
         /// <returns>Result as a <see cref="List{T}"/></returns>
-        public static List<RouteModel> ExtractTrainItems(string json)
+        public static List<RouteModel> ExtractRouteItems(string json)
         {
             List<RouteModel> result = [];
 
@@ -100,6 +126,53 @@ namespace CTA_Tracker.API
                             NextStationName = trainObj.Value<string>("nextStaNm")
                         });
                     }
+                }
+            }
+            catch
+            {
+                // Ignore
+            }
+            
+            return result;
+        }
+
+        public static List<TrainModel> ExtractTrainItems(string json)
+        {
+            List<TrainModel> result = [];
+
+            try
+            {
+                JObject obj = JObject.Parse(json);
+                
+                if (obj["ctatt"] is not JObject ctaTrainTracker)
+                {
+                    return result;
+                }
+                
+                JToken? etaToken = ctaTrainTracker?["eta"];
+                JArray etas = etaToken switch
+                {
+                    JArray arr => arr,
+                    JObject singleObject => new JArray(singleObject),
+                    _ => []
+                };
+
+                foreach (JToken eta in etas)
+                {
+                    if (eta is not JObject etaObj)
+                    {
+                        continue;
+                    }
+                    
+                    result.Add(new TrainModel()
+                    {
+                        StationName = etaObj.Value<string>("staNm"),
+                        StationDescription = etaObj.Value<string>("stpDe"),
+                        DestinationName = etaObj.Value<string>("destNm"),
+                        EstimatedArrival = etaObj.Value<DateTime?>("arrT"),
+                        Approaching = etaObj.Value<string>("isApp"),
+                        Delayed = etaObj.Value<string>("isDly")
+                    });
                 }
             }
             catch

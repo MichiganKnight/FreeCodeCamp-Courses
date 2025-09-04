@@ -45,38 +45,15 @@ namespace CTA_Tracker.Controllers
                 return View(new List<RouteModel>());
             }
             
-            List<RouteModel> trains = Functions.ExtractTrainItems(json);
+            List<RouteModel> trains = Functions.ExtractRouteItems(json);
             ViewBag.Timestamp = Functions.TryGetTimestamp(json);
             
             return View(trains);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetLineData(string route)
-        {
-            if (!Functions.IsValidRoute(route))
-            {
-                return BadRequest("Route is Required & Must be a Valid CTA Route");
-            }
-            
-            string? apiKey = config["API_KEY"];
-            if (string.IsNullOrWhiteSpace(apiKey))
-            {
-                return StatusCode(500, "Invalid API Key");
-            }
-            
-            (bool ok, string json, string? error) = await FetchAsync(apiKey, route);
-            if (!ok)
-            {
-                return StatusCode(500, error ?? "Upstream Error");
-            }
-            
-            return Content(json, "application/json");
-        }
-
         private async Task<(bool ok, string json, string? error)> FetchAsync(string apiKey, string route)
         {
-            string url = Functions.BuildCtaUrl(apiKey, route);
+            string url = Functions.BuildRouteUrl(apiKey, route);
             
             HttpClient client = httpClientFactory.CreateClient();
 
