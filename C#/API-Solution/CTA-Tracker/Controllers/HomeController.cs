@@ -13,11 +13,6 @@ namespace CTA_Tracker.Controllers
             return Redirect("/Tracker");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
