@@ -86,12 +86,7 @@ namespace CTA_Tracker.Controllers
 
                 string json = await resp.Content.ReadAsStringAsync();
 
-                if (!resp.IsSuccessStatusCode)
-                {
-                    return (false, json, $"Upstream Error: {resp.StatusCode} {resp.ReasonPhrase}");
-                }
-
-                return (true, json, null);
+                return !resp.IsSuccessStatusCode ? (false, json, $"Upstream Error: {resp.StatusCode} {resp.ReasonPhrase}") : (true, json, null);
             }
             catch (HttpRequestException ex)
             {
