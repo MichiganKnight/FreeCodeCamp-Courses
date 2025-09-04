@@ -1,20 +1,7 @@
 ﻿@{
     string route = (ViewBag.SelectedRoute as string) ?? (string?)Context.Request.Query["route"] ?? "red";
-    route = route.ToLowerInvariant();
-    
-    Dictionary<string, (string Display, string Css)> lineMap = new()
-    {
-        ["red"] = ("Red", "redLine"),
-        ["blue"] = ("Blue", "blueLine"),
-        ["brn"] = ("Brown", "brownLine"),
-        ["g"] = ("Green", "greenLine"),
-        ["org"] = ("Orange", "orangeLine"),
-        ["pink"] = ("Pink", "pinkLine"),
-        ["p"] = ("Purple", "purpleLine"),
-        ["y"] = ("Yellow", "yellowLine")
-    };
-
-    (string displayRoute, string lineCss) = lineMap.TryGetValue(route, out (string Display, string Css) x) ? x : ("Selected", "redLine");
+    string displayRoute = Functions.GetDisplayName(route);
+    string lineCss = Functions.GetLineCss(route);
 
     ViewData["Title"] = $"{displayRoute} Line Route Number: {@ViewBag.RouteNumber}";
 }

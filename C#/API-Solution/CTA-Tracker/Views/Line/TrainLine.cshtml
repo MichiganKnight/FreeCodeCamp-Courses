@@ -2,36 +2,10 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @{
     string? route = ViewBag.SelectedRoute as string;
-    string routeKey = (route ?? string.Empty).ToLowerInvariant();
 
-    Dictionary<string, (string Display, string Css)> lineMap = new()
-    {
-        ["red"] = ("Red", "redLine"),
-        ["blue"] = ("Blue", "blueLine"),
-        ["brn"] = ("Brown", "brownLine"),
-        ["g"] = ("Green", "greenLine"),
-        ["org"] = ("Orange", "orangeLine"),
-        ["pink"] = ("Pink", "pinkLine"),
-        ["p"] = ("Purple", "purpleLine"),
-        ["y"] = ("Yellow", "yellowLine")
-    };
-
-    Dictionary<string, (string Display, string Css)> buttonMap = new()
-    {
-        ["red"] = ("Red", "btn-red-line"),
-        ["blue"] = ("Blue", "btn-blue-line"),
-        ["brn"] = ("Brown", "btn-brown-line"),
-        ["g"] = ("Green", "btn-green-line"),
-        ["org"] = ("Orange", "btn-orange-line"),
-        ["pink"] = ("Pink", "btn-pink-line"),
-        ["p"] = ("Purple", "btn-purple-line"),
-        ["y"] = ("Yellow", "btn-yellow-line")
-    };
-
-    (string displayRoute, string lineCss) = lineMap.TryGetValue(routeKey, out (string Display, string Css) x) ? x : ("Selected", "redLine");
-    (string, string) button = buttonMap.TryGetValue(routeKey, out (string Display, string Css) y) ? y : ("Selected", "btn-red-line");
-
-    string buttonCss = button.Item2;
+    string displayRoute = Functions.GetDisplayName(route);
+    string lineCss = Functions.GetLineCss(route);
+    string buttonCss = Functions.GetButtonCss(route);
     
     ViewData["Title"] = $"{displayRoute} Line";
 }

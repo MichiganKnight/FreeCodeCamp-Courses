@@ -6,9 +6,6 @@ namespace CTA_Tracker.Controllers
 {
     public class LineController(IHttpClientFactory httpClientFactory, IConfiguration config) : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IConfiguration _config = config;
-        
         [HttpGet]
         public IActionResult TrainLine(string? line)
         {
@@ -25,80 +22,85 @@ namespace CTA_Tracker.Controllers
             ViewBag.SelectedRoute = route;
             ViewBag.Requested = true;
 
-            if (string.IsNullOrWhiteSpace(route))
+            if (!Functions.IsValidRoute(route))
             {
-                ModelState.AddModelError(string.Empty, "Route Number is Required");
+                ModelState.AddModelError(string.Empty, "Invalid Route");
                 
                 return View(new List<RouteModel>());           
             }
             
-            string? apiKey = _config["API_KEY"];
+            string? apiKey = config["API_KEY"];
             if (string.IsNullOrWhiteSpace(apiKey))
             {
                 ModelState.AddModelError(string.Empty, "Invalid API Key");
-                return View();
+                
+                return View(new List<RouteModel>());
             }
             
-            string url = $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(route)}&outputType=json";
-
-            HttpClient client = httpClientFactory.CreateClient();
-            try
+            (bool ok, string json, string? error) = await FetchAsync(apiKey, route);
+            if (!ok)
             {
-                using HttpResponseMessage resp = await client.GetAsync(url);
-                string json = await resp.Content.ReadAsStringAsync();
-
-                ViewBag.Requested = true;
-
-                if (!resp.IsSuccessStatusCode)
-                {
-                    ModelState.AddModelError(string.Empty, $"Upstream Error: {resp.StatusCode} {resp.ReasonPhrase}");
-                }
+                ModelState.AddModelError(string.Empty, error ?? "Unknown Error");
                 
-                List<RouteModel> trains = Functions.ExtractTrainItems(json);
-                
-                return View(trains);
+                return View(new List<RouteModel>());
             }
-            catch (HttpRequestException ex)
-            {
-                ViewBag.Requested = true;
-                ModelState.AddModelError(string.Empty, $"Network Error: {ex.Message}");
-                return View();
-            }
-            catch (TaskCanceledException)
-            {
-                ViewBag.Requested = true;
-                ModelState.AddModelError(string.Empty, "Request Timed Out");
-                return View();
-            }
+            
+            List<RouteModel> trains = Functions.ExtractTrainItems(json);
+            ViewBag.Timestamp = Functions.TryGetTimestamp(json);
+            
+            return View(trains);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetLineData(string route)
         {
-            if (string.IsNullOrWhiteSpace(route))
+            if (!Functions.IsValidRoute(route))
             {
-                return BadRequest("Route is Required");
+                return BadRequest("Route is Required & Must be a Valid CTA Route");
             }
             
-            string? apiKey = _config["API_KEY"];
+            string? apiKey = config["API_KEY"];
             if (string.IsNullOrWhiteSpace(apiKey))
             {
                 return StatusCode(500, "Invalid API Key");
             }
             
-            string url = $"https://lapi.transitchicago.com/api/1.0/ttpositions.aspx?key={Uri.EscapeDataString(apiKey)}&rt={Uri.EscapeDataString(route)}&outputType=json";
-
-
-            HttpClient client = httpClientFactory.CreateClient();
-            HttpResponseMessage resp = await client.GetAsync(url);
-            string json = await resp.Content.ReadAsStringAsync();
-
-            if (!resp.IsSuccessStatusCode)
+            (bool ok, string json, string? error) = await FetchAsync(apiKey, route);
+            if (!ok)
             {
-                return StatusCode((int)resp.StatusCode, json);
+                return StatusCode(500, error ?? "Upstream Error");
             }
             
             return Content(json, "application/json");
+        }
+
+        private async Task<(bool ok, string json, string? error)> FetchAsync(string apiKey, string route)
+        {
+            string url = Functions.BuildCtaUrl(apiKey, route);
+            
+            HttpClient client = httpClientFactory.CreateClient();
+
+            try
+            {
+                using HttpResponseMessage resp = await client.GetAsync(url);
+
+                string json = await resp.Content.ReadAsStringAsync();
+
+                if (!resp.IsSuccessStatusCode)
+                {
+                    return (false, json, $"Upstream Error: {resp.StatusCode} {resp.ReasonPhrase}");
+                }
+
+                return (true, json, null);
+            }
+            catch (HttpRequestException ex)
+            {
+                return (false, string.Empty, $"Network Error: {ex.Message}");
+            }
+            catch (TaskCanceledException)
+            {
+                return (false, string.Empty, "Request Timeout");
+            }
         }
     }
 }
