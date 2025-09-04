@@ -19,6 +19,7 @@
     <form asp-controller="Route" asp-action="RouteNumber" method="post">
         @Html.AntiForgeryToken()
         <input type="hidden" name="rn" value="@runNumber" />
+        <input type="hidden" name="route" value="@route" />
         <button type="submit" class="btn @buttonCss">Fetch Route Number: @runNumber Data</button>
     </form>
     
@@ -55,8 +56,8 @@
                             <td>@train.StationDescription</td>
                             <td>@train.DestinationName</td>
                             <td>@train.EstimatedArrival</td>
-                            <td>@train.Approaching</td>
-                            <td>@train.Delayed</td>
+                            <td>@(string.Equals(train.Approaching, "1", StringComparison.Ordinal) ? "True" : "False")</td>
+                            <td>@(string.Equals(train.Delayed, "1", StringComparison.Ordinal) ? "True" : "False")</td>
                         </tr>
                     }
                 </tbody>

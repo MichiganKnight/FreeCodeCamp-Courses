@@ -10,7 +10,7 @@ namespace CTA_Tracker.API
     {
         private static readonly HashSet<string> ValidRoutes =
         [
-            "red", "blue", "brn", "g", "org", "pnk", "p", "y"
+            "red", "blue", "brn", "g", "org", "pink", "p", "y"
         ];
         
         private static readonly Dictionary<string, (string Display, string Css, string BtnCss)> RouteStyles = new ()
@@ -20,7 +20,7 @@ namespace CTA_Tracker.API
             ["brn"] = ("Brown", "brownLine", "btn-brown-line"),
             ["g"] = ("Green", "greenLine", "btn-green-line"),
             ["org"] = ("Orange", "orangeLine", "btn-orange-line"),
-            ["pnk"] = ("Pink", "pinkLine", "btn-pink-line"),
+            ["pink"] = ("Pink", "pinkLine", "btn-pink-line"),
             ["p"] = ("Purple", "purpleLine", "btn-purple-line"),
             ["y"] = ("Yellow", "yellowLine", "btn-yellow-line")
         };

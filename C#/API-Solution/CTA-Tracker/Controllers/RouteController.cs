@@ -7,9 +7,10 @@ namespace CTA_Tracker.Controllers
     public class RouteController(IHttpClientFactory httpClientFactory, IConfiguration config) : Controller
     {
         [HttpGet]
-        public IActionResult RouteNumber(string? rn)
+        public IActionResult RouteNumber(string? rn, string? route)
         {
             ViewBag.RouteNumber = rn;
+            ViewBag.SelectedRoute = route;
             
             return View(new List<TrainModel>());
         }
@@ -17,9 +18,10 @@ namespace CTA_Tracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("RouteNumber")]
-        public async Task<IActionResult> RouteNumberPost(string? rn)
+        public async Task<IActionResult> RouteNumberPost(string? rn, string? route)
         {
             ViewBag.RouteNumber = rn;
+            ViewBag.SelectedRoute = route;
             ViewBag.Requested = true;
 
             if (!Functions.IsValidRunNumber(rn))
