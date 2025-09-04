@@ -30,30 +30,6 @@ body {
   text-align: start;
 }
 
-.event {
-    color: #6edff6;
-    font-style: italic;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.hint {
-    color: #79dfc1;
-    font-style: italic;
-}
-
-.dayTime {
-    color: #e685b5;
-    font-style: italic;
-    font-weight: bold;
-}
-
-.location {
-    color: #c29ffa;
-    font-style: italic;
-    font-weight: bold;
-}
-
 .btn:focus:not(:focus-visible) {
     outline: none;
     box-shadow: none;
