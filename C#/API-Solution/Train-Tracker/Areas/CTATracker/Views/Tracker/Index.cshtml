@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "CTA Tracker";
+}
+
+<div class="container text-center">
+    <h2>CTA Tracker</h2>
+    
+    <h4>CTA Lines:</h4>
+    
+    <table class="table table-striped table-bordered table-hover" style="width: 100%">
+        <thead>     
+        </thead>
+        <tbody>
+            <tr>
+                <td class="fw-bold">
+                    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="red" class="text-decoration-none redLine">Red Line</a>
+                </td>
+                <td class="fw-bold">
+                    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="blue" class="text-decoration-none blueLine">Blue Line</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold">
+                    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="brn" class="text-decoration-none brownLine">Brown Line</a>
+                </td>
+                <td class="fw-bold">
+                    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="g" class="text-decoration-none greenLine">Green Line</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold">
+                    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="org" class="text-decoration-none orangeLine">Orange Line</a>
+                </td>
+                <td class="fw-bold">
+                    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="pink" class="text-decoration-none pinkLine">Pink Line</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="fw-bold">
+                    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="p" class="text-decoration-none purpleLine">Purple Line</a>
+                </td>
+                <td class="fw-bold">
+                    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="y" class="text-decoration-none yellowLine">Yellow Line</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

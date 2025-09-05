@@ -1,7 +1,7 @@
-﻿using CTA_Tracker.Models;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using Train_Tracker.Models;
 
-namespace CTA_Tracker.API
+namespace Train_Tracker.API
 {
     /// <summary>
     /// Helper Utility Functions Class

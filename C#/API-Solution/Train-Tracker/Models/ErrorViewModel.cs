@@ -1,4 +1,4 @@
-namespace CTA_Tracker.Models
+namespace Train_Tracker.Models
 {
     public class ErrorViewModel
     {

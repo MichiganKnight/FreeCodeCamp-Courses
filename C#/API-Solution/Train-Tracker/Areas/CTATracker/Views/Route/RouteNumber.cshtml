@@ -1,4 +1,4 @@
-﻿@model List<CTA_Tracker.Models.TrainModel>
+﻿@model List<Train_Tracker.Models.TrainModel>
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @{
     string route = (ViewBag.SelectedRoute as string) ?? (string?)Context.Request.Query["route"] ?? "red";
@@ -8,7 +8,7 @@
     string lineCss = Functions.GetLineCss(route);
     string buttonCss = Functions.GetButtonCss(route);
 
-    ViewData["Title"] = $"{displayRoute} Line Route Number: {@runNumber}";
+    ViewData["Title"] = $"{displayRoute} Line Route Number: {@runNumber} - CTA Tracker";
 }
 
 <div class="container text-center">

@@ -1,4 +1,4 @@
-﻿@model List<CTA_Tracker.Models.RouteModel>
+﻿@model List<Train_Tracker.Models.RouteModel>
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @{
     string? route = ViewBag.SelectedRoute as string;
@@ -7,13 +7,13 @@
     string lineCss = Functions.GetLineCss(route);
     string buttonCss = Functions.GetButtonCss(route);
     
-    ViewData["Title"] = $"{displayRoute} Line";
+    ViewData["Title"] = $"{displayRoute} Line - CTA Tracker";
 }
 
 <div class="container text-center">
     <h2 class="@lineCss">@displayRoute Line</h2>
 
-    <form asp-controller="Line" asp-action="TrainLine" method="post">
+    <form asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" method="post">
         @Html.AntiForgeryToken()
         <input type="hidden" name="route" value="@route" />
         <button type="submit" class="btn @buttonCss">Fetch @displayRoute Line Data</button>
@@ -46,7 +46,7 @@
                     {
                         <tr>
                             <td>
-                                <a asp-area="" asp-controller="Route" asp-action="RouteNumber" asp-route-rn="@train.RouteNumber" asp-route-route="@route" class="text-decoration-none @lineCss">@train.RouteNumber</a>
+                                <a asp-area="CTATracker" asp-controller="Route" asp-action="RouteNumber" asp-route-rn="@train.RouteNumber" asp-route-route="@route" class="text-decoration-none @lineCss">@train.RouteNumber</a>
                             </td>
                             <td>@train.Destination</td>
                             <td>@train.NextStationName</td>

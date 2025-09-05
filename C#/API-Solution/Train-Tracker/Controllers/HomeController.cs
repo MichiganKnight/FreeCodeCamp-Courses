@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using CTA_Tracker.Models;
+using Train_Tracker.Models;
 
-namespace CTA_Tracker.Controllers
+namespace Train_Tracker.Controllers
 {
     public class HomeController(ILogger<HomeController> logger) : Controller
     {
@@ -10,7 +10,7 @@ namespace CTA_Tracker.Controllers
 
         public IActionResult Index()
         {
-            return Redirect("/Tracker");
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

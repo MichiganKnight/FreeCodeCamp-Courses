@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTA-Tracker", "CTA-Tracker\CTA-Tracker.csproj", "{6C55BD66-4A82-4047-95A9-19B32F4C60BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Train-Tracker", "Train-Tracker\Train-Tracker.csproj", "{24F2E2BC-0C67-4C24-9844-A7DDEDD7418E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6C55BD66-4A82-4047-95A9-19B32F4C60BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C55BD66-4A82-4047-95A9-19B32F4C60BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C55BD66-4A82-4047-95A9-19B32F4C60BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C55BD66-4A82-4047-95A9-19B32F4C60BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F2E2BC-0C67-4C24-9844-A7DDEDD7418E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F2E2BC-0C67-4C24-9844-A7DDEDD7418E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F2E2BC-0C67-4C24-9844-A7DDEDD7418E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F2E2BC-0C67-4C24-9844-A7DDEDD7418E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

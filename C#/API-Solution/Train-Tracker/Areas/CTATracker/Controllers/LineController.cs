@@ -1,34 +1,33 @@
-﻿using CTA_Tracker.API;
-using CTA_Tracker.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Train_Tracker.API;
+using Train_Tracker.Models;
 
-namespace CTA_Tracker.Controllers
+namespace Train_Tracker.Areas.CTATracker.Controllers
 {
-    public class RouteController(IHttpClientFactory httpClientFactory, IConfiguration config) : Controller
+    [Area("CTATracker")]
+    public class LineController(IHttpClientFactory httpClientFactory, IConfiguration config) : Controller
     {
         [HttpGet]
-        public IActionResult RouteNumber(string? rn, string? route)
+        public IActionResult TrainLine(string? line)
         {
-            ViewBag.RouteNumber = rn;
-            ViewBag.SelectedRoute = route;
+            ViewBag.SelectedRoute = line;
             
-            return View(new List<TrainModel>());
+            return View(new List<RouteModel>());
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ActionName("RouteNumber")]
-        public async Task<IActionResult> RouteNumberPost(string? rn, string? route)
+        [ActionName("TrainLine")]
+        public async Task<IActionResult> TrainLinePost(string route)
         {
-            ViewBag.RouteNumber = rn;
             ViewBag.SelectedRoute = route;
             ViewBag.Requested = true;
 
-            if (!Functions.IsValidRunNumber(rn))
+            if (!Functions.IsValidRoute(route))
             {
-                ModelState.AddModelError(string.Empty, "Invalid Run Number");
+                ModelState.AddModelError(string.Empty, "Invalid Route");
                 
-                return View(new List<TrainModel>());
+                return View(new List<RouteModel>());           
             }
             
             string? apiKey = config["API_KEY"];
@@ -36,35 +35,35 @@ namespace CTA_Tracker.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Invalid API Key");
                 
-                return View(new List<TrainModel>());
+                return View(new List<RouteModel>());
             }
             
-            (bool ok, string json, string? error) = await FetchAsync(apiKey, rn!);
+            (bool ok, string json, string? error) = await FetchAsync(apiKey, route);
             if (!ok)
             {
                 ModelState.AddModelError(string.Empty, error ?? "Unknown Error");
                 
-                return View(new List<TrainModel>());
+                return View(new List<RouteModel>());
             }
             
-            List<TrainModel> trains = Functions.ExtractTrainItems(json);
+            List<RouteModel> trains = Functions.ExtractRouteItems(json);
             ViewBag.Timestamp = Functions.TryGetTimestamp(json);
             
             return View(trains);
         }
 
-        private async Task<(bool ok, string json, string? error)> FetchAsync(string apiKey, string rn)
+        private async Task<(bool ok, string json, string? error)> FetchAsync(string apiKey, string route)
         {
-            string url = Functions.BuildTrainUrl(apiKey, rn);
+            string url = Functions.BuildRouteUrl(apiKey, route);
             
             HttpClient client = httpClientFactory.CreateClient();
 
             try
             {
                 using HttpResponseMessage resp = await client.GetAsync(url);
-                
+
                 string json = await resp.Content.ReadAsStringAsync();
-                
+
                 return !resp.IsSuccessStatusCode ? (false, json, $"Upstream Error: {resp.StatusCode} {resp.ReasonPhrase}") : (true, json, null);
             }
             catch (HttpRequestException ex)

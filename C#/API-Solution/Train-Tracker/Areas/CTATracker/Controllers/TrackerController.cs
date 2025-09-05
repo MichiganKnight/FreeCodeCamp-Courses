@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace CTA_Tracker.Controllers
+namespace Train_Tracker.Areas.CTATracker.Controllers
 {
+    [Area("CTATracker")]
     public class TrackerController : Controller
     {
         public IActionResult Index()
