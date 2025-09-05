@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Train_Tracker.API;
+using Train_Tracker.Areas.CTATracker.Models;
 using Train_Tracker.Models;
 
 namespace Train_Tracker.Areas.CTATracker.Controllers

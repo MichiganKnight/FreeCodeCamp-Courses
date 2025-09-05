@@ -1,5 +1,6 @@
-﻿@model List<Train_Tracker.Models.TrainModel>
+﻿@model List<Train_Tracker.Areas.CTATracker.Models.TrainModel>
 @using Microsoft.AspNetCore.Mvc.ModelBinding
+@using Train_Tracker.Areas.CTATracker.Models
 @{
     string route = (ViewBag.SelectedRoute as string) ?? (string?)Context.Request.Query["route"] ?? "red";
     string runNumber = (ViewBag.RouteNumber as string) ?? (string?)Context.Request.Query["rn"] ?? "000";

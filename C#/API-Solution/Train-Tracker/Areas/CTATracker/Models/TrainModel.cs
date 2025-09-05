@@ -1,4 +1,4 @@
-﻿namespace Train_Tracker.Models
+﻿namespace Train_Tracker.Areas.CTATracker.Models
 {
     public class TrainModel
     {
