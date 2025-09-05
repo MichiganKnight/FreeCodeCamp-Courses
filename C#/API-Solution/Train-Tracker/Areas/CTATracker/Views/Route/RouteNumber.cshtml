@@ -17,7 +17,7 @@
     
     <h5 class="@lineCss">Route Number: @runNumber</h5>
     
-    <form asp-controller="Route" asp-action="RouteNumber" method="post">
+    <form asp-area="CTATracker" asp-controller="Route" asp-action="RouteNumber" method="post">
         @Html.AntiForgeryToken()
         <input type="hidden" name="rn" value="@runNumber" />
         <input type="hidden" name="route" value="@route" />
@@ -65,4 +65,10 @@
             </table>
         </div>
     }
+    
+    <br />
+    
+    <a asp-area="CTATracker" asp-controller="Line" asp-action="TrainLine" asp-route-line="@route" class="@lineCss returnBtn">Return to @displayRoute Line Train List</a>
+    <br /><br />
+    <a asp-area="CTATracker" asp-controller="Tracker" asp-action="Index" class="basicAnchor">Return to CTA Tracker</a>
 </div>
