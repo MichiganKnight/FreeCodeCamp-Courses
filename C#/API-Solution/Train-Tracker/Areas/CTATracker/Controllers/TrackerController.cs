@@ -7,6 +7,8 @@ namespace Train_Tracker.Areas.CTATracker.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.FaviconPath = "/ctaFavicon.ico";
+            
             return View();
         }
     }

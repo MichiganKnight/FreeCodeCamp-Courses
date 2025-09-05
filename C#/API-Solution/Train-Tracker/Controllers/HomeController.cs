@@ -10,6 +10,8 @@ namespace Train_Tracker.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.FaviconPath = "/favicon.ico";
+            
             return View();
         }
 

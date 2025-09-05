@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Train_Tracker.API;
 using Train_Tracker.Areas.CTATracker.Models;
-using Train_Tracker.Models;
 
 namespace Train_Tracker.Areas.CTATracker.Controllers
 {
@@ -11,6 +10,7 @@ namespace Train_Tracker.Areas.CTATracker.Controllers
         [HttpGet]
         public IActionResult TrainLine(string? line)
         {
+            ViewBag.FaviconPath = "/ctaFavicon.ico";
             ViewBag.SelectedRoute = line;
             
             return View(new List<RouteModel>());
@@ -21,6 +21,7 @@ namespace Train_Tracker.Areas.CTATracker.Controllers
         [ActionName("TrainLine")]
         public async Task<IActionResult> TrainLinePost(string route)
         {
+            ViewBag.FaviconPath = "/ctaFavicon.ico";
             ViewBag.SelectedRoute = route;
             ViewBag.Requested = true;
 

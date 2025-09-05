@@ -11,6 +11,7 @@ namespace Train_Tracker.Areas.CTATracker.Controllers
         [HttpGet]
         public IActionResult RouteNumber(string? rn, string? route)
         {
+            ViewBag.FaviconPath = "/ctaFavicon.ico";
             ViewBag.RouteNumber = rn;
             ViewBag.SelectedRoute = route;
             
@@ -22,6 +23,7 @@ namespace Train_Tracker.Areas.CTATracker.Controllers
         [ActionName("RouteNumber")]
         public async Task<IActionResult> RouteNumberPost(string? rn, string? route)
         {
+            ViewBag.FaviconPath = "/ctaFavicon.ico";
             ViewBag.RouteNumber = rn;
             ViewBag.SelectedRoute = route;
             ViewBag.Requested = true;
