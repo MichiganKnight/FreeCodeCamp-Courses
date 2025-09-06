@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using CTA_Route_Model = Train_Tracker.Areas.CTATracker.Models.RouteModel;
 using CTA_Train_Model = Train_Tracker.Areas.CTATracker.Models.TrainModel;
 using Metra_Route_Model = Train_Tracker.Areas.MetraTracker.Models.RouteModel;
+using Metra_Trip_Model = Train_Tracker.Areas.MetraTracker.Models.TripModel;
 
 namespace Train_Tracker.API
 {
@@ -207,6 +208,39 @@ namespace Train_Tracker.API
                         RouteShortName = routeObj.Value<string>("route_short_name"),
                         RouteLongName = routeObj.Value<string>("route_long_name"),
                         RouteColor = routeObj.Value<string>("route_color")
+                    });
+                }
+            }
+            catch
+            {
+                // Ignore
+            }
+            
+            return result;
+        }
+        
+        public static List<Metra_Trip_Model> ExtractMetraTrips(string json)
+        {
+            List<Metra_Trip_Model> result = [];
+
+            try
+            {
+                JArray trips = JArray.Parse(json);
+
+                foreach (JToken trip in trips)
+                {
+                    if (trip is not JObject routeObj)
+                    {
+                        continue;
+                    }
+                    
+                    result.Add(new Metra_Trip_Model()
+                    {
+                        RouteID = routeObj.Value<string>("route_id"),
+                        TripID = routeObj.Value<string>("trip_id"),
+                        TripHeadsign = routeObj.Value<string>("trip_headsign"),
+                        ShapeID = routeObj.Value<string>("shape_id"),
+                        DirectionID = routeObj.Value<string>("direction_id")
                     });
                 }
             }
