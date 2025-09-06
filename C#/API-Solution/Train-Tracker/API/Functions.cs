@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
-using Train_Tracker.Areas.CTATracker.Models;
-using Train_Tracker.Models;
+﻿using System.Diagnostics;
+using Newtonsoft.Json.Linq;
+using CTA_Route_Model = Train_Tracker.Areas.CTATracker.Models.RouteModel;
+using CTA_Train_Model = Train_Tracker.Areas.CTATracker.Models.TrainModel;
+using Metra_Route_Model = Train_Tracker.Areas.MetraTracker.Models.RouteModel;
 
 namespace Train_Tracker.API
 {
@@ -77,9 +79,9 @@ namespace Train_Tracker.API
         /// </summary>
         /// <param name="json">The JSON to Parse</param>
         /// <returns>Result as a <see cref="List{T}"/></returns>
-        public static List<RouteModel> ExtractRouteItems(string json)
+        public static List<CTA_Route_Model> ExtractRouteItems(string json)
         {
-            List<RouteModel> result = [];
+            List<CTA_Route_Model> result = [];
 
             try
             {
@@ -120,7 +122,7 @@ namespace Train_Tracker.API
                             continue;
                         }
 
-                        result.Add(new RouteModel
+                        result.Add(new CTA_Route_Model
                         {
                             RouteNumber = trainObj.Value<string>("rn"),
                             Destination = trainObj.Value<string>("destNm"),
@@ -137,9 +139,9 @@ namespace Train_Tracker.API
             return result;
         }
 
-        public static List<TrainModel> ExtractTrainItems(string json)
+        public static List<CTA_Train_Model> ExtractTrainItems(string json)
         {
-            List<TrainModel> result = [];
+            List<CTA_Train_Model> result = [];
 
             try
             {
@@ -165,7 +167,7 @@ namespace Train_Tracker.API
                         continue;
                     }
                     
-                    result.Add(new TrainModel()
+                    result.Add(new CTA_Train_Model()
                     {
                         StationName = etaObj.Value<string>("staNm"),
                         StationDescription = etaObj.Value<string>("stpDe"),
@@ -173,6 +175,38 @@ namespace Train_Tracker.API
                         EstimatedArrival = etaObj.Value<DateTime?>("arrT"),
                         Approaching = etaObj.Value<string>("isApp"),
                         Delayed = etaObj.Value<string>("isDly")
+                    });
+                }
+            }
+            catch
+            {
+                // Ignore
+            }
+            
+            return result;
+        }
+
+        public static List<Metra_Route_Model> ExtractMetraRoutes(string json)
+        {
+            List<Metra_Route_Model> result = [];
+
+            try
+            {
+                JArray routes = JArray.Parse(json);
+
+                foreach (JToken route in routes)
+                {
+                    if (route is not JObject routeObj)
+                    {
+                        continue;
+                    }
+                    
+                    result.Add(new Metra_Route_Model()
+                    {
+                        RouteID = routeObj.Value<string>("route_id"),
+                        RouteShortName = routeObj.Value<string>("route_short_name"),
+                        RouteLongName = routeObj.Value<string>("route_long_name"),
+                        RouteColor = routeObj.Value<string>("route_color")
                     });
                 }
             }
