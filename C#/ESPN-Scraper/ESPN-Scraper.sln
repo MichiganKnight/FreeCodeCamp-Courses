@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESPN-Scraper-Console", "ESPN-Scraper-Console\ESPN-Scraper-Console.csproj", "{B1DCAA5D-B390-4AEE-8153-CDDEF8F2522D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sports-API", "Sports-API\Sports-API.csproj", "{04E60B28-4E7F-4309-99B4-6B30CF5304A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{B1DCAA5D-B390-4AEE-8153-CDDEF8F2522D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1DCAA5D-B390-4AEE-8153-CDDEF8F2522D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1DCAA5D-B390-4AEE-8153-CDDEF8F2522D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04E60B28-4E7F-4309-99B4-6B30CF5304A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E60B28-4E7F-4309-99B4-6B30CF5304A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E60B28-4E7F-4309-99B4-6B30CF5304A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E60B28-4E7F-4309-99B4-6B30CF5304A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
