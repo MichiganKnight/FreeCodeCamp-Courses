@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESPN-Scraper-API", "ESPN-Scraper-API\ESPN-Scraper-API.csproj", "{F150CB4D-6A50-44B7-86ED-30D594578A8C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESPN-Scraper-Console", "ESPN-Scraper-Console\ESPN-Scraper-Console.csproj", "{B1DCAA5D-B390-4AEE-8153-CDDEF8F2522D}"
 EndProject
 Global
@@ -10,10 +8,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F150CB4D-6A50-44B7-86ED-30D594578A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F150CB4D-6A50-44B7-86ED-30D594578A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F150CB4D-6A50-44B7-86ED-30D594578A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F150CB4D-6A50-44B7-86ED-30D594578A8C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1DCAA5D-B390-4AEE-8153-CDDEF8F2522D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1DCAA5D-B390-4AEE-8153-CDDEF8F2522D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1DCAA5D-B390-4AEE-8153-CDDEF8F2522D}.Release|Any CPU.ActiveCfg = Release|Any CPU
