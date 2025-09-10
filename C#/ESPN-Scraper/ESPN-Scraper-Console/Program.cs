@@ -3,7 +3,7 @@ using ESPN_Scraper_Console.Services;
 
 namespace ESPN_Scraper_Console
 {
-    public class Program
+    public static class Program
     {
         private static async Task Main(string[] args)
         {
@@ -13,7 +13,6 @@ namespace ESPN_Scraper_Console
                 EspnApiService espn = new(client);
 
                 await PrintGameStats(espn);
-                await PrintPlayerStats(espn);
             }
             catch (Exception ex)
             {
@@ -42,23 +41,6 @@ namespace ESPN_Scraper_Console
 
                 // Print All Starter Stats
                 PrintPlayerCentricStats(summary!);
-            }
-        }
-
-        private static async Task PrintPlayerStats(EspnApiService espn)
-        {
-            // Example: Get Player Stats (Dak Prescott)
-            string dakId = "2577417";
-            PlayerSeasonStats? playerStats = await espn.GetPlayerStatsAsync(dakId);
-            Category? passing = playerStats?.Splits?[0].Categories?.FirstOrDefault(c => c.Name == "passing");
-            if (passing != null)
-            {
-                Console.WriteLine($"\nDak Prescott Season Passing Stats:");
-
-                foreach (PlayerStat stat in passing.Stats ?? [])
-                {
-                    Console.WriteLine($"  {stat.Label}: {stat.Value}");
-                }
             }
         }
 
