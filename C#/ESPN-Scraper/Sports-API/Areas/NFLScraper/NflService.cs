@@ -20,5 +20,14 @@ namespace Sports_API.Areas.NFLScraper
 
             return JsonConvert.DeserializeObject<TeamsModel>(json);
         }
+        
+        // Get Specific Team Stats
+        public async Task<TeamModel?> GetTeamStatsAsync(string? teamAbbr)
+        {
+            string url = $"https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/{Uri.EscapeDataString(teamAbbr!)}";
+            string json = await _client.GetStringAsync(url);
+            
+            return JsonConvert.DeserializeObject<TeamModel>(json);
+        }
     }
 }

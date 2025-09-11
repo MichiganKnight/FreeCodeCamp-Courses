@@ -23,16 +23,16 @@ namespace Sports_API.Areas.NFLScraper.Models
     public class League
     {
         [JsonProperty("teams")]
-        public List<Team>? Teams { get; set; }
+        public List<MultiTeam>? Teams { get; set; }
     }
 
-    public class Team
+    public class MultiTeam
     {
         [JsonProperty("team")]
-        public TeamItem? TeamItem { get; set; }
+        public MultiTeamItem? TeamItem { get; set; }
     }
     
-    public class TeamItem
+    public class MultiTeamItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }

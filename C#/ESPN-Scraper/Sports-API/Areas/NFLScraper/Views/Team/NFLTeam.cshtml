@@ -1,10 +1,32 @@
 ﻿@using Sports_API.Areas.NFLScraper.Models
+@model List<Sports_API.Areas.NFLScraper.Models.TeamStats>
 @{
     ViewData["Title"] = $"{@ViewBag.TeamName} - NFL";
 }
 
 <div class="container text-center">
-    <h2>@ViewBag.TeamName</h2>
-    
-    
+    <h2 style="color: #@ViewBag.TeamColor">@ViewBag.TeamName</h2>
+
+    @if (Model is { Count: > 0 })
+    {
+        <div class="row row-cols-1 row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+            @foreach (TeamStats teamStat in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm h-100 border-1">
+                        <div class="card-body d-flex flex-column">
+                            <div class="text-uppercase small fw-semibold text-muted">@teamStat.Name</div>
+                            <div class="display-6 fw-bold mt-1" style="color: #@ViewBag.TeamColor">
+                                @teamStat.Value
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-secondary">No Team Stats Found</div>
+    }
 </div>

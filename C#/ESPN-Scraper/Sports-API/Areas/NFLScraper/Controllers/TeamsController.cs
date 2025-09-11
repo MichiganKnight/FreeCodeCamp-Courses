@@ -14,7 +14,7 @@ namespace Sports_API.Areas.NFLScraper.Controllers
             NflService nfl = new(client);
 
             TeamsModel? teamModel = await nfl.GetTeamsAsync();
-            List<TeamItem> model = [];
+            List<MultiTeamItem> model = [];
 
             if (teamModel?.Sports != null)
             {
@@ -26,9 +26,9 @@ namespace Sports_API.Areas.NFLScraper.Controllers
                     {
                         if (league.Teams == null) continue;
 
-                        foreach (Team team in league.Teams)
+                        foreach (MultiTeam team in league.Teams)
                         {
-                            TeamItem? teamItem = team?.TeamItem;
+                            MultiTeamItem? teamItem = team?.TeamItem;
                             
                             if (teamItem != null)
                             {
