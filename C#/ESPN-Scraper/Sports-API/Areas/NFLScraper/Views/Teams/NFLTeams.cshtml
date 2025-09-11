@@ -23,7 +23,7 @@
                         <td>
                             <a asp-area="NFLScraper" asp-controller="Team" asp-action="NFLTeam" asp-route-team="@team.DisplayName" asp-route-abbr="@team.Abbreviation" style="color: #@team.Color">@team.DisplayName</a>
                         </td>
-                        <td><img src='@Url.Content($"~/favicons/{team.DisplayName}.png")' alt="@team.DisplayName" /></td>
+                        <td><img src='@Url.Content($"~/favicons/{team.DisplayName}.png")' alt="@team.DisplayName" width="32" height="32" /></td>
                     </tr>
                 }
             }
