@@ -5,6 +5,6 @@
     /// </summary>
     public class Functions
     {
-        //public static string GetDisplayName(string? name) => name?.Replace(" ", "");
+        
     }
 }

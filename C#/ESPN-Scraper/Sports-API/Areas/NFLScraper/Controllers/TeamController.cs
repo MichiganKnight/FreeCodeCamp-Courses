@@ -8,11 +8,19 @@ namespace Sports_API.Areas.NFLScraper.Controllers
     [Area("NFLScraper")]
     public class TeamController : Controller
     {
+        private readonly IWebHostEnvironment _env;
+        
+        public TeamController(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
+        
         [HttpGet]
         [ActionName("NFLTeam")]
         public async Task<ActionResult> NFLTeam(string? team, string? abbr, string? include = null, string? exclude = null)
         {
             ViewBag.TeamName = team;
+            ViewBag.FaviconPath = Path.Combine(_env.WebRootPath, $"/favicons/{team}.ico");
             
             using HttpClient client = new();
             NflService nfl = new(client);

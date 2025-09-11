@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Sports_API.API;
 using Sports_API.Areas.NFLScraper.Models;
 
 namespace Sports_API.Areas.NFLScraper.Controllers
