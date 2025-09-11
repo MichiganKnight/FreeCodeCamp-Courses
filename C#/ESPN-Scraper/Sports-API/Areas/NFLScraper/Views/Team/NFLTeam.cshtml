@@ -1,32 +1,107 @@
-﻿@using Sports_API.Areas.NFLScraper.Models
+﻿@using Microsoft.AspNetCore.Html
+@using Sports_API.Areas.NFLScraper.Models
 @model List<Sports_API.Areas.NFLScraper.Models.TeamStats>
 @{
     ViewData["Title"] = $"{@ViewBag.TeamName} - NFL";
+    
+    string Val(string label) => Model.FirstOrDefault(x => string.Equals(x.Name, label, StringComparison.OrdinalIgnoreCase))?.Value ?? "-";
+    
+    Func<string, string, object> StatCard = (label, value) => new HtmlString($@"
+        <div class=""card shadow-sm h-100 border-1"">
+            <div class=""card-body d-flex flex-column"">
+                <div class=""small fw-semibold text-muted"">{label}</div>
+                <div class=""display-6 fw-bold mt-1"" style=""color: #{ViewBag.TeamColor}"">
+                    {value}
+                </div>
+            </div>
+        </div>");
 }
 
 <div class="container text-center">
     <h2 style="color: #@ViewBag.TeamColor">@ViewBag.TeamName</h2>
+    
+    @ViewBag.TeamStats
 
     @if (Model is { Count: > 0 })
     {
-        <div class="row row-cols-1 row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
-            @foreach (TeamStats teamStat in Model)
-            {
-                <div class="col">
-                    <div class="card shadow-sm h-100 border-1">
-                        <div class="card-body d-flex flex-column">
-                            <div class="text-uppercase small fw-semibold text-muted">@teamStat.Name</div>
-                            <div class="display-6 fw-bold mt-1" style="color: #@ViewBag.TeamColor">
-                                @teamStat.Value
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
+        <div class="row">
+            <div class="col">
+                <h5 class="text-muted mb-3">Win / Loss Stats</h5>
+            </div>
+        </div>
+        
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-md-12 offset-md-12">
+                @StatCard("Overall Record", ViewBag.Record)
+            </div>
+        </div>
+        
+        <div class="row g-3 mb-2">
+            <div class="col-12 col-md-4">
+                @StatCard("Wins", Val("Wins"))
+            </div>
+            <div class="col-12 col-md-4">
+                @StatCard("Losses", Val("Losses"))
+            </div>
+            <div class="col-12 col-md-4">
+                @StatCard("Ties", Val("Ties"))
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-md-12 offset-md-12">
+                @StatCard("Win %", Val("Win %"))
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h5 class="text-muted mb-3">Overtime Stats</h5>
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-md-6">
+                @StatCard("Overtime Wins", Val("Overtime Wins"))
+            </div>
+            <div class="col-12 col-md-6">
+                @StatCard("Overtime Losses", Val("Overtime Losses"))
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <h5 class="text-muted mb-3">Point Stats</h5>
+            </div>
+        </div>
+        
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-md-4">
+                @StatCard("Points For", Val("Points For"))
+            </div>
+            <div class="col-12 col-md-4">
+                @StatCard("Point Differential", Val("Point Differential"))
+            </div>
+            <div class="col-12 col-md-4">
+                @StatCard("Points Against", Val("Points Against"))
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-12 col-md-6">
+                @StatCard("Average Points For", Val("Average Points For"))
+            </div>
+            <div class="col-12 col-md-6">
+                @StatCard("Average Points Against", Val("Average Points Against"))
+            </div>
         </div>
     }
     else
     {
         <div class="alert alert-secondary">No Team Stats Found</div>
     }
+    
+    <br />
+    
+    <a class="returnBtn" asp-area="NFLScraper" asp-controller="Teams" asp-action="NFLTeams">Go Back to NFL Teams</a>
 </div>

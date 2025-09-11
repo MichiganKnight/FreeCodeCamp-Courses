@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Sports_API.Areas.NFLScraper.Models;
+using static System.Int32;
 
 namespace Sports_API.Areas.NFLScraper.Controllers
 {
@@ -28,6 +29,8 @@ namespace Sports_API.Areas.NFLScraper.Controllers
                     foreach (Item item in teamModel.Team.Record.Items)
                     {
                         if (item.TeamStats == null) continue;
+
+                        ViewBag.Record = item.Summary;
                             
                         foreach (TeamStats stat in item.TeamStats)
                         {
@@ -45,18 +48,47 @@ namespace Sports_API.Areas.NFLScraper.Controllers
                 includeKeysList =
                 [
                     "wins", "losses", "ties",
-                    "winPercent", "OTWins", "OTLosses",
-                    "avgPointsFor", "avgPointsAgainst", "differential"
+                    "winPercent",
+                    "OTWins", "OTLosses",
+                    "pointsFor", "differential", "pointsAgainst",
+                    "avgPointsFor", "avgPointsAgainst"
                 ];
             }
             
             Dictionary<string, string> byKey = new(StringComparer.OrdinalIgnoreCase);
             
-            foreach (TeamStats teamStat in model)
+            foreach (TeamStats teamStat in model.Where(teamStat => !string.IsNullOrWhiteSpace(teamStat?.Name)))
             {
-                if (string.IsNullOrWhiteSpace(teamStat?.Name)) continue;
-                
                 byKey[teamStat.Name!] = teamStat.Value ?? string.Empty;
+            }
+            
+            if (byKey.TryGetValue("winPercent", out string? rawWinPct))
+            {
+                if (double.TryParse(rawWinPct, out double pct0To1) && pct0To1 is >= 0 and <= 1.000_000_1)
+                {
+                    byKey["winPercent"] = (pct0To1 * 100).ToString("0.00") + "%";
+                }
+            }
+            
+            if (!excludeKeys.Contains("winPercent"))
+            {
+                if (byKey.TryGetValue("wins", out string? wStr) &&
+                    byKey.TryGetValue("losses", out string? lStr))
+                {
+                    TryParse(wStr, out int w);
+                    TryParse(lStr, out int l);
+                    
+                    int t = 0;
+                    
+                    if (byKey.TryGetValue("ties", out string? tStr)) TryParse(tStr, out t);
+
+                    int total = w + l + t;
+                    if (total > 0)
+                    {
+                        double pct0To1 = (w + 0.5 * t) / total;
+                        byKey["winPercent"] = (pct0To1 * 100).ToString("0.00") + "%";
+                    }
+                }
             }
             
             if (!excludeKeys.Contains("differential"))
@@ -76,8 +108,18 @@ namespace Sports_API.Areas.NFLScraper.Controllers
             {
                 if (excludeKeys.Contains(key)) continue;
 
-                // differential may be computed above; others come from byKey
                 if (!byKey.TryGetValue(key, out string? val)) continue;
+
+                if (string.Equals(key, "winPercent", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!val.EndsWith('%'))
+                    {
+                        if (double.TryParse(val, out var pct0To1) && pct0To1 >= 0 && pct0To1 <= 1.000_000_1)
+                        {
+                            val = (pct0To1 * 100).ToString("0.00") + "%";
+                        }
+                    }
+                }
 
                 filtered.Add(new TeamStats
                 {
@@ -100,9 +142,11 @@ namespace Sports_API.Areas.NFLScraper.Controllers
             { "winPercent", "Win %" },
             { "OTWins", "Overtime Wins" },
             { "OTLosses", "Overtime Losses" },
+            { "pointsFor", "Points For" },
+            { "differential", "Point Differential" },
+            { "pointsAgainst", "Points Against"},
             { "avgPointsFor", "Average Points For" },
-            { "avgPointsAgainst", "Average Points Against" },
-            { "differential", "Differential" }
+            { "avgPointsAgainst", "Average Points Against" }
         };
 
         private static string ToDisplayLabel(string key)
@@ -133,36 +177,9 @@ namespace Sports_API.Areas.NFLScraper.Controllers
             return result.ToString();
         }
 
-        private static string FromDisplayLabelToKeyGuess(string? display)
-        {
-            if (string.IsNullOrWhiteSpace(display)) return string.Empty;
-
-            foreach (KeyValuePair<string, string> kvp in LabelOverrides.Where(kvp => string.Equals(kvp.Value, display, StringComparison.OrdinalIgnoreCase)))
-            {
-                return kvp.Key;
-            }
-            
-            return display.Replace(" ", "", StringComparison.OrdinalIgnoreCase);
-        }
-
         private static List<string> ParseList(string? csv)
         {
             return string.IsNullOrWhiteSpace(csv) ? [] : csv.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();
-        }
-
-        private static int IndexOfIgnoreCase(List<string> list, string? value)
-        {
-            if (string.IsNullOrEmpty(value)) return int.MaxValue;
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (string.Equals(list[i], value, StringComparison.OrdinalIgnoreCase))
-                {
-                    return i;
-                }
-            }
-            
-            return int.MaxValue;
-
         }
     }
 }

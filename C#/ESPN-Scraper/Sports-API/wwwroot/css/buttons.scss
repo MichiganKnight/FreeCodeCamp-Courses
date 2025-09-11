@@ -1,0 +1,21 @@
+﻿:root {
+    --bs-dark-gray: #36454F;
+    --bs-light-gray: #D3D3D3;
+}
+
+.btn-back {
+    --bs-btn-font-weight: 600;
+    --bs-btn-border-color: var(--bs-dark-gray);
+    --bs-btn-hover-color: var(--bs-light-gray);
+    --bs-btn-hover-bg: var(--bs-dark-gray);
+    --bs-btn-hover-border-color: var(--bs-dark-gray);
+    --bs-btn-focusshadow-rgb: 13, 202, 240;
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: var(--bs-dark-gray);
+    --bs-btn-active-border-color: var(--bs-dark-gray);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--bs-dark-gray);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--bs-dark-gray);
+    --bs-gradient: none;
+}
