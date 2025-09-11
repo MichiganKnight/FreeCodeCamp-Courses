@@ -9,7 +9,6 @@
 
     <ItemGroup>
       <Folder Include="Areas\CFBScraper\" />
-      <Folder Include="wwwroot\favicons\" />
     </ItemGroup>
 
     <ItemGroup>
