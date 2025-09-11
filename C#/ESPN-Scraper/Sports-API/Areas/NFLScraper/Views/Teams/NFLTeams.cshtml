@@ -1,0 +1,36 @@
+﻿@using Sports_API.Areas.NFLScraper.Models
+@model List<Sports_API.Areas.NFLScraper.Models.TeamItem>
+@{
+    ViewData["Title"] = "NFL Teams";
+}
+
+<div class="container text-center">
+    <h2>NFL Teams</h2>
+    
+    <table class="table table-striped table-bordered table-hover" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Team Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model is { Count: > 0 })
+            {
+                @foreach (TeamItem team in Model)
+                {
+                    <tr>
+                        <td>
+                            <a asp-area="NFLScraper" asp-controller="Team" asp-action="NFLTeam" asp-route-team="@team.DisplayName" asp-route-abbreviation="@team.Abbreviation" style="color: #@team.Color">@team.DisplayName</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td class="text-muted">No Teams Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
