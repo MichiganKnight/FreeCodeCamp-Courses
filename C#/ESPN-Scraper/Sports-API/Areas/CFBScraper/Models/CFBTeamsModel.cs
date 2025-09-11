@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Sports_API.Areas.NFLScraper.Models
+namespace Sports_API.Areas.CFBScraper.Models
 {
-    public class TeamsModel
+    public class CFBTeamsModel
     {
         [JsonProperty("sports")]
         public List<Sport>? Sports { get; set; }

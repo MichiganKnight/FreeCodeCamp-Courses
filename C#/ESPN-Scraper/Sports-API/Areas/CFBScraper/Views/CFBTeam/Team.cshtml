@@ -1,8 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Html
-@using Sports_API.Areas.NFLScraper.Models
-@model List<Sports_API.Areas.NFLScraper.Models.TeamStats>
+@model List<Sports_API.Areas.CFBScraper.Models.TeamStats>
 @{
-    ViewData["Title"] = $"{@ViewBag.TeamName} - NFL";
+    ViewData["Title"] = $"{@ViewBag.TeamName} - College Football";
     
     string Val(string label) => Model.FirstOrDefault(x => string.Equals(x.Name, label, StringComparison.OrdinalIgnoreCase))?.Value ?? "-";
     
@@ -104,5 +103,5 @@
     
     <br />
     
-    <a class="returnBtn" asp-area="NFLScraper" asp-controller="Teams" asp-action="NFLTeams">Go Back to NFL Teams</a>
+    <a class="returnBtn" asp-area="CFBScraper" asp-controller="CFBTeams" asp-action="Teams">Go Back to College Football Teams</a>
 </div>

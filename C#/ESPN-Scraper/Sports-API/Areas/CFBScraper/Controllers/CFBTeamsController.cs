@@ -1,20 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Sports_API.API;
-using Sports_API.Areas.NFLScraper.Models;
+using Sports_API.Areas.CFBScraper.Models;
 
-namespace Sports_API.Areas.NFLScraper.Controllers
+namespace Sports_API.Areas.CFBScraper.Controllers
 {
-    [Area("NFLScraper")]
-    public class TeamsController : Controller
+    [Area("CFBScraper")]
+    public class CFBTeamsController : Controller
     {
         [HttpGet]
-        [ActionName("NFLTeams")]
-        public async Task<ActionResult> NFLTeams()
+        [ActionName("Teams")]
+        public async Task<ActionResult> Teams()
         {
             using HttpClient client = new();
-            NflService nfl = new(client);
+            CfbService cfb = new(client);
 
-            TeamsModel? teamModel = await nfl.GetTeamsAsync();
+            CFBTeamsModel? teamModel = await cfb.GetTeamsAsync();
             List<MultiTeamItem> model = [];
 
             if (teamModel?.Sports != null)

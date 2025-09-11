@@ -13,21 +13,21 @@ namespace Sports_API.Areas.NFLScraper
         }
         
         // Get NFL Teams
-        public async Task<TeamsModel?> GetTeamsAsync()
+        public async Task<NFLTeamsModel?> GetTeamsAsync()
         {
             const string url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams";
             string json = await _client.GetStringAsync(url);
 
-            return JsonConvert.DeserializeObject<TeamsModel>(json);
+            return JsonConvert.DeserializeObject<NFLTeamsModel>(json);
         }
         
         // Get Specific Team Stats
-        public async Task<TeamModel?> GetTeamStatsAsync(string? teamAbbr)
+        public async Task<NFLTeamModel?> GetTeamStatsAsync(string? teamAbbr)
         {
             string url = $"https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/{Uri.EscapeDataString(teamAbbr!)}";
             string json = await _client.GetStringAsync(url);
             
-            return JsonConvert.DeserializeObject<TeamModel>(json);
+            return JsonConvert.DeserializeObject<NFLTeamModel>(json);
         }
     }
 }

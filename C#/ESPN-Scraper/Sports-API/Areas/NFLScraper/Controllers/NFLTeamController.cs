@@ -6,18 +6,18 @@ using static System.Int32;
 namespace Sports_API.Areas.NFLScraper.Controllers
 {
     [Area("NFLScraper")]
-    public class TeamController : Controller
+    public class NFLTeamController : Controller
     {
         private readonly IWebHostEnvironment _env;
         
-        public TeamController(IWebHostEnvironment env)
+        public NFLTeamController(IWebHostEnvironment env)
         {
             _env = env;
         }
         
         [HttpGet]
-        [ActionName("NFLTeam")]
-        public async Task<ActionResult> NFLTeam(string? team, string? abbr, string? include = null, string? exclude = null)
+        [ActionName("Team")]
+        public async Task<ActionResult> Team(string? team, string? abbr, string? include = null, string? exclude = null)
         {
             ViewBag.TeamName = team;
             ViewBag.FaviconPath = Path.Combine(_env.WebRootPath, $"/favicons/nfl/{team}.ico");
@@ -25,7 +25,7 @@ namespace Sports_API.Areas.NFLScraper.Controllers
             using HttpClient client = new();
             NflService nfl = new(client);
 
-            TeamModel? teamModel = await nfl.GetTeamStatsAsync(abbr);
+            NFLTeamModel? teamModel = await nfl.GetTeamStatsAsync(abbr);
             List<TeamStats> model = [];
             
             if (teamModel?.Team != null)
