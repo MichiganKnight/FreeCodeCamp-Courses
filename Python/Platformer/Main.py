@@ -7,6 +7,7 @@ from os import listdir
 from os.path import isfile, join
 
 from Globals import *
+from Objects.Block import Block
 from Player import handle_move, Player
 
 pygame.init()
@@ -26,9 +27,12 @@ def get_background(name):
 
     return tiles, image
 
-def draw(window, background, bg_image, player):
+def draw(window, background, bg_image, player, objects):
     for tile in background:
         window.blit(bg_image, tile)
+
+    for obj in objects:
+        obj.draw(window)
 
     player.draw(window)
 
@@ -38,7 +42,10 @@ def main(window):
     clock = pygame.time.Clock()
     background, bg_image = get_background("Blue.png")
 
+    block_size = 96
+
     player = Player(100, 100, 50, 50)
+    floor = [Block(i * block_size, HEIGHT - block_size, block_size) for i in range(-WIDTH // block_size, WIDTH * 2 // block_size)]
 
     run = True
     while run:
@@ -51,7 +58,7 @@ def main(window):
 
         player.loop(FPS)
         handle_move(player)
-        draw(window, background, bg_image, player)
+        draw(window, background, bg_image, player, floor)
 
     pygame.quit()
     quit()

@@ -59,7 +59,7 @@ class Player(pygame.sprite.Sprite):
         self.update()
 
     def update(self):
-        self.rect = self.sprite.get_rect(topLeft = (self.rect.x, self.rect.y))
+        self.rect = self.sprite.get_rect(topleft = (self.rect.x, self.rect.y))
         self.mask = pygame.mask.from_surface(self.sprite)
 
     def draw(self, win):
