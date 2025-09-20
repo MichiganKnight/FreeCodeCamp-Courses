@@ -7,6 +7,7 @@ from os import listdir
 from os.path import isfile, join
 
 from Globals import *
+from Player import Player, handle_move
 
 pygame.init()
 pygame.display.set_caption("Platformer")
@@ -25,15 +26,19 @@ def get_background(name):
 
     return tiles, image
 
-def draw(window, background, bg_image):
+def draw(window, background, bg_image, player):
     for tile in background:
         window.blit(bg_image, tile)
+
+    player.draw(window)
 
     pygame.display.update()
 
 def main(window):
     clock = pygame.time.Clock()
     background, bg_image = get_background("Blue.png")
+
+    player = Player(100, 100, 50, 50)
 
     run = True
     while run:
@@ -44,7 +49,9 @@ def main(window):
                 run = False
                 break
 
-        draw(window, background, bg_image)
+        player.loop(FPS)
+        handle_move(player)
+        draw(window, background, bg_image, player)
 
     pygame.quit()
     quit()
