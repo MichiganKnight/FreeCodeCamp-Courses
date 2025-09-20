@@ -7,7 +7,7 @@ from os import listdir
 from os.path import isfile, join
 
 from Globals import *
-from Player import Player, handle_move
+from Player import handle_move, Player
 
 pygame.init()
 pygame.display.set_caption("Platformer")
