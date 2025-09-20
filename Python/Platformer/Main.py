@@ -1,10 +1,6 @@
-import os
-import random
-import math
-import pygame
+from os.path import join
 
-from os import listdir
-from os.path import isfile, join
+import pygame
 
 from Globals import *
 from Objects.Block import Block
