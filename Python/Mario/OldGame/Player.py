@@ -35,7 +35,7 @@ class Player(pygame.sprite.Sprite):
         self.on_right = False
 
     def import_character_assets(self):
-        character_path = join("../Assets", "Character")
+        character_path = join("Assets", "Character")
         self.animations = {'Idle': [], 'Run': [], 'Jump': [], 'Fall': []}
 
         for animation in self.animations.keys():
@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
             self.animations[animation] = import_folder(full_path)
 
     def import_dust_run_particles(self):
-        self.dust_run_particles = import_folder(join("../Assets", "Character", "Dust_Particles", "Run"))
+        self.dust_run_particles = import_folder(join("Assets", "Character", "Dust_Particles", "Run"))
 
     def animate(self):
         animation = self.animations[self.status]
