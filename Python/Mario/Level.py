@@ -28,6 +28,10 @@ class Level:
         self.dust_sprite.add(jump_particle_sprite)
 
     def get_player_on_ground(self):
+        """
+        Function That Checks If Player Is On Ground
+        """
+
         if self.player.sprite.on_ground:
             self.player_on_ground = True
         else:
