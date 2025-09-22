@@ -111,5 +111,16 @@ namespace MonoGameLibrary.Graphics
                 }
             }
         }
+
+        /// <summary>
+        /// Creates a New Sprite Using the Region from this Texture Atlas with the Given Name
+        /// </summary>
+        /// <param name="regionName">Name of the Region to Create the Sprite With</param>
+        /// <returns>New Sprite Using the Texture Region with the Given Name</returns>
+        public Sprite CreateSprite(string regionName)
+        {
+            TextureRegion region = GetRegion(regionName);
+            return new Sprite(region);
+        }
     }
 }
