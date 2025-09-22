@@ -1,52 +1,59 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGameLibrary;
+using MonoGameLibrary.Graphics;
 
-namespace DungeonSlime;
-
-public class Game1 : Game
+namespace DungeonSlime
 {
-    private GraphicsDeviceManager _graphics;
-    private SpriteBatch _spriteBatch;
-
-    public Game1()
+    public class Game1 : Core
     {
-        _graphics = new GraphicsDeviceManager(this);
-        Content.RootDirectory = "Content";
-        IsMouseVisible = true;
-    }
+        private TextureRegion _slime;
+        private TextureRegion _bat;
 
-    protected override void Initialize()
-    {
-        // TODO: Add your initialization logic here
+        public Game1() : base("Dungeon Slime", 1280, 720, false)
+        {
+        }
 
-        base.Initialize();
-    }
+        protected override void Initialize()
+        {
+            // TODO: Add your initialization logic here
 
-    protected override void LoadContent()
-    {
-        _spriteBatch = new SpriteBatch(GraphicsDevice);
+            base.Initialize();
+        }
 
-        // TODO: use this.Content to load your game content here
-    }
+        protected override void LoadContent()
+        {
+            TextureAtlas atlas = TextureAtlas.FromFile(Content, "Images/Atlas-Definition.xml");
 
-    protected override void Update(GameTime gameTime)
-    {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
+            _slime = atlas.GetRegion("Slime");
+            _bat = atlas.GetRegion("Bat");
+        }
 
-        // TODO: Add your update logic here
+        protected override void Update(GameTime gameTime)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
 
-        base.Update(gameTime);
-    }
+            // TODO: Add your update logic here
 
-    protected override void Draw(GameTime gameTime)
-    {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+            base.Update(gameTime);
+        }
 
-        // TODO: Add your drawing code here
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            
+            SpriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            
+            _slime.Draw(SpriteBatch, Vector2.Zero, Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 0.0f);
+            _bat.Draw(SpriteBatch, new Vector2(_slime.Width * 4.0f + 10, 0), Color.White, 0.0f, Vector2.One, 4.0f, SpriteEffects.None, 1.0f);
 
-        base.Draw(gameTime);
+            // Always End the Sprite Batch When Finished
+            SpriteBatch.End();
+
+            base.Draw(gameTime);
+        }
     }
 }
