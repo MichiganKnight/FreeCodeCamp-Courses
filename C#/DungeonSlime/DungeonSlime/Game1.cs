@@ -8,8 +8,8 @@ namespace DungeonSlime
 {
     public class Game1 : Core
     {
-        private Sprite _slime;
-        private Sprite _bat;
+        private AnimatedSprite _slime;
+        private AnimatedSprite _bat;
 
         public Game1() : base("Dungeon Slime", 1280, 720, false)
         {
@@ -26,10 +26,10 @@ namespace DungeonSlime
         {
             TextureAtlas atlas = TextureAtlas.FromFile(Content, "Images/Atlas-Definition.xml");
 
-            _slime = atlas.CreateSprite("Slime");
+            _slime = atlas.CreateAnimatedSprite("Slime-Animation");
             _slime.Scale = new Vector2(4.0f, 4.0f);
             
-            _bat = atlas.CreateSprite("Bat");
+            _bat = atlas.CreateAnimatedSprite("Bat-Animation");
             _bat.Scale = new Vector2(4.0f, 4.0f);
         }
 
@@ -39,7 +39,8 @@ namespace DungeonSlime
                 Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            _slime.Update(gameTime);
+            _bat.Update(gameTime);
 
             base.Update(gameTime);
         }
