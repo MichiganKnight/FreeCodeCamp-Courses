@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonSlime", "DungeonSlime\DungeonSlime.csproj", "{16B0D0F2-BEBA-4764-B2B7-CFBFE4F63CD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGameLibrary", "MonoGameLibrary\MonoGameLibrary.csproj", "{09BEBE9A-9D01-45A5-A2EC-F550A369FC33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16B0D0F2-BEBA-4764-B2B7-CFBFE4F63CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B0D0F2-BEBA-4764-B2B7-CFBFE4F63CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B0D0F2-BEBA-4764-B2B7-CFBFE4F63CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B0D0F2-BEBA-4764-B2B7-CFBFE4F63CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09BEBE9A-9D01-45A5-A2EC-F550A369FC33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09BEBE9A-9D01-45A5-A2EC-F550A369FC33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09BEBE9A-9D01-45A5-A2EC-F550A369FC33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09BEBE9A-9D01-45A5-A2EC-F550A369FC33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(RiderSharedRunConfigurations) = postSolution
+		File = ..\..\IntelliJ Themes\DarkTheme\.run\Run Plugin.run.xml
+		File = ..\..\IntelliJ Themes\DarkTheme\.run\Run Tests.run.xml
+		File = ..\..\IntelliJ Themes\DarkTheme\.run\Run Verifications.run.xml
+	EndGlobalSection
+EndGlobal
