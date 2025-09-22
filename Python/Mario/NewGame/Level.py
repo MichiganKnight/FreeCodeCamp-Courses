@@ -1,10 +1,7 @@
-import pygame
-
-from os.path import join
-from NewGame.Settings import tile_size
 from NewGame.Tiles import *
 from Utils import *
 from Enemy import Enemy
+from Decoration import *
 
 class Level:
     def __init__(self, level_data, surface):
@@ -50,6 +47,12 @@ class Level:
         # Constraints Setup
         constraint_layout = import_csv_layout(level_data['Constraints'])
         self.constraint_sprites = self.create_tile_group(constraint_layout, 'Constraints')
+
+        # Decorations Setup
+        self.sky = Sky(8)
+        level_width = len(terrain_layout[0]) * tile_size
+        self.water = Water(screen_height - 20, level_width)
+        self.clouds = Clouds(400, level_width, 25)
 
     def player_setup(self, layout):
         for row_index, row in enumerate(layout):
@@ -115,6 +118,10 @@ class Level:
     def run(self):
         # Run Entire Game
 
+        # Sky
+        self.sky.draw(self.display_surface)
+        self.clouds.draw(self.display_surface, self.world_shift)
+
         # Background Palms
         self.bg_palm_sprites.update(self.world_shift)
         self.bg_palm_sprites.draw(self.display_surface)
@@ -148,3 +155,6 @@ class Level:
         # Player Sprites
         self.goal.update(self.world_shift)
         self.goal.draw(self.display_surface)
+
+        # Water
+        self.water.draw(self.display_surface, self.world_shift)
