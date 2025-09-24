@@ -1,0 +1,21 @@
+### Find All Runs
+GET http://localhost:8080/API/Runs
+
+### Find Run By ID
+GET http://localhost:8080/API/Runs/2
+
+### Non-Existent Run
+GET http://localhost:8080/API/Runs/99
+
+### Create New Run
+POST http://localhost:8080/API/Runs
+Content-Type: application/json
+
+{
+  "id": 3,
+  "title": "Saturday Morning Run",
+  "startedOn": "2025-09-27T09:00:00",
+  "completedOn": "2025-09-27T10:00:00",
+  "miles": 4,
+  "location": "OUTDOOR"
+}
