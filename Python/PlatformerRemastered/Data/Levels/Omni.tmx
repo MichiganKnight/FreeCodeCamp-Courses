@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="40" height="15" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="81">
+ <tileset firstgid="1" source="../Tilesets/Outside.tsx"/>
+ <tileset firstgid="49" source="../Tilesets/Items.tsx"/>
+ <tileset firstgid="54" source="../Tilesets/Inside.tsx"/>
+ <tileset firstgid="150" source="../Tilesets/Extra.tsx"/>
+ <tileset firstgid="216" source="../Tilesets/Objects.tsx"/>
+ <tileset firstgid="244" source="../Tilesets/Platforms.tsx"/>
+ <tileset firstgid="252" source="../Tilesets/Enemies.tsx"/>
+ <tileset firstgid="253" source="../Tilesets/Grass.tsx"/>
+ <layer id="9" name="BG" width="40" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,102,103,103,103,103,103,103,104,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,102,119,115,115,115,115,115,115,118,104,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,114,115,115,115,115,115,115,115,106,128,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,126,127,127,127,127,127,127,127,128,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="12" name="BG Details" class="window">
+  <object id="49" name="Candle" gid="231" x="1152.5" y="503" width="64" height="64"/>
+  <object id="50" name="Candle" gid="231" x="1411" y="504.5" width="64" height="64"/>
+  <object id="51" name="Window" gid="232" x="1560.5" y="424.5" width="64" height="64"/>
+  <object id="52" name="Window" gid="232" x="1208.5" y="438.5" width="64" height="64"/>
+  <object id="53" name="Big_Chain" gid="233" x="1344" y="438" width="64" height="116"/>
+  <object id="54" name="Small_Chain" gid="234" x="1434.67" y="382.333" width="64" height="62"/>
+  <object id="55" name="Static" gid="235" x="1381" y="574" width="14" height="34"/>
+  <object id="56" name="Static" gid="236" x="1582.67" y="575" width="30" height="14"/>
+  <object id="57" name="Static" gid="237" x="1309.67" y="575" width="14" height="28"/>
+  <object id="58" name="Static" gid="238" x="1246.67" y="574.667" width="24" height="14"/>
+  <object id="59" name="Static" gid="239" x="1452.67" y="573.333" width="42" height="44"/>
+  <object id="60" name="Static" gid="240" x="1591" y="572.333" width="42" height="44"/>
+  <object id="61" name="Static" gid="241" x="1498" y="502" width="52" height="178"/>
+  <object id="62" name="Static" gid="242" x="1268.67" y="501.333" width="52" height="178"/>
+  <object id="63" name="Static" gid="243" x="1094" y="575" width="82" height="98"/>
+ </objectgroup>
+ <layer id="1" name="Terrain" width="40" height="15">
+  <data encoding="csv">
+0,205,206,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,161,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+186,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+186,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,88,91,91,91,91,91,91,91,91,89,0,0,0,0,0,0,0,0,0,0,0,0,0,
+183,184,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,81,0,0,0,0,0,0,0,0,81,0,0,0,0,0,0,0,0,0,0,0,0,0,
+151,151,151,165,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,1,2,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,1,2,2,2,2,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,57,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,13,14,14,14,14,14,14,5,27,0,0,0,90,91,91,91,91,91,91,91,91,101,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,13,14,14,14,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,13,14,14,14,14,14,5,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,13,14,14,14,14,5,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,13,14,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,13,14,14,14,14,15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="5" name="Platforms" width="40" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,247,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,251,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,247,0,0,247,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,244,245,246,0,0,244,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,248,249,250,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,248,249,249,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="10" name="FG" width="40" height="15">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,256,253,253,254,256,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,254,254,256,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="4" name="Objects">
+  <object id="4" name="Flag" gid="219" x="1664" y="256" width="68" height="186"/>
+  <object id="6" name="Crate" gid="218" x="494.5" y="513.25" width="50" height="36"/>
+  <object id="7" name="Crate" gid="218" x="525.5" y="477.25" width="50" height="36"/>
+  <object id="9" name="Barrel" gid="216" x="530.5" y="513" width="46" height="50"/>
+  <object id="11" name="Palm_Large" gid="220" x="306.333" y="546" width="78" height="136"/>
+  <object id="12" name="Palm_Small" gid="222" x="1095.33" y="277.33" width="80" height="103"/>
+  <object id="13" name="Palm_Small" gid="222" x="1245.33" y="261.33" width="80" height="103"/>
+  <object id="14" name="Palm_Small" gid="222" x="1202" y="287.33" width="80" height="103"/>
+  <object id="15" name="Player" gid="223" x="645.62" y="389.485" width="74" height="56"/>
+  <object id="27" name="Palm_BG" gid="217" x="768" y="448" width="128" height="128"/>
+  <object id="43" name="Palm_BG_Left" gid="228" x="245" y="562" width="104" height="106"/>
+  <object id="44" name="Palm_BG_Right" gid="229" x="866" y="496" width="104" height="106"/>
+  <object id="65" name="Saw" x="64" y="576" width="64" height="64">
+   <properties>
+    <property name="Speed" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="69" name="Floor_Spike" gid="226" x="64" y="320" width="64" height="64">
+   <properties>
+    <property name="Inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="71" name="Floor_Spike" gid="1073742050" x="64" y="128" width="64" height="64">
+   <properties>
+    <property name="Inverted" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="13" name="Moving Objects">
+  <object id="66" name="Boat" x="1790.67" y="619.333" width="768" height="38">
+   <properties>
+    <property name="Flip" type="bool" value="true"/>
+    <property name="Platform" type="bool" value="true"/>
+    <property name="Speed" type="int" value="60"/>
+   </properties>
+  </object>
+  <object id="67" name="Saw" x="0" y="512" width="300" height="10">
+   <properties>
+    <property name="Flip" type="bool" value="false"/>
+    <property name="Platform" type="bool" value="false"/>
+    <property name="Speed" type="int" value="60"/>
+   </properties>
+  </object>
+  <object id="68" name="Saw" x="182" y="536" width="10" height="320">
+   <properties>
+    <property name="Flip" type="bool" value="false"/>
+    <property name="Platform" type="bool" value="false"/>
+    <property name="Speed" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="73" name="Spike" gid="227" x="384" y="256" width="54" height="54">
+   <properties>
+    <property name="End_Angle" type="int" value="180"/>
+    <property name="Platform" type="bool" value="false"/>
+    <property name="Radius" type="int" value="100"/>
+    <property name="Speed" type="int" value="50"/>
+    <property name="Start_Angle" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="74" name="Helicopter" x="341" y="114" width="10" height="320">
+   <properties>
+    <property name="Flip" type="bool" value="false"/>
+    <property name="Platform" type="bool" value="true"/>
+    <property name="Speed" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="75" name="helicopter" x="657" y="177" width="300" height="10">
+   <properties>
+    <property name="Flip" type="bool" value="false"/>
+    <property name="Platform" type="bool" value="true"/>
+    <property name="Speed" type="int" value="60"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="Items">
+  <object id="22" name="Diamond" gid="49" x="512" y="384" width="64" height="64"/>
+  <object id="23" name="Gold" gid="50" x="1088" y="448" width="64" height="64"/>
+  <object id="24" name="Potion" gid="51" x="512" y="320" width="64" height="64"/>
+  <object id="25" name="Silver" gid="52" x="704" y="256" width="64" height="64"/>
+  <object id="26" name="Skull" gid="53" x="576" y="256" width="64" height="64"/>
+  <object id="78" name="Skull" gid="53" x="576" y="64" width="64" height="64"/>
+  <object id="79" name="Skull" gid="53" x="832" y="128" width="64" height="64"/>
+  <object id="80" name="Skull" gid="53" x="704" y="64" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="6" name="Enemies">
+  <object id="36" name="Shell" gid="224" x="192" y="384" width="76" height="46">
+   <properties>
+    <property name="Reverse" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="38" name="Tooth" gid="225" x="1344" y="576" width="48" height="46"/>
+  <object id="39" name="Shell" gid="224" x="576" y="448" width="76" height="46">
+   <properties>
+    <property name="Reverse" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="76" name="Tooth" gid="225" x="1408" y="256" width="48" height="46"/>
+ </objectgroup>
+ <objectgroup id="2" name="Water">
+  <object id="2" name="Water" x="0" y="640" width="2560" height="320"/>
+ </objectgroup>
+ <objectgroup id="8" name="Data">
+  <object id="28" name="Data" x="0" y="0" width="64" height="64">
+   <properties>
+    <property name="BG" value=""/>
+    <property name="Bottom_Limit" type="int" value="200"/>
+    <property name="Death_Border_Bottom" type="int" value="0"/>
+    <property name="Horizon_Line" type="int" value="600"/>
+    <property name="Level_Unlock" type="int" value="1"/>
+    <property name="Top_Limit" type="int" value="100"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
