@@ -26,6 +26,7 @@ class MovingSprite(Sprite):
         self.end_position = end_position
 
         # Movement
+        self.moving = True
         self.direction = vector(1, 0) if move_direction == "X" else vector(0, 1)
         self.speed = speed
         self.move_direction = move_direction
