@@ -28,7 +28,8 @@ class Player(pygame.sprite.Sprite):
 
         # Timer
         self.timers = {
-            "Wall Jump": Timer(400)
+            "Wall Jump": Timer(400),
+            "Wall Slide Block": Timer(250)
         }
 
     def input(self):
@@ -44,7 +45,6 @@ class Player(pygame.sprite.Sprite):
 
         if keys[pygame.K_SPACE]:
             self.jump = True
-            self.timers["Wall Jump"].activate()
 
     def move(self, dt):
         # Horizontal
@@ -52,7 +52,7 @@ class Player(pygame.sprite.Sprite):
         self.collision("Horizontal")
 
         # Vertical
-        if not self.on_surface["Floor"] and any((self.on_surface["Left"], self.on_surface["Right"])):
+        if not self.on_surface["Floor"] and any((self.on_surface["Left"], self.on_surface["Right"])) and not self.timers["Wall Slide Block"].active:
             self.direction.y = 0
             self.rect.y += self.gravity / 10 * dt
         else:
@@ -64,7 +64,8 @@ class Player(pygame.sprite.Sprite):
         if self.jump:
             if self.on_surface["Floor"]:
                 self.direction.y = -self.jump_height
-            elif any((self.on_surface["Left"], self.on_surface["Right"])):
+                self.timers["Wall Slide Block"].activate()
+            elif any((self.on_surface["Left"], self.on_surface["Right"])) and not self.timers["Wall Slide Block"].active:
                 self.timers["Wall Jump"].activate()
                 self.direction.y = -self.jump_height
                 self.direction.x = 1 if self.on_surface["Left"] else -1
@@ -81,8 +82,8 @@ class Player(pygame.sprite.Sprite):
 
         # Collisions
         self.on_surface["Floor"] = True if floor_rect.collidelist(collide_rects) >= 0 else False
-        self.on_surface["Left"] = True if right_rect.collidelist(collide_rects) >= 0 else False
-        self.on_surface["Right"] = True if left_rect.collidelist(collide_rects) >= 0 else False
+        self.on_surface["Right"] = True if right_rect.collidelist(collide_rects) >= 0 else False
+        self.on_surface["Left"] = True if left_rect.collidelist(collide_rects) >= 0 else False
 
     def collision(self, axis):
         for sprite in self.collision_sprites:
