@@ -11,6 +11,6 @@ class AllSprites(pygame.sprite.Group):
         self.offset.x = -(target_position[0] - WINDOW_WIDTH / 2)
         self.offset.y = -(target_position[1] - WINDOW_HEIGHT / 2)
 
-        for sprite in self:
+        for sprite in sorted(self, key = lambda sprite: sprite.z):
             offset_position = sprite.rect.topleft + self.offset
             self.display_surface.blit(sprite.image, offset_position)

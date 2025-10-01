@@ -10,6 +10,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__(groups)
 
         self.image = pygame.image.load(join("Graphics", "Player", "Idle", "0.png"))
+        self.z = Z_LAYERS["Main"]
 
         # Rects
         self.rect = self.image.get_rect(topleft = position)
@@ -33,7 +34,7 @@ class Player(pygame.sprite.Sprite):
         self.timers = {
             "Wall Jump": Timer(400),
             "Wall Slide Block": Timer(250),
-            "Platform Skip": Timer(300)
+            "Platform Skip": Timer(100)
         }
 
     def input(self):
@@ -47,6 +48,7 @@ class Player(pygame.sprite.Sprite):
                 input_vector.x -= 1
             elif keys[pygame.K_s] or keys[pygame.K_DOWN]:
                 self.timers["Platform Skip"].activate()
+
             self.direction.x = input_vector.normalize().x if input_vector else input_vector.x
 
         if keys[pygame.K_SPACE]:
@@ -110,21 +112,21 @@ class Player(pygame.sprite.Sprite):
             if sprite.rect.colliderect(self.hitbox_rect):
                 if axis == "Horizontal":
                     #Left
-                    if self.hitbox_rect.left <= sprite.rect.right and int(self.old_rect.left) >= sprite.old_rect.right:
+                    if self.hitbox_rect.left <= sprite.rect.right and int(self.old_rect.left) >= int(sprite.old_rect.right):
                         self.hitbox_rect.left = sprite.rect.right
 
                     #Right
-                    if self.hitbox_rect.right >= sprite.rect.left and int(self.old_rect.right) <= sprite.old_rect.left:
+                    if self.hitbox_rect.right >= sprite.rect.left and int(self.old_rect.right) <= int(sprite.old_rect.left):
                         self.hitbox_rect.right = sprite.rect.left
                 else:
                     # Top
-                    if self.hitbox_rect.top <= sprite.rect.bottom and int(self.old_rect.top) >= sprite.old_rect.bottom:
+                    if self.hitbox_rect.top <= sprite.rect.bottom and int(self.old_rect.top) >= int(sprite.old_rect.bottom):
                         self.hitbox_rect.top = sprite.rect.bottom
                         if hasattr(sprite, "moving"):
                             self.hitbox_rect.top += 6
 
                     # Bottom
-                    if self.hitbox_rect.bottom >= sprite.rect.top and int(self.old_rect.bottom) <= sprite.old_rect.top:
+                    if self.hitbox_rect.bottom >= sprite.rect.top and int(self.old_rect.bottom) <= int(sprite.old_rect.top):
                         self.hitbox_rect.bottom = sprite.rect.top
 
                     self.direction.y = 0
@@ -145,6 +147,7 @@ class Player(pygame.sprite.Sprite):
     def update(self, dt):
         self.old_rect = self.hitbox_rect.copy()
         self.update_timers()
+
         self.input()
         self.move(dt)
         self.platform_move(dt)
