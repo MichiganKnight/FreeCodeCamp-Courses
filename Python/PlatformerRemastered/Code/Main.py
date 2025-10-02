@@ -29,7 +29,7 @@ class Game:
             "Big_Chain": import_folder("Graphics", "Level", "Big_Chains"),
             "Small_Chain": import_folder("Graphics", "Level", "Small_Chains"),
             "Candle_Light": import_folder("Graphics", "Level", "Candle Light"),
-            "Player": import_folder("Graphics", "Player")
+            "Player": import_sub_folders("Graphics", "Player")
         }
 
     def run(self):

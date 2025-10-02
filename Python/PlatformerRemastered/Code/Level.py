@@ -9,6 +9,7 @@ from Groups import AllSprites
 
 class Level:
     def __init__(self, tmx_map, level_frames):
+        self.player = None
         self.display_surface = pygame.display.get_surface()
 
         # Groups
@@ -28,7 +29,7 @@ class Level:
                 elif layer == "Platforms": groups.append(self.semi_collision_sprites)
                 match layer:
                     case "BG": z = Z_LAYERS["BG Tiles"]
-                    case "FG": z = Z_LAYERS["FG"]
+                    case "FG": z = Z_LAYERS["BG Tiles"]
                     case _: z = Z_LAYERS["Main"]
                 Sprite((x * TILE_SIZE, y * TILE_SIZE), surface, groups, z)
 
@@ -44,7 +45,12 @@ class Level:
         # Objects
         for obj in tmx_map.get_layer_by_name("Objects"):
             if obj.name == "Player":
-                self.player = Player((obj.x, obj.y), self.all_sprites, self.collision_sprites, self.semi_collision_sprites)
+                self.player = Player(
+                    position = (obj.x, obj.y),
+                    groups = self.all_sprites,
+                    collision_sprites = self.collision_sprites,
+                    semi_collision_sprites = self.semi_collision_sprites,
+                    frames = level_frames["Player"])
             else:
                 if obj.name in ("Barrel", "Crate"):
                     Sprite((obj.x, obj.y), obj.image, (self.all_sprites, self.collision_sprites))
