@@ -152,13 +152,13 @@ class Player(pygame.sprite.Sprite):
                     self.direction.y = 0
 
     def semi_collision(self):
-        if not self.timers["Platform Skip"].active:
+        if not self.timers["Platform Skip"].active and self.direction.y >= 0:
             for sprite in self.semi_collision_sprites:
                 if sprite.rect.colliderect(self.hitbox_rect):
-                    if self.hitbox_rect.bottom >= sprite.rect.top and int(self.old_rect.bottom) <= sprite.old_rect.top:
+                    if self.old_rect.bottom <= sprite.rect.top:
                         self.hitbox_rect.bottom = sprite.rect.top
-                        if self.direction.y > 0:
-                            self.direction.y = 0
+                        self.direction.y = 0
+                        self.on_surface["Floor"] = True
 
     def update_timers(self):
         for timer in self.timers.values():

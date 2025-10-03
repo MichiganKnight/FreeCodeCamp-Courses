@@ -25,12 +25,16 @@ class Level:
         for layer in ["BG", "Terrain", "FG", "Platforms"]:
             for x, y, surface in tmx_map.get_layer_by_name(layer).tiles():
                 groups = [self.all_sprites]
-                if layer == "Terrain": groups.append(self.collision_sprites)
-                elif layer == "Platforms": groups.append(self.semi_collision_sprites)
+                if layer == "Terrain":
+                    groups.append(self.collision_sprites)
+                elif layer == "Platforms":
+                    groups.append(self.semi_collision_sprites)
+
                 match layer:
                     case "BG": z = Z_LAYERS["BG Tiles"]
                     case "FG": z = Z_LAYERS["BG Tiles"]
                     case _: z = Z_LAYERS["Main"]
+
                 Sprite((x * TILE_SIZE, y * TILE_SIZE), surface, groups, z)
 
         # BG Details
@@ -57,13 +61,15 @@ class Level:
                 else:
                     # Frames
                     frames = level_frames[obj.name] if not "Palm" in obj.name else level_frames["Palms"][obj.name]
-                    if obj.name == "Floor_Spike" and obj.properties["Inverted"]:
+                    if obj.name == "Floor_Spike" and obj.properties["Inverted"]: # Flip Floor Spikes if They Have the "Inverted" Property
                         frames = [pygame.transform.flip(frame, False, True) for frame in frames]
 
                     # Groups
                     groups = [self.all_sprites]
-                    if obj.name in("Palm_Small", "Palm_Large"): groups.append(self.semi_collision_sprites)
-                    if obj.name in("Saw", "Floor_Spike"): groups.append(self.damage_sprites)
+                    if obj.name in("Palm_Small", "Palm_Large"):
+                        groups.append(self.semi_collision_sprites)
+                    if obj.name in("Saw", "Floor_Spike"):
+                        groups.append(self.damage_sprites)
 
                     # Z Index
                     z = Z_LAYERS["Main"] if not "BG" in obj.name else Z_LAYERS["BG Details"]
@@ -71,7 +77,7 @@ class Level:
                     # Animation Speed
                     animation_speed = ANIMATION_SPEED if not "Palm" in obj.name else ANIMATION_SPEED + uniform(-1, 1)
 
-                    AnimatedSprite((obj.x, obj.y), frames, self.all_sprites, z, animation_speed)
+                    AnimatedSprite((obj.x, obj.y), frames, groups, z, animation_speed)
 
         # Moving Objects
         for obj in tmx_map.get_layer_by_name("Moving Objects"):
