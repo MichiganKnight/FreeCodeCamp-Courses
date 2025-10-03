@@ -1,8 +1,11 @@
+import os.path
+
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/Market.db'
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'market.db')
 
 db = SQLAlchemy(app)
 
@@ -15,6 +18,9 @@ class Item(db.Model):
 
     def __repr__(self):
         return f'<Item {self.name}>'
+
+with app.app_context():
+    db.create_all()
 
 @app.route('/')
 @app.route('/home')
