@@ -45,3 +45,17 @@ public static String reverse(String input) {
 ## Lesson: Terminal, Command-Line, Shell, Console
 ### Introduction:
 
+## Lesson: Python Syntax
+### Introduction:
+Python has a small, formal, and rigid syntax
+* Identifiers - Descriptive labels that identify a piece of data or a definition
+* Keywords - English words that have a special meaning in Python
+* Statements - Grammatically correct sequences of symbols, values, and words
+* Code Blocks - Group statements together in related chunks
+* Whitespace - Spaces, tabs, and newlines
+* Comments - Text that is ignored by the Python interpreter
+
+## Lesson: Variables, Types, Operators, Expressions
+### Introduction:
+
+
