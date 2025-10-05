@@ -138,3 +138,33 @@ Python has a small, formal, and rigid syntax
     * `start` - Starting Index (Optional)
     * `end` - Ending index (Optional)
     * `step` - Step size (Optional)
+
+## Lesson: [Terminal Input and Output](Terminal/Terminal.py)
+### Introduction:
+* Terminal - Text-based user interface
+  * Aliases - Command-Line / Console / Shell
+* Standard Input - Allows application to capture text typed in the terminal
+* Standard Output - Allows application to print text to the terminal window
+* `input()` - Collects user text from the terminal when the user presses Enter
+  * Returns a `str`
+* `print()` - Prints text to the terminal window
+* F-Strings:
+  * Literal String Interpolation - Pairs with the `print()` function
+  * Allows embedding of variables, values, and expressions in a string
+  * Values display in a default format
+  * Values can be formatted using the following syntax `{value: format}`
+    * `{value:.2f}` - Format a float to two decimal places
+    * `{value:.1%` - Format a number as a percentage with one decimal place
+    * `{value:,}` - Format a number with commas as thousands, millions, etc, comma placeholder
+    * `{value:03}` - Format a number padding with zeroes, up to a maximum of three digits
+    * `{value:<12}` - Align left with a minimum of 12 characters
+    * `{value:>12}` - Align right with a minimum of 12 characters
+    * `{value:^12}` - Align center with a minimum of 12 characters
+    * `{value:s}` - Format a number as a string
+    * `{value:d}` - Format a number as an integer
+    * `{value:f}` - Format a number as a floating point number
+    * `{value:c}` - Format a number as a character
+    * `{value:e}` - Format a number as an exponential notation
+    * `{value:d}` - Format a number as a decimal number`
+    * `{value:b}` - Format a number as a binary number
+    * `{value:x}` - Format a number as a hexadecimal number
