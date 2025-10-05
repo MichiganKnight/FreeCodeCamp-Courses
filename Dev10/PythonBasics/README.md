@@ -105,9 +105,12 @@ Python has a small, formal, and rigid syntax
 * Expressions - Combination of values, operators, and variables that can be evaluated to produce a single value
 * Statement - One or more lines of code that does not produce a value
 
-## Lesson: Strings
+## Lesson: [Strings](Strings/Strings.py)
 ### Introduction:
-* String - Sequence of characters
+* String `str` - Represents text as a sequence of characters
+  * Used to print messages in a user interface
+  * Read and write files
+  * Analyze words and sentences
 * String Methods - Functions that operate on strings
   * `len()` - Returns the length of a string
   * `upper()` - Converts all characters in a string to uppercase
