@@ -55,7 +55,7 @@ Python has a small, formal, and rigid syntax
 * Whitespace - Spaces, tabs, and newlines
 * Comments - Text that is ignored by the Python interpreter
 
-## Lesson: Variables, Types, Operators, Expressions
+## Lesson: [Variables, Types, Operators, Expressions](VariableTypes/Program.py)
 ### Introduction:
 * Variable - Identifier that labels a value
   * Data can change
@@ -111,13 +111,30 @@ Python has a small, formal, and rigid syntax
   * Used to print messages in a user interface
   * Read and write files
   * Analyze words and sentences
+* Common Escape Characters
+  * `\n` - New Line
+  * `\t` - Tab
+  * `\"` - Double Quote
+  * `\r` - Carriage Return
+  * `\b` - Backslash
+* String Operators
+  * `+` - Concatenation
+  * `*` - Repetition
+  * `in` - Membership
+  * `not in` - Non-membership
 * String Methods - Functions that operate on strings
   * `len()` - Returns the length of a string
+  * `replace()` - Replaces one substring with another in a string
+  * `strip()`
+    * Without Arguments - Removes whitespace from the front and back of a string
+    * With Arguments - Removes specific characters from the front and back of a string
   * `upper()` - Converts all characters in a string to uppercase
   * `lower()` - Converts all characters in a string to lowercase
   * `capitalize()` - Converts the first character of a string to uppercase
   * `title()` - Converts the first character of each word in a string to uppercase
-  * `strip()` - Removes whitespace from the beginning and end of a string
-  * `replace()` - Replaces one substring with another in a string
-
-
+* String Indexing and Slicing
+  * Character Index Syntax = `value[char_index]`
+  * Slicing Syntax = `value[start:end:step]`
+    * `start` - Starting Index (Optional)
+    * `end` - Ending index (Optional)
+    * `step` - Step size (Optional)
