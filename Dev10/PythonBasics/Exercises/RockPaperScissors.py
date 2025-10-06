@@ -51,3 +51,6 @@ while True:
         else:
             print("Computer Chose Scissors")
             print("It's a Tie!")
+        break
+    else:
+        print("Invalid Choice!")
