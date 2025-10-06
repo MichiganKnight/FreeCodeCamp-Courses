@@ -168,3 +168,37 @@ Python has a small, formal, and rigid syntax
     * `{value:d}` - Format a number as a decimal number`
     * `{value:b}` - Format a number as a binary number
     * `{value:x}` - Format a number as a hexadecimal number
+
+## Lesson: [Decisions](Decisions/Decisions.py)
+### Introduction:
+* `if` - Checks a boolean condition and executes a block of code if the condition is `True`
+* `else` - Executes when its paired `if` statement is false
+* `if` and `else` can be nested to model complex decisions
+### `if` Statement
+* Empty string evaluates to `False`. A string with length greater than zero evaluates to `True` 
+* Numeric `0` or `0.0` evaluates to `False`. Any other numeric value evaluates to `True`
+* `None` evaluates to `False`
+* To be idiomatic, we use the condition `if value is None:`. If we express `if value:`, a zero length string, the number zero, or `None` would all evaluate to `False
+### `else` Clause
+* `else` clause must follow a valid `if` and is indented at the same level as the `if`
+* Constructed from the keyword `else` and a colon
+* `else` is always linked to and `if`
+* The code inside an `else` clause is executed if the `if` condition is `False`
+### `elif` Clause
+* The `elif` clause follows an `if` at the same indentation level
+* `else` clause is optional, but must follow at the end
+* We can have multiple `elif` clauses but only one `if` and optional `else`
+* Short for "else if"
+* Order matters with `if` and `elif` conditions
+* Once a condition evaluates to `True`, no further code in the chain will run
+* Final `else` clause is optional
+### `match` Statement
+* Inspects a value and then executes code for specific value conditions
+* `case` keyword labels a specific single value to match
+* The underscore, `_` case is a catch-all. If no other `case` matches, the underscore case is executed
+* Case values can be combined with the `|`, or, operator
+### Other Decision Operators:
+* `while` - Executes a block of code repeatedly until a condition is `False`
+* `for` - Executes a block of code for each item in a collection
+* `break` - Stops the current loop
+* `continue` - Skips the rest of the current iteration of the loop
