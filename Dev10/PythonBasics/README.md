@@ -235,6 +235,8 @@ Python has a small, formal, and rigid syntax
 
 ## Lesson: [Repetition](Repetition/Repetition.py)
 
+### Introduction:
+
 * Loops - Bit of syntax that repeats a code block zero to many times
 * `while` - Executes a block of code repeatedly until a condition is `False`
     * `while True:` - Infinite loop
@@ -248,3 +250,43 @@ Python has a small, formal, and rigid syntax
         * `step` - Optional. Default `step` is 1. Increment by the given number
 * `break` - Immediately terminates a loop when the statement is executed
 * `continue` - Stops the current iteration but keeps looping
+
+## Lesson: [Functions](Functions/Functions.py)
+
+### Introduction:
+
+* Functions
+    * Named block of code that can be executed as seldom or as often as needed
+    * Must be called
+* `def` - Defines a function
+* `return` - Returns a value from a function
+* `pass` - A placeholder statement that does nothing
+* `lambda` - An anonymous function
+
+### Anatomy of a Function
+
+* Function Definition
+    * `def` - Keyword
+* Function Name - Identifier
+* Function Parameters - Optional
+    * `param1, param2, ...` - Comma-separated list of parameters
+* Function Body - Code Block
+    * `def function_name(param1, param2, ...):`
+
+### Anatomy of a Function Call
+
+* Identifier
+    * Valid Python Identifier. Declares a variable
+    * Can be used to call a function
+    * For functions that return a value, a function call is an expression using the assignemt operator, `=`
+* Function Name
+    * Name of the Function
+* Function Parameters
+    * Optional
+    * Separated by commas
+    * Must match the number and types of parameters in the function definition
+* Arguments:
+* Value or Expression
+    * Zero or more values separated by commas
+* `identifier = function_name(arguments)`
+  
