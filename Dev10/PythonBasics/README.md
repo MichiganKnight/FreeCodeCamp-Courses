@@ -289,4 +289,28 @@ Python has a small, formal, and rigid syntax
 * Value or Expression
     * Zero or more values separated by commas
 * `identifier = function_name(arguments)`
+
+## Lesson: [Lists](Lists/Lists.py)
+
+### Introduction:
+
+* List - Ordered collection of data
+  * Can track any number of individual data items
+  * Can store any value: `int`, `float`, `str`, `bool`, `None`, `list`, `tuple`, `dict`, `set`
+* `[]` - Creates a new list
+* `list.append(value)` - Adds a value to the end of a list
+* `list.insert(index, value)` - Inserts a value at a specific index
+* `list.remove(value)` - Removes the first occurrence of a value from a list
+* `list.pop(index)` - Removes the value at a specific index and returns it
+* `list.index(value)` - Returns the index of the first occurrence of a value in a list
+* `list.count(value)` - Returns the number of occurrences of a value in a list
+* `list.sort()` - Sorts the list in ascending order
+* `list.reverse()` - Reverses the order of the list
+
+### List Slicing:
+
+* `list[start:end:step]`
+  * `start` - Starting index (Optional)
+  * `end` - Ending index (Optional)
+  * `step` - Step size (Optional)
   
