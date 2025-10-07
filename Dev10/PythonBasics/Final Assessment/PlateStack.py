@@ -34,6 +34,11 @@ def add_plate():
             print("")
             return
 
+        if plate_size > 100:
+            print("Error: Plate Size Cannot Exceed 100")
+            print("")
+            return
+
         if len(plates) == 0:
             plates.append(plate_size)
         elif plate_size <= plates[-1]:
@@ -58,7 +63,7 @@ def display_plates():
     """
 
     print("")
-    print("Print Plates")
+    print("Display Plates")
     print("============")
 
     if not plates:
@@ -123,11 +128,11 @@ def run():
         print("=================")
         print("1. Add a Plate")
         print("2. Display Plates")
-        print("3. Remove Plates")
+        print("3. Remove 1 or More Plates")
         print("4. [Exit]")
 
         try:
-            option = int(read_required_string("Select [1-4]: "))
+            option = int(read_required_string("Select [1-4] & Pres Enter: "))
 
             match option:
                 case 1:
