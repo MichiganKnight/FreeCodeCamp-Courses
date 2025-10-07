@@ -53,12 +53,11 @@ def run():
         print("Main Menu")
         print("1. Add Dog")
         print("2. Display Dogs")
-        print("3. Update Dog")
-        print("4. Remove Dog")
-        print("5. Exit")
+        print("3. Remove Dog")
+        print("4. Exit")
 
         try:
-            option = int(read_required_string("Select [1-5]: "))
+            option = int(read_required_string("Select [1-4]: "))
 
             match option:
                 case 1:
@@ -68,15 +67,13 @@ def run():
                 case 3:
                     print("Update Dog")
                 case 4:
-                    remove_dog()
-                case 5:
                     print("Goodbye!")
                     break
                 case _:
-                    print("Invalid Option - Please Select a Number Between 1 and 5")
+                    print("Invalid Option - Please Select a Number Between 1 and 4")
                     print("")
         except ValueError:
-            print("Invalid Option - Please Select a Number Between 1 and 5")
+            print("Invalid Option - Please Select a Number Between 1 and 4")
             print("")
 
 if __name__ == "__main__":
