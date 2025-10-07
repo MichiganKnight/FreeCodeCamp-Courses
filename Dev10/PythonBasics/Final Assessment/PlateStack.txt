@@ -46,3 +46,43 @@ Technical Requirements:
     Each menu item should be a function
 
     To collect positive integers from the user, convert the string value from the `input()` function to an integer using `int()`
+
+RUBRIC:
+    Add a Plate: 10%
+        2 Points: (2/2)
+            Application provides user with an option to add a plate to the top of the stack - DONE
+            User is prompted to enter a plate size - DONE
+            Application validates the plate size - DONE
+                Plate size must be positive integers - DONE
+                Plate size must be less than or equal to the size of the plate below it - DONE
+            If the plate size is invalid, application displays an error message and does not add the plate - DONE
+            If the plate size is valid, application adds the plate to the stack and displays a success message - DONE
+
+    Print Plates:
+        2 Points: (2/2)
+            The following are implemented:
+                Application provides the user with an option to print the plates - DONE
+                Application prints the plates to the terminal - DONE
+                Plates stack vertically, with the largest plate on the bottom and the smallest plate on the top - DONE
+                If there are no plates, application displays a message - DONE
+
+    Remove Plates:
+        2 Points: (2/2)
+            The following are implemented:
+                Application provides the user with an option to remove plates from the top of the stack - DONE
+                If there are no plates on the stack, application displays a message - DONE
+                If there are plates on the stack, the user is prompted to enter the number of plates to remove - DONE
+                Application validates the number of plates to remove - DONE
+                    Number of plates to remove must be a positive integer - DONE
+                    Number of plates to remove must be less than or equal to the number of plates on the stack - DONE
+                If the number of plates to remove is invalid, application displays an error message and does not remove any plates - DONE
+                If the number of plates to remove is valid, application removes the plates from the stack and displays a success message - DONE
+
+    Technical Requirements:
+        2 Points: (2/2)
+            Application uses a Python list to track plates - DONE
+            Bottom plate is the first index - DONE
+            A plate is represented by a positive integer - DONE
+            Application uses the `int` function to convert user input to an integer - DONE
+            Python code is idiomatic - DONE
+            Application uses functions to organize code - DONE
