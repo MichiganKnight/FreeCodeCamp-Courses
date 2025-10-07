@@ -1,0 +1,48 @@
+Goal: Stack plates, one on top of another
+    A larger plate cannot be placed on top of a smaller plate
+    Plates are ordered from the largest at the bottom to the smallest at the top
+
+    Plate "stack" is represented by a Python list
+    Bottom plate is the first index
+    The stack can grow to any size
+    A plate is represented by a positive integer, which is the plates size
+
+High Level Requirements:
+    Add a plate:
+        Add a plate to the top of the stack
+        Print plates: Display the stack of plates in the terminal
+        Remove plates: Remove 1-to-n plates from the top of the stack
+
+Requirements:
+    Add a plate:
+        Add a plate to the top of the stack DONE
+        Plates are represented by a positive integer DONe
+        If the plate is less than or equal to zero, issue a warning and don't add the plate DONE
+
+        If there are no plates on the stack, add it DONE
+
+        The plate "below" must be greater than or equal to the current plate size
+        If the current plate is too big, issue a warning and don't add the plate
+        If not, add it to the top of the stack
+
+    Print plates:
+        Print plates to the terminal
+
+        Plates should stack vertically, with the largest plate at the bottom and the smallest plate on the top
+
+        If there are no plates, display a message
+
+    Remove Plates:
+        Remove a given number of plates from the top of the stack
+        The value should be a positive integer DONE
+        If the value is less than or equal to zero, issue a warning and don't remove any plates DONE
+
+        If there are too many plates selected, issue a warning and don't remove any plates DONE?
+        Otherwise, remove plates from the stack and print a message
+
+Technical Requirements:
+    Use a Python list to track plates
+
+    Each menu item should be a function
+
+    To collect positive integers from the user, convert the string value from the `input()` function to an integer using `int()`
