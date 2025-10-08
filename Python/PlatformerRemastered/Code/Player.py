@@ -80,7 +80,8 @@ class Player(pygame.sprite.Sprite):
         self.collision("Horizontal")
 
         # Vertical
-        if not self.on_surface["Floor"] and any((self.on_surface["Left"], self.on_surface["Right"])) and not self.timers["Wall Slide Block"].active:
+        if not self.on_surface["Floor"] and any((self.on_surface["Left"], self.on_surface["Right"])) and not \
+        self.timers["Wall Slide Block"].active:
             self.direction.y = 0
             self.hitbox_rect.y += self.gravity / 10 * dt
         else:
@@ -94,7 +95,8 @@ class Player(pygame.sprite.Sprite):
                 self.direction.y = -self.jump_height
                 self.timers["Wall Slide Block"].activate()
                 self.hitbox_rect.bottom -= 1
-            elif any((self.on_surface["Left"], self.on_surface["Right"])) and not self.timers["Wall Slide Block"].active:
+            elif any((self.on_surface["Left"], self.on_surface["Right"])) and not self.timers[
+                "Wall Slide Block"].active:
                 self.timers["Wall Jump"].activate()
                 self.direction.y = -self.jump_height
                 self.direction.x = 1 if self.on_surface["Left"] else -1
@@ -155,7 +157,8 @@ class Player(pygame.sprite.Sprite):
         if not self.timers["Platform Skip"].active and self.direction.y >= 0:
             for sprite in self.semi_collision_sprites:
                 if sprite.rect.colliderect(self.hitbox_rect):
-                    if self.old_rect.bottom <= sprite.rect.top:
+                    # Check if player was above the platform (with tolerance for moving platforms)
+                    if self.old_rect.bottom <= sprite.old_rect.top + 10:
                         self.hitbox_rect.bottom = sprite.rect.top
                         self.direction.y = 0
                         self.on_surface["Floor"] = True
