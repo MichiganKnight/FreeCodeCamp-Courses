@@ -1,21 +1,23 @@
 # Dev10 Plate Stack Assessment
 
+MIN_PLATE_SIZE = 1
+MAX_PLATE_SIZE = 100
+
 plates = []
 
-def read_required_string(prompt):
+def get_user_input(prompt):
     """
     Reads the User Input and Checks for Blank Values
     :param prompt: Custom Prompt Message
     :return: String Value
     """
 
-    value = ""
-    while not value:
+    while True:
         value = input(prompt).strip()
-        if not value:
-            print("Error: Value is Required")
-            print("")
-    return value
+        if value:
+            return value
+        print("Error: Value is Required")
+        print("")
 
 def add_plate():
     """
@@ -27,21 +29,14 @@ def add_plate():
     print("===========")
 
     try:
-        plate_size = int(read_required_string("Enter Plate Size: "))
+        plate_size = int(get_user_input("Enter Plate Size (1-100): "))
 
-        if plate_size <= 0:
-            print("Error: Plate Size Must be a Positive Integer")
+        if not MIN_PLATE_SIZE <= plate_size <= MAX_PLATE_SIZE:
+            print(f"Error: Plate Size Must be a Positive Integer Between {MIN_PLATE_SIZE} and {MAX_PLATE_SIZE}")
             print("")
             return
 
-        if plate_size > 100:
-            print("Error: Plate Size Cannot Exceed 100")
-            print("")
-            return
-
-        if len(plates) == 0:
-            plates.append(plate_size)
-        elif plate_size <= plates[-1]:
+        if not plates or plate_size <= plates[-1]:
             plates.append(plate_size)
         else:
             print(f"Plate with Size: '{plate_size}' Cannot Be Larger than the Plate Size Below It: '{plates[-1]}'")
@@ -59,7 +54,7 @@ def add_plate():
 
 def display_plates():
     """
-    Displays the Plates in the Plate Stack as a Pyramid
+    Displays the Plates in the Plate Stack as a 'Pyramid'
     """
 
     print("")
@@ -84,16 +79,16 @@ def remove_plates():
     """
 
     print("")
-    print("Remove Plates")
+    print("Remove 1 or More Plates")
     print("=============")
 
     try:
-        if len(plates) <= 0:
+        if not plates:
             print("Error: No Plates to Remove")
             print("")
             return
 
-        plate_count = int(read_required_string("Enter Amount of Plates to Remove: "))
+        plate_count = int(get_user_input("Enter Amount of Plates to Remove: "))
 
         if plate_count <= 0:
             print("Error: Plate Count Must be a Positive Integer")
@@ -105,8 +100,7 @@ def remove_plates():
             print("")
             return
 
-        for _ in range(plate_count):
-            plates.pop()
+        del plates[-plate_count:]
 
         print(f"Successfully Removed {plate_count} Plates")
     except ValueError:
@@ -128,11 +122,11 @@ def run():
         print("=================")
         print("1. Add a Plate")
         print("2. Display Plates")
-        print("3. Remove 1 or More Plates")
+        print("3. Remove Plates")
         print("4. [Exit]")
 
         try:
-            option = int(read_required_string("Select [1-4] & Pres Enter: "))
+            option = int(get_user_input("Select [1-4] & Press Enter: "))
 
             match option:
                 case 1:
