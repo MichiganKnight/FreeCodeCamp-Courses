@@ -14,6 +14,7 @@ function createWindow() {
     });
 
     mainWindow.maximize();
+    mainWindow.setMenu(null);
     mainWindow.show();
     mainWindow.loadURL("http://localhost:3000");
 }
