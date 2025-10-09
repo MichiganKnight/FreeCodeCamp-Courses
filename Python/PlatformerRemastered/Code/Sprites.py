@@ -1,5 +1,3 @@
-import pygame
-
 from Settings import *
 
 class Sprite(pygame.sprite.Sprite):
@@ -26,12 +24,8 @@ class AnimatedSprite(Sprite):
         self.animate(dt)
 
 class MovingSprite(Sprite):
-    def __init__(self, groups, start_position, end_position, move_direction, speed):
-        surf = pygame.Surface((200, 50))
-
-        super().__init__(start_position, surf, groups)
-        self.image.fill("White")
-
+    def __init__(self, frames, groups, start_position, end_position, move_direction, speed):
+        super().__init__(start_position, frames, groups)
         if move_direction == "X":
             self.rect.midleft = start_position
         else:

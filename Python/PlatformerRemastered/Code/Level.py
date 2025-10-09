@@ -81,7 +81,12 @@ class Level:
 
         # Moving Objects
         for obj in tmx_map.get_layer_by_name("Moving Objects"):
-            if obj.name == "Helicopter":
+            if obj.name == "Spike":
+                pass
+            else:
+                frames = level_frames[obj.name]
+                groups = (self.all_sprites, self.semi_collision_sprites) if obj.properties["Platform"] else (self.all_sprites, self.damage_sprites)
+
                 if obj.width > obj.height:
                     move_direction = "X"
                     start_position = (obj.x, obj.y + obj.height / 2)
@@ -92,7 +97,7 @@ class Level:
                     end_position = (obj.x + obj.width / 2, obj.y + obj.height)
 
                 speed = obj.properties["Speed"]
-                MovingSprite((self.all_sprites, self.semi_collision_sprites), start_position, end_position, move_direction, speed)
+                MovingSprite(frames, groups, start_position, end_position, move_direction, speed)
 
     def run(self, dt):
         self.all_sprites.update(dt)
