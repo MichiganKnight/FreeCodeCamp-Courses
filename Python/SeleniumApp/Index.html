@@ -22,7 +22,7 @@
             </div>
             
             <div class="video-container" id="video-container">
-                <video id="video-player">
+                <video id="video-player" crossorigin="anonymous">
                     <source id="video-source" src="">
                     Your Browser Does Not Support HTML Video
                 </video>
@@ -59,6 +59,8 @@
                             <li><a class="dropdown-item playback-speed" data-speed="10">10x</a></li>
                         </ul>
                     </div>
+                    
+                    <button id="posterBtn" class="btn btn-sm btn-dark"><i class="bi bi-image"></i></button>
                     
                     <button id="pipBtn" class="btn btn-sm btn-dark"><i class="bi bi-bounding-box"></i></button>
                     <button id="fsBtn" class="btn btn-sm btn-dark"><i class="bi bi-fullscreen"></i></button>

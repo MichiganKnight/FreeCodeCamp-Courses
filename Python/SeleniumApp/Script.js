@@ -265,3 +265,55 @@ function getVideos() {
         })
         .catch(error => console.error('Error loading videos:', error));
 }
+
+const posterBtn = document.getElementById("posterBtn");
+
+posterBtn.addEventListener("click", () => {
+    let timeInMinutes = prompt("Enter Poster Timestamp (Minutes):", "0");
+    let timeInSeconds = 0;
+
+    if (timeInMinutes > 0) {
+        timeInSeconds = timeInMinutes * 60;
+    } else if (isNaN(timeInSeconds)) {
+        alert("Invalid Poster Timestamp");
+    } else {
+        alert("Invalid Poster Timestamp");
+    }
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const wasPlaying = !videoPlayer.paused;
+
+    videoPlayer.pause();
+    videoPlayer.currentTime = timeInSeconds;
+
+    const currentTime = videoPlayer.currentTime;
+
+    videoPlayer.addEventListener("seeked", function handleSeeked() {
+        canvas.width = videoPlayer.videoWidth;
+        canvas.height = videoPlayer.videoHeight;
+        ctx.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
+
+        const dataURL = canvas.toDataURL("image/png");
+        videoPlayer.poster = dataURL;
+
+        videoPlayer.removeEventListener("seeked", handleSeeked);
+
+        const a = document.createElement("a");
+        a.href = dataURL;
+        a.download = `poster_${Math.floor(timeInSeconds)}s.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        videoPlayer.currentTime = currentTime;
+
+        if (wasPlaying) {
+            videoPlayer.play();
+        }
+
+        videoPlayer.removeEventListener("seeked", handleSeeked);
+    }, {
+        once: true
+    });
+});
