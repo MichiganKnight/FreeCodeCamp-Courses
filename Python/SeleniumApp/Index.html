@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+        <link href="Styles.css" rel="stylesheet">
+        <title>Video Player</title>
+    </head>
+    <body>
+        <div class="container text-center">
+            <h2 id="video-name">Select a Video</h2>
+            
+            <div class="dropdown-center mb-4">
+                <button id="dropdown-button" class="btn btn-secondary dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Choose a Video
+                </button>
+                <ul id="dropdown-menu" class="dropdown-menu text-center">
+                </ul>
+            </div>
+            
+            <div class="video-container" id="video-container">
+                <video id="video-player">
+                    <source id="video-source" src="">
+                    Your Browser Does Not Support HTML Video
+                </video>
+                
+                <div id="shortcut-tooltip" class="shortcut-tooltip"></div>
+                
+                <div id="bigPlayBtn" class="big-play">
+                    <i class="bi bi-play-circle-fill"></i>
+                </div>
+                
+                <div class="controls" id="controlsBar">
+                    <button id="playPauseBtn" class="btn btn-sm btn-dark"><i class="bi bi-play-fill"></i></button>
+                    
+                    <div class="progress-container" id="progressContainer">
+                        <div class="progress" id="progressBar"></div>
+                        <div class="progress-dot" id="progressDot"></div>
+                    </div>
+                    
+                    <div class="time-display" id="timeDisplay">00:00:00 / 00:00:00</div>
+                    
+                    <button id="volumeBtn" class="btn btn-sm btn-dark"><i class="bi bi-volume-up"></i></button>
+                    <input type="range" id="volumeControl" class="form-range volume-slider" min="0" max="1" step="0.05" value="1">
+                    
+                    <div class="dropdown-center">
+                        <button class="btn btn-sm btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            Speed
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item playback-speed" data-speed="0.5">0.5x</a></li>
+                            <li><a class="dropdown-item playback-speed" data-speed="1">1x</a></li>
+                            <li><a class="dropdown-item playback-speed" data-speed="1.5">1.5x</a></li>
+                            <li><a class="dropdown-item playback-speed" data-speed="2">2x</a></li>
+                            <li><a class="dropdown-item playback-speed" data-speed="5">5x</a></li>
+                            <li><a class="dropdown-item playback-speed" data-speed="10">10x</a></li>
+                        </ul>
+                    </div>
+                    
+                    <button id="pipBtn" class="btn btn-sm btn-dark"><i class="bi bi-bounding-box"></i></button>
+                    <button id="fsBtn" class="btn btn-sm btn-dark"><i class="bi bi-fullscreen"></i></button>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="Script.js"></script>
+    </body>
+</html>
