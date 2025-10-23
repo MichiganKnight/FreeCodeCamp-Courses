@@ -9,7 +9,6 @@
 body {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     min-height: 100vh;
-    padding: 2rem 0;
     color: #e9ecef;
     font-family: "Inter", sans-serif;
 }
@@ -166,19 +165,28 @@ video {
 .positions {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
+    gap: 1.25rem;
     padding: 0;
     list-style: none;
+    justify-items: center;
 }
 
 .positions li {
     background: var(--card-bg);
     border: 1px solid #2a3a4f;
     border-radius: 10px;
+    width: 180px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 0.75rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.2s ease;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .positions li:hover {
@@ -188,16 +196,19 @@ video {
 }
 
 .positions li img {
-    width: 100%;
-    aspect-ratio: 16/9;
+    display: block;
+    width: 160px;
+    height: 90px;
     border-radius: 8px;
     object-fit: cover;
     margin-bottom: 0.5rem;
-    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .positions li:hover img {
     opacity: 0.9;
+    transform: scale(0.98);
 }
 
 .positions li p {
