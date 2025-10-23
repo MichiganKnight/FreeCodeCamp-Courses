@@ -15,8 +15,6 @@ const timeDisplay = document.getElementById("timeDisplay");
 
 let hideTimeout;
 
-const videosJSON = "/scripts/TNA.json"
-
 document.addEventListener("DOMContentLoaded", () => {
     getVideos(videosJSON);
 });
@@ -212,56 +210,51 @@ videoPlayer.addEventListener("pause", () => {
 
 showControls();
 
-function getVideos(videosJSON) {
+function getVideos(videos) {
     const dropdownMenu = document.getElementById("dropdown-menu");
     const positionList = document.getElementById("positionList");
 
-    fetch(videosJSON)
-        .then(response => response.json())
-        .then(videos => {
-            videos.forEach((video, index) => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
+    videos.forEach((video, index) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
 
-                a.className = "dropdown-item";
-                a.href = '#';
-                a.textContent = video.name;
-                a.dataset.index = index;
+        a.className = "dropdown-item";
+        a.href = '#';
+        a.textContent = video.name;
+        a.dataset.index = index;
 
-                li.appendChild(a);
+        li.appendChild(a);
 
-                dropdownMenu.appendChild(li);
+        dropdownMenu.appendChild(li);
 
-                a.addEventListener('click', e => {
-                    e.preventDefault();
+        a.addEventListener('click', e => {
+            e.preventDefault();
 
-                    const selectedVideo = videos[a.dataset.index];
-                    setPoster(selectedVideo);
+            const selectedVideo = videos[a.dataset.index];
+            setPoster(selectedVideo);
 
-                    positionList.innerHTML = "";
+            positionList.innerHTML = "";
 
-                    if (Array.isArray(selectedVideo.positions) && selectedVideo.positions.length > 0) {
-                        selectedVideo.positions.forEach((position, index) => {
-                            createPositionItem(position, positionList);
-                        });
-                    }
+            if (Array.isArray(selectedVideo.positions) && selectedVideo.positions.length > 0) {
+                selectedVideo.positions.forEach((position, index) => {
+                    createPositionItem(position, positionList);
                 });
-            });
-
-            if (videos.length > 0) {
-                const firstVideo = videos[0];
-                setPoster(firstVideo);
-
-                positionList.innerHTML = "";
-
-                if (Array.isArray(firstVideo.positions) && firstVideo.positions.length > 0) {
-                    firstVideo.positions.forEach((position, index) => {
-                        createPositionItem(position, positionList);
-                    });
-                }
             }
-        })
-        .catch(error => console.error('Error loading videos:', error));
+        });
+    });
+
+    if (videos.length > 0) {
+        const firstVideo = videos[0];
+        setPoster(firstVideo);
+
+        positionList.innerHTML = "";
+
+        if (Array.isArray(firstVideo.positions) && firstVideo.positions.length > 0) {
+            firstVideo.positions.forEach((position, index) => {
+                createPositionItem(position, positionList);
+            });
+        }
+    }
 }
 
 function createPositionItem(position, positionList) {
