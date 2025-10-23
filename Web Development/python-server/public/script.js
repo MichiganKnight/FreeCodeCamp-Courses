@@ -222,7 +222,6 @@ function getVideos(videosJSON) {
             videos.forEach((video, index) => {
                 const li = document.createElement("li");
                 const a = document.createElement("a");
-                const positions = video.positions;
 
                 a.className = "dropdown-item";
                 a.href = '#';
@@ -243,14 +242,7 @@ function getVideos(videosJSON) {
 
                     if (Array.isArray(selectedVideo.positions) && selectedVideo.positions.length > 0) {
                         selectedVideo.positions.forEach((position, index) => {
-                            const li = document.createElement("li");
-
-                            li.textContent = position.name;
-                            li.addEventListener("click", () => {
-                                seek_player(position.timestamp);
-                            });
-
-                            positionList.appendChild(li);
+                            createPositionItem(position, positionList);
                         });
                     }
                 });
@@ -264,19 +256,94 @@ function getVideos(videosJSON) {
 
                 if (Array.isArray(firstVideo.positions) && firstVideo.positions.length > 0) {
                     firstVideo.positions.forEach((position, index) => {
-                        const li = document.createElement("li");
-
-                        li.textContent = position.name;
-                        li.addEventListener("click", () => {
-                            seek_player(position.timestamp);
-                        });
-
-                        positionList.appendChild(li);
+                        createPositionItem(position, positionList);
                     });
                 }
             }
         })
         .catch(error => console.error('Error loading videos:', error));
+}
+
+function createPositionItem(position, positionList) {
+    const li = document.createElement("li");
+    const img = document.createElement("img");
+    const p = document.createElement("p");
+
+    img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='90'%3E%3Crect fill='%23333' width='160' height='90'/%3E%3Ctext fill='%23fff' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle'%3ELoading...%3C/text%3E%3C/svg%3E";
+    img.alt = position.name;
+    img.style.width = "160px";
+    img.style.height = "90px";
+    img.style.objectFit = "cover";
+    img.style.cursor = "pointer";
+
+    const name = document.createElement("span");
+    name.textContent = position.name;
+    name.style.display = "block";
+    name.style.fontWeight = "600";
+
+    const time = document.createElement("span");
+    time.textContent = formatTime(position.timestamp);
+    time.style.fontSize = "13px";
+
+    p.appendChild(name);
+    p.appendChild(time);
+    p.style.textAlign = "center";
+    p.style.cursor = "pointer";
+    p.style.lineHeight = "1.2";
+
+    li.appendChild(img);
+    li.appendChild(p);
+
+    generateThumbnail(position.timestamp, img);
+
+    li.addEventListener("click", () => {
+        seek_player(position.timestamp);
+    });
+
+    positionList.appendChild(li);
+}
+
+function generateThumbnail(timestamp, imgElement) {
+    const videoSource = document.getElementById("video-source");
+    const src = videoSource ? videoSource.src : null;
+    if (!src) return;
+
+    const tempVideo = document.createElement("video");
+    tempVideo.crossOrigin = "anonymous";
+    tempVideo.preload = "auto";
+    tempVideo.muted = true;
+    tempVideo.src = src;
+
+    tempVideo.addEventListener("loadedmetadata", () => {
+        if (timestamp > tempVideo.duration) timestamp = tempVideo.duration - 0.5;
+        tempVideo.currentTime = timestamp;
+    });
+
+    tempVideo.addEventListener("seeked", () => {
+        try {
+            const canvas = document.createElement("canvas");
+            canvas.width = 160;
+            canvas.height = 90;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(tempVideo, 0, 0, canvas.width, canvas.height);
+
+            const image = canvas.toDataURL("image/png");
+            imgElement.src = image;
+        } catch (err) {
+            console.warn("Thumbnail generation failed (CORS?):", err);
+            imgElement.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='90'%3E%3Crect fill='%23f00' width='160' height='90'/%3E%3Ctext fill='%23fff' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle'%3ECORS%20Error%3C/text%3E%3C/svg%3E";
+        }
+
+        tempVideo.removeAttribute("src");
+        tempVideo.load();
+    }, {
+        once: true
+    });
+
+    tempVideo.addEventListener("error", e => {
+        console.error("Error Loading Video Thumbnail: ", e);
+        imgElement.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='90'%3E%3Crect fill='%23ff0000' width='160' height='90'/%3E%3Ctext fill='%23fff' x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle'%3EError%3C/text%3E%3C/svg%3E";
+    });
 }
 
 function setPoster(video) {
@@ -285,7 +352,6 @@ function setPoster(video) {
     const dropdownButton = document.getElementById("dropdown-button");
 
     videoPlayer.pause();
-    console.log(`Video Poster: ${video.poster}`);
     videoPlayer.poster = video.poster;
     videoSource.src = video.source;
 
