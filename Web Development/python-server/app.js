@@ -5,6 +5,8 @@ const path = require("path");
 const app = express();
 const port = 3000;
 
+console.log("Loading Python Server App | Please Wait...");
+
 let options = {
     mode: "text",
     pythonOptions: ['-u'],
