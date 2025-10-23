@@ -15,8 +15,10 @@ const timeDisplay = document.getElementById("timeDisplay");
 
 let hideTimeout;
 
+const videosJSON = "TNA.json"
+
 document.addEventListener("DOMContentLoaded", () => {
-    getVideos();
+    getVideos(videosJSON);
 });
 
 function formatTime(seconds) {
@@ -210,18 +212,17 @@ videoPlayer.addEventListener("pause", () => {
 
 showControls();
 
-function getVideos() {
+function getVideos(videosJSON) {
     const dropdownMenu = document.getElementById("dropdown-menu");
-    const videoSource = document.getElementById("video-source");
-    const videoName = document.getElementById("video-name");
-    const dropdownButton = document.getElementById("dropdown-button");
+    const positionList = document.getElementById("positionList");
 
-    fetch('TNA_Videos.json')
+    fetch(videosJSON)
         .then(response => response.json())
         .then(videos => {
             videos.forEach((video, index) => {
                 const li = document.createElement("li");
                 const a = document.createElement("a");
+                const positions = video.positions;
 
                 a.className = "dropdown-item";
                 a.href = '#';
@@ -236,34 +237,62 @@ function getVideos() {
                     e.preventDefault();
 
                     const selectedVideo = videos[a.dataset.index];
+                    setPoster(selectedVideo);
 
-                    videoPlayer.pause();
-                    videoPlayer.poster = selectedVideo.poster;
-                    videoSource.src = selectedVideo.source;
+                    positionList.innerHTML = "";
 
-                    videoPlayer.load();
+                    if (Array.isArray(selectedVideo.positions) && selectedVideo.positions.length > 0) {
+                        selectedVideo.positions.forEach((position, index) => {
+                            const li = document.createElement("li");
 
-                    videoName.textContent = selectedVideo.name;
-                    document.title = selectedVideo.name;
-                    dropdownButton.textContent = selectedVideo.name;
+                            li.textContent = position.name;
+                            li.addEventListener("click", () => {
+                                seek_player(position.timestamp);
+                            });
+
+                            positionList.appendChild(li);
+                        });
+                    }
                 });
             });
 
             if (videos.length > 0) {
                 const firstVideo = videos[0];
+                setPoster(firstVideo);
 
-                videoPlayer.pause();
-                videoPlayer.poster = firstVideo.poster;
-                videoSource.src = firstVideo.source;
+                positionList.innerHTML = "";
 
-                videoPlayer.load();
+                if (Array.isArray(firstVideo.positions) && firstVideo.positions.length > 0) {
+                    firstVideo.positions.forEach((position, index) => {
+                        const li = document.createElement("li");
 
-                videoName.textContent = firstVideo.name;
-                document.title = firstVideo.name;
-                dropdownButton.textContent = firstVideo.name;
+                        li.textContent = position.name;
+                        li.addEventListener("click", () => {
+                            seek_player(position.timestamp);
+                        });
+
+                        positionList.appendChild(li);
+                    });
+                }
             }
         })
         .catch(error => console.error('Error loading videos:', error));
+}
+
+function setPoster(video) {
+    const videoSource = document.getElementById("video-source");
+    const videoName = document.getElementById("video-name");
+    const dropdownButton = document.getElementById("dropdown-button");
+
+    videoPlayer.pause();
+    videoPlayer.poster = video.poster.startsWith("http") ? `https://corsproxy.io/?${encodeURIComponent(video.poster)}` : video.poster;
+    videoSource.src = video.source;
+
+    videoPlayer.load();
+
+    videoName.textContent = video.name;
+    document.title = video.name;
+    dropdownButton.textContent = video.name;
 }
 
 const posterBtn = document.getElementById("posterBtn");
@@ -317,3 +346,8 @@ posterBtn.addEventListener("click", () => {
         once: true
     });
 });
+
+function seek_player(timeInSeconds) {
+    videoPlayer.pause();
+    videoPlayer.currentTime = timeInSeconds;
+}
