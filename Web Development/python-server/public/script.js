@@ -345,7 +345,7 @@ function setPoster(video) {
     const dropdownButton = document.getElementById("dropdown-button");
 
     videoPlayer.pause();
-    videoPlayer.poster = video.poster;
+    videoPlayer.poster = video.poster.startsWith("http") ? `https://corsproxy.io/?${encodeURIComponent(video.poster)}` : video.poster;
     videoSource.src = video.source;
 
     videoPlayer.load();
