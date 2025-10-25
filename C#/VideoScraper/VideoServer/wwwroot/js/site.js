@@ -17,8 +17,6 @@ let hideTimeout;
 
 document.addEventListener("DOMContentLoaded", () => {
     const title = document.title.replace(" - VideoServer", "");
-    
-    console.log(title);
 
     switch (title) {
         case "TNA Videos":
