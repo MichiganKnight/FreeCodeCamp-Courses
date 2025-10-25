@@ -17,6 +17,10 @@ video {
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 /* OVERLAYS / TOOLTIP */
 .shortcut-tooltip {
     position: absolute;
