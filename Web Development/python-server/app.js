@@ -57,6 +57,16 @@ PythonShell.run("TNA.py", options).then(async messages => {
             });
         });
 
+        app.get("/desktop", (req, res) => {
+            const testUrl = fs.readFileSync(path.join("E:\\FreeCodeCamp Courses\\C#\\SeleniumApp\\bin\\Debug\\net9.0\\Videos", "Euro trash hardcore - HD Porn.mp4"));
+
+            res.render("videoPlayer", {
+                title: "Desktop",
+                heading: "Desktop",
+                testUrl
+            });
+        });
+
         app.listen(port, async () => {
             const serverUrl = `http://localhost:${port}`;
             console.log(`Server Running at: ${serverUrl}`);

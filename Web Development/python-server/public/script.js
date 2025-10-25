@@ -17,7 +17,15 @@ let hideTimeout;
 
 document.addEventListener("DOMContentLoaded", () => {
     getVideos(videosJSON);
+    displayTestVideo(url, pageTitle);
 });
+
+function displayTestVideo(url, title) {
+    const videoSource = document.getElementById("video-source");
+
+    videoSource.src = url;
+    document.title = title;
+}
 
 function formatTime(seconds) {
     if (isNaN(seconds)) {
