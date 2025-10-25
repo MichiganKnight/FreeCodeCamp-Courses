@@ -1,0 +1,225 @@
+﻿/* VIDEO CONTAINER */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16/9;
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+video {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* OVERLAYS / TOOLTIP */
+.shortcut-tooltip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.shortcut-tooltip.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.big-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 64px;
+    color: darkgray;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    z-index: 5;
+}
+
+.big-play:hover {
+    opacity: 1;
+}
+
+/* CONTROLS */
+.controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.controls.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.progress-container {
+    flex-grow: 1;
+    height: 6px;
+    background: #444;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background: var(--accent-color);
+    width: 0;
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+
+.progress-dot {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    transition: left 0.1s linear;
+}
+
+/* DROPDOWN / MENU */
+.dropdown-menu {
+    cursor: pointer;
+}
+
+.volume-slider, .speed-select {
+    width: 100px;
+}
+
+.time-display {
+    font-family: monospace;
+    min-width: 140px;
+    text-align: right;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* POSITIONS SECTION */
+.positions-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.skip-to {
+    color: var(--video-positions-skip-to-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* THUMBNAILS */
+.positions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.25rem;
+    padding: 0;
+    list-style: none;
+    justify-items: center;
+}
+
+.positions li {
+    background: var(--card-bg);
+    border: 1px solid #2a3a4f;
+    border-radius: 10px;
+    width: 180px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.positions li:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+.positions li img {
+    display: block;
+    width: 160px;
+    height: 90px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.positions li:hover img {
+    opacity: 0.9;
+    transform: scale(0.98);
+}
+
+.positions li p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--video-positions-skip-to-color);
+    text-transform: capitalize;
+    word-wrap: break-word;
+}
+
+/* TAG LIST */
+ul.position-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.position-tags li {
+    background-color: var(--tags-bg-color);
+    color: var(--video-positions-skip-to-color);
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    border: 1px solid transparent;
+    transition: 0.3s ease;
+}
+
+ul.position-tags li:hover {
+    background-color: #1a2430;
+    color: #b9f2ff;
+    border-color: #2a3a4f;
+}

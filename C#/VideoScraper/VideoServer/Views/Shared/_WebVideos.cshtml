@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Videos Player";
+}
+
+<div class="container text-center">
+    <h2 id="video-name">Videos</h2>
+    
+    <div class="dropdown-center mb-4">
+        <button id="dropdown-button" class="btn btn-secondary dropdown-toggle" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            Choose a Video
+        </button>
+        <ul id="dropdown-menu" class="dropdown-menu text-center">
+        </ul>
+    </div>
+    
+    <partial name="_VideoPlayer"/>
+</div>
