@@ -14,5 +14,10 @@ namespace VideoServer.Controllers
         {
             return View();
         }
+
+        public IActionResult Local()
+        {
+            return View();
+        }
     }
 }

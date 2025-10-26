@@ -12,8 +12,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\VideoToJSON\VideoToJSON.csproj" />
-      <ProjectReference Include="..\VideoToMP4\VideoToMP4.csproj" />
+      <ProjectReference Include="..\VideoConvert\VideoConvert.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\Videos\" />
     </ItemGroup>
 
 </Project>
