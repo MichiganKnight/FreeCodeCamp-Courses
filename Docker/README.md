@@ -9,4 +9,4 @@ This repository contains a custom Extract, Load, Transform (ETL) project that ut
     - `destination_postgres`: The destination PostgreSQL database
     = `elt_script`: The service that runs the ELT script
 
-2. [**elt_Script/Dockerfile**](elt_Script/Dockerfile): This Dockerfile sets up a Python environment and installs the PostgreSQL client. It also copies the ELT script into the container and sets it as the default command
+2. [**elt_script/Dockerfile**](elt_script/Dockerfile): This Dockerfile sets up a Python environment and installs the PostgreSQL client. It also copies the ELT script into the container and sets it as the default command
