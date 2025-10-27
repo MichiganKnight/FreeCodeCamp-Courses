@@ -4,10 +4,10 @@ This repository contains a custom Extract, Load, Transform (ETL) project that ut
 
 [TOC]
 
-# Table of Contents:
+## Table of Contents:
 * [Repository Structure](#repository-structure)
 
-## Repository Structure
+### Repository Structure
 
 1. [**docker-compose.yaml**](docker-compose.yaml): This file contains the configuration for Docker Compose, which is used to orchestrate multiple Docker Containers. It defines three services:
     - `source_postgres`: The source PostgreSQL database
