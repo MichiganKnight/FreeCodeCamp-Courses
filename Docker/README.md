@@ -2,6 +2,9 @@
 
 This repository contains a custom Extract, Load, Transform (ETL) project that utilizes Docker and PostgreSQL to demonstrate a simple ELT process.
 
+# Table of Contents:
+    [Repository Structure](#repository-structure)
+
 ## Repository Structure
 
 1. [**docker-compose.yaml**](docker-compose.yaml): This file contains the configuration for Docker Compose, which is used to orchestrate multiple Docker Containers. It defines three services:
