@@ -68,13 +68,15 @@ async function loadVideo(video) {
     const dropdownButton = document.getElementById("dropdown-button");
 
     videoPlayer.pause();
-    if (video.Poster && video.Poster.trim() !== "") {
+    /*if (video.Poster && video.Poster.trim() !== "") {
         videoPlayer.poster = video.Poster.startsWith("http")
             ? `https://corsproxy.io/?${encodeURIComponent(video.Poster)}`
             : video.Poster;
     } else {
         await generateRandomPoster(video.Source, videoPlayer);
-    }
+    }*/
+    
+    await generateRandomPoster(video.Source, videoPlayer);
 
     videoSource.src = video.Source;
     videoPlayer.load();
