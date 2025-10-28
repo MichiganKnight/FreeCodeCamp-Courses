@@ -1,10 +1,10 @@
 FROM python:3.10-slim
 
-# Install PostgreSQL command-line tools
+# Install PostgreSQL Command-Line Tools
 RUN apt-get update && apt-get install -y postgresql-client-17
 
-# Copy the ELT script 
+# Copy ELT Script 
 COPY elt_script.py .
 
-# Set the default command to run the ELT script
+# Set the Default Command to Run the ELT Script
 CMD ["python", "elt_script.py"]
