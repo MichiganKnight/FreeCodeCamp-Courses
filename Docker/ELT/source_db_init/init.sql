@@ -1,4 +1,3 @@
--- Create Users Table
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(50),
@@ -7,268 +6,151 @@ CREATE TABLE users (
     date_of_birth DATE
 );
 
--- Insert Sample Data into Users Table
-INSERT INTO
-    users (
-        first_name,
-        last_name,
-        email,
-        date_of_birth
-    )
-VALUES (
-        'Olivia',
-        'Martinez',
-        'olivia.martinez@example.com',
-        '1990-03-14'
-    ),
-    (
-        'Liam',
-        'Johnson',
-        'liam.johnson@example.com',
-        '1988-07-22'
-    ),
-    (
-        'Emma',
-        'Brown',
-        'emma.brown@example.com',
-        '1995-11-05'
-    ),
-    (
-        'Noah',
-        'Davis',
-        'noah.davis@example.com',
-        '1992-01-30'
-    ),
-    (
-        'Ava',
-        'Garcia',
-        'ava.garcia@example.com',
-        '1987-09-12'
-    ),
-    (
-        'William',
-        'Miller',
-        'william.miller@example.com',
-        '1993-06-18'
-    ),
-    (
-        'Sophia',
-        'Wilson',
-        'sophia.wilson@example.com',
-        '1998-12-02'
-    ),
-    (
-        'James',
-        'Moore',
-        'james.moore@example.com',
-        '1985-04-25'
-    ),
-    (
-        'Isabella',
-        'Taylor',
-        'isabella.taylor@example.com',
-        '2000-08-08'
-    ),
-    (
-        'Benjamin',
-        'Anderson',
-        'benjamin.anderson@example.com',
-        '1991-05-16'
-    );
+INSERT INTO users (first_name, last_name, email, date_of_birth) VALUES
+('John', 'Doe', 'john.doe@example.com', '1990-01-01'),
+('Jane', 'Smith', 'jane.smith@example.com', '1992-05-15'),
+('Alice', 'Johnson', 'alice.johnson@example.com', '1985-10-20'),
+('Bob', 'Williams', 'bob.williams@example.com', '1998-07-30'),
+('Emily', 'Clark', 'emily.clark@example.com', '1987-02-14'),
+('Michael', 'Robinson', 'michael.robinson@example.com', '1995-06-05'),
+('Sarah', 'Lewis', 'sarah.lewis@example.com', '1989-03-25'),
+('David', 'Walker', 'david.walker@example.com', '1992-11-12'),
+('Sophia', 'Hall', 'sophia.hall@example.com', '1996-08-08'),
+('James', 'Allen', 'james.allen@example.com', '1984-04-20'),
+('Olivia', 'Young', 'olivia.young@example.com', '1993-12-30'),
+('Chris', 'King', 'chris.king@example.com', '1990-09-15'),
+('Grace', 'Wright', 'grace.wright@example.com', '1997-05-10'),
+('William', 'Scott', 'william.scott@example.com', '1986-07-22');
 
--- Create Films Table
 CREATE TABLE films (
-    id SERIAL PRIMARY KEY,
+    film_id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     release_date DATE,
-    price DECIMAL(5, 2),
+    price DECIMAL(5,2),
     rating VARCHAR(10),
-    user_rating DECIMAL(2, 1) CHECK (
-        user_rating >= 1
-        AND user_rating <= 5
-    )
+    user_rating DECIMAL(2,1) CHECK (user_rating >= 1 AND user_rating <= 5)
 );
 
--- Insert Sample Data into Films Table
-INSERT INTO
-    films (
-        title,
-        release_date,
-        price,
-        rating,
-        user_rating
-    )
-VALUES (
-        'The Shawshank Redemption',
-        '1994-09-23',
-        9.99,
-        'R',
-        4.8
-    ),
-    (
-        'The Godfather',
-        '1972-03-24',
-        12.99,
-        'R',
-        4.9
-    ),
-    (
-        'Inception',
-        '2010-07-16',
-        14.99,
-        'PG-13',
-        4.7
-    ),
-    (
-        'The Dark Knight',
-        '2008-07-18',
-        13.99,
-        'PG-13',
-        4.9
-    ),
-    (
-        'Pulp Fiction',
-        '1994-10-14',
-        8.99,
-        'R',
-        4.6
-    ),
-    (
-        'Forrest Gump',
-        '1994-07-06',
-        7.99,
-        'PG-13',
-        4.5
-    ),
-    (
-        'The Matrix',
-        '1999-03-31',
-        9.49,
-        'R',
-        4.7
-    ),
-    (
-        'Toy Story',
-        '1995-11-22',
-        6.99,
-        'G',
-        4.4
-    ),
-    (
-        'The Lion King',
-        '1994-06-24',
-        7.49,
-        'G',
-        4.3
-    ),
-    (
-        'Avengers: Endgame',
-        '2019-04-26',
-        15.99,
-        'PG-13',
-        4.2
-    ),
-    (
-        'Jurassic Park',
-        '1993-06-11',
-        10.99,
-        'PG-13',
-        4.0
-    ),
-    (
-        'Titanic',
-        '1997-12-19',
-        11.99,
-        'PG-13',
-        4.1
-    );
+INSERT INTO films (title, release_date, price, rating, user_rating) VALUES
+('Inception', '2010-07-16', 12.99, 'PG-13', 4.8),
+('The Shawshank Redemption', '1994-09-23', 9.99, 'R', 4.9),
+('The Godfather', '1972-03-24', 14.99, 'R', 4.7),
+('The Dark Knight', '2008-07-18', 11.99, 'PG-13', 4.8),
+('Pulp Fiction', '1994-10-14', 10.99, 'R', 4.6),
+('The Matrix', '1999-03-31', 9.99, 'R', 4.7),
+('Forrest Gump', '1994-07-06', 8.99, 'PG-13', 4.5),
+('Toy Story', '1995-11-22', 7.99, 'G', 4.4),
+('Jurassic Park', '1993-06-11', 9.99, 'PG-13', 4.3),
+('Avatar', '2009-12-18', 12.99, 'PG-13', 4.2),
+('Blade Runner 2049', '2017-10-06', 13.99, 'R', 4.3),
+('Mad Max: Fury Road', '2015-05-15', 11.99, 'R', 4.6),
+('Coco', '2017-11-22', 9.99, 'PG', 4.8),
+('Dunkirk', '2017-07-21', 12.99, 'PG-13', 4.5),
+('Spider-Man: Into the Spider-Verse', '2018-12-14', 10.99, 'PG', 4.9),
+('Parasite', '2019-10-11', 14.99, 'R', 4.6),
+('Whiplash', '2014-10-10', 9.99, 'R', 4.7),
+('Inside Out', '2015-06-19', 9.99, 'PG', 4.8),
+('The Grand Budapest Hotel', '2014-03-28', 10.99, 'R', 4.4),
+('La La Land', '2016-12-09', 11.99, 'PG-13', 4.5);
 
-    -- Create Film Category Table
 CREATE TABLE film_category (
     category_id SERIAL PRIMARY KEY,
-    film_id INTEGER REFERENCES films (id),
+    film_id INTEGER REFERENCES films(film_id),
     category_name VARCHAR(50) NOT NULL
 );
 
--- Insert Sample Data into Film Category Table
-INSERT INTO
-    film_category (film_id, category_name)
-VALUES (1, 'Drama'),
-    (2, 'Crime'),
-    (3, 'Sci-Fi'),
-    (4, 'Action'),
-    (5, 'Crime'),
-    (6, 'Drama'),
-    (7, 'Sci-Fi'),
-    (8, 'Animation'),
-    (9, 'Animation'),
-    (10, 'Action'),
-    (11, 'Sci-Fi'),
-    (12, 'Romance');
+INSERT INTO film_category (film_id, category_name) VALUES
+(1, 'Sci-Fi'),
+(1, 'Thriller'),
+(2, 'Drama'),
+(3, 'Crime'),
+(3, 'Drama'),
+(4, 'Action'),
+(4, 'Thriller'),
+(5, 'Crime'),
+(5, 'Drama'),
+(6, 'Sci-Fi'),
+(6, 'Action'),
+(7, 'Drama'),
+(7, 'Romance'),
+(8, 'Animation'),
+(8, 'Family'),
+(9, 'Action'),
+(9, 'Adventure'),
+(10, 'Sci-Fi'),
+(10, 'Adventure'),
+(11, 'Sci-Fi'),
+(11, 'Drama'),
+(12, 'Action'),
+(12, 'Adventure'),
+(13, 'Animation'),
+(13, 'Family'),
+(14, 'War'),
+(14, 'Drama'),
+(15, 'Animation'),
+(15, 'Action'),
+(16, 'Drama'),
+(16, 'Thriller'),
+(17, 'Drama'),
+(17, 'Music'),
+(18, 'Animation'),
+(18, 'Family'),
+(19, 'Comedy'),
+(19, 'Drama'),
+(20, 'Drama'),
+(20, 'Music');
 
-    -- Create Actors Table
 CREATE TABLE actors (
     actor_id SERIAL PRIMARY KEY,
     actor_name VARCHAR(255) NOT NULL
 );
 
--- Insert Sample Data into Actors Table
-INSERT INTO
-    actors (actor_name)
-VALUES ('Tim Robbins'),
-    ('Morgan Freeman'),
-    ('Marlon Brando'),
-    ('Al Pacino'),
-    ('Leonardo DiCaprio'),
-    ('Joseph Gordon-Levitt'),
-    ('Christian Bale'),
-    ('Heath Ledger'),
-    ('John Travolta'),
-    ('Samuel L. Jackson'),
-    ('Tom Hanks'),
-    ('Keanu Reeves'),
-    ('Laurence Fishburne'),
-    ('Tim Allen'),
-    ('Matthew Broderick'),
-    ('James Earl Jones'),
-    ('Robert Downey Jr.'),
-    ('Chris Evans'),
-    ('Scarlett Johansson'),
-    ('Sam Neill'),
-    ('Laura Dern'),
-    ('Kate Winslet');
-
--- Create Film Actors Junction Table
 CREATE TABLE film_actors (
-    film_id INTEGER REFERENCES films (id),
-    actor_id INTEGER REFERENCES actors (actor_id),
+    film_id INTEGER REFERENCES films(film_id),
+    actor_id INTEGER REFERENCES actors(actor_id),
     PRIMARY KEY (film_id, actor_id)
 );
 
--- Insert Sample Data into Film_Actors junction Table
-INSERT INTO
-    film_actors (film_id, actor_id)
-VALUES (1, 1),
-    (1, 2),
-    (2, 3),
-    (2, 4),
-    (3, 5),
-    (3, 6),
-    (4, 7),
-    (4, 8),
-    (5, 9),
-    (5, 10),
-    (6, 11),
-    (7, 12),
-    (7, 13),
-    (8, 11),
-    (8, 14),
-    (9, 15),
-    (9, 16),
-    (10, 17),
-    (10, 18),
-    (10, 19),
-    (11, 20),
-    (11, 21),
-    (12, 5),
-    (12, 22);
+INSERT INTO actors (actor_name) VALUES
+('Leonardo DiCaprio'),  -- Associated with Inception
+('Tim Robbins'),        -- Associated with The Shawshank Redemption
+('Marlon Brando'),      -- Associated with The Godfather
+('Christian Bale'),     -- Associated with The Dark Knight
+('John Travolta'),      -- Associated with Pulp Fiction
+('Keanu Reeves'),       -- Associated with The Matrix
+('Tom Hanks'),          -- Associated with Forrest Gump
+('Tom Hanks'),          -- Associated with Toy Story (Tom Hanks appears twice for demonstration purposes)
+('Sam Neill'),          -- Associated with Jurassic Park
+('Sam Worthington'),    -- Associated with Avatar
+('Ryan Gosling'),       -- Associated with Blade Runner 2049
+('Tom Hardy'),          -- Associated with Mad Max: Fury Road
+('Anthony Gonzalez'),   -- Associated with Coco
+('Fionn Whitehead'),    -- Associated with Dunkirk
+('Shameik Moore'),      -- Associated with Spider-Man: Into the Spider-Verse
+('Song Kang-ho'),       -- Associated with Parasite
+('Miles Teller'),       -- Associated with Whiplash
+('Amy Poehler'),        -- Associated with Inside Out
+('Ralph Fiennes'),      -- Associated with The Grand Budapest Hotel
+('Emma Stone');         -- Associated with La La Land
+
+INSERT INTO film_actors (film_id, actor_id) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7),
+(8, 8),
+(9, 9),
+(10, 10),
+(11, 11),
+(12, 12),
+(13, 13),
+(14, 14),
+(15, 15),
+(16, 16),
+(17, 17),
+(18, 18),
+(19, 19),
+(20, 20);
