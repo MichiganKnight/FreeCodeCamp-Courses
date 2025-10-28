@@ -7,4 +7,4 @@ Various Tutorial Courses & Projects
 - [**C++**]("C++"): C++ Projects
 - [**Dev10**]("Dev10"): Dev10 Projects & Resources
 - [**Docker**]("Docker"): Docker Projects
-- [**Full Stack**]("Full_Stack"): Full Stack Projects
+- [**Full Stack**]("Full&20Stack"): Full Stack Projects
