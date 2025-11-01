@@ -43,7 +43,7 @@ app.MapControllerRoute(
         pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-//await VideoConvert.VideoToJSON.GetVideos();
+await VideoConvert.VideoToJSON.GetVideos();
 
 const string url = "http://localhost:5191";
 Process.Start(new ProcessStartInfo

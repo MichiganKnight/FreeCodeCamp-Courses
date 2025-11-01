@@ -1,4 +1,4 @@
-﻿import {togglePlay, showTooltip, seek_player, formatTime} from "./video-player.js";
+﻿import {seek_player, formatTime} from "./video-player.js";
 import {videoPlayer} from "./video-player.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,7 +38,9 @@ async function loadVideos(jsonFile) {
         const tagMap = {
             "Dp": "DP",
             "Wtfpass": "WTFPass",
-            "3some": "Threesome"
+            "3some": "Threesome",
+            "Pick Up": "Pickup",
+            "Ffm": "FFM"
         };
         
         const formatTag = tag => tagMap[tag] || tag;
@@ -83,7 +85,10 @@ async function loadVideos(jsonFile) {
         if (videos.length > 0) {
             loadVideo(videos[0]);
             renderPositions(videos[0].Positions, positionList);
-            renderTags(videos[0].Tags);
+            
+            if (videos[0].Tags !== null) {
+                renderTags(videos[0].Tags);
+            }
         }
     } catch (error) {
         console.error(`Error Fetching Data: ${error}`);
@@ -96,14 +101,9 @@ async function loadVideo(video) {
     const videoName = document.getElementById("video-name");
     const dropdownButton = document.getElementById("dropdown-button");
 
-    videoPlayer.pause();
-    /*if (video.Poster && video.Poster.trim() !== "") {
-        videoPlayer.poster = video.Poster.startsWith("http")
-            ? `https://corsproxy.io/?${encodeURIComponent(video.Poster)}`
-            : video.Poster;
-    } else {
-        await generateRandomPoster(video.Source, videoPlayer);
-    }*/
+    const time = document.createElement("span");
+    time.textContent = formatTime(0);
+    time.style.fontSize = "13px";
     
     await generateRandomPoster(video.Source, videoPlayer);
 

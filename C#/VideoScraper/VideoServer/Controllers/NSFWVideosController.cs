@@ -42,7 +42,8 @@ namespace VideoServer.Controllers
                 ["wtfpass"] = "WTFPass",
                 ["3some"] = "Threesome",
                 ["groupsex"] = "Group Sex",
-                ["Pick Up"] = "Pickup"
+                ["Pick Up"] = "Pickup",
+                ["Ffm"] = "FFM"
             };
 
             foreach (string file in sources)
@@ -99,7 +100,8 @@ namespace VideoServer.Controllers
                 ["wtfpass"] = "WTFPass",
                 ["3some"] = "Threesome",
                 ["groupsex"] = "Group Sex",
-                ["Pick Up"] = "Pickup"
+                ["Pick Up"] = "Pickup",
+                ["Ffm"] = "FFM"
             };
             
             foreach (string file in sources)

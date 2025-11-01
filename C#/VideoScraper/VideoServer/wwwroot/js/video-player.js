@@ -40,8 +40,14 @@ videoPlayer.addEventListener("play", showControls);
 videoPlayer.addEventListener("pause", showControls);
 
 // ========== PLAYBACK CONTROLS ==========
-export function togglePlay() {
-    if (videoPlayer.paused) {
+function togglePlay() {    
+    console.log("Clicked", {
+        paused: videoPlayer.paused,
+        readyState: videoPlayer.readyState,
+        src: videoPlayer.currentSrc
+    });
+    
+    if (videoPlayer.paused) {        
         videoPlayer.play();
         playPauseBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
         bigPlayBtn.classList.add("hidden");
@@ -52,9 +58,21 @@ export function togglePlay() {
     }
 }
 
-playPauseBtn.addEventListener("click", togglePlay);
-bigPlayBtn.addEventListener("click", togglePlay);
-videoPlayer.addEventListener("click", togglePlay);
+videoPlayer.controls = false;
+videoPlayer.autoplay = false;
+videoPlayer.muted = false;
+videoPlayer.preload = "auto";
+videoPlayer.playsInline = true;
+
+playPauseBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    togglePlay();
+});
+bigPlayBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    togglePlay();
+});
+
 videoPlayer.addEventListener("ended", () => {
     playPauseBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
     bigPlayBtn.classList.remove("hidden");
