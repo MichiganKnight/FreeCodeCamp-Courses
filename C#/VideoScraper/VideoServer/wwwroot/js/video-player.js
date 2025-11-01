@@ -140,3 +140,47 @@ export function formatTime(seconds) {
     const s = Math.floor(seconds % 60);
     return [h, m, s].map(v => String(v).padStart(2, '0')).join(':');
 }
+
+// ========== KEYBOARD SHORTCUTS ==========
+document.addEventListener("keydown", (e) => {
+    const activeTag = document.activeElement.tagName.toLowerCase();
+    if (["input", "textarea", "select"].includes(activeTag)) return;
+
+    switch (e.key) {
+        case " ":
+            e.preventDefault();
+            togglePlay();
+            break;
+        case "ArrowRight":
+            videoPlayer.currentTime = Math.min(videoPlayer.currentTime + 5, videoPlayer.duration);
+            showTooltip("+5s");
+            break;
+        case "ArrowLeft":
+            videoPlayer.currentTime = Math.max(videoPlayer.currentTime - 5, 0);
+            showTooltip("-5s");
+            break;
+        case "ArrowUp":
+            e.preventDefault();
+            videoPlayer.volume = Math.min(videoPlayer.volume + 0.05, 1);
+            volumeControl.value = videoPlayer.volume;
+            showTooltip(`Volume: ${Math.round(videoPlayer.volume * 100)}%`);
+            break;
+        case "ArrowDown":
+            e.preventDefault();
+            videoPlayer.volume = Math.max(videoPlayer.volume - 0.05, 0);
+            volumeControl.value = videoPlayer.volume;
+            showTooltip(`Volume: ${Math.round(videoPlayer.volume * 100)}%`);
+            break;
+        case "KeyM":
+            videoPlayer.muted = !videoPlayer.muted;
+            break;
+        case "KeyF":
+            if (!document.fullscreenElement) videoContainer.requestFullscreen();
+            else document.exitFullscreen();
+            break;
+        case "KeyP":
+            if (document.pictureInPictureElement) document.exitPictureInPicture();
+            else if (document.pictureInPictureEnabled) videoPlayer.requestPictureInPicture();
+            break;
+    }
+});

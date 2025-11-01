@@ -31,30 +31,59 @@ async function loadVideos(jsonFile) {
         }
 
         const dropdownMenu = document.getElementById("dropdown-menu");
-        const positionList = document.getElementById("positionList");
+        const positionList = document.getElementById("position-list");
+        const tagList = document.getElementById("tag-list");
         dropdownMenu.innerHTML = "";
+        
+        const tagMap = {
+            "Dp": "DP",
+            "Wtfpass": "WTFPass",
+            "3some": "Threesome"
+        };
+        
+        const formatTag = tag => tagMap[tag] || tag;
+        
+        const renderTags = (tags = []) => {
+            tagList.innerHTML = "";
+            tags.slice()
+                .sort((a, b) => a.localeCompare(b))
+                .forEach(tag => {
+                    const tagListElement = document.createElement("li");
+                    const tagAnchorElement = document.createElement("a");
+                    
+                    tagAnchorElement.href = "";
+                    tagAnchorElement.textContent = formatTag(tag);
+                    tagAnchorElement.dataset.tag = tag;
+                    
+                    tagListElement.appendChild(tagAnchorElement);
+                    tagList.appendChild(tagListElement);
+                })
+        };
 
         videos.forEach((video, index) => {
-            const li = document.createElement("li");
-            const a = document.createElement("a");
+            const dropdownListItem = document.createElement("li");
+            const dropdownAnchorElement = document.createElement("a");
 
-            a.className = "dropdown-item";
-            a.href = "#";
-            a.textContent = video.Name;
-            a.dataset.index = index;
-            a.addEventListener("click", e => {
+            dropdownAnchorElement.className = "dropdown-item";
+            dropdownAnchorElement.href = "#";
+            dropdownAnchorElement.textContent = video.Name;
+            dropdownAnchorElement.dataset.index = index;
+
+            dropdownAnchorElement.addEventListener("click", e => {
                 e.preventDefault();
                 loadVideo(videos[index]);
                 renderPositions(videos[index].Positions, positionList);
+                renderTags(video.Tags);
             });
 
-            li.appendChild(a);
-            dropdownMenu.appendChild(li);
+            dropdownListItem.appendChild(dropdownAnchorElement);
+            dropdownMenu.appendChild(dropdownListItem);
         });
 
         if (videos.length > 0) {
             loadVideo(videos[0]);
             renderPositions(videos[0].Positions, positionList);
+            renderTags(videos[0].Tags);
         }
     } catch (error) {
         console.error(`Error Fetching Data: ${error}`);
@@ -171,47 +200,3 @@ async function generateRandomPoster(videoUrl, player) {
         console.error("Error Generating Random Poster:", err);
     }
 }
-
-// ========== KEYBOARD SHORTCUTS ==========
-document.addEventListener("keydown", (e) => {
-    const activeTag = document.activeElement.tagName.toLowerCase();
-    if (["input", "textarea", "select"].includes(activeTag)) return;
-
-    switch (e.key) {
-        case " ":
-            e.preventDefault();
-            togglePlay();
-            break;
-        case "ArrowRight":
-            videoPlayer.currentTime = Math.min(videoPlayer.currentTime + 5, videoPlayer.duration);
-            showTooltip("+5s");
-            break;
-        case "ArrowLeft":
-            videoPlayer.currentTime = Math.max(videoPlayer.currentTime - 5, 0);
-            showTooltip("-5s");
-            break;
-        case "ArrowUp":
-            e.preventDefault();
-            videoPlayer.volume = Math.min(videoPlayer.volume + 0.05, 1);
-            volumeControl.value = videoPlayer.volume;
-            showTooltip(`Volume: ${Math.round(videoPlayer.volume * 100)}%`);
-            break;
-        case "ArrowDown":
-            e.preventDefault();
-            videoPlayer.volume = Math.max(videoPlayer.volume - 0.05, 0);
-            volumeControl.value = videoPlayer.volume;
-            showTooltip(`Volume: ${Math.round(videoPlayer.volume * 100)}%`);
-            break;
-        case "KeyM":
-            videoPlayer.muted = !videoPlayer.muted;
-            break;
-        case "KeyF":
-            if (!document.fullscreenElement) videoContainer.requestFullscreen();
-            else document.exitFullscreen();
-            break;
-        case "KeyP":
-            if (document.pictureInPictureElement) document.exitPictureInPicture();
-            else if (document.pictureInPictureEnabled) videoPlayer.requestPictureInPicture();
-            break;
-    }
-});

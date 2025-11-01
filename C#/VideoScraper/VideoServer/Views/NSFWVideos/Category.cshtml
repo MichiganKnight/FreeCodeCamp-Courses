@@ -1,0 +1,40 @@
+﻿@using VideoConvert.JSON
+@model VideoServer.Models.CategoryViewModel
+@{
+    ViewBag.Title = Model.CategoryName + " Videos";
+}
+
+<div class="container text-center">
+    <h2 class="text-center">@Model.CategoryName Videos</h2>
+
+    @if (!Model.Videos.Any())
+    {
+        <p class="text-center">No videos found in this category.</p>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (Video video in Model.Videos)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="@video.Poster" class="card-img-top" alt="@video.Name" />
+                        <div class="card-body">
+                            <h5 class="card-title">@video.Name</h5>
+                            <button class="btn btn-primary watch-button" data-video-url="@video.Source">Watch</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <div id="video-player-container" style="display: none">
+            <partial name="_VideoPlayer"/>
+        </div>
+    }
+    
+    <a class="btn btn-primary" asp-controller="NSFWVideos" asp-action="Categories">Return to Categories</a>
+</div>
+
+<script type="module" src="~/js/category.js" asp-append-version="true"></script>
+<script type="module" src="~/js/video-player.js" asp-append-version="true"></script>

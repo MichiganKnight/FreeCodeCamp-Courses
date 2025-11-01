@@ -1,0 +1,29 @@
+﻿@model VideoServer.Models.CategoriesViewModel
+@{
+    ViewBag.Title = "NSFW Categories";
+}
+
+<div class="container text-center">
+    <h2>NSFW Categories</h2>
+    
+    <div class="tag-wrapper">
+        <span class="tag-to">Tags:</span>
+        <ul class="tags" id="tag-list">
+            @if (Model.AllTags.Any())
+            {
+                @foreach (string tag in Model.AllTags)
+                {
+                    <li>
+                        <a asp-controller="NSFWVideos" asp-action="Category" asp-route-category="@tag">@tag</a>
+                    </li>
+                }
+            }
+            else
+            {
+                <li>No Tags Found</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<script type="module" src="~/js/categories.js" asp-append-version="true"></script>
