@@ -3,7 +3,7 @@ Various Tutorial Courses & Projects
 
 ## Repository Structure
 
-- [**C#**](C#): C# Projects
+- [**C#**](C%23): C# Projects
 - [**C++**](C++): C++ Projects
 - [**Dev10**](Dev10): Dev10 Projects & Resources
 - [**Full Stack**](Full%20Stack): Full Stack Projects
