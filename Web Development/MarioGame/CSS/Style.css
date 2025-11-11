@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: "Comic Mono", monospace;
+    text-align: center;
+}
+
+canvas {
+    border: 2px solid slategray;
+    border-radius: 5px;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
