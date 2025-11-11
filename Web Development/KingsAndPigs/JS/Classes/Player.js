@@ -1,21 +1,12 @@
-import {Sprite} from "./Sprite.js";
-
-import {canvas, ctx} from '../Index.js';
+import { Sprite } from "./Sprite.js";
+import { canvas, ctx } from '../Index.js';
 
 export class Player extends Sprite {
-    constructor({collisionBlocks = [], imageSrc}) {
-        super({imageSrc});
+    constructor({ position = { x: 100, y: 100 }, collisionBlocks = [], imageSrc, frameRate, frameBuffer }) {
+        super({ imageSrc, frameRate, frameBuffer });
 
-        this.position = {
-            x: 100,
-            y: 100
-        }
-
-        this.velocity = {
-            x: 0,
-            y: 0
-        }
-
+        this.position = position;
+        this.velocity = { x: 0, y: 0 };
         this.width = 100;
         this.height = 100;
 
@@ -25,31 +16,68 @@ export class Player extends Sprite {
         this.isOnGround = false;
 
         this.collisionBlocks = collisionBlocks;
+
+        // Adjusted hitbox for better alignment with 100x100 sprite
+        this.hitboxOffset = { x: 25, y: 50, width: 50, height: 50 };
+        this.hitbox = {
+            position: {
+                x: this.position.x + this.hitboxOffset.x,
+                y: this.position.y + this.hitboxOffset.y
+            },
+            width: this.hitboxOffset.width,
+            height: this.hitboxOffset.height
+        };
     }
 
     update(keys) {
-        ctx.fillStyle = 'rgba(0, 0, 255, 0.5)';
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-
         this.moveHorizontal(keys);
-        this.checkHorizontalCollisions();
-
         this.applyGravity();
-        this.checkVerticalCollisions();
 
-        this.draw();
+        // Update hitbox position
+        this.hitbox.position.x = this.position.x + this.hitboxOffset.x;
+        this.hitbox.position.y = this.position.y + this.hitboxOffset.y;
+
+        // Draw hitbox for debugging
+        ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+        ctx.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
     }
 
     moveHorizontal(keys) {
-        if (keys.d.pressed) {
-            this.velocity.x = this.speed;
-        } else if (keys.a.pressed) {
-            this.velocity.x = -this.speed;
-        } else {
-            this.velocity.x = 0;
-        }
+        if (keys.d.pressed) this.velocity.x = this.speed;
+        else if (keys.a.pressed) this.velocity.x = -this.speed;
+        else this.velocity.x = 0;
 
-        this.position.x += this.velocity.x;
+        let moveAmount = this.velocity.x;
+
+        while (moveAmount !== 0) {
+            const step = moveAmount > 0 ? 1 : -1;
+            this.position.x += step;
+            this.hitbox.position.x = this.position.x + this.hitboxOffset.x;
+
+            for (const block of this.collisionBlocks) {
+                if (this.isHitboxColliding(block)) {
+                    // Move back to edge
+                    this.position.x -= step;
+                    this.velocity.x = 0;
+                    moveAmount = 0;
+                    break;
+                }
+            }
+
+            // Prevent leaving the canvas horizontally
+            if (this.position.x < 0) {
+                this.position.x = 0;
+                this.velocity.x = 0;
+                moveAmount = 0;
+            }
+            if (this.position.x + this.width > canvas.width) {
+                this.position.x = canvas.width - this.width;
+                this.velocity.x = 0;
+                moveAmount = 0;
+            }
+
+            moveAmount -= step;
+        }
     }
 
     jump(jumpHeight = this.defaultJumpSpeed) {
@@ -61,56 +89,46 @@ export class Player extends Sprite {
 
     applyGravity() {
         this.velocity.y += this.gravity;
-        this.position.y += this.velocity.y;
-    }
 
-    checkHorizontalCollisions() {
-        for (const block of this.collisionBlocks) {
-            if (!this.isColliding(block)) {
-                continue;
+        let moveAmount = this.velocity.y;
+
+        while (moveAmount !== 0) {
+            const step = moveAmount > 0 ? 1 : -1;
+            this.position.y += step;
+            this.hitbox.position.y = this.position.y + this.hitboxOffset.y;
+
+            let collided = false;
+
+            for (const block of this.collisionBlocks) {
+                if (this.isHitboxColliding(block)) {
+                    this.position.y -= step;
+                    this.velocity.y = 0;
+                    collided = true;
+                    if (step > 0) this.isOnGround = true; // landed
+                    break;
+                }
             }
 
-            if (this.velocity.x > 0) {
-                this.position.x = block.position.x - this.width;
-            } else if (this.velocity.x < 0) {
-                this.position.x = block.position.x + block.width;
-            }
-
-            this.velocity.x = 0;
-        }
-    }
-
-    checkVerticalCollisions() {
-        this.isOnGround = false;
-
-        for (const block of this.collisionBlocks) {
-            if (!this.isColliding(block)) {
-                continue;
-            }
-
-            if (this.velocity.y > 0) {
-                this.position.y = block.position.y - this.height;
+            // Floor collision
+            if (this.position.y + this.hitboxOffset.y + this.hitbox.height >= canvas.height) {
+                this.position.y = canvas.height - this.hitbox.height - this.hitboxOffset.y;
                 this.velocity.y = 0;
                 this.isOnGround = true;
-            } else if (this.velocity.y < 0) {
-                this.position.y = block.position.y + block.height;
-                this.velocity.y = 0;
+                collided = true;
             }
-        }
 
-        if (this.position.y + this.height >= canvas.height) {
-            this.position.y = canvas.height - this.height;
-            this.velocity.y = 0;
-            this.isOnGround = true;
+            if (collided) break;
+            moveAmount -= step;
         }
     }
 
-    isColliding(block) {
+    isHitboxColliding(block) {
+        const hb = this.hitbox;
         return (
-            this.position.x < block.position.x + block.width &&
-            this.position.x + this.width > block.position.x &&
-            this.position.y < block.position.y + block.height &&
-            this.position.y + this.height > block.position.y
+            hb.position.x < block.position.x + block.width &&
+            hb.position.x + hb.width > block.position.x &&
+            hb.position.y < block.position.y + block.height &&
+            hb.position.y + hb.height > block.position.y
         );
     }
 }
