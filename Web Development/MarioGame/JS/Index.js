@@ -33,6 +33,8 @@ const platforms = [
 
 setupEventListeners();
 
+let scrollOffset = 0;
+
 function animate() {
     requestAnimationFrame(animate);
 
@@ -51,8 +53,12 @@ function animate() {
         player.velocity.x = 0;
 
         if (keys.d.pressed) {
+            scrollOffset += 5;
+
             platforms.forEach(platform => platform.position.x -= 5);
         } else if (keys.a.pressed) {
+            scrollOffset -= 5;
+
             platforms.forEach(platform => platform.position.x += 5);
         }
     }
@@ -66,6 +72,10 @@ function animate() {
             player.velocity.y = 0;
         }
     });
+
+    if (scrollOffset > 2000) {
+        console.log("You Win!");
+    }
 }
 
 animate();
