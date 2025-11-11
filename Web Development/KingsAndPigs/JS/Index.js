@@ -24,10 +24,17 @@ export const keys = {
 }
 
 export const collisionBlocks = createObjectsFrom2D(parse2D(collisionsLevel1, 16));
+const startingPosition = {
+    x: 200,
+    y: 300
+};
 
 export const player = new Player({
+    position: startingPosition,
     collisionBlocks,
-    imageSrc: './Assets/King/IdleRight.png'
+    imageSrc: './Assets/King/IdleRight.png',
+    frameRate: 11,
+    frameBuffer: 10
 });
 
 setupEventListeners(keys, player);
