@@ -4,10 +4,10 @@ import pygame
 from os.path import join
 
 from Scripts.Clouds import Clouds
-from Scripts.Entities import PhysicsEntity
+from Scripts.Entities import PhysicsEntity, Player
 from Scripts.Tilemap import Tilemap
 
-from Scripts.Utils import load_image, load_images
+from Scripts.Utils import load_image, load_images, Animation
 
 class Game:
     def __init__(self):
@@ -34,11 +34,16 @@ class Game:
             "Stone": load_images(join("Tiles", "Stone")),
             "Player": load_image(join("Entities", "Player.png")),
             "Background": load_image("Background.png"),
-            "Clouds": load_images("Clouds")
+            "Clouds": load_images("Clouds"),
+            "PlayerIdle": Animation(load_images(join("Entities", "Player", "Idle")), img_dur=6),
+            "PlayerRun": Animation(load_images(join("Entities", "Player", "Run")), img_dur=4),
+            "PlayerJump": Animation(load_images(join("Entities", "Player", "Jump")), img_dur=4),
+            "PlayerSlide": Animation(load_images(join("Entities", "Player", "Slide")), img_dur=4),
+            "PlayerWallSlide": Animation(load_images(join("Entities", "Player", "Wall_Slide")), img_dur=4),
         }
 
         self.clouds = Clouds(self.assets["Clouds"], count=16)
-        self.player = PhysicsEntity(self, "Player", (50, 50), (8, 15))
+        self.player = Player(self, (50, 50), (8, 15))
         self.tilemap = Tilemap(self, tile_size=16)
 
         self.scroll = [0, 0]
