@@ -1,4 +1,4 @@
-import {ctx} from "../Index.js"
+import {ctx, camera} from "../Index.js"
 
 export class Platform {
     constructor({x, y, width, height, color = "maroon"}) {
@@ -10,6 +10,6 @@ export class Platform {
 
     draw() {
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        ctx.fillRect(this.position.x - camera.x, this.position.y - camera.y, this.width, this.height);
     }
 }

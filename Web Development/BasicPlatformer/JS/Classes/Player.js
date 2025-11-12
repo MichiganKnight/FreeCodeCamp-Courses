@@ -1,4 +1,4 @@
-import { canvas, ctx } from "../Index.js";
+import { canvas, ctx, camera, level } from "../Index.js";
 
 export class Player {
     constructor({ position, imageSrc }) {
@@ -6,6 +6,7 @@ export class Player {
         this.velocity = { x: 0, y: 0 };
         this.speed = 5;
         this.gravity = 0.8;
+
         this.isAttacking = false;
         this.isJumping = false;
         this.prevY = this.position.y;
@@ -53,16 +54,12 @@ export class Player {
     attack() {
         if (!this.isAttacking) {
             this.isAttacking = true;
-
-            if (this.isJumping) {
-                this.setState("air_attack");
-            } else {
-                this.setState("attack");
-            }
+            this.setState(this.isJumping ? "air_attack" : "attack");
         }
     }
 
     jump() {
+        // Only allow jump if grounded
         if (!this.isJumping) {
             this.velocity.y = -18;
             this.isJumping = true;
@@ -71,6 +68,9 @@ export class Player {
     }
 
     applyGravity(keys, platforms = []) {
+        this.prevY = this.position.y;
+        this.prevX = this.position.x;
+
         this.velocity.y += this.gravity;
         this.position.y += this.velocity.y;
 
@@ -79,8 +79,8 @@ export class Player {
 
         const feetOffset = 18;
         const headOffset = 22;
-        const sideLeft = 34;
-        const sideRight = 2;
+        const sideLeft = this.facing === "Left" ? 2 : 34;
+        const sideRight = this.facing === "Left" ? 34 : 2;
 
         let onPlatform = false;
 
@@ -97,42 +97,52 @@ export class Player {
 
             const horizontallyOverlapping = playerRight > platLeft && playerLeft < platRight;
 
-            if (this.prevY + playerHeight - feetOffset <= platTop &&
+            // Land on top
+            if (
+                this.prevY + playerHeight - feetOffset <= platTop &&
                 playerBottom >= platTop &&
                 this.velocity.y >= 0 &&
-                horizontallyOverlapping) {
-
-                this.velocity.y = 0;
+                horizontallyOverlapping
+            ) {
                 this.position.y = platTop - playerHeight + feetOffset;
-                this.isJumping = false;
+                this.velocity.y = 0;
                 onPlatform = true;
+                this.isJumping = false;
                 break;
             }
 
-            if (this.prevY + headOffset >= platBottom &&
+            // Head hit
+            if (
+                this.prevY + headOffset >= platBottom &&
                 playerTop <= platBottom &&
                 this.velocity.y < 0 &&
-                horizontallyOverlapping) {
-                this.velocity.y = 0;
+                horizontallyOverlapping
+            ) {
                 this.position.y = platBottom - headOffset;
+                this.velocity.y = 0;
             }
 
-            if (playerRight > platLeft &&
+            // Side collisions
+            if (
+                playerRight > platLeft &&
                 this.prevX + playerWidth - sideRight <= platLeft &&
                 playerBottom > platTop &&
-                playerTop < platBottom) {
+                playerTop < platBottom
+            ) {
                 this.position.x = platLeft - playerWidth + sideRight;
             }
 
-            if (playerLeft < platRight &&
+            if (
+                playerLeft < platRight &&
                 this.prevX + sideLeft >= platRight &&
                 playerBottom > platTop &&
-                playerTop < platBottom) {
+                playerTop < platBottom
+            ) {
                 this.position.x = platRight - sideLeft;
             }
         }
 
-        const groundLevel = canvas.height - playerHeight + feetOffset;
+        const groundLevel = canvas.height - playerHeight;
         if (!onPlatform && this.position.y > groundLevel) {
             this.position.y = groundLevel;
             this.velocity.y = 0;
@@ -140,16 +150,16 @@ export class Player {
             onPlatform = true;
         }
 
-        if (this.isAttacking) return; // Attack in progress
-        if (!onPlatform && this.velocity.y < 0) {
-            this.setState("jump");
+// --- Animation states ---
+        if (this.isAttacking) return;
+
+        if (!onPlatform) {
+            // only airborne if not snapped to ground
             this.isJumping = true;
-        } else if (!onPlatform && this.velocity.y > 0) {
-            this.setState("fall");
-            this.isJumping = true;
-        } else if (onPlatform) {
-            const movingHorizontally = keys.d?.pressed || keys.a?.pressed;
+            this.setState(this.velocity.y < 0 ? "jump" : "fall");
+        } else {
             this.isJumping = false;
+            const movingHorizontally = keys.d?.pressed || keys.a?.pressed;
             this.setState(movingHorizontally ? "run" : "idle");
         }
     }
@@ -166,7 +176,6 @@ export class Player {
 
     updateFrame() {
         this.elapsedFrames++;
-
         const currentAnim = this.animations[this.state];
         const frameBuffer = currentAnim.frameBuffer;
         const frames = currentAnim.frames;
@@ -175,8 +184,8 @@ export class Player {
             this.currentFrame = (this.currentFrame + 1) % frames.length;
             this.image = frames[this.currentFrame];
 
-            if ((this.state === "attack" || this.state === "air_attack") &&
-                this.currentFrame === frames.length - 1) {
+            // End attack animation
+            if ((this.state === "attack" || this.state === "air_attack") && this.currentFrame === frames.length - 1) {
                 this.isAttacking = false;
             }
         }
@@ -185,9 +194,37 @@ export class Player {
     update(keys, platforms) {
         this.prevY = this.position.y;
         this.prevX = this.position.x;
+
+        // --- Movement and physics ---
         this.moveHorizontal(keys);
         this.applyGravity(keys, platforms);
         this.updateFrame();
+
+        const playerWidth = this.image?.width || 0;
+        const playerHeight = this.image?.height || 0;
+
+        // --- CAMERA FOLLOW (smooth + clamped) ---
+        const targetCameraX = this.position.x - canvas.width / 2 + playerWidth / 2;
+        const targetCameraY = this.position.y - canvas.height / 2 + playerHeight / 2;
+        const easing = 0.1;
+
+        camera.x += (targetCameraX - camera.x) * easing;
+        camera.y += (targetCameraY - camera.y) * easing;
+
+        // Clamp camera within level bounds
+        camera.x = Math.max(0, Math.min(camera.x, level.width - canvas.width));
+        camera.y = Math.max(0, Math.min(camera.y, level.height - canvas.height));
+
+        // --- PLAYER BOUNDARIES ---
+        if (this.position.x < 0) this.position.x = 0;
+        if (this.position.x + playerWidth > level.width)
+            this.position.x = level.width - playerWidth;
+
+        if (this.position.y + playerHeight > level.height) {
+            this.position.y = level.height - playerHeight;
+            this.velocity.y = 0;
+            this.isJumping = false;
+        }
     }
 
     draw() {
@@ -195,9 +232,17 @@ export class Player {
 
         if (this.facing === "Left") {
             ctx.scale(-1, 1);
-            ctx.drawImage(this.image, -this.position.x - this.image.width, this.position.y);
+            ctx.drawImage(
+                this.image,
+                -this.position.x - this.image.width + camera.x,
+                this.position.y - camera.y
+            );
         } else {
-            ctx.drawImage(this.image, this.position.x, this.position.y);
+            ctx.drawImage(
+                this.image,
+                this.position.x - camera.x,
+                this.position.y - camera.y
+            );
         }
 
         ctx.restore();
