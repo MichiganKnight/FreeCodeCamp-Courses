@@ -44,7 +44,9 @@ class Game:
 
         self.clouds = Clouds(self.assets["Clouds"], count=16)
         self.player = Player(self, (50, 50), (8, 15))
+
         self.tilemap = Tilemap(self, tile_size=16)
+        self.tilemap.load("Map.json")
 
         self.scroll = [0, 0]
 
