@@ -12,6 +12,11 @@ export function setupEventListeners(keys, player) {
                     player.jump();
                 }
                 break;
+            case "KeyE":
+                if (!player.isAttacking) {
+                    player.attack();
+                }
+                break;
         }
     });
 

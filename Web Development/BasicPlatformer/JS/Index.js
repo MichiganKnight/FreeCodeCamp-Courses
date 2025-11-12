@@ -10,13 +10,12 @@ canvas.height = 720;
 
 export const keys = {
     d: {pressed: false},
-    a: {pressed: false},
-    space: {pressed: false}
+    a: {pressed: false}
 };
 
 export const player = new Player({
     position: {x: 200, y: 300},
-    imageSrc: "./Assets/Player",
+    imageSrc: "./Assets/Player"
 });
 
 const platforms = [

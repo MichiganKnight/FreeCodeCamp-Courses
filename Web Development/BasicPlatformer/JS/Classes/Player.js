@@ -6,8 +6,10 @@ export class Player {
         this.velocity = { x: 0, y: 0 };
         this.speed = 5;
         this.gravity = 0.8;
+        this.isAttacking = false;
         this.isJumping = false;
         this.prevY = this.position.y;
+        this.prevX = this.position.x;
 
         this.state = "idle";
         this.frameBuffer = 6;
@@ -20,7 +22,10 @@ export class Player {
         this.animations = {
             idle: { frames: this.loadFrames("Idle", 5), frameBuffer: 16 },
             run: { frames: this.loadFrames("Run", 5), frameBuffer: 10 },
-            jump: { frames: this.loadFrames("Jump", 1), frameBuffer: 18 }
+            jump: { frames: this.loadFrames("Jump", 1), frameBuffer: 18 },
+            fall: { frames: this.loadFrames("Fall", 1), frameBuffer: 18 },
+            attack: { frames: this.loadFrames("Attack", 3), frameBuffer: 10 },
+            air_attack: { frames: this.loadFrames("Air_Attack", 3), frameBuffer: 10 }
         };
 
         this.image = this.animations.idle.frames[0];
@@ -45,15 +50,27 @@ export class Player {
         }
     }
 
+    attack() {
+        if (!this.isAttacking) {
+            this.isAttacking = true;
+
+            if (this.isJumping) {
+                this.setState("air_attack");
+            } else {
+                this.setState("attack");
+            }
+        }
+    }
+
     jump() {
         if (!this.isJumping) {
             this.velocity.y = -18;
             this.isJumping = true;
-            this.setState("Jump");
+            this.setState("jump");
         }
     }
 
-    applyGravity(platforms = []) {
+    applyGravity(keys, platforms = []) {
         this.velocity.y += this.gravity;
         this.position.y += this.velocity.y;
 
@@ -62,30 +79,56 @@ export class Player {
 
         const feetOffset = 18;
         const headOffset = 22;
-        const leftOffset = 34;
-        const rightOffset = 2;
+        const sideLeft = 34;
+        const sideRight = 2;
 
         let onPlatform = false;
 
         for (const platform of platforms) {
-            const offsetLeft = this.facing === "Left" ? rightOffset : leftOffset;
-            const offsetRight = this.facing === "Left" ? leftOffset : rightOffset;
+            const playerLeft = this.position.x + sideLeft;
+            const playerRight = this.position.x + playerWidth - sideRight;
+            const playerTop = this.position.y + headOffset;
+            const playerBottom = this.position.y + playerHeight - feetOffset;
 
-            const withinX =
-                this.position.x + playerWidth - offsetRight > platform.position.x &&
-                this.position.x + offsetLeft < platform.position.x + platform.width;
+            const platLeft = platform.position.x;
+            const platRight = platform.position.x + platform.width;
+            const platTop = platform.position.y;
+            const platBottom = platform.position.y + platform.height;
 
-            const fallingOnto =
-                this.prevY + playerHeight - feetOffset <= platform.position.y &&
-                this.position.y + playerHeight - feetOffset >= platform.position.y &&
-                this.velocity.y >= 0;
+            const horizontallyOverlapping = playerRight > platLeft && playerLeft < platRight;
 
-            if (withinX && fallingOnto) {
+            if (this.prevY + playerHeight - feetOffset <= platTop &&
+                playerBottom >= platTop &&
+                this.velocity.y >= 0 &&
+                horizontallyOverlapping) {
+
                 this.velocity.y = 0;
-                this.position.y = platform.position.y - playerHeight + feetOffset;
+                this.position.y = platTop - playerHeight + feetOffset;
                 this.isJumping = false;
                 onPlatform = true;
                 break;
+            }
+
+            if (this.prevY + headOffset >= platBottom &&
+                playerTop <= platBottom &&
+                this.velocity.y < 0 &&
+                horizontallyOverlapping) {
+                this.velocity.y = 0;
+                this.position.y = platBottom - headOffset;
+            }
+
+            if (playerRight > platLeft &&
+                this.prevX + playerWidth - sideRight <= platLeft &&
+                playerBottom > platTop &&
+                playerTop < platBottom) {
+                this.position.x = platLeft - playerWidth + sideRight;
+            }
+
+            if (playerLeft < platRight &&
+                this.prevX + sideLeft >= platRight &&
+                playerBottom > platTop &&
+                playerTop < platBottom) {
+                this.position.x = platRight - sideLeft;
             }
         }
 
@@ -94,35 +137,30 @@ export class Player {
             this.position.y = groundLevel;
             this.velocity.y = 0;
             this.isJumping = false;
+            onPlatform = true;
         }
 
-        if (onPlatform) {
-            const platform = platforms.find(p => {
-                const offsetLeft = this.facing === "Left" ? rightOffset : leftOffset;
-                const offsetRight = this.facing === "Left" ? leftOffset : rightOffset;
-                return (
-                    this.position.x + playerWidth - offsetRight > p.position.x &&
-                    this.position.x + offsetLeft < p.position.x + p.width
-                );
-            });
-
-            if (!platform) {
-                this.isJumping = true;
-            }
+        if (this.isAttacking) return; // Attack in progress
+        if (!onPlatform && this.velocity.y < 0) {
+            this.setState("jump");
+            this.isJumping = true;
+        } else if (!onPlatform && this.velocity.y > 0) {
+            this.setState("fall");
+            this.isJumping = true;
+        } else if (onPlatform) {
+            const movingHorizontally = keys.d?.pressed || keys.a?.pressed;
+            this.isJumping = false;
+            this.setState(movingHorizontally ? "run" : "idle");
         }
     }
 
     moveHorizontal(keys) {
-        if (keys.d.pressed) {
+        if (keys.d?.pressed) {
             this.position.x += this.speed;
             this.facing = "Right";
-            if (!this.isJumping) this.setState("Run");
-        } else if (keys.a.pressed) {
+        } else if (keys.a?.pressed) {
             this.position.x -= this.speed;
             this.facing = "Left";
-            if (!this.isJumping) this.setState("Run");
-        } else if (!this.isJumping) {
-            this.setState("Idle");
         }
     }
 
@@ -136,13 +174,19 @@ export class Player {
         if (this.elapsedFrames % frameBuffer === 0) {
             this.currentFrame = (this.currentFrame + 1) % frames.length;
             this.image = frames[this.currentFrame];
+
+            if ((this.state === "attack" || this.state === "air_attack") &&
+                this.currentFrame === frames.length - 1) {
+                this.isAttacking = false;
+            }
         }
     }
 
     update(keys, platforms) {
         this.prevY = this.position.y;
+        this.prevX = this.position.x;
         this.moveHorizontal(keys);
-        this.applyGravity(platforms);
+        this.applyGravity(keys, platforms);
         this.updateFrame();
     }
 
