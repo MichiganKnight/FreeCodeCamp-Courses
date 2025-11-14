@@ -28,26 +28,21 @@ export class Player extends Entity {
 
         this.isAttacking = false;
         this.isJumping = false;
-        this.prevY = this.position.y;
-        this.prevX = this.position.x;
 
         this.collider = {
             top: 22,
             bottom: 18,
-            leftFacingRight: 34,
-            rightFacingRight: 2,
-            leftFacingLeft: 2,
-            rightFacingLeft: 34
+            left: 32,
+            right: 32
         };
     }
 
     getColliderOffsets() {
-        const facingLeft = this.facing === "Left";
         return {
             top: this.collider.top,
             bottom: this.collider.bottom,
-            left: facingLeft ? this.collider.leftFacingLeft : this.collider.leftFacingRight,
-            right: facingLeft ? this.collider.rightFacingLeft : this.collider.rightFacingRight
+            left: this.collider.left,
+            right: this.collider.right
         };
     }
 
@@ -67,21 +62,18 @@ export class Player extends Entity {
     }
 
     moveHorizontal(keys) {
+        this.velocity.x = 0;
+
         if (keys.d?.pressed) {
-            this.position.x += this.speed;
+            this.velocity.x = this.speed;
             this.facing = "Right";
         } else if (keys.a?.pressed) {
-            this.position.x -= this.speed;
+            this.velocity.x = -this.speed;
             this.facing = "Left";
-        } else {
-            this.velocity.x = 0;
         }
     }
 
     update(keys, platforms) {
-        this.prevY = this.position.y;
-        this.prevX = this.position.x;
-
         this.moveHorizontal(keys);
 
         const onGroundOrPlatform = applyGravityAndCollisions(

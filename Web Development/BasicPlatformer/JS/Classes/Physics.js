@@ -36,6 +36,7 @@ export function applyGravityAndCollisions(entity, platforms, groundLevel, collid
         const platBottom = platform.position.y + platform.height;
         const platLeft = platform.position.x;
         const platRight = platLeft + platform.width;
+        const isOneWay = !!platform.oneWay;
 
         const playerLeft = entity.position.x + left;
         const playerRight = entity.position.x + playerWidth - right;
@@ -45,7 +46,7 @@ export function applyGravityAndCollisions(entity, platforms, groundLevel, collid
         const horizontallyOverlapping =
             playerRight > platLeft && playerLeft < platRight;
 
-        // LAND ON PLATFORM (from above)
+        // LAND ON PLATFORM (from above) - works for both solid and one-way
         if (
             horizontallyOverlapping &&
             entity.velocity.y >= 0 &&
@@ -57,7 +58,12 @@ export function applyGravityAndCollisions(entity, platforms, groundLevel, collid
             onPlatformOrGround = true;
         }
 
-        // HEAD HIT (jumping into platform from below)
+        // For one-way platforms, skip head-hit and side collisions
+        if (isOneWay) {
+            continue;
+        }
+
+        // HEAD HIT (jumping into solid platform from below)
         if (
             horizontallyOverlapping &&
             entity.velocity.y < 0 &&
@@ -68,7 +74,7 @@ export function applyGravityAndCollisions(entity, platforms, groundLevel, collid
             entity.position.y = platBottom - top;
         }
 
-        // SIDE COLLISIONS
+        // SIDE COLLISIONS for solid tiles
         const nextLeft = entity.position.x + entity.velocity.x + left;
         const nextRight = entity.position.x + entity.velocity.x + playerWidth - right;
 
@@ -112,8 +118,9 @@ export function applyGravityAndCollisions(entity, platforms, groundLevel, collid
         onPlatformOrGround = true;
     }
 
-    // --- APPLY FINAL VERTICAL POSITION ---
+    // --- APPLY FINAL POSITIONS ---
     entity.position.y += entity.velocity.y;
+    entity.position.x += entity.velocity.x;
 
     return onPlatformOrGround;
 }

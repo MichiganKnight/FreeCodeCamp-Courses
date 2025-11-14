@@ -1,6 +1,6 @@
 import { Player } from "./Classes/Player.js";
-import { Platform } from "./Classes/Platform.js";
 import { setupEventListeners } from "./EventListeners.js";
+import { loadJSON, loadTilesets, drawTileLayer, buildPlatformsFromLayer, getLayerByName  } from "./Utils.js";
 
 export const canvas = document.querySelector("canvas");
 export const ctx = canvas.getContext("2d");
@@ -9,7 +9,7 @@ canvas.width = 1280;
 canvas.height = 720;
 
 export const level = {
-    width: 5000,
+    width: canvas.width,
     height: canvas.height
 }
 
@@ -28,21 +28,63 @@ export const camera = {
     y: 0
 };
 
-const platforms = [
-    new Platform({
-        x: 200,
-        y: 600,
-        width: 400,
-        height: 30,
-        color: "maroon"
-    }),
-    new Platform({
-        x: 600,
-        y: 450,
-        width: 400,
-        height: 30,
-    })
-];
+let currentMap = null;
+let tilesets = [];
+let platforms = [];
+
+let bgLayer = null;
+let terrainLayer = null;
+let platformsLayer = null;
+let fgLayer = null;
+
+async function loadLevel() {
+    currentMap = await loadJSON("./Data/Levels/Omni.json");
+
+    level.width = currentMap.width * currentMap.tilewidth;
+    level.height = currentMap.height * currentMap.tileheight;
+
+    tilesets = await loadTilesets();
+
+    bgLayer = getLayerByName(currentMap, "BG");
+    terrainLayer = getLayerByName(currentMap, "Terrain");
+    platformsLayer = getLayerByName(currentMap, "Platforms");
+    fgLayer = getLayerByName(currentMap, "FG");
+
+    const terrainPlatforms = buildPlatformsFromLayer(currentMap, "Terrain", {
+        mode: "full",
+        oneWay: false
+    });
+
+    const platformPlatforms = buildPlatformsFromLayer(currentMap, "Platforms", {
+        mode: "top",
+        thickness: 16,
+        offsetFromBottom: 48,
+        oneWay: true
+    });
+
+    platforms = [...terrainPlatforms, ...platformPlatforms];
+
+    const objectsLayer = getLayerByName(currentMap, "Objects");
+    if (objectsLayer && objectsLayer.type === "objectgroup") {
+        const playerObj = objectsLayer.objects.find(obj => obj.name === "Player");
+        if (playerObj) {
+            player.position.x = playerObj.x;
+            player.position.y = playerObj.y - playerObj.height;
+        }
+    }
+}
+
+function drawMap() {
+    if (!currentMap || tilesets.length === 0) return;
+
+    const tileWidth = currentMap.tilewidth;
+    const tileHeight = currentMap.tileheight;
+
+    drawTileLayer(ctx, camera, bgLayer, tilesets, tileWidth, tileHeight);
+    drawTileLayer(ctx, camera, terrainLayer, tilesets, tileWidth, tileHeight);
+    drawTileLayer(ctx, camera, platformsLayer, tilesets, tileWidth, tileHeight);
+    drawTileLayer(ctx, camera, fgLayer, tilesets, tileWidth, tileHeight);
+}
 
 setupEventListeners(keys, player);
 
@@ -93,12 +135,18 @@ function animate() {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
+    drawMap();
+
     platforms.forEach(platform => platform.draw());
 
     player.draw();
     player.update(keys, platforms);
 }
 
-player.image.onload = () => {
+async function start() {
+    await loadLevel();
+    setupEventListeners(keys, player);
     animate();
-};
+}
+
+start().then(r => console.log("Game Started"));

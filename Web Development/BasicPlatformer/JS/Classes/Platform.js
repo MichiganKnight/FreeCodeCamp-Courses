@@ -1,11 +1,12 @@
 import { ctx, camera } from "../Index.js"
 
 export class Platform {
-    constructor({x, y, width, height, color = "maroon"}) {
+    constructor({x, y, width, height, color = "maroon", oneWay = false}) {
         this.position = {x, y};
         this.width = width;
         this.height = height;
         this.color = color;
+        this.oneWay = oneWay;
     }
 
     draw() {
