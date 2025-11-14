@@ -1,6 +1,6 @@
-import {Player} from "./Classes/Player.js";
-import {Platform} from "./Classes/Platform.js";
-import {setupEventListeners} from "./EventListeners.js";
+import { Player } from "./Classes/Player.js";
+import { Platform } from "./Classes/Platform.js";
+import { setupEventListeners } from "./EventListeners.js";
 
 export const canvas = document.querySelector("canvas");
 export const ctx = canvas.getContext("2d");
