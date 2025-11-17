@@ -54,9 +54,9 @@ const TILESETS = [
         name: "Objects",
         firstgid: 216,
         imageSrc: "./Assets/Level/Tilesets/Objects.png",
-        tileWidth: 64,   // max tile size; objects vary
+        tileWidth: 64,   // approximate cell size; adjust if needed
         tileHeight: 64,
-        columns: 4       // dummy; object tiles are individual, but this is enough to render
+        columns: 4       // adjust if your atlas has a different layout
     },*/
     {
         name: "Platforms",
@@ -118,7 +118,11 @@ export function drawTileLayer(ctx, camera, layer, tilesets, tileWidth, tileHeigh
             const dx = col * tileWidth - camera.x;
             const dy = row * tileHeight - camera.y;
 
-            ctx.drawImage(tileset.image, sx, sy, tileset.tileWidth, tileset.tileHeight, dx, dy, tileWidth, tileHeight);
+            ctx.drawImage(
+                tileset.image,
+                sx, sy, tileset.tileWidth, tileset.tileHeight,
+                dx, dy, tileWidth, tileHeight
+            );
         }
     }
 }

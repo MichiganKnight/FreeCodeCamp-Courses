@@ -1,4 +1,4 @@
-import { canvas, ctx, camera, level } from "../Index.js";
+import { canvas, ctx, camera, level } from "../Game.js";
 import { Entity } from "./Entity.js";
 import { applyGravityAndCollisions } from "./Physics.js";
 

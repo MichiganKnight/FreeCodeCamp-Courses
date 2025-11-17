@@ -1,4 +1,4 @@
-import { ctx, camera } from "../Index.js"
+import { ctx, camera } from "../Game.js"
 
 export class Platform {
     constructor({x, y, width, height, color = "maroon", oneWay = false}) {

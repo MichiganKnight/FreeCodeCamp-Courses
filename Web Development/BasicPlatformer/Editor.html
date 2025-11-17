@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic Platformer Level Editor</title>
+
+        <link href="CSS/Editor.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div id="editor-sidebar">
+            <div class="editor-section">
+                <h3>Level Settings</h3>
+                <div>
+                    <label>Width (Tiles):
+                        <input type="number" id="level-width" class="small-input" value="80" min="1">
+                    </label>
+                </div>
+                <div>
+                    <label>Height (Tiles):
+                        <input type="number" id="level-height" class="small-input" value="40" min="1">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Tile Size: 16
+                    </label>
+                </div>
+                <button id="apply-size-btn">Apply Size</button>
+            </div>
+            <div class="editor-section">
+                <h3>Tileset</h3>
+                <label for="tileset-select">Tileset Image:</label>
+                <select id="tileset-select">
+                    <option value="./Assets/Level/Tilesets/Grass.png">Grass</option>
+                    <option value="./Assets/Level/Tilesets/Outside.png">Outside</option>
+                    <option value="./Assets/Level/Tilesets/Platforms.png">Platforms</option>
+                    <option value="./Assets/Level/Tilesets/Inside.png">Inside</option>
+                    <option value="./Assets/Level/Tilesets/Overworld.png">Overworld</option>
+                    <option value="./Assets/Level/Tilesets/Extra.png">Extra</option>
+                    <option value="./Assets/Level/Tilesets/Items.png">Items</option>
+                    <option value="./Assets/Level/Tilesets/Spikes.png">Spikes</option>
+                </select>
+                <canvas id="palette-canvas" width="256" height="256"></canvas>
+                <div id="palette-info" style="font-size: 11px; color: #aaa; margin-top: 4px;">
+                    Click a Tile in the Palette to Select it
+                </div>
+            </div>
+            <div class="editor-section">
+                <h3>Tiles</h3>
+                <div class="checkbox-inline">
+                    <input type="checkbox" id="show-grid" checked>
+                    <label for="show-grid">Show Grid</label>
+                </div>
+                <div class="checkbox-inline">
+                    <input type="checkbox" id="erase-mode">
+                    <label for="erase-mode">Erase Mode</label>
+                </div>
+                <div class="checkbox-inline">
+                    <input type="checkbox" id="snap-blocks" checked>
+                    <label for="snap-blocks">Snap 4x4 Blocks (No Overlap)</label>
+                </div>
+            </div>
+            <div class="editor-section">
+                <h3>Objects Layer</h3>
+                <div style="font-size: 12px; margin-bottom: 6px;">
+                    Click in the Main Canvas to Place the Player Spawn (One Object)
+                </div>
+                <button id="clear-player-btn">Clear Player</button>
+            </div>
+            <div class="editor-section">
+                <h3>Export</h3>
+                <button id="download-json-btn">Download JSON</button>
+                <div id="status"></div>
+            </div>
+        </div>
+
+        <div id="editor-main">
+            <div id="editor-toolbar">
+                <span>
+                    Left-Click: Place<br/>
+                    Middle Mouse Drag: Pan | Scroll Wheel: Zoom<br/>
+                    Right-Click: Erase
+                </span>
+            </div>
+            <div id="editor-canvas-wrapper">
+                <canvas id="editor-canvas" width="1280" height="720"></canvas>
+            </div>
+        </div>
+    </body>
+
+    <script src="JS/Editor.js" type="module"></script>
+</html>
