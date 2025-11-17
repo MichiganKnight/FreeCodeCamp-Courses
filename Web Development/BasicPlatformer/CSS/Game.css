@@ -1,8 +1,8 @@
+@import "Globals.css";
+
 body {
-    font-family: "Comic Mono", monospace;
+    font-family: var(--font-family), monospace;
     text-align: center;
-    margin: 0;
-    overflow: hidden;
 }
 
 canvas {
