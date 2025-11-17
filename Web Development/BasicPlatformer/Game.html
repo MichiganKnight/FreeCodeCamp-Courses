@@ -5,6 +5,7 @@
         <title>Basic Platformer</title>
 
         <link href="CSS/Game.css" rel="stylesheet" type="text/css">
+        <link href="CSS/Index.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <h1>Basic Platformer</h1>
@@ -34,4 +35,11 @@
     </body>
 
     <script src="JS/Game.js" type="module"></script>
+    <script>
+        const backButton = document.getElementById("back-button");
+
+        backButton.addEventListener("click", () => {
+           window.location.href = "Index.html";
+        });
+    </script>
 </html>
