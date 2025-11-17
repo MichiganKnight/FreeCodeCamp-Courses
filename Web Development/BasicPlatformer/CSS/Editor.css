@@ -66,6 +66,10 @@ body {
     color: #ccc;
 }
 
+#tileset-select {
+    margin-bottom: 8px;
+}
+
 label {
     font-size: 12px;
 }
