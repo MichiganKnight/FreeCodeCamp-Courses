@@ -1,0 +1,8 @@
+.color {
+    color: #226e93;
+}
+
+.cards {
+    display: flex;
+    gap: 1rem;
+}

@@ -1,0 +1,50 @@
+﻿<div class="video-container" id="video-container">
+    <video id="video-player" crossorigin="anonymous">
+        <source id="video-source" src="">
+        Your Browser Does Not Support HTML Video
+    </video>
+
+    <div id="shortcut-tooltip" class="shortcut-tooltip"></div>
+
+    <div id="bigPlayBtn" class="big-play">
+        <i class="bi bi-play-circle-fill"></i>
+    </div>
+
+    <div class="controls" id="controlsBar">
+        <button id="playPauseBtn" class="btn btn-sm btn-dark"><i class="bi bi-play-fill"></i></button>
+
+        <div class="progress-container" id="progressContainer">
+            <div class="progress" id="progressBar"></div>
+            <div class="progress-dot" id="progressDot"></div>
+        </div>
+
+        <div class="time-display" id="timeDisplay">00:00:00 / 00:00:00</div>
+
+        <button id="volumeBtn" class="btn btn-sm btn-dark"><i class="bi bi-volume-up"></i></button>
+        <input type="range" id="volumeControl" class="form-range volume-slider" min="0" max="1" step="0.05" value="1">
+
+        <div class="dropdown-center">
+            <button class="btn btn-sm btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Speed
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item playback-speed" data-speed="0.5">0.5x</a></li>
+                <li><a class="dropdown-item playback-speed" data-speed="1">1x</a></li>
+                <li><a class="dropdown-item playback-speed" data-speed="1.5">1.5x</a></li>
+                <li><a class="dropdown-item playback-speed" data-speed="2">2x</a></li>
+                <li><a class="dropdown-item playback-speed" data-speed="5">5x</a></li>
+                <li><a class="dropdown-item playback-speed" data-speed="10">10x</a></li>
+            </ul>
+        </div>
+
+        <button id="pipBtn" class="btn btn-sm btn-dark"><i class="bi bi-bounding-box"></i></button>
+        <button id="fsBtn" class="btn btn-sm btn-dark"><i class="bi bi-fullscreen"></i></button>
+    </div>
+</div>
+
+<div id="position-wrapper" class="position-wrapper" style="display: none;">
+    <span class="skip-to">Skip To:</span>
+    <ul class="positions scroll_content" id="position-list"></ul>
+</div>
+
+<script type="module" src="~/js/video-player.js" asp-append-version="true"></script>

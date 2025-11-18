@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Week 2 | Day 1</title>
+
+    <script>
+        fetch("/shared/Head.html")
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            });
+    </script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <span class="color fw-bold" style="font-size: 30pt">Stack and Heap Memory</span>
+    <br>
+    <span class="color fw-bold" style="font-size: 15pt">Description</span>
+    <p>To run an application in an optimal way, the JVM divides memory into stack and heap memory. Whenever we
+        declare new variables and objects, call a new method, declare a String, or perform similar operations, the
+        JVM allocates memory for these operations from either Stack Memory or Heap Space.</p>
+    <span class="color fw-bold">Stack Memory in Java</span>
+    <ul class="list-group">
+        <li class="list-group-item fw-bold">Introduction</li>
+        <li class="list-group-item">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Stack Memory in Java is used for static memory allocation and execution of a
+                    thread. It contains primitive values that are specific to a method and references to objects
+                    referred to by the method that are in the heap.
+                </li>
+                <li class="list-group-item">Access to this memory is in Last-In-First-Out (LIFO) order. Whenever we call
+                    a new method, a new block is created on top of the stack that contains values specific to that
+                    method, such as primitive variables and references to objects.
+                </li>
+                <li class="list-group-item">When the method finishes execution, its corresponding stack frame is
+                    flushed, the flow goes back to the calling method, and space becomes available for the next method.
+                </li>
+            </ul>
+        </li>
+        <li class="list-group-item fw-bold">Key Features of Stack Memory</li>
+        <li class="list-group-item">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">It grows and shrinks as new methods are called and returned, respectively
+                </li>
+                <li class="list-group-item">Variables inside the stack exist only as long as the method that created
+                    them is running
+                </li>
+                <li class="list-group-item">It's automatically allocated and deallocated when the method finishes
+                    execution
+                </li>
+                <li class="list-group-item">If this memory is full, Java throws java.lang.StackOverflowError</li>
+                <li class="list-group-item">Access to this memory is fast compared to heap memory</li>
+                <li class="list-group-item">This memory is thread-safe, as each thread operates in its own stack</li>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    async function loadIncludes() {
+        document.getElementById("navbar-include").innerHTML = await fetch('/shared/navbar.html').then(res => res.text());
+    }
+
+    document.addEventListener("DOMContentLoaded", loadIncludes);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

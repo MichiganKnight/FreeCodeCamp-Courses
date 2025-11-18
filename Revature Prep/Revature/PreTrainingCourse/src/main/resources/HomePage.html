@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Revature Pre-Training Course</title>
+
+    <script>
+        fetch("/shared/Head.html")
+            .then(resp => resp.text())
+            .then(headContent => {
+                document.head.insertAdjacentHTML("beforeend", headContent);
+            });
+    </script>
+</head>
+<body>
+<div id="navbar-include"></div>
+
+<div class="container text-center">
+    <h1 class="color">Revature Pre-Training Course</h1>
+
+    <p>This application will follow along Revature's Pre-Training Program</p>
+
+    <div class="cards">
+        <div class="card" style="width: 12rem;">
+            <div class="card-header">
+                Week 1
+            </div>
+            <a class="color" href="/week1/Day%201.html">Day 1</a>
+            <a class="color" href="/week1/Day%202.html">Day 2</a>
+            <a class="color" href="/">Day 3</a>
+            <a class="color" href="/">Day 4</a>
+            <a class="color" href="/">Day 5</a>
+        </div>
+
+        <div class="card" style="width: 12rem;">
+            <div class="card-header">
+                Week 2
+            </div>
+            <a class="color" href="/week2/Day%201.html">Day 1</a>
+        </div>
+    </div>
+</div>
+
+<script src="/shared/CodeLoader.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
