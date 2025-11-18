@@ -1,6 +1,9 @@
 import { Player } from "./Classes/Player.js";
 import { setupEventListeners } from "./EventListeners.js";
-import { buildPlatformsFromLayer, drawTileLayer, getLayerByName, loadJSON, loadTilesets } from "./Utils.js";
+import {
+    loadTilesetsFromMap, fetchMapJson, normalizeLayerData
+} from "./Utils.js";
+import { drawTileLayer } from "../Editor/Renderer.js";
 
 export const canvas = document.querySelector("canvas");
 export const ctx = canvas.getContext("2d");
@@ -8,91 +11,102 @@ export const ctx = canvas.getContext("2d");
 canvas.width = 1280;
 canvas.height = 720;
 
-export const level = {
-    width: canvas.width,
-    height: canvas.height
-}
-
-export const keys = {
-    d: {pressed: false},
-    a: {pressed: false}
-};
+export const keys = {d: {pressed: false}, a: {pressed: false}};
 
 export const player = new Player({
     position: {x: 200, y: 300},
     imageSrc: "./Assets/Player"
 });
 
-export const camera = {
-    x: 0,
-    y: 0
-};
+export const camera = {x: 0, y: 0};
 
 let currentMap = null;
 let tilesets = [];
 let platforms = [];
-
-let bgLayer = null;
 let terrainLayer = null;
-let platformsLayer = null;
-let fgLayer = null;
+
+export const level = {
+    width: 1280,
+    height: 720
+};
 
 async function loadLevel() {
-    currentMap = await loadJSON("./Data/Levels/EditorLevel.json");
+    /* Usage example (in `JS/Game/Game.js`):
+   const map = await fetchMapJson('/Assets/Level/yourmap.json');
+   const tilesets = loadTilesetsFromMap(map);
+   const groundLayer = map.layers.find(l => l.name === 'Ground');
+   const data = normalizeLayerData(groundLayer);
+*/
 
-    level.width = currentMap.width * currentMap.tilewidth;
-    level.height = currentMap.height * currentMap.tileheight;
+    const map = await fetchMapJson("./Data/Levels/EditorLevel.json");
+    const tilesets = loadTilesetsFromMap(map);
+    const groundLayer = map.layers.find(l => l.name === 'Terrain');
+    const data = normalizeLayerData(groundLayer);
 
-    tilesets = await loadTilesets();
+    currentMap = {
+        width: map.width,
+        height: map.height,
+        tilewidth: map.tilewidth,
+        tileheight: map.tileheight,
+        layers: [{name: "Terrain", data}]
+    };
 
-    bgLayer = null;
-    platformsLayer = null;
-    fgLayer = null;
+    console.log(currentMap);
 
-    terrainLayer = getLayerByName(currentMap, "Terrain");
+    //currentMap = await loadJSON("./Data/Levels/EditorLevel.json");
 
-    platforms = buildPlatformsFromLayer(currentMap, "Terrain", {
-        mode: "full",
-        oneWay: false
-    });
+    //let test = importEditorLevel(loadJSON("./Data/Levels/EditorLevel.json"));
 
-    const objectsLayer = getLayerByName(currentMap, "Objects");
-    if (objectsLayer && objectsLayer.type === "objectgroup") {
+    //level.width = currentMap.width * currentMap.tilewidth;
+    //level.height = currentMap.height * currentMap.tileheight;
+
+    //level.width = test.width * currentMap.tilewidth;
+    //level.height = test.height * currentMap.tileheight;
+
+    //tilesets = await loadTilesetsFromMap(test);
+
+    // Load tilesets dynamically from JSON
+    //tilesets = await loadTilesetsFromMap(currentMap);
+
+    // Resize game world
+    //canvas.width = Math.min(currentMap.width * currentMap.tilewidth, 1280);
+    //canvas.height = Math.min(currentMap.height * currentMap.tileheight, 720);
+
+    //terrainLayer = getLayerByName(currentMap, "Terrain");
+
+    //platforms = buildPlatformsFromLayer(currentMap, "Terrain", {mode: "full"});
+
+    //const objectsLayer = getLayerByName(currentMap, "Objects");
+    /*if (objectsLayer) {
         const playerObj = objectsLayer.objects.find(obj => obj.name === "Player");
         if (playerObj) {
             player.position.x = playerObj.x;
             player.position.y = playerObj.y - playerObj.height;
         }
     }
+
+    console.log("Level Loaded:", currentMap);
+    console.log("Tilesets:", tilesets);
+    console.log("Platforms:", platforms);*/
 }
 
 function drawMap() {
     if (!currentMap || tilesets.length === 0) return;
-
-    const tileWidth = currentMap.tilewidth;
-    const tileHeight = currentMap.tileheight;
-
-    drawTileLayer(ctx, camera, terrainLayer, tilesets, tileWidth, tileHeight);
+    drawTileLayer(ctx, camera, terrainLayer, tilesets, currentMap.tilewidth, currentMap.tileheight);
 }
 
-setupEventListeners(keys, player);
-
+// Background
 const backgroundImage = new Image();
 backgroundImage.src = "./Assets/Level/Background/Blue.png";
 let backgroundPattern = null;
-
-backgroundImage.onload = () => {
-    backgroundPattern = ctx.createPattern(backgroundImage, "repeat");
-};
+backgroundImage.onload = () => backgroundPattern = ctx.createPattern(backgroundImage, "repeat");
 
 function drawBackground() {
     if (!backgroundPattern) return;
 
     const tileSize = 64;
-
     const offsetX = -camera.x % tileSize;
     const offsetY = -camera.y % tileSize;
-
     const startX = offsetX > 0 ? offsetX - tileSize : offsetX;
     const startY = offsetY > 0 ? offsetY - tileSize : offsetY;
 
@@ -117,16 +131,12 @@ function animate() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (backgroundPattern) {
-        drawBackground();
-    } else {
-        ctx.fillStyle = "lightblue";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    backgroundPattern ? drawBackground() : ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawMap();
 
-    //platforms.forEach(platform => platform.draw());
+    // Draw platforms if you want to debug (optional)
+    // platforms.forEach(p => p.draw());
 
     player.draw();
     player.update(keys, platforms);
@@ -138,4 +148,4 @@ async function start() {
     animate();
 }
 
-start().then(r => console.log("Game Started"));
+start().then(() => console.log("Game Started"));

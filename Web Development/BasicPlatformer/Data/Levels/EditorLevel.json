@@ -363,6 +363,22 @@
         0,
         0,
         0,
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -439,6 +455,22 @@
         0,
         0,
         0,
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -515,6 +547,22 @@
         0,
         0,
         0,
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -591,6 +639,22 @@
         0,
         0,
         0,
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -663,6 +727,38 @@
         0,
         0,
         0,
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -683,10 +779,6 @@
         0,
         0,
         0,
-        13,
-        14,
-        15,
-        16,
         0,
         0,
         0,
@@ -739,6 +831,38 @@
         0,
         0,
         0,
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -763,10 +887,6 @@
         0,
         0,
         0,
-        61,
-        62,
-        63,
-        64,
         0,
         0,
         0,
@@ -815,6 +935,38 @@
         0,
         0,
         0,
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -843,10 +995,6 @@
         0,
         0,
         0,
-        109,
-        110,
-        111,
-        112,
         0,
         0,
         0,
@@ -891,6 +1039,38 @@
         0,
         0,
         0,
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -923,10 +1103,6 @@
         0,
         0,
         0,
-        157,
-        158,
-        159,
-        160,
         0,
         0,
         0,
@@ -967,6 +1143,22 @@
         0,
         0,
         0,
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -983,30 +1175,10 @@
         0,
         0,
         0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
         0,
         0,
         0,
         0,
-        205,
-        206,
-        207,
-        208,
         0,
         0,
         0,
@@ -1063,30 +1235,26 @@
         0,
         0,
         0,
-        49,
-        50,
-        51,
-        52,
-        53,
-        54,
-        55,
-        56,
-        53,
-        54,
-        55,
-        56,
-        57,
-        58,
-        59,
-        60,
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
         0,
-        253,
-        254,
-        255,
-        256,
         0,
         0,
         0,
@@ -1143,30 +1311,10 @@
         0,
         0,
         0,
-        97,
-        98,
-        99,
-        100,
-        101,
-        102,
-        103,
-        104,
-        101,
-        102,
-        103,
-        104,
-        105,
-        106,
-        107,
-        108,
         0,
         0,
         0,
         0,
-        301,
-        302,
-        303,
-        304,
         0,
         0,
         0,
@@ -1179,6 +1327,22 @@
         0,
         0,
         0,
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -1223,30 +1387,10 @@
         0,
         0,
         0,
-        145,
-        146,
-        147,
-        148,
-        149,
-        150,
-        151,
-        152,
-        149,
-        150,
-        151,
-        152,
-        153,
-        154,
-        155,
-        156,
         0,
         0,
         0,
         0,
-        349,
-        350,
-        351,
-        352,
         0,
         0,
         0,
@@ -1275,6 +1419,22 @@
         0,
         0,
         0,
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -1303,30 +1463,10 @@
         0,
         0,
         0,
-        193,
-        194,
-        195,
-        196,
-        197,
-        198,
-        199,
-        200,
-        197,
-        198,
-        199,
-        200,
-        201,
-        202,
-        203,
-        204,
         0,
         0,
         0,
         0,
-        397,
-        398,
-        399,
-        400,
         0,
         0,
         0,
@@ -1371,6 +1511,22 @@
         0,
         0,
         0,
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -1383,30 +1539,10 @@
         0,
         0,
         0,
-        241,
-        242,
-        243,
-        244,
-        245,
-        246,
-        247,
-        248,
-        245,
-        246,
-        247,
-        248,
-        249,
-        250,
-        251,
-        252,
         0,
         0,
         0,
         0,
-        445,
-        446,
-        447,
-        448,
         0,
         0,
         0,
@@ -1463,30 +1599,26 @@
         0,
         0,
         0,
-        289,
-        290,
-        291,
-        292,
-        293,
-        294,
-        295,
-        296,
-        293,
-        294,
-        295,
-        296,
-        297,
-        298,
-        299,
-        300,
         0,
         0,
         0,
         0,
-        493,
-        494,
-        495,
-        496,
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -1543,30 +1675,10 @@
         0,
         0,
         0,
-        337,
-        338,
-        339,
-        340,
-        341,
-        342,
-        343,
-        344,
-        341,
-        342,
-        343,
-        344,
-        345,
-        346,
-        347,
-        348,
         0,
         0,
         0,
         0,
-        541,
-        542,
-        543,
-        544,
         0,
         0,
         0,
@@ -1583,6 +1695,22 @@
         0,
         0,
         0,
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -1623,22 +1751,6 @@
         0,
         0,
         0,
-        385,
-        386,
-        387,
-        388,
-        389,
-        390,
-        391,
-        392,
-        389,
-        390,
-        391,
-        392,
-        393,
-        394,
-        395,
-        396,
         0,
         0,
         0,
@@ -1675,6 +1787,22 @@
         0,
         0,
         0,
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -1703,22 +1831,6 @@
         0,
         0,
         0,
-        433,
-        434,
-        435,
-        436,
-        437,
-        438,
-        439,
-        440,
-        437,
-        438,
-        439,
-        440,
-        441,
-        442,
-        443,
-        444,
         0,
         0,
         0,
@@ -1767,6 +1879,102 @@
         0,
         0,
         0,
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 1,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 2,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 3,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 4,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -1783,22 +1991,6 @@
         0,
         0,
         0,
-        481,
-        482,
-        483,
-        484,
-        485,
-        486,
-        487,
-        488,
-        485,
-        486,
-        487,
-        488,
-        489,
-        490,
-        491,
-        492,
         0,
         0,
         0,
@@ -1839,6 +2031,102 @@
         0,
         0,
         0,
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 49,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 50,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 51,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 52,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -1863,22 +2151,6 @@
         0,
         0,
         0,
-        529,
-        530,
-        531,
-        532,
-        533,
-        534,
-        535,
-        536,
-        533,
-        534,
-        535,
-        536,
-        537,
-        538,
-        539,
-        540,
         0,
         0,
         0,
@@ -1903,6 +2175,262 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 97,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 98,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 99,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 100,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 145,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 146,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 147,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
+        {
+          "gid": 148,
+          "tileset": "./Assets/Level/Tilesets/Outside.png"
+        },
         0,
         0,
         0,
@@ -3239,8 +3767,8 @@
           "id": 1,
           "name": "Player",
           "type": "",
-          "x": 0,
-          "y": 192,
+          "x": 608,
+          "y": 320,
           "width": 16,
           "height": 32
         }
@@ -3250,15 +3778,35 @@
   "tilesets": [
     {
       "firstgid": 1,
-      "source": null,
-      "name": "main",
-      "tilewidth": 16,
-      "tileheight": 16,
-      "tilecount": 768,
-      "columns": 48,
-      "image": "Outside.png",
-      "imagewidth": 768,
-      "imageheight": 256
+      "tilecount": 0
+    },
+    {
+      "firstgid": 1,
+      "tilecount": 0
+    },
+    {
+      "firstgid": 1,
+      "tilecount": 0
+    },
+    {
+      "firstgid": 1,
+      "tilecount": 0
+    },
+    {
+      "firstgid": 1,
+      "tilecount": 0
+    },
+    {
+      "firstgid": 1,
+      "tilecount": 0
+    },
+    {
+      "firstgid": 1,
+      "tilecount": 0
+    },
+    {
+      "firstgid": 1,
+      "tilecount": 0
     }
   ]
 }

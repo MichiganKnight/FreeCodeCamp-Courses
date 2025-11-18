@@ -3,7 +3,7 @@ import { Entity } from "./Entity.js";
 import { applyGravityAndCollisions } from "./Physics.js";
 
 export class Player extends Entity {
-    constructor({position, imageSrc}) {
+    constructor({ position, imageSrc }) {
         super({
             position,
             speed: 5,
@@ -15,13 +15,14 @@ export class Player extends Entity {
             facing: "Right"
         });
 
+        // Load all animations
         this.animations = {
-            idle: {frames: this.loadFrames("Idle", 5), frameBuffer: 16},
-            run: {frames: this.loadFrames("Run", 5), frameBuffer: 10},
-            jump: {frames: this.loadFrames("Jump", 1), frameBuffer: 18},
-            fall: {frames: this.loadFrames("Fall", 1), frameBuffer: 18},
-            attack: {frames: this.loadFrames("Attack", 3), frameBuffer: 10},
-            air_attack: {frames: this.loadFrames("Air_Attack", 3), frameBuffer: 10}
+            idle: { frames: this.loadFrames("Idle", 5), frameBuffer: 16 },
+            run: { frames: this.loadFrames("Run", 5), frameBuffer: 10 },
+            jump: { frames: this.loadFrames("Jump", 1), frameBuffer: 18 },
+            fall: { frames: this.loadFrames("Fall", 1), frameBuffer: 18 },
+            attack: { frames: this.loadFrames("Attack", 3), frameBuffer: 10 },
+            air_attack: { frames: this.loadFrames("Air_Attack", 3), frameBuffer: 10 }
         };
 
         this.image = this.animations.idle.frames[0];
@@ -29,33 +30,22 @@ export class Player extends Entity {
         this.isAttacking = false;
         this.isJumping = false;
 
-        this.collider = {
-            top: 22,
-            bottom: 18,
-            left: 32,
-            right: 32
-        };
+        // Collider offsets
+        this.collider = { top: 22, bottom: 18, left: 32, right: 32 };
     }
 
     getColliderOffsets() {
-        return {
-            top: this.collider.top,
-            bottom: this.collider.bottom,
-            left: this.collider.left,
-            right: this.collider.right
-        };
+        return this.collider;
     }
 
     attack() {
         if (this.isAttacking) return;
-
         this.isAttacking = true;
         this.setState(this.isJumping ? "air_attack" : "attack");
     }
 
     jump() {
         if (this.isJumping) return;
-
         this.velocity.y = -18;
         this.isJumping = true;
         this.setState("jump");
@@ -63,7 +53,6 @@ export class Player extends Entity {
 
     moveHorizontal(keys) {
         this.velocity.x = 0;
-
         if (keys.d?.pressed) {
             this.velocity.x = this.speed;
             this.facing = "Right";
@@ -76,6 +65,7 @@ export class Player extends Entity {
     update(keys, platforms) {
         this.moveHorizontal(keys);
 
+        // Apply gravity and collisions
         const onGroundOrPlatform = applyGravityAndCollisions(
             this,
             platforms,
@@ -83,6 +73,7 @@ export class Player extends Entity {
             this.getColliderOffsets()
         );
 
+        // Update animation state
         if (!this.isAttacking) {
             if (!onGroundOrPlatform) {
                 this.isJumping = true;
@@ -94,20 +85,21 @@ export class Player extends Entity {
             }
         }
 
+        // Handle attack animation completion
         const prevFrame = this.currentFrame;
         this.updateFrame();
-
         const currentAnim = this.animations[this.state];
         if (
             this.isAttacking &&
-            (this.state === "attack" || this.state === "air_attack") &&
             currentAnim &&
+            (this.state === "attack" || this.state === "air_attack") &&
             prevFrame === currentAnim.frames.length - 1 &&
             this.currentFrame === 0
         ) {
             this.isAttacking = false;
         }
 
+        // Camera follows player with easing
         const playerWidth = this.width;
         const playerHeight = this.height;
 
@@ -118,13 +110,15 @@ export class Player extends Entity {
         camera.x += (targetCameraX - camera.x) * easing;
         camera.y += (targetCameraY - camera.y) * easing;
 
+        // Clamp camera to level bounds
         camera.x = Math.max(0, Math.min(camera.x, level.width - canvas.width));
         camera.y = Math.max(0, Math.min(camera.y, level.height - canvas.height));
 
+        // Clamp player position within level bounds
         if (this.position.x < 0) this.position.x = 0;
-        if (this.position.x + playerWidth > level.width) {
-            this.position.x = level.width - playerWidth;
-        }
+        if (this.position.x + playerWidth > level.width) this.position.x = level.width - playerWidth;
+        if (this.position.y < 0) this.position.y = 0;
+        if (this.position.y + playerHeight > level.height) this.position.y = level.height - playerHeight;
     }
 
     draw() {

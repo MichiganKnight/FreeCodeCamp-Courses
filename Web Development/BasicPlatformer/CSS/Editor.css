@@ -30,10 +30,9 @@ body {
     padding: 8px;
     background: #2d2d30;
     border-bottom: 1px solid #333;
-    display: flex;
-    align-items: center;
     gap: 8px;
     color: #ddd;
+    text-align: center;
 }
 
 #editor-canvas-wrapper {
@@ -64,6 +63,16 @@ body {
     font-size: 13px;
     text-transform: uppercase;
     color: #ccc;
+}
+
+.current-tileset {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tile-options {
+    align-items: center;
+    justify-content: space-between;
 }
 
 #tileset-select {
@@ -104,7 +113,6 @@ button {
 }
 
 .checkbox-inline {
-    display: flex;
     align-items: center;
     gap: 4px;
 }
@@ -139,6 +147,7 @@ button:hover {
     border-radius: 4px;
     background: #007bff;
     color: white;
+    margin-top: 12px;
 }
 
 #back-button:hover {
