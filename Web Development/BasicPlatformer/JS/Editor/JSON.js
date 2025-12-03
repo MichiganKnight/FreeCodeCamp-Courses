@@ -74,21 +74,27 @@ export function buildLevelJson() {
     });
 
     let currentFirstGid = 1;
-    for (const ts of tilesetSelect) {
-        console.log(ts.tilecount);
+    let tileCount = 0;
+    for (const tileset of tilesetSelect) {
+        const tilesetName = tileset.innerText.trim();
+        console.log(tilesetName);
 
-        const tilecount = ts.tilecount || (ts.columns ? ts.columns * Math.floor((ts.imageHeight || 0) / ts.tileheight || 1) : 0);
+        tileCount++;
+
+        //const tilecount = tileset.tilecount || (tileset.columns ? tileset.columns * Math.floor((tileset.imageHeight || 0) / tileset.tileheight || 1) : 0);
+
+        const tilecount = tileCount;
 
         console.log(tilecount);
 
         map.tilesets.push({
             firstgid: currentFirstGid,
-            source: ts.source || undefined,
-            name: ts.name,
-            tilewidth: ts.tilewidth,
-            tileheight: ts.tileheight,
-            image: ts.image,
-            columns: ts.columns,
+            source: tileset.source || undefined,
+            name: tileset.name,
+            tilewidth: tileset.tilewidth,
+            tileheight: tileset.tileheight,
+            image: tileset.image,
+            columns: tileset.columns,
             tilecount: tilecount
         });
 

@@ -1,0 +1,133 @@
+.root {
+    -fx-background-color: #f4f4f4;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-table-cell-border-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 0);
+}
+
+.table-view:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #550000;
+    -fx-border-radius: 5px 5px 0 0;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 0);
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: gray;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0 10px 0;
+    -fx-font-size: 14px;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 40px;
+    -fx-border-width: 0 1px 0 1px;
+    -fx-border-color: #f4f4f4;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #ffffff;
+    -fx-background-insets: 0, 0 0 1px 0;
+    -fx-padding: 5px 0px;
+    -fx-cursor: hand;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, #fafafa;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: lightgray;
+    -fx-font-family: Verdana;
+    -fx-font-weight: Bold;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: slategray;
+    -fx-font-family: Verdana;
+    -fx-font-weight: Bold;
+}
+
+.table-view .table-row-cell {
+    -fx-text-fill: #333333;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+}
+
+.table-view:focused .table-row-cell:selected {
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view:focused .table-row-cell:selected .table-cell {
+    -fx-background-color: transparent;
+}
+
+.database-button {
+    -fx-background-color: maroon;
+    -fx-text-fill: white;
+    -fx-border-color: maroon;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-cursor: hand;
+    -fx-font: bold 18px Verdana;
+}
+
+.database-button:hover {
+    -fx-background-color: slategray;
+    -fx-border-color: slategray;
+}
+
+.dialog-pane {
+    -fx-font-family: "Verdana";
+}
+
+.dialog-pane .content .text-field {
+    -fx-background-color: white;
+    -fx-border-color: maroon;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-padding: 5px;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+}
+
+.dialog-pane .content .text-field:focused {
+    -fx-border-color: slategray;
+    -fx-effect: dropshadow(three-pass-box, slategray, 5, 0.0, 0, 0);
+}
+
+.dialog-pane .header-panel .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+.toast-label {
+    -fx-padding: 15px 30px;
+
+    -fx-text-fill: white;
+    -fx-border-color: slategray;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+
+    -fx-font: bold 16px "Verdana";
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
+}
