@@ -1,0 +1,1 @@
+CREATE TABLE Users (id INT IDENTITY PRIMARY KEY, firstName VARCHAR(50), lastName VARCHAR(50), email VARCHAR(50), username VARCHAR(50), password VARCHAR(50), dateCreated DATETIME)
