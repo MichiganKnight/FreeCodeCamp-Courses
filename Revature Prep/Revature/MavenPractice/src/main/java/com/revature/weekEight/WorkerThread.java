@@ -48,7 +48,7 @@ public class WorkerThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            
+
             System.out.println("State of " + thread2.getName() + " After Sleep: " + thread2.getState());
 
             try {
