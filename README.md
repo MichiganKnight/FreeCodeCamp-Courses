@@ -3,9 +3,6 @@ A collection of various tutorial projects, organized by language and stack.
 
 ---
 
-## 📁 Repository Overview
-
-### 🔹 Languages & Technologies
 <div align="center">
 
 | Category | Description |
@@ -17,30 +14,10 @@ A collection of various tutorial projects, organized by language and stack.
 | [**Python**](Python) | Python Projects |
 | [**TypeScript**](TypeScript) | TypeScript Projects |
 | [**SQL**](SQL) | SQL Test Queries |
-
-</div>
-
----
-
-### 🔹 Full-Stack & Frameworks
-<div align="center">
-
-| Category | Description |
-|---------|-------------|
 | [**Full Stack**](Full%20Stack) | Full Stack Projects |
 | [**MERN Stack**](MERN%20Stack) | MERN Stack Projects |
 | [**NodeJS**](NodeJS) | NodeJS Projects |
 | [**Web Development**](Web%20Development) | Web Development Projects |
-
-</div>
-
----
-
-### 🔹 Prep & Additional Resources
-<div align="center">
-
-| Category | Description |
-|---------|-------------|
 | [**Dev10**](Dev10) | Dev10 Projects & Resources |
 | [**Revature Prep**](Revature%20Prep) | Revature Preparation |
 | [**SuperNova Prep**](SuperNova%20Prep) | SuperNova Prep Resources |
