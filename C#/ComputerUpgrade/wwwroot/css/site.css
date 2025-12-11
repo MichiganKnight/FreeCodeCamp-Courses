@@ -29,3 +29,19 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+@keyframes rotate {
+    to {
+        transform: rotate(calc(360deg * var(--rotation-direction, 1)));
+    }
+ }
+ 
+#rotatingImage {
+    --rotation-direction: 1;
+    --rotation-duration: 4s;
+    
+    animation-name: rotate;
+    animation-duration: var(--rotation-duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}

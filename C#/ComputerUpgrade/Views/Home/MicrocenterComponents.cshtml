@@ -35,7 +35,7 @@
                         <td>@component.Type</td>
                         <td class="fw-semibold">@component.Price.ToString("C")</td>
                         <td>
-                            <img src="@Url.Content(component.Image)" alt="@component.Name" class="img-fluid rounded" width="150" height="150" />
+                            <img id="rotatingImage" src="@Url.Content(component.Image)" alt="@component.Name" class="img-fluid rounded" width="150" height="150" />
                         </td>
                     </tr>
                 }
