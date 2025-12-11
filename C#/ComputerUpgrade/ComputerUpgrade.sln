@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerUpgrade", "ComputerUpgrade.csproj", "{0AF96667-7065-4A98-9B29-FF71C4FED3CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AF96667-7065-4A98-9B29-FF71C4FED3CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF96667-7065-4A98-9B29-FF71C4FED3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF96667-7065-4A98-9B29-FF71C4FED3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF96667-7065-4A98-9B29-FF71C4FED3CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,47 @@
+﻿@using ComputerUpgrade.Classes
+@{
+    ViewData["Title"] = "Microcenter Components";
+}
+
+<div class="container text-center">
+    <h1>Microcenter Components</h1>
+
+    <table class="table table-striped table-bordered table-rounded table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (Component component in ComputerUpgrade.Classes.Component.MicrocenterComponents)
+                {
+                    <tr>
+                        <td>
+                            @{
+                                if (ComputerUpgrade.Classes.Component.MicrocenterUrlMap.TryGetValue(component.Name ?? "", out string? url))
+                                {
+                                    <a href="@url">@component.Name</a>
+                                }
+                                else
+                                {
+                                    @component.Name
+                                }
+                            }
+                        </td>
+                        <td>@component.Type</td>
+                        <td class="fw-semibold">@component.Price.ToString("C")</td>
+                    </tr>
+                }
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="fw-semibold">Total Price</td>
+                <td class="fw-semibold">@ComputerUpgrade.Classes.Component.CalculateTotalPrice("Microcenter").ToString("C")</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
