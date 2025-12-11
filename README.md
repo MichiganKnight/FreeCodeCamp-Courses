@@ -1,19 +1,41 @@
-# FreeCodeCamp-Courses
-Various Tutorial Courses & Projects
+# FreeCodeCamp-Courses  
+A collection of various tutorial projects, organized by language and stack.
 
-## Repository Structure
+---
 
-- [**C#**](C%23): C# Projects
-- [**C++**](C++): C++ Projects
-- [**Dev10**](Dev10): Dev10 Projects & Resources
-- [**Full Stack**](Full%20Stack): Full Stack Projects
-- [**Java**](Java): Java Projects
-- [**JavaScript**](JavaScript): JavaScript Projects
-- [**MERN Stack**](MERN%20Stack): MERN Stack Projects
-- [**NodeJS**](NodeJS): NodeJS Projects
-- [**Python**](Python): Python Projects
-- [**Revature Prep**](Revature%20Prep): Revature Prep Projects & Resources
-- [**SQL**](SQL): SQL Test Queries
-- [**SuperNova Prep**](SuperNova%20Prep): SuperNova Prep Projects & Resources
-- [**TypeScript**](TypeScript): TypeScript Projects
-- [**Web Development**](Web%20Development): Web Development Projects
+## 📁 Repository Overview
+
+### 🔹 Languages & Technologies
+| Category | Description |
+|---------|-------------|
+| [**C#**](C%23) | C# Projects |
+| [**C++**](C++) | C++ Projects |
+| [**Java**](Java) | Java Projects |
+| [**JavaScript**](JavaScript) | JavaScript Projects |
+| [**Python**](Python) | Python Projects |
+| [**TypeScript**](TypeScript) | TypeScript Projects |
+| [**SQL**](SQL) | SQL Test Queries |
+
+---
+
+### 🔹 Full-Stack & Frameworks
+| Category | Description |
+|---------|-------------|
+| [**Full Stack**](Full%20Stack) | Full Stack Projects |
+| [**MERN Stack**](MERN%20Stack) | MERN Stack Projects |
+| [**NodeJS**](NodeJS) | NodeJS Projects |
+| [**Web Development**](Web%20Development) | Web Development Projects |
+
+---
+
+### 🔹 Prep & Additional Resources
+| Category | Description |
+|---------|-------------|
+| [**Dev10**](Dev10) | Dev10 Projects & Resources |
+| [**Revature Prep**](Revature%20Prep) | Revature Preparation |
+| [**SuperNova Prep**](SuperNova%20Prep) | SuperNova Prep Resources |
+
+---
+
+## 📌 Notes
+This repository gathers coursework, exercises, and projects from a variety of learning paths and tutorials. Each folder is self-contained and organized by technology stack.
