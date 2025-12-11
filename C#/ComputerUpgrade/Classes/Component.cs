@@ -1,10 +1,11 @@
 ﻿namespace ComputerUpgrade.Classes
 {
-    public class Component(string name, double price, string type)
+    public class Component(string name, double price, string type, string image)
     {
         public string? Name { get; } = name;
         public double Price { get; } = price;
         public string? Type { get; } = type;
+        public string? Image { get; } = image;
 
         private const string BundleKey = "CPU / Motherboard / RAM Bundle";
         private const string GPUKey = "Asus TUF Gaming OC GeForce RTX 5070 Ti 16GB";
@@ -52,34 +53,34 @@
 
         public static readonly List<Component> MicrocenterComponents =
         [
-            new(BundleKey, 709.99, "Bundled Components"),
-            new(GPUKey, 849.99, "GPU"),
-            new(StorageKey, 209.99, "Storage SSD"),
-            new(PowerSupplyKey, 114.99, "Power Supply"),
-            new(LinkKey, 59.99, "iCUE Link"),
-            new(KeyboardKey, 94.99, "Keyboard"),
+            new(BundleKey, 709.99, "Bundled Components", "~/images/bundle.png"),
+            new(GPUKey, 849.99, "GPU", "~/images/gpu.png"),
+            new(StorageKey, 209.99, "Storage SSD", "~/images/ssd.png"),
+            new(PowerSupplyKey, 114.99, "Power Supply", "~/images/powerSupply.png"),
+            new(LinkKey, 59.99, "iCUE Link", "~/images/link.png"),
+            new(KeyboardKey, 94.99, "Keyboard", "~/images/keyboard.png"),
         ];
 
         public static readonly List<Component> CorsairComponents =
         [
-            new(CoolerKey, 199.99, "CPU Cooler"),
-            new(CaseKey, 199.99, "Case"),
-            new(MouseKey, 59.99, "Mouse"),
-            new(HeadsetKey, 279.99, "Headset")
+            new(CoolerKey, 199.99, "CPU Cooler", "~/images/cooler.png"),
+            new(CaseKey, 199.99, "Case", "~/images/case.png"),
+            new(MouseKey, 59.99, "Mouse", "~/images/mouse.png"),
+            new(HeadsetKey, 279.99, "Headset", "~/images/headset.png")
         ];
 
         public static readonly List<Component> AllComponents =
         [
-            new(BundleKey, 709.99, "Bundled Components"),
-            new(CoolerKey, 199.99, "CPU Cooler"),
-            new(GPUKey, 849.99, "GPU"),
-            new(StorageKey, 209.99, "Storage SSD"),
-            new(PowerSupplyKey, 114.99, "Power Supply"),
-            new(CaseKey, 199.99, "Case"),
-            new(LinkKey, 59.99, "iCUE Link"),
-            new(KeyboardKey, 94.99, "Keyboard"),
-            new(MouseKey, 59.99, "Mouse"),
-            new(HeadsetKey, 279.99, "Headset")
+            new(BundleKey, 709.99, "Bundled Components", "~/images/bundle.png"),
+            new(CoolerKey, 199.99, "CPU Cooler", "~/images/cooler.png"),
+            new(GPUKey, 849.99, "GPU", "~/images/gpu.png"),
+            new(StorageKey, 209.99, "Storage SSD", "~/images/ssd.png"),
+            new(PowerSupplyKey, 114.99, "Power Supply", "~/images/powerSupply.png"),
+            new(CaseKey, 199.99, "Case", "~/images/case.png"),
+            new(LinkKey, 59.99, "iCUE Link", "~/images/link.png"),
+            new(KeyboardKey, 94.99, "Keyboard", "~/images/keyboard.png"),
+            new(MouseKey, 59.99, "Mouse", "~/images/mouse.png"),
+            new(HeadsetKey, 279.99, "Headset", "~/images/headset.png")
         ];
 
         public static double CalculateTotalPrice(string retailer)

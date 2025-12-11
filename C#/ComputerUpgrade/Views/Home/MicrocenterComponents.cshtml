@@ -12,6 +12,7 @@
                 <th>Name</th>
                 <th>Type</th>
                 <th>Price</th>
+                <th>Image</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,9 @@
                         </td>
                         <td>@component.Type</td>
                         <td class="fw-semibold">@component.Price.ToString("C")</td>
+                        <td>
+                            <img src="@Url.Content(component.Image)" alt="@component.Name" class="img-fluid rounded" width="150" height="150" />
+                        </td>
                     </tr>
                 }
             </tr>
