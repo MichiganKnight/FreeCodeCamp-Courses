@@ -11,6 +11,6 @@
         console.log(`Image is Rotating: ${randomDirection} at ${randomDuration}`);
         
         image.style.setProperty("--rotation-direction", randomDirection);
-        image.style.setProperty("--rotation-duration", randomDuration)
+        image.style.setProperty("--rotation-duration", randomDuration);
     }
 });
