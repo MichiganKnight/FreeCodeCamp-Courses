@@ -6,8 +6,6 @@ namespace VideoConvert
     {
         public static async Task GetVideos()
         {
-            Logger.LogMessage(LogType.Info, "Web Scraper Starting...");
-            
             List<(string, string)> tnaUrls =
             [
                 ("https://www.tnaflix.com/anal-porn/Hot-college-sluts-go-wild-in-the-country/video9255852", "Hot College Sluts go Wild in the Country - Part 1"),
@@ -32,17 +30,17 @@ namespace VideoConvert
                 ("https://spankbang.com/5ms2q/video/debbie+does+dallas", "Debbie Does Dallas"),
                 ("https://spankbang.com/5zm4b/video/0livia+d3vine+pickup", "Olivia Devine Pickup")
             ];
-            
+
             TNA.GetVideos(tnaUrls);
             SpankBang.GetVideos(spankBangUrls);
-            
+
             Logger.LogMessage(LogType.Success, "Non-M3U8 Web Scraping Finished!\n");
 
             List<(string, string)> hdefUrls =
             [
                 ("https://hdefporn.com/i/90103/real-sex-party-on-the-sunny-beach-part-3", "Real Sex Party on the Sunny Beach - Part 3"),
                 ("https://hdefporn.com/i/86727/game-hanger", "Game Hanger")
-                
+
             ];
 
             List<(string, string)> xVideosUrls =
@@ -62,11 +60,11 @@ namespace VideoConvert
                 ("https://xhamster.com/videos/sex-island-tournament-semifinal-i-hot-frisbee-xhKFzNE", "Beach Group Sex Game"),
                 ("https://xhamster.com/videos/the-cruise-of-pleasure-xhKIcTq", "The Cruise of Pleasure")
             ];
-            
+
             await LocalNSFW.GetVideos(hdefUrls);
             await LocalNSFW.GetVideos(xVideosUrls);
             await LocalNSFW.GetVideos(xHamsterUrls);
-            
+
             Logger.LogMessage(LogType.Success, "M3U8 Web Scraping Finished!\n");
         }
     }
