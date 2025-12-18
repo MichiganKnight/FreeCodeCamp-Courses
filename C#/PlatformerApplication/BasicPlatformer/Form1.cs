@@ -1,9 +1,10 @@
-namespace BasicPlatformer;
-
-public partial class Form1 : Form
+namespace BasicPlatformer
 {
-    public Form1()
+    public partial class Form1 : Form
     {
-        InitializeComponent();
+        public Form1()
+        {
+            InitializeComponent();
+        }
     }
 }
