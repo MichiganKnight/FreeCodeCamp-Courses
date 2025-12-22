@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Simple Dropdown Example</title>
+    </head>
+    <body>
+        <label for="country">Select a Country:</label>
+        <select id="country" name="country">
+            <option value="">-- Select --</option>
+            <option value="usa" selected>United States</option>
+            <option value="canada">Canada</option>
+            <option value="mexico">Mexico</option>
+            <optgroup label="Europe">
+                <option value="france">France</option>
+                <option value="germany">Germany</option>
+                <option value="spain">Spain</option>
+            </optgroup>
+        </select>
+
+        <br>
+
+        <label for="languages">Select the Languages You Know:</label>
+        <select id="languages" name="languages[]" multiple>
+            <option value="english" selected>English</option>
+            <option value="spanish">Spanish</option>
+            <option value="french">French</option>
+            <option value="german">German</option>
+            <option value="italian">Italian</option>
+            <option value="russian">Russian</option>
+            <option value="arabic">Arabic</option>
+        </select>
+    </body>
+</html>
