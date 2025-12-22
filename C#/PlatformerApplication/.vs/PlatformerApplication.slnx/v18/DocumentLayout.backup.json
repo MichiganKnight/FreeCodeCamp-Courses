@@ -1,12 +1,120 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|e:\\freecodecamp courses\\c#\\platformerapplication\\basicplatformer\\components\\splashscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|solutionrelative:basicplatformer\\components\\splashscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|e:\\freecodecamp courses\\c#\\platformerapplication\\basicplatformer\\components\\splashscreen.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|solutionrelative:basicplatformer\\components\\splashscreen.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|e:\\freecodecamp courses\\c#\\platformerapplication\\basicplatformer\\components\\splashscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|solutionrelative:basicplatformer\\components\\splashscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|e:\\freecodecamp courses\\c#\\platformerapplication\\basicplatformer\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|solutionrelative:basicplatformer\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|e:\\freecodecamp courses\\c#\\platformerapplication\\basicplatformer\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|solutionrelative:basicplatformer\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|e:\\freecodecamp courses\\c#\\platformerapplication\\basicplatformer\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08473BF7-579C-42BD-886F-861E5979A330}|BasicPlatformer\\BasicPlatformer.csproj|solutionrelative:basicplatformer\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SplashScreen.cs",
+              "DocumentMoniker": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\Components\\SplashScreen.cs",
+              "RelativeDocumentMoniker": "BasicPlatformer\\Components\\SplashScreen.cs",
+              "ToolTip": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\Components\\SplashScreen.cs",
+              "RelativeToolTip": "BasicPlatformer\\Components\\SplashScreen.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T23:28:41.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SplashScreen.Designer.cs",
+              "DocumentMoniker": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\Components\\SplashScreen.Designer.cs",
+              "RelativeDocumentMoniker": "BasicPlatformer\\Components\\SplashScreen.Designer.cs",
+              "ToolTip": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\Components\\SplashScreen.Designer.cs",
+              "RelativeToolTip": "BasicPlatformer\\Components\\SplashScreen.Designer.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowCsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T23:22:43.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "BasicPlatformer\\MainForm.Designer.cs",
+              "ToolTip": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\MainForm.Designer.cs",
+              "RelativeToolTip": "BasicPlatformer\\MainForm.Designer.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwDQAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:59:00.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\MainForm.cs",
+              "RelativeDocumentMoniker": "BasicPlatformer\\MainForm.cs",
+              "ToolTip": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\MainForm.cs",
+              "RelativeToolTip": "BasicPlatformer\\MainForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:58:52.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SplashScreen.cs [Design]",
+              "DocumentMoniker": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\Components\\SplashScreen.cs",
+              "RelativeDocumentMoniker": "BasicPlatformer\\Components\\SplashScreen.cs",
+              "ToolTip": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\Components\\SplashScreen.cs [Design]",
+              "RelativeToolTip": "BasicPlatformer\\Components\\SplashScreen.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:58:14.852Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\MainForm.cs",
+              "RelativeDocumentMoniker": "BasicPlatformer\\MainForm.cs",
+              "ToolTip": "E:\\FreeCodeCamp Courses\\C#\\PlatformerApplication\\BasicPlatformer\\MainForm.cs [Design]",
+              "RelativeToolTip": "BasicPlatformer\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T22:54:43.996Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

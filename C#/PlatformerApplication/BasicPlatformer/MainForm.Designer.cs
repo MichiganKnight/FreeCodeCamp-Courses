@@ -1,6 +1,6 @@
 ﻿namespace BasicPlatformer
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            ContainerPanel = new Panel();
+            SuspendLayout();
+            // 
+            // ContainerPanel
+            // 
+            ContainerPanel.Dock = DockStyle.Fill;
+            ContainerPanel.Location = new Point(0, 0);
+            ContainerPanel.Name = "ContainerPanel";
+            ContainerPanel.Size = new Size(1264, 681);
+            ContainerPanel.TabIndex = 0;
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Text = "Form1";
+            ClientSize = new Size(1264, 681);
+            Controls.Add(ContainerPanel);
+            Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Basic Platformer";
+            Load += MainForm_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel ContainerPanel;
     }
 }
