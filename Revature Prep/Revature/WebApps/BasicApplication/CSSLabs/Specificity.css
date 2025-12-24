@@ -1,0 +1,23 @@
+#low-specificity {
+    color: rgb(0, 0, 255);
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#high-specificity {
+    color: rgb(255, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.class1 {
+    color: rgba(0, 128, 0);
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.class2 {
+    color: rgb(255, 255, 0);
+    font-size: 20px;
+    font-weight: bold;
+}

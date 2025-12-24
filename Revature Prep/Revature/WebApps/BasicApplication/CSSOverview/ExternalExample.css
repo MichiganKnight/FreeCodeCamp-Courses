@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: navy;
+    text-decoration: underline;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}

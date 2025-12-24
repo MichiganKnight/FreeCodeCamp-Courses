@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS Variables Example</title>
+
+        <style>
+            :root {
+                --primary-color: yellow;
+                --secondary-color: gray;
+            }
+
+            .element {
+                color: var(--primary-color);
+                background-color: var(--secondary-color);
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="element">Customizable Element</div>
+    </body>
+</html>
