@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Text Input Lab</title>
+
+        <link rel="stylesheet" href="Styling.css">
+    </head>
+    <body>
+        <h1 id="text">Enter Your Name:</h1>
+
+        <input id="input">
+
+        <button id="submit">Say Hello</button>
+
+        <script>
+            const text = document.getElementById("text");
+            const button = document.getElementById("submit");
+            const input = document.getElementById("input");
+
+            button.addEventListener("click", () => {
+                text.innerText = `Hello, ${input.value}`;
+            });
+        </script>
+    </body>
+</html>

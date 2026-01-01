@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>DOM Overview</title>
+    </head>
+    <body>
+        <h1>DOM Overview</h1>
+        <h2>Select Elements by ID:</h2>
+
+        <p id="demo">This is a paragraph.</p>
+
+        <h2>Select Elements by Class Name</h2>
+
+        <div class="test">This is a div element with <code>class="text"</code>.</div>
+
+        <h1 class="test">This is a h1 element with <code>class="test"</code>.</h1>
+
+        <p>This is a paragraph</p>
+
+        <p class="test">This is a paragraph with <code>class="test"</code>.</p>
+
+        <script>
+            document.getElementById("demo").innerHTML = "Paragraph changed.";
+
+            const matches = document.getElementsByClassName("test");
+            for (const elem of matches) {
+                matches[elem].style.background = "yellow";
+            }
+        </script>
+    </body>
+</html>

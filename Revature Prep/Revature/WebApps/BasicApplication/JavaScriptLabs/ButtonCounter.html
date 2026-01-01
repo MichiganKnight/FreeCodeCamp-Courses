@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Button Counter Lab</title>
+
+        <link rel="stylesheet" href="Styling.css">
+    </head>
+    <body>
+        <h1>Button Counter</h1>
+        <p id="count">0</p>
+
+        <button id="button">Click Me</button>
+
+        <script>
+            let count = document.getElementById("count");
+            const button = document.getElementById("button");
+
+            button.onclick = function() {
+                count.textContent = parseInt(count.textContent) + 1;
+            }
+        </script>
+    </body>
+</html>
