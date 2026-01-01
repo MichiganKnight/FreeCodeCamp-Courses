@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>If Statement Lab</title>
+
+        <style>
+            * {
+                font-family: Monaco, monospace;
+            }
+
+            button {
+                padding: 10px;
+                background-color: lightblue;
+                border: 1px solid black;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            h2 {
+                color: darkblue;
+            }
+
+            p {
+                color: darkred;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>If Statements</h1>
+
+        <button id="counter">Increment a Button - Execute Your If Statement</button>
+
+        <h2 id="display">0</h2>
+
+        <p id="lightText">Is The Number Odd or Even?</p>
+
+        <h2 id="evenOrOddText">Placeholder</h2>
+        <br>
+
+        <script>
+            const counter = document.getElementById("counter");
+            const display = document.getElementById("display");
+            const evenOrOddText = document.getElementById("evenOrOddText");
+
+            let number = 0;
+
+            counter.onclick = increment;
+
+            increment();
+
+            function increment() {
+                number++;
+                display.innerText = number;
+                evenOrOddText.innerText = checkOddOrEven();
+            }
+
+            function checkOddOrEven() {
+                return number % 2 === 0 ? "Even" : "Odd";
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inline JavaScript Example</title>
+    </head>
+    <body>
+        <script>
+            alert("This alert displays before the rest of the page is loaded.")
+        </script>
+
+        <h2>JavaScript Introduction</h2>
+
+        <p id="demo">JavaScript is beautiful.</p>
+
+        <button type="button" onclick="document.getElementById('demo').innerHTML = 'Hello JavaScript!'">Click Me!</button>
+
+        <script>
+            alert("This alert displays after the rest of the page is loaded.")
+        </script>
+    </body>
+</html>

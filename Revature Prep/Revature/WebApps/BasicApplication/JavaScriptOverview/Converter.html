@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Converts Various Measurements</title>
+    </head>
+    <body>
+        <h2>JavaScript Function for Converting Centimeters to Feet</h2>
+
+        <label for="cm">Enter CM:</label>
+        <input type="text" id="cm">
+        <button onclick="toFeet()">Convert</button>
+
+        <p id="demo"></p>
+
+        <script>
+            function toFeet() {
+                let cm = document.getElementById("cm").value;
+
+                document.getElementById("demo").innerHTML = cm / 30.48;
+            }
+        </script>
+    </body>
+</html>

@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using ComputerUpgrade.Classes;
 using ComputerUpgrade.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,14 +17,14 @@ namespace ComputerUpgrade.Controllers
             return View();
         }
 
-        public IActionResult CorsairComponents()
+        public ActionResult CheckAvailability()
         {
-            return View();
-        }
+            foreach (string url in Component.MicrocenterUrlMap.Select(item => item.Value))
+            {
+                bool available = Helpers.CheckAvailability(url);
+            }
 
-        public IActionResult AllComponents()
-        {
-            return View();
+            return null;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

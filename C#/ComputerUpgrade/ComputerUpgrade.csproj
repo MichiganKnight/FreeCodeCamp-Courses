@@ -6,4 +6,25 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\images\bundle.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\case.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\cooler.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\cpu.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\gpu.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\headset.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\keyboard.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\link.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\motherboard.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\mouse.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\powerSupply.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\ram.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\images\ssd.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Selenium.WebDriver" Version="4.39.0" />
+      <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
+    </ItemGroup>
+
 </Project>
