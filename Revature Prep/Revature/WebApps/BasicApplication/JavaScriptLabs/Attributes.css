@@ -1,0 +1,12 @@
+* {
+    font-family: Monaco, monospace;
+}
+
+img {
+    max-width: 20%;
+    height: auto;
+}
+
+.orange-text {
+    color: orange;
+}

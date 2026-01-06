@@ -1,4 +1,4 @@
-package com.revature.week10;
+/*package com.revature.week10;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,12 +35,12 @@ public class StyledElementsTest {
     private static final boolean IS_LINUX = OS_NAME.contains("linux");
     private static final boolean IS_MAC = OS_NAME.contains("mac");
 
-    @BeforeEach
+    /*@BeforeEach
     public void setUp() {
         try {
-            printEnvironmentInfo();
+            //printEnvironmentInfo();
 
-            BrowserConfig
+            //BrowserConfig
         }
     }
 
@@ -202,7 +202,7 @@ public class StyledElementsTest {
         System.out.println("=== Page Info ===");
         System.out.println("Page Title: " + webDriver.getTitle());
         System.out.println("Page URL: " + webDriver.getCurrentUrl());
-        System.out.println("Page Source Length: " + webDriver.getPageSource().length());
+        //System.out.println("Page Source Length: " + webDriver.getPageSource().length());
     }
 
     private void stopHttpServer() {
@@ -261,4 +261,4 @@ public class StyledElementsTest {
             this.binaryPath = binaryPath;
         }
     }
-}
+}*/
