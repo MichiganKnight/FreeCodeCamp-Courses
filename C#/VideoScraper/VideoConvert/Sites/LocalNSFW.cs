@@ -9,9 +9,11 @@ using OpenQA.Selenium.DevTools;
 using OpenQA.Selenium.DevTools.V141.Network;
 using OpenQA.Selenium.Support.UI;
 using VideoConvert.JSON;
-using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V141.DevToolsSessionDomains;
+using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V142.DevToolsSessionDomains;
+using EnableCommandSettings = OpenQA.Selenium.DevTools.V142.Network.EnableCommandSettings;
+using RequestWillBeSentEventArgs = OpenQA.Selenium.DevTools.V142.Network.RequestWillBeSentEventArgs;
 
-namespace VideoConvert
+namespace VideoConvert.Sites
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public static class LocalNSFW

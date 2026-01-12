@@ -2,14 +2,14 @@
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Internal.Logging;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using VideoConvert.JSON;
+using LogType = VideoConvert.LogType;
 
 namespace VideoConvert.Sites
 {
-    public class SpankBang
+    public abstract class SpankBang
     {
         private static readonly string? ProjectRoot = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppContext.BaseDirectory))));
         private static readonly string DataDir = Path.Combine(ProjectRoot, "wwwroot", "Data");

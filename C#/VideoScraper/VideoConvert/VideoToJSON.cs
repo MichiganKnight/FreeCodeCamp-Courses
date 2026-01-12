@@ -28,7 +28,8 @@ namespace VideoConvert
             [
                 ("https://spankbang.com/12ru4/video/filthy+college+sluts+turn+an+outdoor+party+into+wild+fuck+fest", "Filthy College Sluts Turn an Outdoor Party into Wild Fuck Fest"),
                 ("https://spankbang.com/5ms2q/video/debbie+does+dallas", "Debbie Does Dallas"),
-                ("https://spankbang.com/5zm4b/video/0livia+d3vine+pickup", "Olivia Devine Pickup")
+                ("https://spankbang.com/5zm4b/video/0livia+d3vine+pickup", "Olivia Devine Pickup"),
+                ("https://spankbang.com/cgl4/video/valentine+s+college+sluts", "Valentine's College Sluts")
             ];
 
             TNA.GetVideos(tnaUrls);

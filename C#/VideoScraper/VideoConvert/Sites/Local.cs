@@ -10,8 +10,9 @@ using OpenQA.Selenium.DevTools.V141.Network;
 using OpenQA.Selenium.Support.UI;
 using VideoConvert.JSON;
 using DevToolsSessionDomains = OpenQA.Selenium.DevTools.V141.DevToolsSessionDomains;
+using LogType = VideoConvert.LogType;
 
-namespace VideoConvert
+namespace VideoConvert.Sites
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class Local

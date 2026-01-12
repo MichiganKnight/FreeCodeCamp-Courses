@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using VideoConvert.JSON;
+using LogType = VideoConvert.LogType;
 
 namespace VideoConvert.Sites
 {
