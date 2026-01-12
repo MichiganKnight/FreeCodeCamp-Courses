@@ -1,13 +1,13 @@
-package com.revature.weekTen.IntegrationTestingExample;
+/*package com.revature.weekTen.IntegrationTestingExample;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager;
 
-@DataJpaTest
+//@DataJpaTest
 public class UserRepositoryTest {
-    @Autowired
-    private TestEntityManager entityManager;
+    //@Autowired
+    //private TestEntityManager entityManager;
 
     /*@Autowired
     //private UserRepository userRepository;
@@ -20,5 +20,5 @@ public class UserRepositoryTest {
         User savedUser = userRepository.save(user);
 
         Assertions.assertNotNull(savedUser.getId());
-    }*/
-}
+    }
+}*/

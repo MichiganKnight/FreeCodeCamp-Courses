@@ -1,0 +1,16 @@
+var fruits;
+fruits = ['apple', 'banana'];
+var digits;
+digits = [1, 2, 3];
+var fruits2 = ['apple', 'banana'];
+var fruits3 = ['apple', 'banana'];
+var digits2 = [1, 2, 3];
+var digits3 = [1, 2, 3];
+var capital = ['USA', 'Washington D.C.'];
+var employees = ['John', 25];
+var chocolates = ['White', 'Dark', 'SemiSweet', 'BitterSweet'];
+console.log(chocolates[0]);
+console.log(chocolates[1]);
+console.log(chocolates[2]);
+console.log(chocolates[3]);
+console.log(chocolates[4]);
