@@ -1,0 +1,20 @@
+{
+  "type": "typescript",
+  "testFiles": [
+    {
+      "path": "src/app/app.component.spec.ts",
+      "testCases": [
+        {
+          "methodName": "should create the app",
+          "label": "Verify AppComponent instantiation",
+          "description": "Ensures that the AppComponent is created successfully using Angular's TestBed environment."
+        },
+        {
+          "methodName": "should have as title 'directives'",
+          "label": "Verify AppComponent title property",
+          "description": "Checks that the AppComponent initializes the 'title' property with the expected value 'directives'."
+        }
+      ]
+    }
+  ]
+}

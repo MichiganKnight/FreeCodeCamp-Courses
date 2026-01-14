@@ -1,0 +1,20 @@
+{
+  "type": "typescript",
+  "testFiles": [
+    {
+      "path": "src/app/app.component.spec.ts",
+      "testCases": [
+        {
+          "methodName": "should create the app",
+          "label": "Verify AppComponent creation",
+          "description": "Checks that the AppComponent instance is created successfully using Angular's testing utilities."
+        },
+        {
+          "methodName": "should have as title 'binding'",
+          "label": "Verify title binding setup",
+          "description": "Ensures that the AppComponent initializes its title property with the expected value 'binding', which supports lessons on property binding."
+        }
+      ]
+    }
+  ]
+}

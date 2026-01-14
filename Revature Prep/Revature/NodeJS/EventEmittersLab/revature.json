@@ -1,0 +1,20 @@
+{
+  "type": "typescript",
+  "testFiles": [
+    {
+      "path": "src/app/app.component.spec.ts",
+      "testCases": [
+        {
+          "methodName": "should create the app",
+          "label": "Verify AppComponent instantiation",
+          "description": "Uses Angular TestBed to create an instance of AppComponent and asserts that the created component instance is truthy, confirming successful initialization."
+        },
+        {
+          "methodName": "should have as title 'event-emitter'",
+          "label": "Verify AppComponent title property",
+          "description": "Creates AppComponent through TestBed and asserts that its 'title' property equals 'event-emitter', confirming proper initialization of the title field."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "type": "typescript",
+  "testFiles": [
+    {
+      "path": "src/app/app.component.spec.ts",
+      "testCases": [
+        {
+          "methodName": "should create the app",
+          "label": "Verify AppComponent initialization",
+          "description": "Ensures that the Angular TestBed successfully creates an instance of AppComponent."
+        },
+        {
+          "methodName": "should have as title 'components'",
+          "label": "Verify AppComponent title",
+          "description": "Checks that the AppComponent sets its title property to the string 'components'."
+        },
+        {
+          "methodName": "should render component",
+          "label": "Verify nested component rendering",
+          "description": "Ensures that the <app-my-first-component> selector is present in the AppComponent template and renders successfully."
+        }
+      ]
+    }
+  ]
+}

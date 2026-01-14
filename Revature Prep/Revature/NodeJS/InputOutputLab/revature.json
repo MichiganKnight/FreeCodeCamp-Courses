@@ -1,0 +1,20 @@
+{
+  "type": "typescript",
+  "testFiles": [
+    {
+      "path": "src/app/app.component.spec.ts",
+      "testCases": [
+        {
+          "methodName": "should create the app",
+          "label": "Verify AppComponent instantiation",
+          "description": "Creates an instance of AppComponent using Angular TestBed and asserts that the component initializes successfully."
+        },
+        {
+          "methodName": "should have as title 'input-output'",
+          "label": "Verify AppComponent title property",
+          "description": "Asserts that the AppComponent 'title' property is initialized to the expected string value 'input-output'."
+        }
+      ]
+    }
+  ]
+}
