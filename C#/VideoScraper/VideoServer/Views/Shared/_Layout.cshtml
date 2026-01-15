@@ -38,6 +38,12 @@
                     </li>
                 </ul>
             </div>
+            <div class="w-25">
+                <form asp-controller="NSFWVideos" asp-action="ProcessSearchForm" method="post" class="d-flex" role="search">
+                    <input class="form-control me-2 shadow-none" name="SearchTerm" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
     </nav>
 </header>

@@ -1,0 +1,20 @@
+{
+  "type": "typescript",
+  "testFiles": [
+    {
+      "path": "src/app/app.component.spec.ts",
+      "testCases": [
+        {
+          "methodName": "should create the app",
+          "label": "Verify AppComponent instantiation",
+          "description": "Checks that the AppComponent can be successfully created using Angular's TestBed."
+        },
+        {
+          "methodName": "should have as title 'model-classes'",
+          "label": "Verify AppComponent title assignment",
+          "description": "Ensures that the AppComponent initializes its 'title' property with the expected string value 'model-classes'."
+        }
+      ]
+    }
+  ]
+}

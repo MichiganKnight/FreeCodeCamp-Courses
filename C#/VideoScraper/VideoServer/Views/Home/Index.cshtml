@@ -1,5 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
+    if (TempData["Error"] != null)
+    {
+        <script type="text/javascript">
+            alert("@TempData["Error"]");
+        </script>
+    }
 }
 
 <div class="container text-center">

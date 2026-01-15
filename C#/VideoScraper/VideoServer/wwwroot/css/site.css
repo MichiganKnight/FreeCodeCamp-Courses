@@ -42,3 +42,7 @@ body {
     border-top-right-radius: 0.375rem;
     background-color: #000;
 }
+
+.form-control:focus {
+    border-color: #495057;
+}

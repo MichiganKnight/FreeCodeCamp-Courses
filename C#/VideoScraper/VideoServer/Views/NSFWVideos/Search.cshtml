@@ -1,0 +1,51 @@
+﻿@using Newtonsoft.Json
+@using VideoConvert.JSON
+@model VideoServer.Models.VideoViewModel
+@{
+    ViewData["Title"] = "TNA Videos";
+    string searchTerm = ViewData["SearchTerm"] as string ?? string.Empty;
+}
+
+<div class="container text-center">
+    <h2>Results Matching: "@searchTerm"</h2>
+    
+    @if (!Model.Videos.Any())
+    {
+        <p class="text-center">No Videos Found Matching: "@searchTerm"</p>
+    }
+    else
+    {
+        <div id="video-row" class="row">
+            @foreach (Video video in Model.Videos)
+            {
+                string tagList = video.Tags != null ? string.Join(",", video.Tags) : string.Empty;
+                string positionList = video.Positions  != null
+                    ? JsonConvert.SerializeObject(video.Positions)
+                    : "[]";
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="image-poster card-img-top" src="" alt="@video.Name" />
+                        <div class="card-body">
+                            <h5 class="card-title">@video.Name</h5>
+                            <button class="btn btn-primary watch-button" data-name="@video.Name" data-url="@video.Source" data-tags="@tagList" data-positions="@positionList">Watch</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <div id="tag-wrapper" class="tag-wrapper" style="display:none;">
+            <span class="tag-to">Tags:</span>
+            <ul class="tags" id="tag-list"></ul>
+        </div>
+        
+        <h2 id="video-name"></h2>
+    
+        <div id="video-player-container" style="display: none">
+            <partial name="_VideoPlayer"/>
+        </div>
+    }
+</div>
+
+<script type="module" src="~/js/nsfw.js" asp-append-version="true"></script>

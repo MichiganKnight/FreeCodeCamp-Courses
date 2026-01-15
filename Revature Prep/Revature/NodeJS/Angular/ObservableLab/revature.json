@@ -1,0 +1,20 @@
+{
+  "type": "typescript",
+  "testFiles": [
+    {
+      "path": "src/app/app.component.spec.ts",
+      "testCases": [
+        {
+          "methodName": "should create the app",
+          "label": "Verify AppComponent initialization",
+          "description": "Ensures that TestBed successfully creates an instance of AppComponent."
+        },
+        {
+          "methodName": "should have as title 'observables'",
+          "label": "Verify AppComponent title",
+          "description": "Checks that the AppComponent defines its title property as 'observables'."
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using VideoConvert;
 using VideoConvert.JSON;
 using VideoServer.Models;
 
@@ -75,6 +76,38 @@ namespace VideoServer.Controllers
                 string json = System.IO.File.ReadAllText(LocalFile);
                 model.Videos = JsonConvert.DeserializeObject<List<Video>>(json);
             };
+            
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Search(string searchTerm)
+        {
+            VideoViewModel model = new();
+            ViewData["SearchTerm"] = searchTerm;
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                List<string> terms = searchTerm.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                    .Select(s => s.Trim().ToLower()).ToList();
+
+                foreach (string file in DataSources)
+                {
+                    if (!System.IO.File.Exists(file)) continue;
+
+                    string json = System.IO.File.ReadAllText(file);
+                    List<Video>? videos = JsonConvert.DeserializeObject<List<Video>>(json);
+                    
+                    if (videos == null) continue;
+                    
+                    IEnumerable<Video> matches = videos.Where(v => 
+                        terms.Any(t => v.Name.Contains(t, StringComparison.OrdinalIgnoreCase)) ||
+                        (v.Tags != null && v.Tags.Any(tag => terms.Any(t => tag.Contains(t, StringComparison.OrdinalIgnoreCase))))
+                    );
+                    
+                    model.Videos.AddRange(matches);
+                }
+            }
             
             return View(model);
         }
@@ -157,6 +190,63 @@ namespace VideoServer.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ProcessForm(string videoName, string videoUrl)
+        {
+            if (string.IsNullOrEmpty(videoName) || string.IsNullOrEmpty(videoUrl))
+            {
+                TempData["Error"] = "Enter Both a Valid Name and URL";
+            }
+            else if (videoUrl.Contains("tna", StringComparison.OrdinalIgnoreCase))
+            {
+                Logger.LogMessage(LogType.Info, $"Processing: {videoName} | {videoUrl}");
+
+                List<(string, string)> video =
+                [
+                    (videoUrl, videoName)
+                ];
+                
+                VideoConvert.Sites.TNA.GetVideos(video);
+            }
+            else if (videoUrl.Contains("spankbang", StringComparison.OrdinalIgnoreCase))
+            {
+                Logger.LogMessage(LogType.Info, $"Processing: {videoName} | {videoUrl}");
+
+                List<(string, string)> video =
+                [
+                    (videoUrl, videoName)
+                ];
+                
+                VideoConvert.Sites.SpankBang.GetVideos(video);
+            }
+            else
+            {
+                Logger.LogMessage(LogType.Info, $"Processing: {videoName} | {videoUrl}");
+
+                List<(string, string)> video =
+                [
+                    (videoUrl, videoName)
+                ];
+                
+                await VideoConvert.Sites.LocalNSFW.GetVideos(video);
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult ProcessSearchForm(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                TempData["Error"] = "Enter a Valid Search Term";
+                
+                return RedirectToAction("Index", "Home");
+            }
+                
+            return RedirectToAction("Search", "NSFWVideos", new { searchTerm });
         }
     }
 }

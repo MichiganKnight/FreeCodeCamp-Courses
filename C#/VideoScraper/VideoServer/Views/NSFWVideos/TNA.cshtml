@@ -8,6 +8,16 @@
 <div class="container text-center">
     <h2>TNA Videos</h2>
     
+    <div class="mb-3 border rounded p-2 w-75 mx-auto">
+        <form asp-action="ProcessForm" method="post" class="justify-content-center p-2">
+            <label for="addVideoName" class="form-label fs-4">Add New Video Name</label>
+            <input type="text" name="VideoName" class="form-control text-center shadow-none mb-2" id="addVideoName" placeholder="Video Name"/>
+            <label for="addVideoUrl" class="form-label fs-4">Add New Video URL</label>
+            <input type="text" name="VideoUrl" class="form-control text-center shadow-none mb-2" id="addVideoUrl" placeholder="Video URL"/>
+            <button type="submit" class="btn btn-primary">Add Video</button>
+        </form>
+    </div>
+    
     @if (!Model.Videos.Any())
     {
         <p class="text-center">No TNA Videos Found</p>

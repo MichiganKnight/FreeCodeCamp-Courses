@@ -1,0 +1,25 @@
+{
+  "type": "typescript",
+  "testFiles": [
+    {
+      "path": "src/app/app.component.spec.ts",
+      "testCases": [
+        {
+          "methodName": "should create the app",
+          "label": "Verify AppComponent initialization",
+          "description": "Ensures that the AppComponent is successfully created within the Angular TestBed environment."
+        },
+        {
+          "methodName": "should have as title 'routing'",
+          "label": "Verify AppComponent title value",
+          "description": "Checks that the AppComponent initializes its title property to the string 'routing', supporting routing-based lab exercises."
+        },
+        {
+          "methodName": "should navigate to profile route and render ProfileComponent",
+          "label": "Verify router navigation to profile",
+          "description": "Simulates navigation to the 'profile' route and verifies that the ProfileComponent is successfully rendered in the DOM."
+        }
+      ]
+    }
+  ]
+}
