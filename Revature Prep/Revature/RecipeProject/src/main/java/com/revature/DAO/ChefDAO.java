@@ -5,10 +5,7 @@ import com.revature.Util.ConnectionUtil;
 import com.revature.Util.Page;
 import com.revature.Util.PageOptions;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +28,129 @@ public class ChefDAO {
             System.out.println("SQL Exception: " + e.getMessage());
             return null;
         }
+    }
+
+    public Page<Chef> getAllChefs(PageOptions pageOptions) {
+        String sql = String.format("SELECT * FROM CHEF ORDER BY %s %s", pageOptions.getSortBy(), pageOptions.getSortDirection());
+
+        try {
+            Connection connection = connectionUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return pageResults(resultSet, pageOptions);
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    public Chef getChefById(int id) {
+        String sql = "SELECT * FROM CHEF WHERE id = ?";
+
+        try {
+            Connection connection = connectionUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+
+            return mapSingleRow(resultSet);
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    public int createChef(Chef chef) {
+        String sql = "INSERT INTO CHEF (username, password, email, is_admin) VALUES (?, ?, ?, ?)";
+
+        try {
+            Connection connection = connectionUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, chef.getUsername());
+            preparedStatement.setString(2, chef.getPassword());
+            preparedStatement.setString(3, chef.getEmail());
+            preparedStatement.setBoolean(4, chef.isAdmin());
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows >= 1) {
+                ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+
+        return 0;
+    }
+
+    public void updateChef(Chef chef) {
+        String sql = "UPDATE CHEF SET username = ?, password = ?, email = ?, is_admin = ? WHERE id = ?";
+
+        try {
+            Connection connection = connectionUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, chef.getUsername());
+            preparedStatement.setString(2, chef.getPassword());
+            preparedStatement.setString(3, chef.getEmail());
+            preparedStatement.setBoolean(4, chef.isAdmin());
+            preparedStatement.setInt(5, chef.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+    }
+
+    public void deleteChef(Chef chef) {
+        String sql = "DELETE FROM CHEF WHERE id = ?";
+
+        try {
+            Connection connection = connectionUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, chef.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+    }
+
+    public List<Chef> searchChefsByTerm(String term) {
+        String sql = "SELECT * FROM CHEF WHERE username LIKE ?";
+
+        try {
+            Connection connection = connectionUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + term + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return mapRows(resultSet);
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    public Page<Chef> searchChefsByTerm(String term, PageOptions pageOptions) {
+        String sql = String.format("SELECT * FROM CHEF WHERE username LIKE ? ORDER BY %s %s", pageOptions.getSortBy(), pageOptions.getSortDirection());
+
+        try {
+            Connection connection = connectionUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + term + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return pageResults(resultSet, pageOptions);
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+
+        return null;
     }
 
     /**
