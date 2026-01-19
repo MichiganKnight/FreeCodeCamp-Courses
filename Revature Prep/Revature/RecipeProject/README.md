@@ -1,4 +1,4 @@
-[# Revature Recipe Web Dev App
+# Revature Recipe Web Dev App
 
 ## Background
 
