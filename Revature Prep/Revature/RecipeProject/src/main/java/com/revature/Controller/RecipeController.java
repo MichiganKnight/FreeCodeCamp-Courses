@@ -5,6 +5,7 @@ import com.revature.Model.Recipe;
 import com.revature.Service.AuthenticationService;
 import com.revature.Service.RecipeService;
 import com.revature.Util.Page;
+import io.javalin.Javalin;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
@@ -134,5 +135,13 @@ public class RecipeController {
         }
 
         return defaultValue;
+    }
+
+    public void configureRoutes(Javalin app) {
+        app.get("/recipes", getAllRecipes);
+        app.get("/recipes/{id}", getRecipeById);
+        app.post("/recipes", createRecipe);
+        app.delete("/recipes/{id}", deleteRecipe);
+        app.put("/recipes/{id}", updateRecipe);
     }
 }
