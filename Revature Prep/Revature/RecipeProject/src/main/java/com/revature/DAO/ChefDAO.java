@@ -40,10 +40,8 @@ public class ChefDAO {
 
             return pageResults(resultSet, pageOptions);
         } catch (SQLException e) {
-            System.out.println("SQL Exception: " + e.getMessage());
+            throw new RuntimeException("Unable to Get All Chefs");
         }
-
-        return null;
     }
 
     public Chef getChefById(int id) {
@@ -165,7 +163,7 @@ public class ChefDAO {
         String username = resultSet.getString("username");
         String password = resultSet.getString("password");
         String email = resultSet.getString("email");
-        boolean isAdmin = resultSet.getBoolean("isAdmin");
+        boolean isAdmin = resultSet.getBoolean("is_admin");
         return new Chef(id, username, password, email, isAdmin);
     }
 

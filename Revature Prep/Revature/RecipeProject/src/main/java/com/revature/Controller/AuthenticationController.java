@@ -43,7 +43,7 @@ public class AuthenticationController {
             }
 
             if (accept.contains("application/json")) {
-                context.json(Map.of("token", token, "isAdmin", isAdmin));
+                context.json(Map.of("token", token, "is_admin", isAdmin));
             } else {
                 context.result(token + " " + isAdmin);
             }
