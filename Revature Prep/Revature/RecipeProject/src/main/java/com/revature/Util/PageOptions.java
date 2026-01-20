@@ -11,6 +11,11 @@ public class PageOptions {
 
     public PageOptions() {}
 
+    public PageOptions(int pageNumber, int pageSize) {
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+    }
+
     public PageOptions(int pageNumber, int pageSize, String sortBy, String sortDirection) {
         this.pageNumber = pageNumber;
         this.pageSize = pageSize;
