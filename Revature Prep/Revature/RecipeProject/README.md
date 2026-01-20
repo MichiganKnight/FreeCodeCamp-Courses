@@ -18,10 +18,10 @@ Your work will primarily be within the following folders:
 
 ```
 src/main/resources/public/frontend/
-├── Login/
-├── Register/
-├── Recipe/
-└── Ingredients/
+├── login/
+├── register/
+├── recipe/
+└── ingredients/
 ```
 
 ### Running the Application
@@ -39,12 +39,12 @@ The backend runs on: `http://localhost:8081/`
 
 ### 1️⃣ User Registration:
 
-📂 Location: `Frontend/Register/`
+📂 Location: `frontend/register/`
 
 Files:
 
-- `Register-Page.html`
-- `Register-Page.js`
+- `register-page.html`
+- `register-page.js`
 
 **Requirements:**
 
@@ -62,12 +62,12 @@ Files:
 
 ### 2️⃣ User Login and Logout
 
-📂 Location: `Frontend/Login/` and `Frontend/Recipe/`
+📂 Location: `frontend/login/` and `frontend/recipe/`
 
 Files:
 
-- `Login-Page.html`, `Login-Page.js`
-- `Recipe-Page.html`, `Recipe-Page.js`
+- `login-page.html`, `login-page.js`
+- `recipe-page.html`, `recipe-page.js`
 
 **Requirements:**
 
@@ -79,24 +79,24 @@ Files:
         - Parse the response (token and admin flag separated by space)
         - Store token in `sessionStorage` under `auth-token`
         - Store admin flag under `is-admin`
-        - Redirect to `Recipe-Page.html`
+        - Redirect to `recipe-page.html`
     - On Failure: Show an alert
 
-- Logout Logic (in `Recipe-Page.js`) Should:
+- Logout Logic (in `recipe-page.js`) Should:
     - Send POST request to `http://localhost:8081/logout`
     - Clear `sessionStorage` keys
-    - Redirect to `Login-Page.html`
+    - Redirect to `login-page.html`
 
 ---
 
 ### 3️⃣ Recipe Management
 
-📂 Location: `Frontend/Recipe/`
+📂 Location: `frontend/recipe/`
 
 Files:
 
-- `Recipe-Page.html`,
-- `Recipe-Page.js`
+- `recipe-page.html`,
+- `recipe-page.js`
 
 **Requirements:**
 
@@ -134,12 +134,12 @@ Files:
 
 ### 4️⃣ Ingredient Management (Admin Only)
 
-📂 Location: `Frontend/Ingredients`
+📂 Location: `ffrontend/ingredients`
 
 Files:
 
-- `Ingredients-Page.html`,
-- `Ingredients-Page.js`
+- `ingredients-page.html`,
+- `ingredients-page.js`
 
 **Requirements:**
 
@@ -156,7 +156,7 @@ Files:
 - Implement:
     - `addIngredient()`: POST `http://localhost:8081/ingredients` with name
     - `deleteIngredient()`: DELETE `http://localhost:8081/ingredients/{id}`
-    - `refreshIngredientList()`: Populate list from array
+    - `refreshIngredientList()`: Populate list from an array
         - Use:
         ```javascript
         headers: {
