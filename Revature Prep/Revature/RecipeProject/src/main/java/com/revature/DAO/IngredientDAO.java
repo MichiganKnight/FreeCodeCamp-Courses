@@ -40,7 +40,7 @@ public class IngredientDAO {
 
         try {
             Connection connection = connectionUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, ingredient.getName());
             preparedStatement.executeUpdate();
 
@@ -127,7 +127,7 @@ public class IngredientDAO {
     }
 
     public Page<Ingredient> getAllIngredients(PageOptions pageOptions) {
-        String sql = String.format("SELECT * FROM INGREDIENT ORDER %s %s", pageOptions.getSortBy(), pageOptions.getSortDirection());
+        String sql = String.format("SELECT * FROM INGREDIENT ORDER BY %s %s", pageOptions.getSortBy(), pageOptions.getSortDirection());
 
         try {
             Connection connection = connectionUtil.getConnection();
