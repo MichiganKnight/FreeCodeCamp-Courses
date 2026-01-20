@@ -17,7 +17,7 @@ public class ConnectionUtil {
         pool.setPassword(password);
     }
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         try {
             return pool.getConnection();
         } catch (SQLException e) {
