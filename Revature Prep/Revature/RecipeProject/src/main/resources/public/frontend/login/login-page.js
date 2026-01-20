@@ -45,7 +45,7 @@ async function processLogin() {
             sessionStorage.setItem("auth-token", token);
             sessionStorage.setItem("is-admin", isAdmin.toString());
 
-            setTimeout(window.location.href = "../Recipe/recipe-page.html", 500);
+            setTimeout(window.location.href = "../recipe/recipe-page.html", 500);
         } else if (response.status === 401) {
             alert("Incorrect Login");
         } else {

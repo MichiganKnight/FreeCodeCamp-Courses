@@ -3,7 +3,7 @@ const BASE_URL = "http://localhost:8081";
 const usernameInput = document.getElementById("username-input");
 const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
-const confirmPasswordInput = document.getElementById("confirm-password-input");
+const confirmPasswordInput = document.getElementById("repeat-password-input");
 const registerButton = document.getElementById("register-button");
 
 registerButton.addEventListener("click", processRegistration);
@@ -15,11 +15,15 @@ async function processRegistration() {
     const confirmPassword = confirmPasswordInput.value;
 
     if (username === "" || email === "" || password === "" || confirmPassword === "") {
+        alert("Please Fill Out All Fields");
+
         return;
     }
 
     if (password !== confirmPassword) {
         alert("Passwords Do Not Match");
+
+        return;
     }
 
     const registerBody = {
