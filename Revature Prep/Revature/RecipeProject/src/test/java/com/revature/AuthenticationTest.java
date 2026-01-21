@@ -59,20 +59,6 @@ public class AuthenticationTest {
     @AfterAll
     public static void tearDown() throws InterruptedException {
         System.out.println("\n=== TEARDOWN ===");
-        try {
-            if (app != null) {
-                app.stop();
-                System.out.println("Backend Server Stopped Successfully");
-            }
-
-            if (server != null) {
-                server.stop();
-                System.out.println("Frontend Server Stopped Successfully");
-            }
-        } catch (Exception e) {
-            System.err.println("Error Stopping Server: " + e.getMessage());
-        }
-
         cleanup();
         System.out.println("Teardown Complete");
     }

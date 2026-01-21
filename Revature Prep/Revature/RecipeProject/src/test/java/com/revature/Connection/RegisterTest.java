@@ -39,11 +39,8 @@ public class RegisterTest {
             webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
             webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-            if (mockServer == null || !mockServer.isRunning()) {
-                mockServer = ClientAndServer.startClientAndServer(8081);
-            }
+            mockServer = ClientAndServer.startClientAndServer(8081);
             mockServerClient = new MockServerClient("localhost", 8081);
-            mockServerClient.reset();
 
             mockServerClient.
                     when(HttpRequest.request().withMethod("OPTIONS").withPath(".*"))

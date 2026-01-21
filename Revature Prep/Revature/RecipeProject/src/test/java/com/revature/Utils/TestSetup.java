@@ -1,6 +1,7 @@
 package com.revature.Utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.javalin.Javalin;
 import org.mockserver.client.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +23,7 @@ public class TestSetup {
     public static WebDriver webDriver;
     public static ClientAndServer mockServer;
     public static MockServerClient mockServerClient;
+    public static Javalin app;
 
     private static Process httpServerProcess;
     private static final String OS_NAME = System.getProperty("os.name").toLowerCase();
@@ -348,30 +350,48 @@ public class TestSetup {
     public static void cleanup() throws InterruptedException {
         stopHttpServer();
 
+        if (app != null) {
+            try {
+                app.stop();
+            } catch (Exception e) {
+                System.err.println("Error Stopping Backend Server: " + e.getMessage());
+            } finally {
+                app = null;
+            }
+        }
+
         if (webDriver != null) {
             try {
                 webDriver.quit();
-                webDriver = null;
             } catch (Exception e) {
                 System.err.println("Error Quitting WebDriver: " + e.getMessage());
+            } finally {
+                webDriver = null;
+            }
+        }
+
+        if (mockServerClient != null) {
+            try {
+                mockServerClient.close();
+            } catch (Exception e) {
+                System.err.println("Error Closing MockServerClient: " + e.getMessage());
+            } finally {
+                mockServerClient = null;
             }
         }
 
         if (mockServer != null) {
             try {
-                mockServer.stop();
+                if (mockServer.isRunning()) {
+                    mockServer.stop();
 
-                Thread.sleep(1000);
+                    Thread.sleep(1000);
+                }
             } catch (Exception e) {
                 System.err.println("Error Stopping MockServer: " + e.getMessage());
             } finally {
                 mockServer = null;
             }
-        }
-
-        if (mockServerClient != null) {
-            mockServerClient.close();
-            mockServerClient = null;
         }
     }
 }

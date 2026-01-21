@@ -55,7 +55,7 @@ public class RecipeController {
     };
 
     public Handler getRecipeById = context -> {
-        int id = Integer.parseInt(context.queryParam("id"));
+        int id = Integer.parseInt(context.pathParam("id"));
         Optional<Recipe> recipe = recipeService.getRecipeById(id);
 
         if (recipe.isPresent()) {

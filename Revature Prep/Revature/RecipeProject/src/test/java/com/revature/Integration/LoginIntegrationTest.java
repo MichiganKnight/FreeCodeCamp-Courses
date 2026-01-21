@@ -71,7 +71,7 @@ public class LoginIntegrationTest {
 
     @Test
     public void testSuccessfulLogin() throws IOException {
-        Chef chef = new Chef(1, "JoeCool", "snoopy@null.com", "redbarron", false);
+        Chef chef = new Chef(1, "JoeCool", "redbarron", "snoopy@null.com", false);
         Recipe newRecipe = new Recipe(6, "fried fish", "fish, oil, stove", chef);
 
         RequestBody chefBody = RequestBody.create(
@@ -113,7 +113,7 @@ public class LoginIntegrationTest {
 
     @Test
     public void testUnsuccessfulLogin() throws IOException {
-        Chef chef = new Chef(1, "JoeCool", "snoopy@null.com", "woodstock", false);
+        Chef chef = new Chef(1, "JoeCool", "woodstock", "snoopy@null.com", false);
         Recipe newRecipe = new Recipe(6, "fried fish", "fish, oil, stove", chef);
         RequestBody chefBody = RequestBody.create(
                 "{\"username\": \"" + chef.getUsername() + "\", \"password\": \"" + chef.getPassword() + "\"}",
@@ -133,7 +133,7 @@ public class LoginIntegrationTest {
 
     @Test
     public void testLogout() throws IOException {
-        Chef chef = new Chef(1, "JoeCool", "snoopy@null.com", "redbarron", false);
+        Chef chef = new Chef(1, "JoeCool", "redbarron", "snoopy@null.com", false);
         Recipe newRecipe = new Recipe(6, "fried fish", "fish, oil, stove", chef);
         RequestBody chefBody = RequestBody.create(
                 "{\"username\":\"" + chef.getUsername() + "\", \"password\":\"" + chef.getPassword() + "\"}",
@@ -160,7 +160,7 @@ public class LoginIntegrationTest {
 
     @Test
     public void testRegister() throws IOException {
-        Chef chef = new Chef(0, "new chef", "newchef@chefmail.com", "1234abc", false);
+        Chef chef = new Chef(0, "new chef", "1234abc", "newchef@chefmail.com", false);
         RequestBody chefBody = RequestBody.create(
                 "{\"username\": \"" + chef.getUsername() + "\", \"password\": \" " + chef.getPassword()
                         + "\", \"email\": \"" + chef.getEmail() + "\"}",

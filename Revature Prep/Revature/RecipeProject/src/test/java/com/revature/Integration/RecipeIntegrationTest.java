@@ -56,10 +56,10 @@ public class RecipeIntegrationTest {
         DBUtil.RUN_SQL();
         recipeList.clear();
         chefList.addAll(Arrays.asList(
-                new Chef(1, "JoeCool", "snoopy@null.com", "redbarron", false),
-                new Chef(2, "CharlieBrown", "goodgrief@peanuts.com", "thegreatpumpkin", false),
-                new Chef(3, "RevaBuddy", "revature@revature.com", "codelikeaboss", false),
-                new Chef(4, "ChefTrevin", "trevin@revature.com", "trevature", true)));
+                new Chef(1, "JoeCool", "redbarron", "snoopy@null.com", false),
+                new Chef(2, "CharlieBrown", "thegreatpumpkin", "goodgrief@peanuts.com", false),
+                new Chef(3, "RevaBuddy", "codelikeaboss", "revature@revature.com", false),
+                new Chef(4, "ChefTrevin", "trevature", "trevin@revature.com", true)));
         recipeList.addAll(Arrays.asList(
                 new Recipe(1, "carrot soup", "Put carrot in water.  Boil.  Maybe salt.", chefList.get(0)),
                 new Recipe(2, "potato soup", "Put potato in water.  Boil.  Maybe salt.", chefList.get(1)),

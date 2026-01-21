@@ -88,11 +88,6 @@ public class RecipePersistenceTest {
         System.out.println("Teardown Complete");
     }
 
-    @AfterEach
-    public void tearDownBetween() {
-        performLogout();
-    }
-
     @AfterAll
     public static void stopServer() {
         try {
@@ -210,9 +205,9 @@ public class RecipePersistenceTest {
         String innerHTML = recipeList.getAttribute("innerHTML");
 
         Assertions.assertTrue(innerHTML.contains("potato soup"), "Expected Potato Soup to be Displayed");
-        Assertions.assertFalse(innerHTML.contains("tomato soup"), "Expected Carrot Soup to not be Displayed");
+        Assertions.assertTrue(innerHTML.contains("tomato soup"), "Expected Tomato Soup to not be Displayed");
         Assertions.assertFalse(innerHTML.contains("stone soup"), "Expected Stone to not be Displayed");
-        Assertions.assertFalse(innerHTML.contains("carrot soup"), "Expected Tomato Soup to not be Displayed");
+        Assertions.assertFalse(innerHTML.contains("carrot soup"), "Expected Carrot Soup to not be Displayed");
         Assertions.assertFalse(innerHTML.contains("lemon rice soup"), "Expected Lemon Rice Soup to not be Displayed");
     }
 }

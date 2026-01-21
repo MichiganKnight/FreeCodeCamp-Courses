@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
         logoutButton.hidden = false;
     }
 
-    if (sessionStorage.getItem("is-admin")) {
+    if (sessionStorage.getItem("is-admin") === "true") {
         adminLink.hidden = false;
     }
 
@@ -34,7 +34,21 @@ window.addEventListener("DOMContentLoaded", () => {
     getRecipes();
 
     async function searchRecipes() {
+        const searchTerm = searchInput.value.trim();
+        const response = await fetch(`${BASE_URL}/recipes?name=${encodeURIComponent(searchTerm)}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${sessionStorage.getItem("auth-token")}`
+            }
+        });
 
+        if (response.ok) {
+            recipes = await response.json();
+            refreshRecipeList();
+        } else {
+            alert("Failed to Search Recipes");
+        }
     }
 
     async function addRecipe() {
@@ -83,6 +97,9 @@ window.addEventListener("DOMContentLoaded", () => {
         if (response.ok) {
             updateNameInput.value = "";
             updateInstructionsInput.value = "";
+
+            getRecipes();
+            refreshRecipeList();
         } else {
             alert("Failed to Update Recipe");
         }
@@ -126,7 +143,7 @@ window.addEventListener("DOMContentLoaded", () => {
         recipeList.innerHTML = "";
 
         for (let recipe of recipes) {
-            recipeList.innerHTML += `<li>${recipe.name}</li>`;
+            recipeList.innerHTML += `<li>${recipe.name} - ${recipe.instructions}</li>`;
         }
     }
 

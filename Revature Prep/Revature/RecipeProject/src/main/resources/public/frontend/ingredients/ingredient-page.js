@@ -57,6 +57,7 @@ async function deleteIngredient() {
         if (response.ok) {
             deleteIngredientNameInput.value = "";
             await getIngredients();
+            await refreshIngredientList();
         } else {
             alert("Failed to Delete Ingredient");
         }
