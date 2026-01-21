@@ -65,11 +65,47 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     async function updateRecipe() {
+        const updatedRecipeName = updateNameInput.value;
+        const updatedRecipeInstructions = updateInstructionsInput.value;
 
+        const updatedRecipe = recipes.find(recipe => recipe.name.toLowerCase() === updatedRecipeName.toLowerCase());
+        updatedRecipe.instructions = updatedRecipeInstructions;
+
+        const response = await fetch(`${BASE_URL}/recipes/${updatedRecipe.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${sessionStorage.getItem("auth-token")}`
+            },
+            body: JSON.stringify(updatedRecipe)
+        });
+
+        if (response.ok) {
+            updateNameInput.value = "";
+            updateInstructionsInput.value = "";
+        } else {
+            alert("Failed to Update Recipe");
+        }
     }
 
     async function deleteRecipe() {
+        const recipeToDelete = recipes.find(recipe => recipe.name.toLowerCase() === deleteInput.value.toLowerCase());
 
+        const response = await fetch(`${BASE_URL}/recipes/${recipeToDelete.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${sessionStorage.getItem("auth-token")}`
+            }
+        });
+
+        if (response.ok) {
+            deleteInput.value = "";
+            getRecipes();
+            refreshRecipeList();
+        } else {
+            alert("Failed to Delete Recipe");
+        }
     }
 
     async function getRecipes() {
@@ -95,6 +131,21 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     async function processLogout() {
+        const response = await fetch(`${BASE_URL}/logout`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${sessionStorage.getItem("auth-token")}`
+            }
+        });
 
+        if (response.ok) {
+            sessionStorage.removeItem("auth-token");
+            sessionStorage.removeItem("is-admin");
+
+            setTimeout(window.location.href = "../login/login-page.html", 500);
+        } else {
+            alert("Failed to Logout");
+        }
     }
 });

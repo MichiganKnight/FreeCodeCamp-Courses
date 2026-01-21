@@ -101,13 +101,32 @@ public class TestSetup {
         return null;
     }
 
-    public static File findhtmlFile() {
-        String[] possibleHtmlPaths = {
-                "src/main/resources/public/frontend/register/register-page.html",
-                "register-page.html",
-                "src/test/resources/register-page.html",
-                "test-resources/register-page.html",
-                "src/main/register-page.html"
+    public static File findhtmlFile(String pageName) {
+        String[] possibleHtmlPaths = new String[0];
+
+        possibleHtmlPaths = switch (pageName) {
+            case "register" -> new String[]{
+                    "src/main/resources/public/frontend/register/register-page.html",
+                    "register-page.html",
+                    "src/test/resources/register-page.html",
+                    "test-resources/register-page.html",
+                    "src/main/register-page.html"
+            };
+            case "login" -> new String[]{
+                    "src/main/resources/public/frontend/login/login-page.html",
+                    "login-page.html",
+                    "src/test/resources/login-page.html",
+                    "test-resources/login-page.html",
+                    "src/main/login-page.html"
+            };
+            case  "recipe" -> new String[]{
+                    "src/main/resources/public/frontend/recipe/recipe-page.html",
+                    "recipe-page.html",
+                    "src/test/resources/recipe-page.html",
+                    "test-resources/recipe-page.html",
+                    "src/main/recipe-page.html"
+            };
+            default -> possibleHtmlPaths;
         };
 
         for (String htmlPath : possibleHtmlPaths) {

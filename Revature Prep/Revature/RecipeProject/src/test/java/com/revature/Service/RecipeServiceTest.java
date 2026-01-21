@@ -96,6 +96,13 @@ public class RecipeServiceTest {
     }
 
     @Test
+    public void searchReturnsEmptyList() {
+        when(recipeDAO.searchRecipesByTerm("Bal")).thenReturn(Collections.emptyList());
+        List<Recipe> recipes = recipeService.searchRecipes("Bal");
+        Assertions.assertTrue(recipes.isEmpty(), () -> "Services Should Return an Empty List if No Recipes Match the Search Term");
+    }
+
+    @Test
     public void searchForPageOfAllRecipes() {
         when(recipeDAO.getAllRecipes(any(PageOptions.class))).thenReturn(new Page<Recipe>(1, 5, 1, 5, MOCKS));
         Page<Recipe> recipes = recipeService.searchRecipes(null, 1, 5, "id", "asc");

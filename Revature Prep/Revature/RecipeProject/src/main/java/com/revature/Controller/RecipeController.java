@@ -45,7 +45,8 @@ public class RecipeController {
             }
 
             if (recipes.isEmpty()) {
-                context.status(404).result("No Recipes Found");
+                context.status(404);
+                context.result("No Recipes Found");
             } else {
                 context.status(200);
                 context.json(recipes);

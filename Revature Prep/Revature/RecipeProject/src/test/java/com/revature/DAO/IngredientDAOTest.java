@@ -52,6 +52,13 @@ public class IngredientDAOTest {
     }
 
     @Test
+    public void deleteIngredientTest() throws SQLException {
+        Ingredient ingredient = ingredientDAO.getIngredientById(1);
+        assertCountDifference(-1, "Expected Ingredient Count to be 1 Less", countSelStatement, () -> ingredientDAO.deleteIngredient(ingredient));
+        Assertions.assertEquals(null, ingredientDAO.getIngredientById(1), "The Ingredient With ID 1 Should be Deleted.");
+    }
+
+    @Test
     public void updateIngredientTest() {
         Ingredient ingredient = ingredientDAO.getIngredientById(1);
         ingredient.setName("newName");
