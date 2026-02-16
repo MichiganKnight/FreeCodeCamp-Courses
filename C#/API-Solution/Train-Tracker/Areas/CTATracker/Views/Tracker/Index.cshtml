@@ -2,8 +2,66 @@
     ViewData["Title"] = "CTA Tracker";
 }
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
 <div class="container text-center">
     <h2>CTA Tracker</h2>
+    
+    <div class="mb-3" style="height: 560px; width: 100%;">
+        <div id="ctaLiveMap" style="height: 100%; width: 100%; border: 1px solid #ddd; border-radius: 8px;"></div>
+    </div>
+    
+    <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
+        <div class="small text-muted">
+            Auto-refresh: <span id="refreshStatus">Starting...</span>
+        </div>
+        <div class="small text-muted">
+            Trains Plotted: <span id="trainCount">0</span>
+        </div>
+        <div class="small text-muted">
+            Last Update (CST): <span id="lastUpdate">—</span>
+        </div>
+    </div>
+    
+    <div class="d-flex justify-content-center gap-3 mb-4 flex-wrap align-items-center">
+        <div class="small text-muted fw-semibold">Filter lines:</div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input cta-route-filter" type="checkbox" id="flt-red" value="red" checked>
+            <label class="form-check-label redLine" for="flt-red">Red</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input cta-route-filter" type="checkbox" id="flt-blue" value="blue" checked>
+            <label class="form-check-label blueLine" for="flt-blue">Blue</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input cta-route-filter" type="checkbox" id="flt-brn" value="brn" checked>
+            <label class="form-check-label brownLine" for="flt-brn">Brown</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input cta-route-filter" type="checkbox" id="flt-g" value="g" checked>
+            <label class="form-check-label greenLine" for="flt-g">Green</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input cta-route-filter" type="checkbox" id="flt-org" value="org" checked>
+            <label class="form-check-label orangeLine" for="flt-org">Orange</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input cta-route-filter" type="checkbox" id="flt-pink" value="pink" checked>
+            <label class="form-check-label pinkLine" for="flt-pink">Pink</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input cta-route-filter" type="checkbox" id="flt-p" value="p" checked>
+            <label class="form-check-label purpleLine" for="flt-p">Purple</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input cta-route-filter" type="checkbox" id="flt-y" value="y" checked>
+            <label class="form-check-label yellowLine" for="flt-y">Yellow</label>
+        </div>
+
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="selectAllBtn">All</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="selectNoneBtn">None</button>
+    </div>
     
     <h4>CTA Lines:</h4>
     
@@ -46,3 +104,203 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script type="text/javascript">
+    (function () {
+        const fallbackCenter = [41.8781, -87.6298];
+        const refreshMs = 10000;
+
+        const map = L.map('ctaLiveMap').setView(fallbackCenter, 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const markers = new Map();
+
+        const elStatus = document.getElementById('refreshStatus');
+        const elCount = document.getElementById('trainCount');
+        const elLast = document.getElementById('lastUpdate');
+
+        const filterInputs = Array.from(document.querySelectorAll('.cta-route-filter'));
+        const selectAllBtn = document.getElementById('selectAllBtn');
+        const selectNoneBtn = document.getElementById('selectNoneBtn');
+
+        function colorForRoute(route) {
+            switch ((route || '').toLowerCase()) {
+                case 'red': return '#c60c30';
+                case 'blue': return '#00a1de';
+                case 'brn': return '#62361b';
+                case 'g': return '#009b3a';
+                case 'org': return '#f9461c';
+                case 'pink': return '#e27ea6';
+                case 'p': return '#522398';
+                case 'y': return '#f9e300';
+                default: return '#0d6efd';
+            }
+        }
+
+        function displayNameForRoute(route) {
+            switch ((route || '').toLowerCase()) {
+                case 'red': return 'Red';
+                case 'blue': return 'Blue';
+                case 'brn': return 'Brown';
+                case 'g': return 'Green';
+                case 'org': return 'Orange';
+                case 'pink': return 'Pink';
+                case 'p': return 'Purple';
+                case 'y': return 'Yellow';
+                default: {
+                    // fallback: "some" -> "Some"
+                    const s = String(route || '').trim();
+                    return s.length ? (s[0].toUpperCase() + s.slice(1).toLowerCase()) : '';
+                }
+            }
+        }
+
+        function formatCentralTime(isoOrDateString) {
+            if (!isoOrDateString) return '—';
+            const d = new Date(isoOrDateString);
+            if (Number.isNaN(d.getTime())) return '—';
+
+            const fmt = new Intl.DateTimeFormat(undefined, {
+                timeZone: 'America/Chicago',
+                month: 'short',
+                day: '2-digit',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            });
+
+            // Add a clear CT suffix
+            return `${fmt.format(d)} CT`;
+        }
+
+        function selectedRoutes() {
+            return filterInputs.filter(x => x.checked).map(x => x.value);
+        }
+
+        function buildUrl() {
+            const baseUrl = '@Url.Action("LivePositions", "Tracker", new { area = "CTATracker" })';
+            const routes = selectedRoutes();
+
+            if (routes.length === 0) return baseUrl; // server will default to all OR return none (your choice)
+
+            const qs = routes.map(r => `routes=${encodeURIComponent(r)}`).join('&');
+            return `${baseUrl}?${qs}`;
+        }
+
+        function clearMarkersNotInSelectedRoutes() {
+            const allowed = new Set(selectedRoutes());
+            for (const [key, marker] of markers.entries()) {
+                const route = (marker.options && marker.options.__route) ? marker.options.__route : null;
+                if (route && !allowed.has(route)) {
+                    map.removeLayer(marker);
+                    markers.delete(key);
+                }
+            }
+        }
+
+        async function refresh() {
+            elStatus.textContent = 'refreshing…';
+
+            const url = buildUrl();
+            const resp = await fetch(url, { cache: 'no-store' });
+
+            if (!resp.ok) {
+                elStatus.textContent = 'error';
+                return;
+            }
+
+            const payload = await resp.json();
+            const trains = payload.trains || [];
+
+            elCount.textContent = String(trains.length);
+            elLast.textContent = formatCentralTime(payload.timestamp);
+            elStatus.textContent = `ok (${new Date().toLocaleTimeString()})`;
+
+            const seen = new Set();
+
+            for (const t of trains) {
+                if (t.latitude == null || t.longitude == null || !t.routeNumber) continue;
+
+                const key = t.routeNumber;
+                seen.add(key);
+
+                const routeCode = (t.route || '').toLowerCase();
+                const routeDisplay = displayNameForRoute(routeCode);
+                const fill = colorForRoute(routeCode);
+
+                const popupHtml =
+                    `<div style="text-align:left">
+                        <div><b>Line:</b> ${routeDisplay}</div>
+                        <div><b>Run #:</b> ${(t.routeNumber ?? '')}</div>
+                        <div><b>Destination:</b> ${(t.destination ?? '')}</div>
+                        <div><b>Next:</b> ${(t.nextStationName ?? '')}</div>
+                        <div><b>Heading:</b> ${(t.heading ?? '')}</div>
+                     </div>`;
+
+                const latlng = [t.latitude, t.longitude];
+
+                if (markers.has(key)) {
+                    const m = markers.get(key);
+                    m.setLatLng(latlng);
+                    m.setPopupContent(popupHtml);
+
+                    // Update BOTH fill and stroke so it never "sticks" to old/default styles
+                    m.setStyle({ fillColor: fill, color: '#111' });
+
+                    // Keep route attached for filter cleanup
+                    m.options.__route = routeCode;
+                } else {
+                    const m = L.circleMarker(latlng, {
+                        radius: 7,
+                        weight: 2,
+                        color: '#111',
+                        fillColor: fill,
+                        fillOpacity: 0.9
+                    }).addTo(map).bindPopup(popupHtml);
+
+                    // Attach route for filter cleanup
+                    m.options.__route = routeCode;
+
+                    markers.set(key, m);
+                }
+            }
+
+            for (const [key, marker] of markers.entries()) {
+                if (!seen.has(key)) {
+                    map.removeLayer(marker);
+                    markers.delete(key);
+                }
+            }
+        }
+
+        function wireFilters() {
+            for (const input of filterInputs) {
+                input.addEventListener('change', () => {
+                    clearMarkersNotInSelectedRoutes();
+                    refresh().catch(() => { elStatus.textContent = 'error'; });
+                });
+            }
+
+            selectAllBtn.addEventListener('click', () => {
+                for (const input of filterInputs) input.checked = true;
+                refresh().catch(() => { elStatus.textContent = 'error'; });
+            });
+
+            selectNoneBtn.addEventListener('click', () => {
+                for (const input of filterInputs) input.checked = false;
+                clearMarkersNotInSelectedRoutes();
+                elCount.textContent = '0';
+            });
+        }
+
+        wireFilters();
+
+        refresh().catch(() => { elStatus.textContent = 'error'; });
+        setInterval(() => refresh().catch(() => { elStatus.textContent = 'error'; }), refreshMs);
+    })();
+</script>

@@ -71,8 +71,8 @@ namespace Train_Tracker.API
         public static string BuildTrainUrl(string apiKey, string runNumber)
         {
             string rn = NormalizeRunNumber(runNumber);
-
-            return $"https://lapi.transitchicago.com/api/1.0/ttfollow.aspx?key=2ed0a2376360411dbfb90580cf2ab7d1&runnumber={Uri.EscapeDataString(rn)}&outputType=json";
+            
+            return $"https://lapi.transitchicago.com/api/1.0/ttfollow.aspx?key={Uri.EscapeDataString(apiKey)}&runnumber={Uri.EscapeDataString(rn)}&outputType=json";
         }
         
         /// <summary>
@@ -127,7 +127,12 @@ namespace Train_Tracker.API
                         {
                             RouteNumber = trainObj.Value<string>("rn"),
                             Destination = trainObj.Value<string>("destNm"),
-                            NextStationName = trainObj.Value<string>("nextStaNm")
+                            NextStationName = trainObj.Value<string>("nextStaNm"),
+                            
+                            Route = trainObj.Value<string>("rt"),
+                            Latitude = trainObj.Value<double?>("lat"),
+                            Longitude = trainObj.Value<double?>("lon"),
+                            Heading = trainObj.Value<int?>("heading")
                         });
                     }
                 }
