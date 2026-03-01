@@ -1,4 +1,10 @@
 Docker
 IntelliJ Themes
-node_modules
 RedditScraper
+
+**/bin/
+**/obj/
+**/node_modules/
+**/.idea/
+**/venv/
+**/target/
