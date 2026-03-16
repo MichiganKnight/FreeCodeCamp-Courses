@@ -12,7 +12,7 @@ namespace VideoConvert
                 ("https://www.tnaflix.com/amateur-porn/Hot-college-sluts-go-wild-in-the-country%2C-part-3/video9360228", "Hot College Sluts Go Wild in the Country - Part 3"),
                 ("https://www.tnaflix.com/amateur-porn/Theartporn-Wtfpass-Agnessa-Juan-Away-From-The-Whole-World-Sons-Screw/video11741701", "Agnessa & Juan Away from the Whole World"),
                 ("https://www.tnaflix.com/amateur-porn/CollegeFuckParties-Student-sex-friends-sinspire-a-good-girl/video1352238", "Student Sex Friends"),
-                ("https://www.tnaflix.com/amateur-porn/LE-BAISER-%282015%29/video9114050", "LE Baiser (2015)"),
+                ("https://www.tnaflix.com/amateur-porn/LE-BAISER-%282015%29/video9114050", "Le Baiser (2015)"),
                 ("https://www.tnaflix.com/es/videos-hd/Party-Hardcore-gone-Crazy-Vol.-23/video4046197", "Party Hardcore Gone Crazy Vol. 23"),
                 ("https://www.tnaflix.com/amateur-porn/Czech-couples-30/video10360204", "Czech Couples 30"),
                 ("https://www.tnaflix.com/amateur-porn/DSO-The-Whores-Of-Wall-Street-Part-1/video10733222", "The Whores of Wall Street - Part 1"),
@@ -32,8 +32,8 @@ namespace VideoConvert
                 ("https://spankbang.com/cgl4/video/valentine+s+college+sluts", "Valentine's College Sluts")
             ];
 
-            TNA.GetVideos(tnaUrls);
-            SpankBang.GetVideos(spankBangUrls);
+            //TNA.GetVideos(tnaUrls);
+            //SpankBang.GetVideos(spankBangUrls);
 
             Logger.LogMessage(LogType.Success, "Non-M3U8 Web Scraping Finished!\n");
 
@@ -62,9 +62,9 @@ namespace VideoConvert
                 ("https://xhamster.com/videos/the-cruise-of-pleasure-xhKIcTq", "The Cruise of Pleasure")
             ];
 
-            await LocalNSFW.GetVideos(hdefUrls);
-            await LocalNSFW.GetVideos(xVideosUrls);
-            await LocalNSFW.GetVideos(xHamsterUrls);
+            //await LocalNSFW.GetVideos(hdefUrls);
+            //await LocalNSFW.GetVideos(xVideosUrls);
+            //await LocalNSFW.GetVideos(xHamsterUrls);
 
             Logger.LogMessage(LogType.Success, "M3U8 Web Scraping Finished!\n");
         }
